@@ -1,0 +1,30 @@
+@import '@utils/scss/variables.scss';
+
+:global {
+  .ant-breadcrumb {
+    margin-bottom: 2rem;
+    ol {
+      font-size: 16px;
+      .ant-breadcrumb-link,
+      .ant-breadcrumb-separator {
+        a,
+        span,
+        i {
+          color: $LIGHT_COLOR;
+        }
+      }
+    }
+  }
+  [data-theme='dark'] {
+    .ant-breadcrumb {
+      .ant-breadcrumb-link,
+      .ant-breadcrumb-separator {
+        a,
+        span,
+        i {
+          color: $DARK_COLOR;
+        }
+      }
+    }
+  }
+}

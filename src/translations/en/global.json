@@ -1,0 +1,38 @@
+{
+  "Common": {
+    "companyName": "SmartLab"
+  },
+  "MenuItems": {
+    "accounting": "Accounting",
+    "budget": "Budget",
+    "call_history": "Call history",
+    "general_permission_system": "General permission system",
+    "projects": "Projects",
+    "tasks": "Tasks",
+    "documents": "Documents",
+    "WorkingWithCustomers": {
+      "self": "Working with customers",
+      "customers": "Customers",
+      "appeals": "Appeals",
+      "support": "Support",
+      "applications_from_website": "Applications from website"
+    },
+    "employees": "Employees"
+  },
+  "HeaderProfile": {
+    "my_profile": "My profile",
+    "settings": "Settings",
+    "my_time_ranges": "My time ranges",
+    "my_payments": "My payments",
+    "my_unfinished_tasks": "My unfinished tasks",
+    "sign_out": "Sign out"
+  },
+  "Extra": {
+    "home_page": "Home"
+  },
+  "Actions": {
+    "go": "Go",
+    "edit": "Edit",
+    "delete": "Delete"
+  }
+}

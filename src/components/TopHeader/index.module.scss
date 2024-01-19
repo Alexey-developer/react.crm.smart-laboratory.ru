@@ -1,0 +1,65 @@
+@import '@utils/scss/mixins.scss';
+@import '@utils/scss/variables.scss';
+
+:global {
+  .ant-layout-header {
+    z-index: 10;
+    padding-left: 0;
+    padding-right: 1rem;
+
+    @warn 'problem';
+    // position: fixed;
+    // width: 100%;
+    // padding: 0;
+
+    position: sticky;
+    top: 0;
+    // z-index: 1;
+    // width: '100%';
+    // display: flex;
+    // align-items: center;
+  }
+}
+
+.header_btn {
+  font-size: 28px;
+  height: 64px;
+  width: 64px !important;
+  background-color: transparent;
+  border: none;
+  &:hover {
+    color: #000 !important;
+  }
+}
+
+[data-theme='dark'] {
+  .header_btn {
+    color: #fff;
+    &:hover {
+      color: #fff !important;
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  .header_btn {
+    font-size: 20px;
+    width: 35px !important;
+  }
+  :global {
+    .ant-layout-header {
+      .ant-badge-count {
+        padding: 0 2px !important;
+      }
+      .ant-badge-dot {
+        right: 5px !important;
+      }
+    }
+  }
+}
+@media (max-width: 350px) {
+  .header_btn {
+    font-size: 16px;
+    width: 30px !important;
+  }
+}

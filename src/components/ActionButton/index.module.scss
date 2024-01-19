@@ -1,0 +1,41 @@
+@import '@utils/scss/variables.scss';
+
+// :global {
+// [data-theme='dark'] {
+// }
+// }
+
+:global {
+  .action-btn {
+    color: #fff !important;
+    border: none !important;
+    &.default {
+      background: $DEFAULT_COLOR;
+      //   &.transparent {
+      //     color: $DEFAULT_COLOR;
+      //     background: $DEFAULT_COLOR_WITH_OPACITY !important;
+      //   }
+    }
+    &.success {
+      background: $SUCCESS_COLOR;
+      //   &.transparent {
+      //     color: $SUCCESS_COLOR;
+      //     background: $SUCCESS_COLOR_WITH_OPACITY !important;
+      //   }
+    }
+    &.warning {
+      background: $WARNING_COLOR;
+      //   &.transparent {
+      //     color: $WARNING_COLOR;
+      //     background: $WARNING_COLOR_WITH_OPACITY !important;
+      //   }
+    }
+    &.danger {
+      background: $DANGER_COLOR;
+      //   &.transparent {
+      //     color: $DANGER_COLOR;
+      //     background: $DANGER_COLOR_WITH_OPACITY !important;
+      //   }
+    }
+  }
+}

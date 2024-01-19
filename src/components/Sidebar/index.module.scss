@@ -1,0 +1,133 @@
+@import '@utils/scss/mixins.scss';
+@import '@utils/scss/variables.scss';
+
+//local vars
+$opened_sider_width: 300px;
+$collapsed_sider_width: 80px;
+
+:global {
+  .ant-layout-sider {
+    z-index: 10;
+    width: $opened_sider_width !important;
+    max-width: $opened_sider_width !important;
+    background-color: $LIGHT_ELEMENT_BG !important;
+    box-shadow: $LIGHT_SMALL_SHADOW;
+    .ant-menu {
+      background-color: $LIGHT_ELEMENT_BG;
+      color: $LIGHT_COLOR;
+      .ant-menu-item-active {
+        color: $LIGHT_HOVER_COLOR !important;
+        background-color: $LIGHT_HOVER_BG !important;
+        &.ant-menu-item-selected {
+          color: $DARK_HOVER_COLOR !important;
+        }
+      }
+      .ant-menu-item-selected {
+        background-color: $ACTIVE_ELEMENT_BG_GRADIENT_COLOR_2;
+        @include gradient(
+          $ACTIVE_ELEMENT_BG_GRADIENT_DEG,
+          $ACTIVE_ELEMENT_BG_GRADIENT_COLOR_1,
+          $ACTIVE_ELEMENT_BG_GRADIENT_PERCENT_1,
+          $ACTIVE_ELEMENT_BG_GRADIENT_COLOR_2,
+          $ACTIVE_ELEMENT_BG_GRADIENT_PERCENT_2
+        );
+        box-shadow: $ACTIVE_ELEMENT_BOX_SHADOW;
+
+        .ant-badge {
+          sup {
+            color: #fff;
+            background: $DANGER_COLOR !important;
+          }
+        }
+      }
+      .ant-menu-sub {
+        background-color: $LIGHT_ELEMENT_BG !important;
+        box-shadow: $ACTIVE_ELEMENT_BOX_SHADOW;
+      }
+      .ant-menu-title-content {
+        transition: none;
+      }
+      .ant-menu-submenu-title {
+        color: $LIGHT_COLOR;
+      }
+    }
+  }
+  .ant-layout-sider-collapsed {
+    width: $collapsed_sider_width !important;
+    max-width: $collapsed_sider_width !important;
+  }
+  header {
+    background: $LIGHT_ELEMENT_BG !important;
+    box-shadow: $LIGHT_SMALL_SHADOW;
+  }
+}
+
+.sider {
+  overflow: auto;
+  height: 100vh;
+  position: fixed !important;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  @include transition($TRANSITION_TIME);
+}
+
+.site_layout_common {
+  @include transition($TRANSITION_TIME);
+
+  background: $LIGHT_BG;
+  &.collapsed {
+    margin-left: $collapsed_sider_width;
+  }
+
+  &.opened {
+    margin-left: $opened_sider_width;
+  }
+}
+
+[data-theme='dark'] {
+  :global {
+    .ant-layout-sider {
+      background-color: $DARK_ELEMENT_BG !important;
+      box-shadow: $DARK_SMALL_SHADOW;
+      .ant-menu {
+        background-color: $DARK_ELEMENT_BG;
+        color: $DARK_COLOR;
+        .ant-menu-item-active {
+          color: $DARK_HOVER_COLOR !important;
+          background-color: $DARK_HOVER_BG !important;
+        }
+        .ant-menu-sub {
+          background-color: $DARK_ELEMENT_BG !important;
+        }
+        .ant-menu-submenu-title {
+          color: $DARK_COLOR;
+        }
+      }
+    }
+  }
+  header {
+    background: $DARK_ELEMENT_BG !important;
+    box-shadow: $DARK_SMALL_SHADOW;
+  }
+  .site_layout_common {
+    background: $DARK_BG;
+  }
+}
+
+@media (max-width: 800px) {
+  .site_layout_common {
+    &.opened {
+      margin-left: 0;
+    }
+  }
+
+  :global {
+    aside {
+      top: 64px !important;
+      &.ant-layout-sider-collapsed {
+        top: 0 !important;
+      }
+    }
+  }
+}

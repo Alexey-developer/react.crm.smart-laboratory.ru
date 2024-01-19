@@ -1,0 +1,186 @@
+// @mixin keyframes($name) {
+// 	@-webkit-keyframes #{$name} {
+// 		@content;
+// 	}
+//   @-moz-keyframes #{$name} {
+// 		@content;
+// 	}
+//   @-ms-keyframes #{$name} {
+// 		@content;
+// 	}
+//   @-o-keyframes #{$name} {
+// 		@content;
+// 	}
+//   @keyframes #{$name} {
+// 		@content;
+// 	}
+// }
+
+// @mixin placeholder($color, $opacity) {
+// 	&::-webkit-input-placeholder {
+// 		color: $color;
+// 		opacity: $opacity;
+// 	};
+// 	&:-moz-placeholder {
+// 		color: $color;
+// 		opacity: $opacity;
+// 	};
+// 	&::-moz-placeholder {
+// 		color: $color;
+// 		opacity: $opacity;
+// 	};
+// 	&:-ms-input-placeholder {
+// 		color: $color;
+// 		opacity: $opacity;
+// 	};
+// 	&::-ms-input-placeholder {
+// 		color: $color;
+// 		opacity: $opacity;
+// 	};
+// 	&:-o-input-placeholder {
+// 		color: $color;
+// 		opacity: $opacity;
+// 	};
+// 	&::-o-input-placeholder {
+// 		color: $color;
+// 		opacity: $opacity;
+// 	};
+// 	&::placeholder {
+// 		color: $color;
+// 		opacity: $opacity;
+// 	};
+// }
+
+// @mixin scrollbar($color, $width) {
+// 	::-webkit-scrollbar {
+// 		width: $width;
+// 	  background-color: $color;
+// 	};
+// 	:-moz-scrollbar {
+// 		width: $width;
+// 	  background-color: $color;
+// 	};
+// 	::-moz-scrollbar {
+// 		width: $width;
+// 	  background-color: $color;
+// 	};
+// 	:-ms-scrollbar {
+// 		width: $width;
+// 	  background-color: $color;
+// 	};
+// 	::-ms-scrollbar {
+// 		width: $width;
+// 	  background-color: $color;
+// 	};
+// 	:-o-scrollbar {
+// 		width: $width;
+// 	  background-color: $color;
+// 	};
+// 	::-o-scrollbar {
+// 		width: $width;
+// 	  background-color: $color;
+// 	};
+// }
+
+// @mixin scrollbar-thumb($gradient) {
+// 	::-webkit-scrollbar-thumb {
+// 	  @include gradient($gradient);
+// 	}
+// 	:-moz-scrollbar-thumb {
+// 		@include gradient($gradient);
+// 	};
+// 	::-moz-scrollbar-thumb {
+// 		@include gradient($gradient);
+// 	};
+// 	:-ms-scrollbar-thumb {
+// 		@include gradient($gradient);
+// 	};
+// 	::-ms-scrollbar-thumb {
+// 		@include gradient($gradient);
+// 	};
+// 	:-o-scrollbar-thumb {
+// 		@include gradient($gradient);
+// 	};
+// 	::-o-scrollbar-thumb {
+// 		@include gradient($gradient);
+// 	};
+// }
+
+@mixin gradient($deg, $gradient_1, $percent_1, $gradient_2, $percent_2) {
+	background-image: -webkit-linear-gradient(
+		$deg,
+		$gradient_1 $percent_1,
+		$gradient_2 $percent_2
+	);
+	background-image: -moz-linear-gradient(
+		$deg,
+		$gradient_1 $percent_1,
+		$gradient_2 $percent_2
+	);
+	background-image: -ms-linear-gradient(
+		$deg,
+		$gradient_1 $percent_1,
+		$gradient_2 $percent_2
+	);
+	background-image: -o-linear-gradient(
+		$deg,
+		$gradient_1 $percent_1,
+		$gradient_2 $percent_2
+	);
+	background-image: linear-gradient(
+		$deg,
+		$gradient_1 $percent_1,
+		$gradient_2 $percent_2
+	);
+}
+// linear-gradient(72.47deg, rgb(115, 103, 240) 22.16%, rgba(115, 103, 240, 0.7) 76.47%);
+
+// @mixin transform($translateX, $translateY, $scale, $deg:0) {
+// 	-webkit-transform: if($translateX != miss, translateX($translateX), null) if($translateY != miss, translateY($translateY), null) if($scale != miss, scale($scale), null) if($deg != 0, rotate($deg), null);
+// 	-moz-transform: if($translateX != miss, translateX($translateX), null) if($translateY != miss, translateY($translateY), null) if($scale != miss, scale($scale), null) if($deg != 0, rotate($deg), null);
+// 	-ms-transform: if($translateX != miss, translateX($translateX), null) if($translateY != miss, translateY($translateY), null) if($scale != miss, scale($scale), null) if($deg != 0, rotate($deg), null);
+// 	-o-transform: if($translateX != miss, translateX($translateX), null) if($translateY != miss, translateY($translateY), null) if($scale != miss, scale($scale), null) if($deg != 0, rotate($deg), null);
+// 	transform: if($translateX != miss, translateX($translateX), null) if($translateY != miss, translateY($translateY), null) if($scale != miss, scale($scale), null) if($deg != 0, rotate($deg), null);
+// }
+
+// @mixin animation($animation_name, $seconds, $animation_type, $infinite) {
+// 	-webkit-animation: $animation_name $seconds $animation_type $infinite;// Chrome и Safari
+// 	-moz-animation: $animation_name $seconds $animation_type $infinite;// Firefox
+// 	-ms-animation: $animation_name $seconds $animation_type $infinite;// Internet Explorer
+// 	-o-animation: $animation_name $seconds $animation_type $infinite;// Opera
+// 	animation: $animation_name $seconds $animation_type $infinite;// Стандартный CSS
+// 	// , index 6s -0s|2s|4s ease infinite
+// }
+
+@mixin transition($seconds, $ease: 0s) {
+	-webkit-transition: all $seconds ease $ease !important;
+	-moz-transition: all $seconds ease $ease !important;
+	-ms-transition: all $seconds ease $ease !important;
+	-o-transition: all $seconds ease $ease !important;
+	transition: all $seconds ease $ease !important;
+}
+
+// @mixin position($pos, $t, $r, $b, $l) {
+//   position: $pos;
+// 	@if($t != miss) {
+// 		top: $t;
+// 	}
+// 	@if($r != miss) {
+// 		right: $r;
+// 	}
+// 	@if($b != miss) {
+// 		bottom: $b;
+// 	}
+// 	@if($l != miss) {
+// 		left: $l;
+// 	}
+// }
+
+// @mixin line_after_title($color, $width, $height, $position, $top, $right, $bottom, $left) {
+// 	content: "";
+// 	background: $color;
+// 	width: $width;
+// 	height: $height;
+// 	@include position($position, $top, $right, $bottom, $left);
+// 	margin: auto;
+// }

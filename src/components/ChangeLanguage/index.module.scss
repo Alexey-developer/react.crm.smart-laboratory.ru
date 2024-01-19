@@ -1,0 +1,35 @@
+@import '@components/TopHeader/index.module.scss';
+
+:global {
+  .ant-dropdown-arrow {
+    &::before {
+      background-color: $LIGHT_ELEMENT_BG;
+    }
+  }
+
+  .ant-dropdown-menu {
+    background-color: $LIGHT_ELEMENT_BG;
+    .ant-dropdown-menu-item {
+      .ant-badge-status-text {
+        color: $LIGHT_COLOR;
+      }
+    }
+  }
+
+  [data-theme='dark'] {
+    .ant-dropdown-arrow {
+      &::before {
+        background-color: $DARK_ELEMENT_BG;
+      }
+    }
+
+    .ant-dropdown-menu {
+      background-color: $DARK_ELEMENT_BG;
+      .ant-dropdown-menu-item {
+        .ant-badge-status-text {
+          color: $DARK_COLOR;
+        }
+      }
+    }
+  }
+}

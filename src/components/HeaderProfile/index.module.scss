@@ -1,0 +1,47 @@
+@import '@components/TopHeader/index.module.scss';
+:global {
+	.ant-popover {
+		.ant-popover-inner {
+			background-color: $LIGHT_ELEMENT_BG;
+			.ant-popover-inner-content,
+			.ant-btn {
+				color: $LIGHT_COLOR;
+			}
+			.ant-divider {
+				margin: 8px 0;
+			}
+			.ant-btn {
+				width: 100%;
+				text-align: left;
+			}
+			.ant-space-compact {
+				width: 100%;
+			}
+		}
+		.ant-popover-arrow {
+			&::before {
+				background-color: $LIGHT_ELEMENT_BG;
+			}
+		}
+
+		.ant-avatar {
+			margin-right: 1rem;
+		}
+	}
+	[data-theme='dark'] {
+		.ant-popover {
+			.ant-popover-inner {
+				background-color: $DARK_ELEMENT_BG;
+				.ant-popover-inner-content,
+				.ant-btn {
+					color: $DARK_COLOR;
+				}
+			}
+			.ant-popover-arrow {
+				&::before {
+					background-color: $DARK_ELEMENT_BG;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,18 @@
+@import '@components/TopHeader/index.module.scss';
+
+:global {
+	.ant-spin {
+		background-color: $LIGHT_ELEMENT_BG;
+		.ant-spin-dot-item {
+			background-color: $DARK_ELEMENT_BG !important;
+		}
+	}
+	[data-theme='dark'] {
+		.ant-spin {
+			background-color: $DARK_ELEMENT_BG;
+			.ant-spin-dot-item {
+				background-color: $LIGHT_ELEMENT_BG !important;
+			}
+		}
+	}
+}

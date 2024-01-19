@@ -1,0 +1,15 @@
+@import '@utils/scss/mixins.scss';
+@import '@utils/scss/variables.scss';
+
+.logo {
+	a {
+		color: $LIGHT_HOVER_COLOR;
+	}
+}
+[data-theme='dark'] {
+	.logo {
+		a {
+			color: $DARK_HOVER_COLOR;
+		}
+	}
+}

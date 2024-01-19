@@ -1,0 +1,46 @@
+@import '@utils/scss/variables.scss';
+
+:global {
+  .ant-ribbon {
+    margin-top: -15px;
+  }
+  .ant-card {
+    .ant-card-head {
+      border-color: rgba($LIGHT_COLOR, 0.16);
+    }
+    ul {
+      border-color: rgba($LIGHT_COLOR, 0.16) !important;
+      li {
+        border-color: rgba($LIGHT_COLOR, 0.16) !important;
+      }
+    }
+  }
+  [data-theme='dark'] {
+    .ant-card {
+      .ant-card-head {
+        border-color: rgba($DARK_COLOR, 0.16);
+      }
+      ul {
+        border-color: rgba($DARK_COLOR, 0.16) !important;
+        li {
+          border-color: rgba($DARK_COLOR, 0.16) !important;
+        }
+      }
+    }
+  }
+}
+
+.default_col {
+  padding: 0.5rem 0.5rem;
+}
+
+[data-theme='dark'] {
+  .project_card {
+    // margin: 0.5rem 0.5rem;
+    color: $DARK_COLOR;
+    background: $DARK_ELEMENT_BG;
+    ul {
+      background: $DARK_ELEMENT_BG;
+    }
+  }
+}

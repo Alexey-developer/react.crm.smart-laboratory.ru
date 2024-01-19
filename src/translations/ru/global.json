@@ -1,0 +1,38 @@
+{
+  "Common": {
+    "companyName": "СмартЛаб"
+  },
+  "MenuItems": {
+    "accounting": "Бухгалтерский учёт",
+    "budget": "Бюджет",
+    "call_history": "История звонков",
+    "general_permission_system": "Система общих разрешений",
+    "projects": "Проекты",
+    "tasks": "Задачи",
+    "documents": "Документы",
+    "WorkingWithCustomers": {
+      "self": "Работа с клиентами",
+      "customers": "Клиенты",
+      "appeals": "Обращения",
+      "support": "Поддержка",
+      "applications_from_website": "Заявки с вебсайта"
+    },
+    "employees": "Сотрудники"
+  },
+  "HeaderProfile": {
+    "my_profile": "Мой профиль",
+    "settings": "Настройки",
+    "my_time_ranges": "Мои временные диапазоны",
+    "my_payments": "Мои выплаты",
+    "my_unfinished_tasks": "Мои незавершённые задачи",
+    "sign_out": "Выход"
+  },
+  "Extra": {
+    "home_page": "Главная"
+  },
+  "Actions": {
+    "go": "Перейти",
+    "edit": "Редактировать",
+    "delete": "Удалить"
+  }
+}

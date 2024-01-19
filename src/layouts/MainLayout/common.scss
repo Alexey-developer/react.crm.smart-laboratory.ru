@@ -1,0 +1,110 @@
+@import '@utils/scss/mixins.scss';
+@import '@utils/scss/variables.scss';
+
+.ant-layout {
+  background: $LIGHT_BG;
+}
+[data-theme='dark'] {
+  .ant-layout {
+    background: $DARK_BG;
+  }
+}
+
+.ant-badge {
+  sup {
+    background: $DEFAULT_COLOR !important;
+    box-shadow: none !important;
+  }
+  &.transparent {
+    sup {
+      color: $DEFAULT_COLOR;
+      background: $DEFAULT_COLOR_WITH_OPACITY !important;
+    }
+  }
+  &.success {
+    sup {
+      background: $SUCCESS_COLOR !important;
+    }
+    &.transparent {
+      sup {
+        color: $SUCCESS_COLOR;
+        background: $SUCCESS_COLOR_WITH_OPACITY !important;
+      }
+    }
+  }
+  &.warning {
+    sup {
+      background: $WARNING_COLOR !important;
+    }
+    &.transparent {
+      sup {
+        color: $WARNING_COLOR;
+        background: $WARNING_COLOR_WITH_OPACITY !important;
+      }
+    }
+  }
+  &.danger {
+    sup {
+      background: $DANGER_COLOR !important;
+    }
+    &.transparent {
+      sup {
+        color: $DANGER_COLOR;
+        background: $DANGER_COLOR_WITH_OPACITY !important;
+      }
+    }
+  }
+}
+
+.ant-ribbon {
+  background: $DEFAULT_COLOR !important;
+  .ant-ribbon-corner {
+    color: $DEFAULT_COLOR;
+  }
+  &.transparent {
+    color: $DEFAULT_COLOR;
+    background: $DEFAULT_COLOR_WITH_OPACITY !important;
+    .ant-ribbon-corner {
+      color: $DEFAULT_COLOR_WITH_OPACITY;
+    }
+  }
+  &.success {
+    background: $SUCCESS_COLOR !important;
+    .ant-ribbon-corner {
+      color: $SUCCESS_COLOR;
+    }
+    &.transparent {
+      color: $SUCCESS_COLOR;
+      background: $SUCCESS_COLOR_WITH_OPACITY !important;
+      .ant-ribbon-corner {
+        color: $SUCCESS_COLOR_WITH_OPACITY;
+      }
+    }
+  }
+  &.warning {
+    background: $WARNING_COLOR !important;
+    .ant-ribbon-corner {
+      color: $WARNING_COLOR;
+    }
+    &.transparent {
+      color: $WARNING_COLOR;
+      background: $WARNING_COLOR_WITH_OPACITY !important;
+      .ant-ribbon-corner {
+        color: $WARNING_COLOR_WITH_OPACITY;
+      }
+    }
+  }
+  &.danger {
+    background: $DANGER_COLOR !important;
+    .ant-ribbon-corner {
+      color: $DANGER_COLOR;
+    }
+    &.transparent {
+      color: $DANGER_COLOR;
+      background: $DANGER_COLOR_WITH_OPACITY !important;
+      .ant-ribbon-corner {
+        color: $DANGER_COLOR_WITH_OPACITY;
+      }
+    }
+  }
+}
