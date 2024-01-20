@@ -8,6 +8,7 @@ type DefaultCardProps = {
   badgeRibbonText?: string
   badgeRibbonClassName?:
     | undefined
+    | 'transparent'
     | 'success'
     | 'success transparent'
     | 'warning'
@@ -31,7 +32,7 @@ export const DefaultCard: React.FC<DefaultCardProps> = ({
 }) => {
   const defaultCard = (
     <Card
-      className={styles.project_card}
+      className={styles.default_card}
       title={title}
       bordered={false}
       hoverable={hoverable}

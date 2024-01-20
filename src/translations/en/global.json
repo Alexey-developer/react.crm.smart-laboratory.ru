@@ -34,5 +34,50 @@
     "go": "Go",
     "edit": "Edit",
     "delete": "Delete"
+  },
+  "Confirm": {
+    "title": "Confirmation required",
+    "description": "Are you sure you want to take this action?",
+    "ok_text": "Yes",
+    "cancel_text": "Cancel"
+  },
+  "Statuses": {
+    "Project": {
+      "in_progress": "In progress",
+      "upcoming": "Upcoming",
+      "completed": "Completed"
+    },
+    "Employee": {
+      "works": "Works",
+      "internship": "Internship",
+      "fired": "Fired"
+    },
+    "Customer": {
+      "collaborates": "Collaborates",
+      "potential": "Potential",
+      "former": "Former"
+    },
+    "FinancialTransaction": {
+      "scheduled": "Scheduled",
+      "made": "Made"
+    }
+  },
+  "Types": {
+    "Project": {
+      "development": "Development",
+      "seo": "SEO",
+      "support": "Support",
+      "rework": "Rework",
+      "advertising_promotion": "Advertising promotion",
+      "business_process_automation": "Business process automation"
+    },
+    "FinancialTransaction": {
+      "income": "Income",
+      "cost": "Cost"
+    },
+    "PaymentMethod": {
+      "invoicing": "Invoicing",
+      "credit_card": "Credit card"
+    }
   }
 }

@@ -9,33 +9,33 @@
   .action-btn {
     color: #fff !important;
     border: none !important;
-    &.default {
-      background: $DEFAULT_COLOR;
-      //   &.transparent {
-      //     color: $DEFAULT_COLOR;
-      //     background: $DEFAULT_COLOR_WITH_OPACITY !important;
-      //   }
+
+    background: $DEFAULT_COLOR;
+    &.transparent {
+      color: $DEFAULT_COLOR !important;
+      background: $DEFAULT_COLOR_WITH_OPACITY;
     }
+
     &.success {
       background: $SUCCESS_COLOR;
-      //   &.transparent {
-      //     color: $SUCCESS_COLOR;
-      //     background: $SUCCESS_COLOR_WITH_OPACITY !important;
-      //   }
+      &.transparent {
+        color: $SUCCESS_COLOR !important;
+        background: $SUCCESS_COLOR_WITH_OPACITY;
+      }
     }
     &.warning {
       background: $WARNING_COLOR;
-      //   &.transparent {
-      //     color: $WARNING_COLOR;
-      //     background: $WARNING_COLOR_WITH_OPACITY !important;
-      //   }
+      &.transparent {
+        color: $WARNING_COLOR !important;
+        background: $WARNING_COLOR_WITH_OPACITY;
+      }
     }
     &.danger {
       background: $DANGER_COLOR;
-      //   &.transparent {
-      //     color: $DANGER_COLOR;
-      //     background: $DANGER_COLOR_WITH_OPACITY !important;
-      //   }
+      &.transparent {
+        color: $DANGER_COLOR !important;
+        background: $DANGER_COLOR_WITH_OPACITY;
+      }
     }
   }
 }

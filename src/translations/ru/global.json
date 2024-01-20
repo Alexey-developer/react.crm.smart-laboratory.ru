@@ -34,5 +34,50 @@
     "go": "Перейти",
     "edit": "Редактировать",
     "delete": "Удалить"
+  },
+  "Confirm": {
+    "title": "Требуется подтверждение",
+    "description": "Вы уверены, что желаете совершить данное действие?",
+    "ok_text": "Да",
+    "cancel_text": "Отменить"
+  },
+  "Statuses": {
+    "Project": {
+      "in_progress": "В работе",
+      "upcoming": "Предстоящий",
+      "completed": "Завершён"
+    },
+    "Employee": {
+      "works": "Работает",
+      "internship": "Стажируется",
+      "fired": "Уволен"
+    },
+    "Customer": {
+      "collaborates": "Сотрудничает",
+      "potential": "Потенциальный",
+      "former": "Бывший"
+    },
+    "FinancialTransaction": {
+      "scheduled": "Запланирована",
+      "made": "Проведена"
+    }
+  },
+  "Types": {
+    "Project": {
+      "development": "Разработка",
+      "seo": "SEO",
+      "support": "Поддержка",
+      "rework": "Доработка",
+      "advertising_promotion": "Рекламное продвижение",
+      "business_process_automation": "Автоматизация бизнес процессов"
+    },
+    "FinancialTransaction": {
+      "income": "Доход",
+      "cost": "Расход"
+    },
+    "PaymentMethod": {
+      "invoicing": "По реквизитам (выставление счёта)",
+      "credit_card": "Перевод (на карту)"
+    }
   }
 }

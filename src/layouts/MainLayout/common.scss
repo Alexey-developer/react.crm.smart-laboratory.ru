@@ -62,8 +62,10 @@
     color: $DEFAULT_COLOR;
   }
   &.transparent {
-    color: $DEFAULT_COLOR;
     background: $DEFAULT_COLOR_WITH_OPACITY !important;
+    .ant-ribbon-text {
+      color: $DEFAULT_COLOR;
+    }
     .ant-ribbon-corner {
       color: $DEFAULT_COLOR_WITH_OPACITY;
     }
@@ -74,8 +76,10 @@
       color: $SUCCESS_COLOR;
     }
     &.transparent {
-      color: $SUCCESS_COLOR;
       background: $SUCCESS_COLOR_WITH_OPACITY !important;
+      .ant-ribbon-text {
+        color: $SUCCESS_COLOR;
+      }
       .ant-ribbon-corner {
         color: $SUCCESS_COLOR_WITH_OPACITY;
       }
@@ -87,8 +91,10 @@
       color: $WARNING_COLOR;
     }
     &.transparent {
-      color: $WARNING_COLOR;
       background: $WARNING_COLOR_WITH_OPACITY !important;
+      .ant-ribbon-text {
+        color: $WARNING_COLOR;
+      }
       .ant-ribbon-corner {
         color: $WARNING_COLOR_WITH_OPACITY;
       }
@@ -100,11 +106,98 @@
       color: $DANGER_COLOR;
     }
     &.transparent {
-      color: $DANGER_COLOR;
       background: $DANGER_COLOR_WITH_OPACITY !important;
+      .ant-ribbon-text {
+        color: $DANGER_COLOR;
+      }
       .ant-ribbon-corner {
         color: $DANGER_COLOR_WITH_OPACITY;
       }
+    }
+  }
+}
+
+.ant-tag {
+  background: $DEFAULT_COLOR;
+  border: none;
+  color: #fff;
+  i {
+    margin-right: 5px;
+  }
+  &.transparent {
+    color: $DEFAULT_COLOR;
+    background: $DEFAULT_COLOR_WITH_OPACITY;
+  }
+  &.success {
+    background: $SUCCESS_COLOR;
+    &.transparent {
+      color: $SUCCESS_COLOR;
+      background: $SUCCESS_COLOR_WITH_OPACITY;
+    }
+  }
+  &.warning {
+    background: $WARNING_COLOR;
+    &.transparent {
+      color: $WARNING_COLOR;
+      background: $WARNING_COLOR_WITH_OPACITY;
+    }
+  }
+  &.danger {
+    background: $DANGER_COLOR;
+    &.transparent {
+      color: $DANGER_COLOR;
+      background: $DANGER_COLOR_WITH_OPACITY;
+    }
+  }
+}
+
+.ant-progress {
+  .ant-progress-text {
+    color: $LIGHT_COLOR;
+  }
+  .ant-progress-bg {
+    background: $DEFAULT_COLOR;
+  }
+  &.transparent {
+    .ant-progress-bg {
+      background: $DEFAULT_COLOR_WITH_OPACITY;
+    }
+  }
+  &.success {
+    .ant-progress-bg {
+      background: $SUCCESS_COLOR;
+    }
+    &.transparent {
+      .ant-progress-bg {
+        background: $SUCCESS_COLOR_WITH_OPACITY;
+      }
+    }
+  }
+  &.warning {
+    .ant-progress-bg {
+      background: $WARNING_COLOR;
+    }
+    &.transparent {
+      .ant-progress-bg {
+        background: $WARNING_COLOR_WITH_OPACITY;
+      }
+    }
+  }
+  &.danger {
+    .ant-progress-bg {
+      background: $DANGER_COLOR;
+    }
+    &.transparent {
+      .ant-progress-bg {
+        background: $DANGER_COLOR_WITH_OPACITY;
+      }
+    }
+  }
+}
+[data-theme='dark'] {
+  .ant-progress {
+    .ant-progress-text {
+      color: $DARK_COLOR;
     }
   }
 }

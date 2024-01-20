@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Row, Badge } from 'antd'
+import { Row, Badge, Tag, Progress } from 'antd'
 
 import { useTranslation } from 'react-i18next'
 
@@ -12,6 +12,7 @@ import { DefaultCard } from '@components/DefaultCard'
 import { ActionButton } from '@components/ActionButton'
 
 import { formCardExtra } from '@utils/formCardExtra'
+import { getIcon } from '@utils/getIcon'
 
 export const ProjectsPage: React.FC = () => {
   const [translated_phrase] = useTranslation('global')
@@ -25,38 +26,56 @@ export const ProjectsPage: React.FC = () => {
 
   const cardActions = [
     <ActionButton
+      className='transparent'
       title={translated_phrase('Actions.go')}
       shape='circle'
-      icon={'fa-solid fa-arrow-right-from-arc'}
+      icon={getIcon('GO')}
     />,
     <ActionButton
-      className='warning' //transparent
+      className='warning transparent'
       title={translated_phrase('Actions.edit')}
       shape='circle'
-      icon={'fa-solid fa-pen-to-square'}
+      icon={getIcon('EDIT')}
     />,
     <ActionButton
-      className='danger' //transparent
+      className='danger transparent'
       title={translated_phrase('Actions.delete')}
       shape='circle'
-      icon={'fa-solid fa-trash'}
+      icon={getIcon('DELETE')}
+      useConfirm={true}
     />,
   ]
 
   const projects = [1, 2, 3, 4, 5, 6, 7, 8]
 
-  const formContent = (description: string, created_at: string) => {
+  const formContent = (
+    description: string,
+    created_at: string,
+    incomes: number,
+    costs: number
+  ) => {
     return (
       <>
         <h2>{description}</h2>
-        <Badge
+        <Tag
+          className={'success transparent'}
+          icon={<i className={getIcon('MONEY')}></i>}
+        >
+          Принес {incomes.toLocaleString('ru-RU')} ₽
+        </Tag>
+        <Tag
+          className={'danger transparent'}
+          icon={<i className={getIcon('MONEY')}></i>}
+        >
+          Потрачено (авторачёт) {costs.toLocaleString('ru-RU')} ₽
+        </Tag>
+        <Tag
           className={'transparent'}
-          count={'Создан: ' + created_at}
-        ></Badge>
-        <Badge
-          className={'transparent'}
-          count={'Создан: ' + created_at}
-        ></Badge>
+          icon={<i className={getIcon('CREATED_AT')}></i>}
+        >
+          {created_at}
+        </Tag>
+        <Progress percent={69} />
       </>
     )
   }
@@ -80,25 +99,22 @@ export const ProjectsPage: React.FC = () => {
       <Row justify='start'>
         {/* <Row justify='space-around'> */}
         {/* <Row justify='space-evenly'> */}
-        {/* {projects.map() => 
-{        <DefaultCard
-          title='#1 Апельсин'
-          actions={cardActions}
-          extra={formCardExtra('success transparent', 'Разработка')}
-        />}
-		} */}
-
         {projects.map(i => (
           <DefaultCard
             title={'#' + i + ' Апельсин'}
-            badgeRibbonText={'В работе'}
-            badgeRibbonClassName={'danger'}
+            badgeRibbonText={translated_phrase('Statuses.Project.in_progress')}
+            badgeRibbonClassName={'success transparent'}
             content={formContent(
               'Laravel (Backend API) + React (Frontend)',
-              '31-07-2022 | 00:24:01'
+              '31-07-2022 | 00:24:01',
+              1817875,
+              888210
             )}
             actions={cardActions}
-            extra={formCardExtra('warning transparent', 'Разработка')}
+            extra={formCardExtra(
+              'warning transparent',
+              translated_phrase('Types.Project.development')
+            )}
           />
         ))}
       </Row>

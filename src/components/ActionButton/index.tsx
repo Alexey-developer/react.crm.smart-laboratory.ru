@@ -1,22 +1,43 @@
 import React from 'react'
-import { Button, Tooltip } from 'antd'
+import { Button, Tooltip, Popconfirm } from 'antd'
+
+import { useTranslation } from 'react-i18next'
 
 import './index.module.scss'
 
 type ActionButtonProps = {
-  className?: 'default' | 'success' | 'warning' | 'danger'
+  className?:
+    | 'transparent'
+    | 'success'
+    | 'success transparent'
+    | 'warning'
+    | 'warning transparent'
+    | 'danger'
+    | 'danger transparent'
   title: string
   icon: string
   shape?: 'default' | 'circle' | 'round'
+  useConfirm?: boolean
+  confirmTitleKey?: string
+  confirmDescriptionKey?: string
+  confirmOkTextKey?: string
+  confirmCancelTextKey?: string
 }
 
 export const ActionButton: React.FC<ActionButtonProps> = ({
-  className = 'default',
+  className = '',
   title,
   icon,
   shape = 'default',
+  useConfirm = false,
+  confirmTitleKey = 'Confirm.title',
+  confirmDescriptionKey = 'Confirm.description',
+  confirmOkTextKey = 'Confirm.ok_text',
+  confirmCancelTextKey = 'Confirm.cancel_text',
 }) => {
-  return (
+  const [translated_phrase] = useTranslation('global')
+
+  const actionButton = (
     <Tooltip title={title}>
       <Button
         className={'action-btn ' + className}
@@ -26,4 +47,18 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
       />
     </Tooltip>
   )
+
+  if (useConfirm) {
+    return (
+      <Popconfirm
+        title={translated_phrase(confirmTitleKey)}
+        description={translated_phrase(confirmDescriptionKey)}
+        okText={translated_phrase(confirmOkTextKey)}
+        cancelText={translated_phrase(confirmCancelTextKey)}
+      >
+        {actionButton}
+      </Popconfirm>
+    )
+  }
+  return <>{actionButton}</>
 }
