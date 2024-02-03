@@ -1,7 +1,11 @@
 enum IconEnum {
   CREATED_AT = 'fa-regular fa-calendar-circle-plus',
-  MONEY = 'fa-solid fa-ruble-sign',
+  RUBLE = 'fa-solid fa-ruble-sign',
+  TIME = 'fa-solid fa-timer',
 
+  TASKS = 'fa-solid fa-list-check',
+
+  CREATE = 'fa-solid fa-plus',
   GO = 'fa-solid fa-arrow-right-from-arc',
   EDIT = 'fa-solid fa-pen-to-square',
   DELETE = 'fa-solid fa-trash',

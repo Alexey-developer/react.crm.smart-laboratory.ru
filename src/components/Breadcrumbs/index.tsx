@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { Link, useLocation } from 'react-router-dom'
 
@@ -8,61 +8,99 @@ import type { ItemType } from 'antd/es/breadcrumb/Breadcrumb'
 type BreadcrumbItem = ItemType
 
 import { formLeftMenuItems } from '@utils/formLeftMenuItems'
+import { constants } from '@utils/constants.json'
+import { getIcon } from '@utils/getIcon'
 
 import { Breadcrumb } from 'antd'
 
 import './index.module.scss'
 
 export const Breadcrumbs: React.FC = () => {
-	const [translated_phrase] = useTranslation('global')
+  const [translated_phrase] = useTranslation('global')
 
-	const location = useLocation()
-	const { pathname } = location
-	// console.log(1, pathname)
-	// const pathnames = pathname.split('/').filter(item => item)
-	// console.log(2, pathnames)
+  const location = useLocation()
+  const { pathname } = location
+  //   console.log(1, pathname)
+  const pathnames = pathname.split('/').filter(item => item)
+  // console.log(2, pathnames)
 
-	const breadcrumbItems: BreadcrumbItem[] = [
-		{
-			title: (
-				<>
-					<Link to={'/'}>
-						<i className='fa-solid fa-home'></i>
-					</Link>
-				</>
-			),
-		},
-	]
+  let homeItem = <i className='fa-solid fa-home'></i>
 
-	const leftMenuItems = formLeftMenuItems()
-	// console.log(leftMenuItems)
-	const leftMenuItem = leftMenuItems.find(
-		leftMenuItem => leftMenuItem.path === pathname
-	)
-	// console.log(leftMenuItem)
+  if (pathname !== '/') {
+    homeItem = <Link to={'/'}>{homeItem}</Link>
+  }
 
-	// const breadcrumbRef = React.useRef<HTMLAnchorElement>(null)
+  const breadcrumbItems: BreadcrumbItem[] = [
+    {
+      title: <>{homeItem}</>,
+    },
+  ]
 
-	if (leftMenuItem) {
-		breadcrumbItems.push({
-			title: (
-				<>
-					{/* <Link to={leftMenuItem.path} ref={breadcrumbRef}> */}
-					<i className={leftMenuItem.icon}></i>
-					<span> {translated_phrase(leftMenuItem.name_key)}</span>
-					{/* </Link> */}
-				</>
-			),
-		})
-	}
+  const leftMenuItems = formLeftMenuItems()
+  const leftMenuItem = leftMenuItems.find(
+    leftMenuItem => leftMenuItem.path === pathnames[0]
+  )
 
-	// useEffect(() => {
-	// }, [])
+  if (leftMenuItem) {
+    let secondItem = (
+      <>
+        <i className={leftMenuItem.icon}></i>
+        <span> {translated_phrase(leftMenuItem.name_key)}</span>
+      </>
+    )
 
-	return (
-		<Breadcrumb
-			separator={<i className='fa-regular fa-chevrons-right'></i>}
-			items={breadcrumbItems}
-		/>
-	)
+    if (pathnames[1]) {
+      secondItem = <Link to={leftMenuItem.path}>{secondItem}</Link>
+    }
+
+    breadcrumbItems.push({
+      title: secondItem,
+    })
+
+    if (pathnames[1] === constants.routes.creating) {
+      breadcrumbItems.push({
+        title: (
+          <>
+            <i className={getIcon('CREATE')}></i>
+            <span> {translated_phrase('Modes.creating')}</span>
+          </>
+        ),
+      })
+    } else if (!isNaN(parseInt(pathnames[1]))) {
+      let thirdItem = (
+        <>
+          <i className='fa-solid fa-hashtag'></i>
+          <span> {pathnames[1]}</span>
+        </>
+      )
+
+      if (pathnames[2] === constants.routes.editing) {
+        thirdItem = (
+          <Link to={leftMenuItem.path + '/' + pathnames[1]}>{thirdItem}</Link>
+        )
+      }
+
+      breadcrumbItems.push({
+        title: thirdItem,
+      })
+
+      if (pathnames[2] === constants.routes.editing) {
+        breadcrumbItems.push({
+          title: (
+            <>
+              <i className={getIcon('EDIT')}></i>
+              <span> {translated_phrase('Modes.editing')}</span>
+            </>
+          ),
+        })
+      }
+    }
+  }
+
+  return (
+    <Breadcrumb
+      separator={<i className='fa-regular fa-chevrons-right'></i>}
+      items={breadcrumbItems}
+    />
+  )
 }

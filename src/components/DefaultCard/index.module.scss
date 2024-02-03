@@ -30,15 +30,23 @@
   }
 }
 
-.default_col {
-  padding: 0.5rem 0.5rem;
+.default_card {
+  :global {
+    .ant-card-head-title {
+      color: $LIGHT_COLOR;
+    }
+  }
 }
 
 [data-theme='dark'] {
   .default_card {
-    // margin: 0.5rem 0.5rem;
     color: $DARK_COLOR;
     background: $DARK_ELEMENT_BG;
+    :global {
+      .ant-card-head-title {
+        color: $DARK_COLOR;
+      }
+    }
     ul {
       background: $DARK_ELEMENT_BG;
     }

@@ -1,0 +1,26 @@
+@import '@utils/scss/variables.scss';
+
+.avatar_group {
+  gap: 6px;
+  :global {
+    .ant-avatar {
+      &:nth-child(3) {
+        background: $WARNING_COLOR;
+        cursor: pointer;
+      }
+    }
+    .ant-avatar {
+      background: $DEFAULT_COLOR;
+      border: none;
+    }
+  }
+}
+
+:global {
+  .ant-popover-placement-top {
+    .ant-avatar {
+      background: $DEFAULT_COLOR;
+      margin-right: 0;
+    }
+  }
+}

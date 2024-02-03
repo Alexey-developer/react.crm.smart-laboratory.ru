@@ -30,10 +30,28 @@
   "Extra": {
     "home_page": "Home"
   },
+  "Statistics": {
+    "time_spent": "Time spent",
+    "incomes": "Incomes",
+    "costs_auto": "Costs (automatic calculation)",
+    "costs": "Costs (actually)",
+    "penalty": "Penalty"
+  },
+  "Info": {
+    "accesses": "Accesses"
+  },
+  "PermissionSystem": {
+    "permission_system": "Permission system"
+  },
   "Actions": {
+    "create": "Create",
     "go": "Go",
     "edit": "Edit",
     "delete": "Delete"
+  },
+  "Modes": {
+    "creating": "Creating",
+    "editing": "Editing"
   },
   "Confirm": {
     "title": "Confirmation required",

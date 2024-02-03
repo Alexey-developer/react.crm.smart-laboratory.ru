@@ -48,7 +48,16 @@ export const DefaultCard: React.FC<DefaultCardProps> = ({
 
   if (badgeRibbonText) {
     return (
-      <Col span={4} className={styles.default_col}>
+      <Col
+        // span={4}
+        xs={24}
+        // sm={24}
+        // md={12}
+        lg={12}
+        xl={8}
+        xxl={6}
+        className='default-col'
+      >
         <Badge.Ribbon className={badgeRibbonClassName} text={badgeRibbonText}>
           {defaultCard}
         </Badge.Ribbon>
@@ -56,7 +65,7 @@ export const DefaultCard: React.FC<DefaultCardProps> = ({
     )
   }
   return (
-    <Col span={4} className={styles.default_col}>
+    <Col xs={24} lg={12} xl={8} xxl={6} className='default-col'>
       {defaultCard}
     </Col>
   )

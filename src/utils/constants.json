@@ -1,5 +1,9 @@
 {
-	"constants": {
-		"BADGE_OFFSET": [10, -2]
-	}
+  "constants": {
+    "BADGE_OFFSET": [10, -2],
+    "routes": {
+      "creating": "create",
+      "editing": "edit"
+    }
+  }
 }

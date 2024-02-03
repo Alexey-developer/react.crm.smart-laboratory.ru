@@ -14,64 +14,72 @@ import type { MenuProps } from 'antd'
 import type { ItemType } from 'antd/es/menu/hooks/useItems'
 
 export const LeftMenu: React.FC = () => {
-	//2 перерисовки при смене языка
-	const [translated_phrase] = useTranslation('global')
-	const location = useLocation()
+  //2 перерисовки при смене языка
+  const [translated_phrase] = useTranslation('global')
+  const location = useLocation()
+  const { pathname } = location
+  const pathnames = pathname.split('/').filter(item => item)
 
-	const items: MenuProps['items'] = []
-	const leftMenuItems = formLeftMenuItems()
-	// console.log(leftMenuItems)
+  const items: MenuProps['items'] = []
+  const leftMenuItems = formLeftMenuItems()
+  // console.log(leftMenuItems)
 
-	const convert = (leftMenuItem: MenuItem) => {
-		const label = (
-			<>
-				<span>{translated_phrase(leftMenuItem.name_key)}</span>
-				{leftMenuItem.badge && (
-					<Badge
-						className={leftMenuItem.badge.className}
-						offset={leftMenuItem.badge.offset}
-						count={leftMenuItem.badge.count}
-					></Badge>
-				)}
-			</>
-		)
+  const convert = (leftMenuItem: MenuItem) => {
+    const label = (
+      <>
+        <span>{translated_phrase(leftMenuItem.name_key)}</span>
+        {leftMenuItem.badge && (
+          <Badge
+            className={leftMenuItem.badge.className}
+            offset={leftMenuItem.badge.offset}
+            count={leftMenuItem.badge.count}
+          ></Badge>
+        )}
+      </>
+    )
 
-		const convertedMenuItem: ItemType = {
-			key: leftMenuItem.path,
-			label: leftMenuItem.childrenMenuItems ? (
-				label
-			) : (
-				<Link to={leftMenuItem.path}>{label}</Link>
-			),
-			icon: (
-				<span className='anticon'>
-					<i className={leftMenuItem.icon}></i>
-				</span>
-			),
-		}
-		return convertedMenuItem
-	}
+    const convertedMenuItem: ItemType = {
+      key: leftMenuItem.path,
+      label: leftMenuItem.childrenMenuItems ? (
+        label
+      ) : (
+        <Link to={leftMenuItem.path}>{label}</Link>
+      ),
+      icon: (
+        <span className='anticon'>
+          <i className={leftMenuItem.icon}></i>
+        </span>
+      ),
+    }
+    return convertedMenuItem
+  }
 
-	leftMenuItems.map(leftMenuItem => {
-		const converted = convert(leftMenuItem)
+  leftMenuItems.map(leftMenuItem => {
+    const converted = convert(leftMenuItem)
 
-		if (leftMenuItem.childrenMenuItems) (converted as SubMenuType).children = []
+    if (leftMenuItem.childrenMenuItems) (converted as SubMenuType).children = []
 
-		leftMenuItem.childrenMenuItems?.map(childLeftMenuItem =>
-			(converted as SubMenuType).children.push(convert(childLeftMenuItem))
-		)
-		items.push(converted)
-	})
+    leftMenuItem.childrenMenuItems?.map(childLeftMenuItem =>
+      (converted as SubMenuType).children.push(convert(childLeftMenuItem))
+    )
+    items.push(converted)
+  })
 
-	// console.log(items)
-	// console.log(location.pathname)
+  // console.log(items)
+  // console.log(location.pathname)
 
-	return (
-		<Menu
-			theme='dark'
-			selectedKeys={location.pathname !== '/' ? [location.pathname] : ['']}
-			mode='inline'
-			items={items}
-		/>
-	)
+  //   const match = useMatch({
+  //     path: location.pathname,
+  //   })
+  //   console.log(match)
+  //   console.log(location.pathname)
+
+  return (
+    <Menu
+      theme='dark'
+      selectedKeys={pathname !== '/' ? [pathnames[0]] : ['']}
+      mode='inline'
+      items={items}
+    />
+  )
 }

@@ -1,0 +1,131 @@
+@import '@utils/scss/variables.scss';
+
+:global {
+  .ant-alert {
+    background: $DEFAULT_COLOR;
+    border: none;
+    .ant-alert-icon,
+    .ant-alert-message,
+    .ant-alert-description,
+    .ant-alert-close-icon span {
+      color: #fff;
+    }
+
+    .ant-alert-close-icon {
+      span {
+        color: #fff !important;
+      }
+    }
+
+    i.ant-alert-icon {
+      margin-top: 0.75rem;
+    }
+
+    &.transparent {
+      &,
+      .ant-alert-icon,
+      .ant-alert-message,
+      .ant-alert-description,
+      .ant-alert-close-icon {
+        color: $DEFAULT_COLOR;
+      }
+      background: $DEFAULT_COLOR_WITH_OPACITY;
+    }
+    &.success {
+      background: $SUCCESS_COLOR;
+      &.transparent {
+        &,
+        .ant-alert-icon,
+        .ant-alert-message,
+        .ant-alert-description,
+        .ant-alert-close-icon {
+          color: $SUCCESS_COLOR;
+        }
+        background: $SUCCESS_COLOR_WITH_OPACITY;
+      }
+    }
+    &.warning {
+      background: $WARNING_COLOR;
+      &.transparent {
+        &,
+        .ant-alert-icon,
+        .ant-alert-message,
+        .ant-alert-description,
+        .ant-alert-close-icon {
+          color: $WARNING_COLOR;
+        }
+        background: $WARNING_COLOR_WITH_OPACITY;
+      }
+    }
+    &.danger {
+      background: $DANGER_COLOR;
+      &.transparent {
+        &,
+        .ant-alert-icon,
+        .ant-alert-message,
+        .ant-alert-description,
+        .ant-alert-close-icon {
+          color: $DANGER_COLOR;
+        }
+        background: $DANGER_COLOR_WITH_OPACITY;
+      }
+    }
+  }
+}
+
+// :global {
+//   .ant-alert {
+//     margin-top: -15px;
+//   }
+//   .ant-card {
+//     .ant-card-head {
+//       border-color: rgba($LIGHT_COLOR, 0.16);
+//     }
+//     ul {
+//       border-color: rgba($LIGHT_COLOR, 0.16) !important;
+//       li {
+//         border-color: rgba($LIGHT_COLOR, 0.16) !important;
+//       }
+//     }
+//   }
+//   [data-theme='dark'] {
+//     .ant-card {
+//       .ant-card-head {
+//         border-color: rgba($DARK_COLOR, 0.16);
+//       }
+//       ul {
+//         border-color: rgba($DARK_COLOR, 0.16) !important;
+//         li {
+//           border-color: rgba($DARK_COLOR, 0.16) !important;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .default_col {
+//   padding: 0.5rem 0.5rem;
+// }
+
+// .default_card {
+//   :global {
+//     .ant-card-head-title {
+//       color: $LIGHT_COLOR;
+//     }
+//   }
+// }
+
+// [data-theme='dark'] {
+//   .default_card {
+//     color: $DARK_COLOR;
+//     background: $DARK_ELEMENT_BG;
+//     :global {
+//       .ant-card-head-title {
+//         color: $DARK_COLOR;
+//       }
+//     }
+//     ul {
+//       background: $DARK_ELEMENT_BG;
+//     }
+//   }
+// }

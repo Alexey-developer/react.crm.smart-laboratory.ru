@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import { useTranslation } from 'react-i18next'
 
-import { SetPageTitle } from '@utils/SetPageTitle'
+import { SetPageTitle } from '@utils/helpers'
 
 import { useDispatch } from 'react-redux'
 import { setPageIsLoaded } from '@redux/PageLoading/slice'

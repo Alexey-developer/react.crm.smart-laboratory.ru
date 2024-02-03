@@ -30,10 +30,28 @@
   "Extra": {
     "home_page": "Главная"
   },
+  "Statistics": {
+    "time_spent": "Времени потрачено",
+    "incomes": "Доходы",
+    "costs_auto": "Расходы (авторачёт)",
+    "costs": "Расходы (фактически)",
+    "penalty": "Штрафы"
+  },
+  "Info": {
+    "accesses": "Доступы"
+  },
+  "PermissionSystem": {
+    "permission_system": "Система разрешений"
+  },
   "Actions": {
+    "create": "Создать",
     "go": "Перейти",
     "edit": "Редактировать",
     "delete": "Удалить"
+  },
+  "Modes": {
+    "creating": "Создание",
+    "editing": "Редактирование"
   },
   "Confirm": {
     "title": "Требуется подтверждение",
