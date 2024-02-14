@@ -3,7 +3,7 @@ import { Button, Tooltip, Popconfirm } from 'antd'
 
 import { useTranslation } from 'react-i18next'
 
-import './index.module.scss'
+// import './index.module.scss'
 
 type ActionButtonProps = {
   className?:
@@ -40,7 +40,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   const actionButton = (
     <Tooltip title={title}>
       <Button
-        className={'action-btn ' + className}
+        className={'smart-btn ' + className}
         type='default'
         shape={shape}
         icon={<i className={icon}></i>}

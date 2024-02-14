@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
-import { Row, Col } from 'antd'
+import { Row, Col, Tag, Progress } from 'antd'
 
 import { useTranslation } from 'react-i18next'
-
-import { SetPageTitle } from '@utils/helpers'
 
 import { useDispatch } from 'react-redux'
 import { setPageIsLoaded } from '@redux/PageLoading/slice'
@@ -12,8 +10,12 @@ import { AlertCard } from '@components/AlertCard'
 import { IncludedEmployees } from '@components/IncludedEmployees'
 
 import { ActionButton } from '@components/ActionButton'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+
+import { SetPageTitle } from '@utils/helpers'
+import { formCardExtra } from '@utils/formCardExtra'
 import { getIcon } from '@utils/getIcon'
+import { constants } from '@utils/constants.json'
 import { convert2string } from '@utils/helpers'
 
 // import { DefaultCard } from '@components/DefaultCard'
@@ -25,10 +27,14 @@ import { convert2string } from '@utils/helpers'
 
 import { getProject } from '@utils/tempData'
 import { PermissionSystem } from '@components/PermissionSystem'
+import { DefaultCard } from '@components/DefaultCard'
 
 export const ProjectsPage: React.FC = () => {
   const [translated_phrase] = useTranslation('global')
   SetPageTitle(translated_phrase('MenuItems.projects') + ': #' /* + id*/)
+
+  const location = useLocation()
+  const { pathname } = location
 
   const dispatch = useDispatch()
 
@@ -112,11 +118,70 @@ export const ProjectsPage: React.FC = () => {
           }
           type='warning transparent'
         />
+        <DefaultCard
+          grid={{ xs: 24, lg: 24, xl: 24, xxl: 24 }}
+          key={project.id}
+          type='default'
+          title={'#' + project.id + ' ' + project.name}
+          badgeRibbonText={translated_phrase('Statuses.Project.in_progress')}
+          badgeRibbonClassName={'success transparent'}
+          content={
+            <>
+              <Tag
+                className={'success'}
+                icon={<i className='fa-solid fa-chart-line-up'></i>}
+              >
+                {(project.incomes / project.costsAuto).toFixed(2)}
+              </Tag>
+              <Tag
+                className={'transparent'}
+                icon={<i className={getIcon('CREATED_AT')}></i>}
+              >
+                {project.createdAt}
+              </Tag>
+              <Progress percent={project.progress} />
+              <IncludedEmployees employees={project.employees} />
+            </>
+          }
+          actions={[
+            <ActionButton
+              className='transparent'
+              title={translated_phrase('MenuItems.tasks')}
+              shape='circle'
+              icon={getIcon('TASKS')}
+            />,
+            <Link to={pathname + '/' + constants.routes.editing}>
+              <ActionButton
+                className='warning transparent'
+                title={translated_phrase('Actions.edit')}
+                shape='circle'
+                icon={getIcon('EDIT')}
+              />
+            </Link>,
+            <ActionButton
+              className='danger transparent'
+              title={translated_phrase('Actions.delete')}
+              shape='circle'
+              icon={getIcon('DELETE')}
+              useConfirm={true}
+            />,
+          ]}
+          extra={formCardExtra(
+            'warning transparent',
+            translated_phrase('Types.Project.development')
+          )}
+        />
         <Col span={24} className='default-col'>
-          <IncludedEmployees employees={project.employees} />
+          <PermissionSystem
+            permissions={[
+              { name: 'Видеть в списке', action: 'index' },
+              { name: 'Просматривать', action: 'index' },
+            ]}
+          />
         </Col>
         <Col span={24} className='default-col'>
           <CollapseCard
+            type='danger transparent'
             items={[
               {
                 key: '1',
@@ -128,7 +193,55 @@ export const ProjectsPage: React.FC = () => {
           />
         </Col>
         <Col span={24} className='default-col'>
-          <PermissionSystem />
+          <CollapseCard
+            type='success transparent'
+            items={[
+              {
+                key: '1',
+                label: translated_phrase('Info.repositories'),
+                children: <div>text</div>,
+                // extra: <div>extra</div>,
+              },
+            ]}
+          />
+        </Col>
+        <Col span={24} className='default-col'>
+          <CollapseCard
+            type='warning transparent'
+            items={[
+              {
+                key: '1',
+                label: translated_phrase('Info.technology_stack'),
+                children: <div>text</div>,
+                // extra: <div>extra</div>,
+              },
+            ]}
+          />
+        </Col>
+        <Col span={24} className='default-col'>
+          <CollapseCard
+            type='transparent'
+            items={[
+              {
+                key: '1',
+                label: translated_phrase('Info.expirations'),
+                children: <div>text</div>,
+                // extra: <div>extra</div>,
+              },
+            ]}
+          />
+        </Col>
+        <Col span={24} className='default-col'>
+          <CollapseCard
+            items={[
+              {
+                key: '1',
+                label: translated_phrase('Info.other_links'),
+                children: <div>text</div>,
+                // extra: <div>extra</div>,
+              },
+            ]}
+          />
         </Col>
       </Row>
     </>

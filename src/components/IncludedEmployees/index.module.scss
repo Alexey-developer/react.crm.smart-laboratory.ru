@@ -6,12 +6,9 @@
     .ant-avatar {
       &:nth-child(3) {
         background: $WARNING_COLOR;
+        border: none;
         cursor: pointer;
       }
-    }
-    .ant-avatar {
-      background: $DEFAULT_COLOR;
-      border: none;
     }
   }
 }
@@ -19,7 +16,6 @@
 :global {
   .ant-popover-placement-top {
     .ant-avatar {
-      background: $DEFAULT_COLOR;
       margin-right: 0;
     }
   }

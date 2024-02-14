@@ -1,0 +1,10 @@
+@import '@utils/scss/variables.scss';
+
+:global {
+  a {
+    .ant-avatar {
+      background: $DEFAULT_COLOR;
+      border: none;
+    }
+  }
+}

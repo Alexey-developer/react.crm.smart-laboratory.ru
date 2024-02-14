@@ -30,6 +30,10 @@
   "Extra": {
     "home_page": "Home"
   },
+  "Filters": {
+    "filters": "Filters",
+    "statuses": "Statuses"
+  },
   "Statistics": {
     "time_spent": "Time spent",
     "incomes": "Incomes",
@@ -38,10 +42,16 @@
     "penalty": "Penalty"
   },
   "Info": {
-    "accesses": "Accesses"
+    "accesses": "Accesses",
+    "repositories": "Repositories",
+    "technology_stack": "Technology stack",
+    "expirations": "Expirations",
+    "other_links": "Other links"
   },
   "PermissionSystem": {
-    "permission_system": "Permission system"
+    "permission_system": "Permission system",
+    "allow": "Allow",
+    "disallow": "Disallow"
   },
   "Actions": {
     "create": "Create",
@@ -64,6 +74,13 @@
       "in_progress": "In progress",
       "upcoming": "Upcoming",
       "completed": "Completed"
+    },
+    "Task": {
+      "completed": "Completed",
+      "in_progress": "In progress",
+      "went_beyond_planned_time": "Went beyond planned time",
+      "expired": "Expired",
+      "planned": "Planned"
     },
     "Employee": {
       "works": "Works",

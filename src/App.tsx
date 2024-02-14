@@ -29,6 +29,12 @@ const ProjectPage = lazy(() =>
   }))
 )
 
+const TasksPage = lazy(() =>
+  import('@pages/TasksPage').then(module => ({
+    default: module.TasksPage,
+  }))
+)
+
 function App() {
   return (
     <Routes>
@@ -66,6 +72,40 @@ function App() {
             </Suspense>
           }
         />
+
+        <Route
+          path='tasks'
+          element={
+            <Suspense fallback={<div>Идёт загрузка страницы проекта...</div>}>
+              <TasksPage />
+            </Suspense>
+          }
+        />
+        {/* <Route
+          path='tasks/:id'
+          element={
+            <Suspense fallback={<div>Идёт загрузка страницы проекта...</div>}>
+              <ProjectPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path={'tasks/:id/' + constants.routes.editing}
+          element={
+            <Suspense fallback={<div>Идёт загрузка страницы проекта...</div>}>
+              <ProjectPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path={'tasks/' + constants.routes.creating}
+          element={
+            <Suspense fallback={<div>Идёт загрузка страницы проекта...</div>}>
+              <ProjectPage />
+            </Suspense>
+          }
+        /> */}
+
         {/* <Route
 					path='projects/31'
 					element={

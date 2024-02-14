@@ -1,3 +1,34 @@
+export const getTaskStatuses = () => {
+  const taskStatuses = [
+    {
+      id: 1,
+      name: 'planned',
+      class: 'Апельсин',
+    },
+    {
+      id: 2,
+      name: 'in_progress',
+      class: 'Апельсин',
+    },
+    {
+      id: 3,
+      name: 'went_beyond_planned_time',
+      class: 'Апельсин',
+    },
+    {
+      id: 4,
+      name: 'expired',
+      class: 'Апельсин',
+    },
+    {
+      id: 5,
+      name: 'completed',
+      class: 'Апельсин',
+    },
+  ]
+  return taskStatuses
+}
+
 export const getProject = () => {
   const project = {
     id: 1,
@@ -30,6 +61,50 @@ export const getProject = () => {
         id: 4,
         name: 'Алмаз',
         surname: 'Маратович',
+      },
+    ],
+    tasks: [
+      {
+        id: 1,
+        name: 'Задача',
+        status: getTaskStatuses()[0].name,
+        statusClass: 'transparent',
+      },
+      {
+        id: 2,
+        name: 'Задача',
+        status: getTaskStatuses()[1].name,
+        statusClass: 'warning transparent',
+      },
+      {
+        id: 3,
+        name: 'Задача',
+        status: getTaskStatuses()[2].name,
+        statusClass: 'danger transparent',
+      },
+      {
+        id: 4,
+        name: 'Задача',
+        status: getTaskStatuses()[3].name,
+        statusClass: 'danger transparent',
+      },
+      {
+        id: 5,
+        name: 'Задача',
+        status: getTaskStatuses()[4].name,
+        statusClass: 'success transparent',
+      },
+      {
+        id: 6,
+        name: 'Задача',
+        status: getTaskStatuses()[1].name,
+        statusClass: 'warning transparent',
+      },
+      {
+        id: 7,
+        name: 'Задача',
+        status: getTaskStatuses()[1].name,
+        statusClass: 'warning transparent',
       },
     ],
   }

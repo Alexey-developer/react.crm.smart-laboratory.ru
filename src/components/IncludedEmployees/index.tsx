@@ -1,8 +1,9 @@
 import React from 'react'
-import { Avatar, Tooltip } from 'antd'
-import { Link } from 'react-router-dom'
+import { Avatar } from 'antd'
 
 import styles from './index.module.scss'
+
+import { CustomAvatar } from '@components/CustomAvatar'
 
 export type Employees = {
   id: number
@@ -25,20 +26,7 @@ export const IncludedEmployees: React.FC<IncludedEmployeesProps> = ({
       className={styles.avatar_group}
     >
       {employees.map(employee => (
-        <Tooltip
-          key={employee.id}
-          className={styles.t}
-          title={
-            '#' + employee.id + ' ' + employee.surname + ' ' + employee.name
-          }
-        >
-          <Link to={'#'}>
-            <Avatar>
-              {employee.surname.substring(0, 1)}.{' '}
-              {employee.name.substring(0, 1)}.
-            </Avatar>
-          </Link>
-        </Tooltip>
+        <CustomAvatar key={employee.id} employee={employee} />
       ))}
     </Avatar.Group>
   )

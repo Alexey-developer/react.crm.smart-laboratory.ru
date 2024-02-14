@@ -1,0 +1,103 @@
+@import '@utils/scss/variables.scss';
+
+:global {
+  .ant-pagination {
+    text-align: center;
+    color: $LIGHT_COLOR;
+    li.ant-pagination-item {
+      a {
+        color: $LIGHT_COLOR;
+      }
+    }
+    li.ant-pagination-prev,
+    li.ant-pagination-next {
+      span {
+        color: $LIGHT_COLOR;
+      }
+    }
+    li.ant-pagination-item-active {
+      background-color: $DEFAULT_COLOR;
+      border: none;
+      a {
+        color: #fff !important;
+      }
+    }
+    .ant-pagination-item-link-icon {
+      color: $DEFAULT_COLOR !important;
+    }
+
+    .ant-select {
+      .ant-select-selector {
+        background-color: $DEFAULT_COLOR !important;
+        border: none !important;
+        color: #fff;
+      }
+      .ant-select-arrow,
+      .ant-select-selection-item {
+        color: #fff !important;
+        cursor: pointer;
+      }
+
+      .ant-select-dropdown {
+        background-color: $LIGHT_ELEMENT_BG;
+        .ant-select-item {
+          color: $LIGHT_COLOR;
+        }
+        .ant-select-item-option-selected {
+          background-color: $DEFAULT_COLOR;
+          color: #fff;
+        }
+      }
+    }
+
+    .ant-pagination-options-quick-jumper {
+      input {
+        background-color: $LIGHT_ELEMENT_BG !important;
+        border: none !important;
+        color: $LIGHT_COLOR !important;
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}
+
+[data-theme='dark'] {
+  :global {
+    .ant-pagination {
+      color: $DARK_COLOR;
+      li.ant-pagination-item {
+        a {
+          color: $DARK_COLOR;
+        }
+      }
+      li.ant-pagination-prev,
+      li.ant-pagination-next {
+        span {
+          color: $DARK_COLOR;
+        }
+      }
+      .ant-pagination-item-ellipsis {
+        color: $DARK_COLOR !important;
+      }
+
+      .ant-select {
+        .ant-select-dropdown {
+          background-color: $DARK_ELEMENT_BG;
+          .ant-select-item {
+            color: $DARK_COLOR;
+          }
+        }
+      }
+
+      .ant-pagination-options-quick-jumper {
+        input {
+          background-color: $DARK_ELEMENT_BG !important;
+          border: none !important;
+          color: $DARK_COLOR !important;
+        }
+      }
+    }
+  }
+}

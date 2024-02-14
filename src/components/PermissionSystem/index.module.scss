@@ -1,0 +1,30 @@
+@import '@utils/scss/variables.scss';
+
+.row {
+  :global {
+    .default-col {
+      text-align: center;
+      .ant-switch {
+        &,
+        &:hover {
+          background: $DANGER_COLOR;
+        }
+      }
+      .ant-switch-checked {
+        &,
+        &:hover {
+          background: $SUCCESS_COLOR;
+        }
+      }
+    }
+  }
+  .text {
+    color: $LIGHT_COLOR;
+  }
+}
+
+[data-theme='dark'] {
+  .text {
+    color: $DARK_COLOR;
+  }
+}

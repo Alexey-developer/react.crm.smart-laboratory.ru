@@ -15,12 +15,15 @@ $collapsed_sider_width: 80px;
     .ant-menu {
       background-color: $LIGHT_ELEMENT_BG;
       color: $LIGHT_COLOR;
+      .ant-menu-item {
+        color: inherit;
+      }
       .ant-menu-item-active {
         color: $LIGHT_HOVER_COLOR !important;
         background-color: $LIGHT_HOVER_BG !important;
-        &.ant-menu-item-selected {
-          color: $DARK_HOVER_COLOR !important;
-        }
+      }
+      .ant-menu-item-selected {
+        color: $DARK_HOVER_COLOR !important;
       }
       .ant-menu-item-selected {
         background-color: $ACTIVE_ELEMENT_BG_GRADIENT_COLOR_2;

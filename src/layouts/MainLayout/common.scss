@@ -205,3 +205,77 @@
     }
   }
 }
+
+.ant-empty-small {
+  .ant-empty-image {
+  }
+  .ant-empty-description {
+    color: $LIGHT_COLOR;
+  }
+}
+[data-theme='dark'] {
+  .ant-empty-small {
+    .ant-empty-image {
+    }
+    .ant-empty-description {
+      color: $DARK_COLOR;
+    }
+  }
+}
+
+.smart-btn {
+  color: #fff !important;
+  border: none !important;
+
+  &,
+  &:hover {
+    background: $DEFAULT_COLOR !important;
+  }
+  &.transparent {
+    color: $DEFAULT_COLOR !important;
+    &,
+    &:hover {
+      background: $DEFAULT_COLOR_WITH_OPACITY !important;
+    }
+  }
+
+  &.success {
+    &,
+    &:hover {
+      background: $SUCCESS_COLOR !important;
+    }
+    &.transparent {
+      color: $SUCCESS_COLOR !important;
+      &,
+      &:hover {
+        background: $SUCCESS_COLOR_WITH_OPACITY !important;
+      }
+    }
+  }
+  &.warning {
+    &,
+    &:hover {
+      background: $WARNING_COLOR !important;
+    }
+    &.transparent {
+      color: $WARNING_COLOR !important;
+      &,
+      &:hover {
+        background: $WARNING_COLOR_WITH_OPACITY !important;
+      }
+    }
+  }
+  &.danger {
+    &,
+    &:hover {
+      background: $DANGER_COLOR !important;
+    }
+    &.transparent {
+      color: $DANGER_COLOR !important;
+      &,
+      &:hover {
+        background: $DANGER_COLOR_WITH_OPACITY !important;
+      }
+    }
+  }
+}

@@ -30,6 +30,10 @@
   "Extra": {
     "home_page": "Главная"
   },
+  "Filters": {
+    "filters": "Фильтры",
+    "statuses": "Статусы"
+  },
   "Statistics": {
     "time_spent": "Времени потрачено",
     "incomes": "Доходы",
@@ -38,10 +42,16 @@
     "penalty": "Штрафы"
   },
   "Info": {
-    "accesses": "Доступы"
+    "accesses": "Доступы",
+    "repositories": "Репозитории",
+    "technology_stack": "Стек технологий",
+    "expirations": "Экспирации",
+    "other_links": "Прочие ссылки"
   },
   "PermissionSystem": {
-    "permission_system": "Система разрешений"
+    "permission_system": "Система разрешений",
+    "allow": "Разрешить",
+    "disallow": "Запретить"
   },
   "Actions": {
     "create": "Создать",
@@ -64,6 +74,13 @@
       "in_progress": "В работе",
       "upcoming": "Предстоящий",
       "completed": "Завершён"
+    },
+    "Task": {
+      "completed": "Выполнена",
+      "in_progress": "Выполняется",
+      "went_beyond_planned_time": "Вышла за рамки запланированного времени",
+      "expired": "Просрочена",
+      "planned": "Запланирована"
     },
     "Employee": {
       "works": "Работает",

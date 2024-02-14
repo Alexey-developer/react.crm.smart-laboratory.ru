@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Row, Tag, Progress, Tooltip } from 'antd'
+import type { PaginationProps } from 'antd'
 
 import { Link, useLocation } from 'react-router-dom'
 
@@ -19,6 +20,7 @@ import { getIcon } from '@utils/getIcon'
 import { constants } from '@utils/constants.json'
 import { convert2string } from '@utils/helpers'
 import { getProject } from '@utils/tempData'
+import { CustomPagination } from '@components/CustomPagination'
 
 export const ProjectsPage: React.FC = () => {
   const [translated_phrase] = useTranslation('global')
@@ -154,6 +156,14 @@ export const ProjectsPage: React.FC = () => {
     )
   }
 
+  //   const onChange: PaginationProps['onChange'] = pageNumber => {
+  //     console.log('Page: ', pageNumber)
+  //   }
+  const onChange: PaginationProps['onChange'] = (page, pageSize) => {
+    console.log('Page: ', page)
+    console.log('pageSize: ', pageSize)
+  }
+
   return (
     <>
       {/* <Breadcrumbs
@@ -176,6 +186,7 @@ export const ProjectsPage: React.FC = () => {
         {projects.map((project, i) => (
           <DefaultCard
             key={project.id + i}
+            type='default'
             title={'#' + (project.id + i) + ' ' + project.name}
             badgeRibbonText={translated_phrase('Statuses.Project.in_progress')}
             badgeRibbonClassName={'success transparent'}
@@ -198,6 +209,7 @@ export const ProjectsPage: React.FC = () => {
           />
         ))}
       </Row>
+      <CustomPagination onChange={onChange} total={500} />
     </>
   )
 }

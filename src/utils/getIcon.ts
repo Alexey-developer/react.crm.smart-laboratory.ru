@@ -4,6 +4,7 @@ enum IconEnum {
   TIME = 'fa-solid fa-timer',
 
   TASKS = 'fa-solid fa-list-check',
+  PROJECTS = 'fa-solid fa-diagram-project',
 
   CREATE = 'fa-solid fa-plus',
   GO = 'fa-solid fa-arrow-right-from-arc',
@@ -12,7 +13,7 @@ enum IconEnum {
 }
 
 function getValueByKeyForStringEnum(value: string) {
-  return Object.entries(IconEnum).find(([key, val]) => key === value)?.[1]
+  return Object.entries(IconEnum).find(([key /*, val*/]) => key === value)?.[1]
 }
 
 export const getIcon = (iconType: string) => {

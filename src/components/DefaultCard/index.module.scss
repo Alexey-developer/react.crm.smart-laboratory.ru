@@ -14,6 +14,30 @@
         border-color: rgba($LIGHT_COLOR, 0.16) !important;
       }
     }
+    &.default {
+      border-bottom: 1px $DEFAULT_COLOR_WITH_OPACITY solid;
+      &:hover {
+        border-bottom: 1px $DEFAULT_COLOR solid;
+      }
+    }
+    &.success {
+      border-bottom: 1px $SUCCESS_COLOR_WITH_OPACITY solid;
+      &:hover {
+        border-bottom: 1px $SUCCESS_COLOR solid;
+      }
+    }
+    &.warning {
+      border-bottom: 1px $WARNING_COLOR_WITH_OPACITY solid;
+      &:hover {
+        border-bottom: 1px $WARNING_COLOR solid;
+      }
+    }
+    &.danger {
+      border-bottom: 1px $DANGER_COLOR_WITH_OPACITY solid;
+      &:hover {
+        border-bottom: 1px $DANGER_COLOR solid;
+      }
+    }
   }
   [data-theme='dark'] {
     .ant-card {

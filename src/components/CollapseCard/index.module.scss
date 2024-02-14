@@ -1,0 +1,78 @@
+@import '@utils/scss/variables.scss';
+
+:global {
+  .ant-collapse {
+    .ant-collapse-header {
+      background: $DEFAULT_COLOR;
+      border-top-left-radius: $BORDER_RADIUS !important;
+      border-top-right-radius: $BORDER_RADIUS !important;
+      .ant-collapse-header-text,
+      .ant-collapse-expand-icon {
+        color: #fff;
+      }
+    }
+
+    .ant-collapse-content {
+      background: $LIGHT_ELEMENT_BG !important;
+    }
+
+    &.transparent {
+      .ant-collapse-header {
+        background: $DEFAULT_COLOR_WITH_OPACITY;
+
+        .ant-collapse-header-text,
+        .ant-collapse-expand-icon {
+          color: $DEFAULT_COLOR;
+        }
+      }
+    }
+    &.success {
+      .ant-collapse-header {
+        background: $SUCCESS_COLOR;
+      }
+      &.transparent {
+        .ant-collapse-header {
+          background: $SUCCESS_COLOR_WITH_OPACITY;
+
+          .ant-collapse-header-text,
+          .ant-collapse-expand-icon {
+            color: $SUCCESS_COLOR;
+          }
+        }
+      }
+    }
+    &.warning {
+      .ant-collapse-header {
+        background: $WARNING_COLOR;
+      }
+      &.transparent {
+        .ant-collapse-header {
+          background: $WARNING_COLOR_WITH_OPACITY;
+          .ant-collapse-header-text,
+          .ant-collapse-expand-icon {
+            color: $WARNING_COLOR;
+          }
+        }
+      }
+    }
+    &.danger {
+      .ant-collapse-header {
+        background: $DANGER_COLOR;
+      }
+      &.transparent {
+        .ant-collapse-header {
+          background: $DANGER_COLOR_WITH_OPACITY;
+          .ant-collapse-header-text,
+          .ant-collapse-expand-icon {
+            color: $DANGER_COLOR;
+          }
+        }
+      }
+    }
+  }
+  [data-theme='dark'] {
+    .ant-collapse-content {
+      background: $DARK_ELEMENT_BG !important;
+    }
+  }
+}

@@ -7,7 +7,6 @@ type DefaultCardProps = {
   title: string
   badgeRibbonText?: string
   badgeRibbonClassName?:
-    | undefined
     | 'transparent'
     | 'success'
     | 'success transparent'
@@ -19,6 +18,8 @@ type DefaultCardProps = {
   actions?: React.ReactNode[]
   extra?: React.ReactNode
   hoverable?: boolean
+  type?: 'default' | 'success' | 'warning' | 'danger'
+  grid?: { xs: number; lg: number; xl: number; xxl: number }
 }
 
 export const DefaultCard: React.FC<DefaultCardProps> = ({
@@ -29,10 +30,12 @@ export const DefaultCard: React.FC<DefaultCardProps> = ({
   actions,
   extra,
   hoverable = true,
+  type,
+  grid = { xs: 24, lg: 12, xl: 8, xxl: 6 },
 }) => {
   const defaultCard = (
     <Card
-      className={styles.default_card}
+      className={styles.default_card + ' ' + type}
       title={title}
       bordered={false}
       hoverable={hoverable}
@@ -50,12 +53,12 @@ export const DefaultCard: React.FC<DefaultCardProps> = ({
     return (
       <Col
         // span={4}
-        xs={24}
+        xs={grid.xs}
         // sm={24}
         // md={12}
-        lg={12}
-        xl={8}
-        xxl={6}
+        lg={grid.lg}
+        xl={grid.xl}
+        xxl={grid.xxl}
         className='default-col'
       >
         <Badge.Ribbon className={badgeRibbonClassName} text={badgeRibbonText}>
@@ -65,7 +68,13 @@ export const DefaultCard: React.FC<DefaultCardProps> = ({
     )
   }
   return (
-    <Col xs={24} lg={12} xl={8} xxl={6} className='default-col'>
+    <Col
+      xs={grid.xs}
+      lg={grid.lg}
+      xl={grid.xl}
+      xxl={grid.xxl}
+      className='default-col'
+    >
       {defaultCard}
     </Col>
   )
