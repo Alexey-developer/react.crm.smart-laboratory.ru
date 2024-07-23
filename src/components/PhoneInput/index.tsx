@@ -2,7 +2,7 @@ import React, { SyntheticEvent, useEffect, useRef } from 'react'
 
 import { Form, InputRef, Select } from 'antd'
 const { Option } = Select
-import { MaskedInput } from 'antd-mask-input'
+import { IMask, MaskedInput } from 'antd-mask-input'
 
 import { useReactive } from 'ahooks'
 
@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectPrefix } from '@redux/PhonePrefix/selectors'
 import { setPrefix } from '@redux/PhonePrefix/slice'
 import type { Prefix } from '@redux/PhonePrefix/types'
+
+import { getIcon } from '@utils/getIcon'
 
 export const PhoneInput: React.FC = (/*props: NumericInputProps*/) => {
   //   const { value, onChange } = props
@@ -33,14 +35,6 @@ export const PhoneInput: React.FC = (/*props: NumericInputProps*/) => {
     [994, { length: 9, mask: '(00)-000-00-00', placeholder: '(__)-___-__-__' }],
   ])
 
-  //   console.log(phonePrefixes)
-  //   console.log(phonePrefixes.get(prefix)?.length)
-
-  //   const phonePrefixes: PhonePrefix[] = [
-  //     [7, { length: 10, mask: '(000)-000-00-00' }],
-  //     //   { 994: { length: 9, mask: '(00)-000-00-00' } },
-  //   ]
-
   const options: React.ReactNode[] = []
   phonePrefixes.forEach((key, value) => {
     options.push(
@@ -53,7 +47,6 @@ export const PhoneInput: React.FC = (/*props: NumericInputProps*/) => {
       </Option>
     )
   })
-  //   console.log(555, options)
 
   const onChangePrefixHandler = (event: Prefix) => {
     dispatch(setPrefix(event))
@@ -106,21 +99,11 @@ export const PhoneInput: React.FC = (/*props: NumericInputProps*/) => {
     //   codeValue: null,
   })
 
-  //   const phoneMask = /^[0-9]{10}$/
-  //   let phoneMask = new RegExp(String.raw`^[0-9]{${length}}$` /*, 'g'*/)
-  //   console.log(phoneMask)
-
   useEffect(() => {
-    state.regExp = formRegExp()
     state.numberValid = false
-    // maskedInputRef.current?.focus()
-    // maskedInputRef.current.value = ''
-
     state.mask = formMask()
     state.placeholder = formPlaceholder()
-
-    // maskedInputRef.dispatchEvent(new Event('change'))
-    // console.log(maskedInputRef.current)
+    state.regExp = formRegExp()
   }, [length])
 
   const onPhoneNumberChange = (
@@ -128,37 +111,52 @@ export const PhoneInput: React.FC = (/*props: NumericInputProps*/) => {
   ) => {
     const newValue = e.unmaskedValue
     state.numberValid = /*newValue && */ state.regExp.test(newValue)
+    // console.log(prefix + newValue)
 
     // state.numberValue = newValue
   }
 
   return (
     // <span className='ant-input-affix-wrapper css-dev-only-do-not-override-1rqnfsa ant-input-outlined ant-input-status-success'>
-    <>
-      <p>{String.raw`^[0-9]{${length}}$`}</p>
-      <p>{phonePrefixes.get(prefix)?.placeholder}</p>
+    // <>
+    <Form.Item
+      name='phone'
+      noStyle
+      //   initialValue={state.placeholder}
+      hasFeedback
+      validateStatus={state.numberValid ? 'success' : 'error'}
+      rules={[
+        {
+          transform: value => {
+            return value.replace(/\D/g, '')
+          },
+          required: true,
+          len: length,
+          //   pattern: state.regExp,
+        },
+      ]}
+    >
       <MaskedInput
         ref={maskedInputRef}
-        value={state.placeholder}
-        autoFocus={true}
+        // value={state.placeholder}
+        autoFocus
         mask={state.mask}
-        //   maxLength={10}
         onChange={onPhoneNumberChange}
         placeholder={state.placeholder}
-        //   prefix='+7'
+        prefix={'+' + prefix}
         addonBefore={prefixSelector}
         pattern='[0-9]*'
         inputMode='numeric'
         status={state.numberValid ? '' : 'error'}
-        // onFocus={}
-
         //   onPressEnter={async () => {
         //     if (state.numberValid && state.cooldown == 0) {
         //       await onSendCode()
         //     }
         //   }}
       />
-    </>
+    </Form.Item>
+
+    // </>
     //   <span className='ant-input-suffix'>
     //     <span className='ant-form-item-feedback-icon ant-form-item-feedback-icon-success'>
     //       <span

@@ -2,8 +2,9 @@ import React, { useRef, useEffect, useState, SyntheticEvent } from 'react'
 // import constants from '@utils/constants.json'
 
 // import type { FormProps } from 'antd'
-import { Button, Checkbox, Form, Input } from 'antd'
+import { Button, Checkbox, Form, Input, Select } from 'antd'
 
+const { Option } = Select
 // import {
 //   Cascader,
 //   ColorPicker,
@@ -25,6 +26,9 @@ import { Button, Checkbox, Form, Input } from 'antd'
 // import styles from './../index.module.scss'
 // import styles from '../../components/Sidebar/index.module.scss'
 
+import { useSelector } from 'react-redux'
+import { selectPrefix } from '@redux/PhonePrefix/selectors'
+
 import { useTranslation } from 'react-i18next'
 
 import { CustomForm } from '@components/CustomForm'
@@ -32,7 +36,6 @@ import { PhoneInput } from '@components/PhoneInput'
 import type { FormItem } from '@components/CustomForm'
 
 import { SetPageTitle } from '@utils/helpers'
-import { getIcon } from '@utils/getIcon'
 
 // const { Content, Footer, Sider } = Layout
 
@@ -119,128 +122,26 @@ export const Auth: React.FC = () => {
       ],
       component: <Input />,
     },
+    // {
+    //   name: 'phone_test',
+    //   rules: [{ required: true }, { min: 1 }, { max: 2 }],
+    //   component: (
+    //     <Input
+    //       addonBefore={
+    //         <Form.Item name='prefix' noStyle>
+    //           <Select style={{ width: 100 }}>
+    //             <Option value='7'>+7</Option>
+    //             <Option value='994'>+994</Option>
+    //           </Select>
+    //         </Form.Item>
+    //       }
+    //     />
+    //   ),
+    // },
     {
       name: 'phone',
       rules: [{ required: true } /*, { min: 9 }, { max: 15 }*/],
-      component: (
-        // <Input
-        //   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-
-        //     const { value: inputValue } = e.target
-        //     // const reg = /^-?\d*(\.\d*)?$/
-        //     const reg = /\d+/g
-        //     // console.log(inputValue)
-
-        //     // console.log('r', inputValue.replace(reg, inputValue))
-
-        //     // inputValue.replace(reg, inputValue)
-
-        //     // console.log(inputValue.match(reg)?.join(''))
-
-        //     setValue1(inputValue.match(reg)?.join('') || '')
-        //     // console.log(inputValue)
-        //     // console.log(value)
-
-        //     // if (
-        //     //   reg.test(inputValue) ||
-        //     //   inputValue === '' ||
-        //     //   inputValue === '-'
-        //     // ) {
-        //     //   console.log('true')
-
-        //     //   //   onChange(inputValue)
-        //     // }
-        //   }}
-        //   placeholder='Input a number'
-        //   value={value1}
-        //   //   maxLength={16}
-        // />
-
-        // <NumericInput
-        //   style={{ width: 120 }}
-        //   value={value}
-        //   onChange={setValue}
-        // />
-
-        // <InputNumber
-        //   type='number'
-        //   //   className={styles.test}
-        //   //   parser={value => value!.replace('+', '')}
-        //   //   formatter={value => value!.replace('+', '')}
-        //   //   min={1}
-        //   //   max={10}
-        //   stringMode={true}
-        //   onKeyDown={event => {
-        //     const regex = /^[eE.,-]/
-        //     // const disallowedKeys = ['ArrowUp', 'ArrowDown']
-        //     // console.log(event.key)
-        //     // console.log(disallowedKeys.includes(event.key))
-        //     // disallowedKeys.includes(event.key) ||
-        //     if (regex.test(event.key)) {
-        //       event.preventDefault()
-        //     }
-        //   }}
-        //   onPaste={event => {
-        //     const regex = /[eE.,-]/
-        //     if (regex.test(event.clipboardData.getData('text/plain'))) {
-        //       event.preventDefault()
-        //     }
-        //   }}
-        //   controls={false}
-        //   changeOnWheel={false}
-        //   changeOnBlur={false}
-        //   precision={0}
-        //   //   step={0.01}
-        //   //   max={2}
-        //   autoFocus={true}
-        //   //   addonBefore={<i className={getIcon('ID')}></i>}
-        //   //   placeholder='input search text'
-        //   addonBefore={prefixSelector}
-        //   style={{ width: '100%' }}
-        //   //   keyboard={false}
-        // />
-        // <Input
-        //   //   onChange={function () {
-        //   //     console.log(this)
-        //   //   }}
-
-        //   //   onKeyDown={event => {
-        //   //     const regex = /[0-9]/
-        //   //     const allowedKeys = [
-        //   //       'Backspace',
-        //   //       'Delete',
-        //   //       'ArrowLeft',
-        //   //       'ArrowUp',
-        //   //       'ArrowRight',
-        //   //       'ArrowDown',
-        //   //     ]
-        //   //     if (!allowedKeys.includes(event.key) && !regex.test(event.key)) {
-        //   //       event.preventDefault()
-        //   //     }
-        //   //   }}
-
-        //   type='number'
-        //   //   controls={false}
-        //   addonBefore={prefixSelector}
-        //   // onKeyPress={event => {
-        //   //   if (!/[0-9]/.test(event.key)) {
-        //   //     event.preventDefault()
-        //   //   }
-        //   // }}
-        //   //   onKeyDown={event => {
-        //   //     if (event.keyCode == 8) {
-        //   //       console.log('bac')
-        //   //     } else if (event.keyCode == 46) {
-        //   //       console.log('del')
-        //   //     } else {
-        //   //       if (!/[0-9]/.test(event.key)) {
-        //   //         event.preventDefault()
-        //   //       }
-        //   //     }
-        //   //   }}
-        // />
-        <PhoneInput />
-      ),
+      component: <PhoneInput />,
     },
     {
       name: 'password',
@@ -257,7 +158,8 @@ export const Auth: React.FC = () => {
       name='login'
       formItems={formItems}
       initialValues={{
-        prefix: '+7',
+        prefix: useSelector(selectPrefix),
+        // phone: '1',
       }}
     />
   )
