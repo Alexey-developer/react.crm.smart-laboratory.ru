@@ -36,7 +36,8 @@ import { TaskGroup } from '@api/entities/project/queryGroup/test'
 //   //   groupMethod: 'index' | 'show'
 // }
 
-type GroupClass = typeof ProjectGroup | typeof TaskGroup
+// type GroupClass = typeof ProjectGroup | typeof TaskGroup
+// type GroupMethod = keyof GroupClass
 // type GroupMethod = keyof ProjectGroup | keyof TaskGroup
 
 // export const useAPIQuery = (
@@ -44,10 +45,11 @@ type GroupClass = typeof ProjectGroup | typeof TaskGroup
 //   groupMethod: 'index' | 'show'
 // ) => {
 // export const useAPIQuery = <T>(groupClass: T, groupMethod: keyof T) => {
+
 export const useAPIQuery = (
-  groupClass: GroupClass,
-  //   groupMethod: keyof GroupClass
-  groupMethod: keyof typeof groupClass
+  groupClass: typeof ProjectGroup | typeof TaskGroup,
+  groupMethod: keyof ProjectGroup | keyof TaskGroup
+  //   groupMethod: keyof typeof groupClass
   //   groupMethod: keyof ProjectGroup
 ) => {
   // const t = new ProjectGroup()
@@ -76,9 +78,6 @@ export const useAPIQuery = (
   //   }
 
   if (!(groupMethod in group)) {
-    //   if (group[groupMethod] === undefined) {
-    // console.log(group.hasOwnProperty(groupMethod))
-
     const error = 'groupMethod is undefined!'
 
     console.log(error)
