@@ -2,49 +2,14 @@ import { useQuery } from '@tanstack/react-query'
 
 import { useEffect } from 'react'
 
-import { APIBase } from '@api/APIBase'
-
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectAuthToken } from '@redux/CurrentUser/selectors'
+import { setNotification } from '@redux/HeaderNotification/slice'
 
-import { projectGroup } from '@api/entities/project/queryGroup'
+// import { RequestResult } from '@api/common/responseModels/requestResult'
 
-import { RequestResult } from '@api/common/responseModels/requestResult'
-
-import { ProjectGroup } from '@api/entities/project/queryGroup/'
-import { TaskGroup } from '@api/entities/project/queryGroup/test'
-
-// const applyMixins = (derivedCtor: any, baseCtors: any[]) => {
-//     baseCtors.forEach((baseCtor) => {
-//         Object.getOwnPropertyNames(baseCtor.prototype).forEach((name) => {
-//             if (name !== 'constructor') {
-//                 derivedCtor.prototype[name] = baseCtor.prototype[name];
-//             }
-//         });
-//     });
-// }
-
-// applyMixins(APIBase, [
-//     ProjectGroup,
-// ]);
-
-// type GroupClasses =
-
-// type useAPIQueryProps = {
-//   groupClass: typeof ProjectGroup | typeof TaskGroup
-//   groupMethod: keyof ProjectGroup | keyof TaskGroup
-//   //   groupMethod: 'index' | 'show'
-// }
-
-// type GroupClass = typeof ProjectGroup | typeof TaskGroup
-// type GroupMethod = keyof GroupClass
-// type GroupMethod = keyof ProjectGroup | keyof TaskGroup
-
-// export const useAPIQuery = (
-//   GroupClass: typeof ProjectGroup /*method*/ /*: Promise<RequestResult<T>>*/,
-//   groupMethod: 'index' | 'show'
-// ) => {
-// export const useAPIQuery = <T>(groupClass: T, groupMethod: keyof T) => {
+import { ProjectGroup } from '@api/models/project/queryGroup/'
+import { TaskGroup } from '@api/models/project/queryGroup/test'
 
 export const useAPIQuery = (
   groupClass: typeof ProjectGroup | typeof TaskGroup,
@@ -52,30 +17,12 @@ export const useAPIQuery = (
   //   groupMethod: keyof typeof groupClass
   //   groupMethod: keyof ProjectGroup
 ) => {
-  // const t = new ProjectGroup()
-  //   console.log(APIMethod)
-
-  //   console.log(method)
+  const dispatch = useDispatch()
 
   // const group = new GroupClass(useSelector(selectAuthToken))
-
   const group = new groupClass(
     'Bearer 1|wcKsc30IAcEAC76Clqlnf9RiNx6lLEtS3oJbuQf2bd8e7f3d'
   )
-
-  //   console.log(Object.)
-  //   console.log(Object.keys(group))
-
-  // GroupClass.prototype.index
-
-  //   group[groupMethod]()
-
-  //   let method //: string
-  //   switch (groupMethod) {
-  //     case 'index':
-  //       method = group.index.bind(group)
-  //       break
-  //   }
 
   if (!(groupMethod in group)) {
     const error = 'groupMethod is undefined!'
@@ -87,7 +34,7 @@ export const useAPIQuery = (
   const { data, isLoading, isSuccess, isError, error } = useQuery({
     queryKey: ['qwertry'],
     // queryFn: () => method(),
-    queryFn: () => group[groupMethod as keyof typeof group](), //as keyof typeof group
+    queryFn: () => group[groupMethod as keyof typeof group](),
 
     // queryFn: () => group.call('index'),
     // queryFn: group.index.call(param1),
@@ -103,6 +50,7 @@ export const useAPIQuery = (
 
     select: data => data.data,
     enabled: true,
+    retry: 0,
     // initialData,
     // staleTime: 1000,
   })
@@ -122,6 +70,14 @@ export const useAPIQuery = (
     if (isError) {
       console.log('Error fetching data')
       console.log(error)
+
+      dispatch(
+        setNotification({
+          title: error.response?.statusText,
+          text: error.message,
+          type: 'ERROR',
+        })
+      )
     }
   }, [isError])
 
