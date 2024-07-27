@@ -1,10 +1,13 @@
-import React, { useRef, useEffect, useState, SyntheticEvent } from 'react'
+import React, { useEffect, useState, SyntheticEvent } from 'react'
 // import constants from '@utils/constants.json'
 
 // import type { FormProps } from 'antd'
-import { Button, Checkbox, Form, Input, Select } from 'antd'
+import { Row, Col, Input } from 'antd'
+import type { InputRef } from 'antd'
 
-const { Option } = Select
+import styles from './index.module.scss'
+
+// const { Option } = Select
 // import {
 //   Cascader,
 //   ColorPicker,
@@ -33,55 +36,17 @@ import { useTranslation } from 'react-i18next'
 
 import { CustomForm } from '@components/CustomForm'
 import { PhoneInput } from '@components/PhoneInput'
-import type { FormItem } from '@components/CustomForm'
+import type { FormItem, FormCard } from '@components/CustomForm'
 
 import { SetPageTitle } from '@utils/helpers'
-
-// const { Content, Footer, Sider } = Layout
-
-// interface SubmitButtonProps {
-//   form: FormInstance
-// }
-
-// const SubmitButton: React.FC<React.PropsWithChildren<SubmitButtonProps>> = ({
-//   form,
-//   children,
-// }) => {
-//   const [submittable, setSubmittable] = React.useState<boolean>(false)
-
-//   // Watch all values
-//   const values = Form.useWatch([], form)
-
-//   React.useEffect(() => {
-//     form
-//       .validateFields({ validateOnly: true })
-//       .then(() => setSubmittable(true))
-//       .catch(() => setSubmittable(false))
-//   }, [form, values])
-
-//   return (
-//     <Button type='primary' htmlType='submit' disabled={!submittable}>
-//       {children}
-//     </Button>
-//   )
-// }
-
-// type FieldType = {
-//   username: string
-//   password: string
-// }
-
-// const onFinish: FormProps<FieldType>['onFinish'] = values => {
-//   console.log('Success:', values)
-// }
-
-// const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = errorInfo => {
-//   console.log('Failed:', errorInfo)
-// }
+import { getIcon } from '@utils/getIcon'
+import { formCardExtra } from '@utils/formCardExtra'
 
 export const Auth: React.FC = () => {
   const [translated_phrase] = useTranslation('global')
   SetPageTitle(translated_phrase('AuthPage.page_title'))
+
+  const passwordInputRef = React.useRef<InputRef>(null)
 
   //   const navigate = useNavigate()
 
@@ -111,58 +76,66 @@ export const Auth: React.FC = () => {
   //     }
   //   }
 
-  //   const [form] = Form.useForm()
-
   const formItems: FormItem[] = [
     {
-      name: 'ex',
-      rules: [
-        { required: true, message: 'Please input your username!' },
-        { max: 1 },
-      ],
-      component: <Input />,
-    },
-    // {
-    //   name: 'phone_test',
-    //   rules: [{ required: true }, { min: 1 }, { max: 2 }],
-    //   component: (
-    //     <Input
-    //       addonBefore={
-    //         <Form.Item name='prefix' noStyle>
-    //           <Select style={{ width: 100 }}>
-    //             <Option value='7'>+7</Option>
-    //             <Option value='994'>+994</Option>
-    //           </Select>
-    //         </Form.Item>
-    //       }
-    //     />
-    //   ),
-    // },
-    {
       name: 'phone',
-      rules: [{ required: true } /*, { min: 9 }, { max: 15 }*/],
-      component: <PhoneInput />,
+      rules: [{ required: true }],
+      component: <PhoneInput nextInputRef={passwordInputRef} />,
     },
     {
       name: 'password',
-      rules: [
-        { required: true, message: 'Please input your username!' },
-        { max: 1 },
-      ],
-      component: <Input.Password />,
+      rules: [{ required: true }, { min: 8 }, { max: 10 }],
+      component: (
+        <Input.Password
+          ref={passwordInputRef}
+          addonBefore={<i className={getIcon('PASSWORD')}></i>}
+          placeholder={
+            translated_phrase('Form.Common.enter') +
+            translated_phrase('Form.password')
+          }
+        />
+      ),
     },
   ]
 
+  const formCard: FormCard = {
+    title: (
+      <>
+        {translated_phrase('Common.companyName') + ' '}
+        <i
+          className={getIcon('FLASK') + ' fa-fade'}
+          style={{ animationDuration: '4s' }}
+        ></i>
+      </>
+    ),
+    type: 'default',
+    badgeRibbonText: translated_phrase('AuthPage.for_staff'),
+    badgeRibbonClassName: 'success',
+    extra: formCardExtra(
+      'success transparent',
+      translated_phrase('AuthPage.page_title') +
+        ' ' +
+        translated_phrase('Prepositions.in') +
+        ' ' +
+        translated_phrase('Common.system_type')
+    ),
+  }
+
   return (
-    <CustomForm
-      name='login'
-      formItems={formItems}
-      initialValues={{
-        prefix: useSelector(selectPrefix),
-        // phone: '1',
-      }}
-    />
+    <Row className={styles.auth_form} align='middle' justify='center'>
+      <Col xs={24} lg={12} xl={10} xxl={8}>
+        <CustomForm
+          name='login'
+          formItems={formItems}
+          initialValues={{
+            prefix: useSelector(selectPrefix),
+          }}
+          formCard={formCard}
+        />
+      </Col>
+    </Row>
   )
+
   // <>
   //   <Form
   //     form={form}
