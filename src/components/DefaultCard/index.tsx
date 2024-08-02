@@ -3,8 +3,8 @@ import { Card, Col, Badge } from 'antd'
 
 import styles from './index.module.scss'
 
-type DefaultCardProps = {
-  title: string
+export type DefaultCardProps = {
+  title: React.ReactNode
   badgeRibbonText?: string
   badgeRibbonClassName?:
     | 'transparent'
@@ -49,7 +49,7 @@ export const DefaultCard: React.FC<DefaultCardProps> = ({
     </Card>
   )
 
-  if (badgeRibbonText) {
+  const returnable = (child: React.ReactNode) => {
     return (
       <Col
         // span={4}
@@ -61,21 +61,18 @@ export const DefaultCard: React.FC<DefaultCardProps> = ({
         xxl={grid.xxl}
         className='default-col'
       >
-        <Badge.Ribbon className={badgeRibbonClassName} text={badgeRibbonText}>
-          {defaultCard}
-        </Badge.Ribbon>
+        {child}
       </Col>
     )
   }
-  return (
-    <Col
-      xs={grid.xs}
-      lg={grid.lg}
-      xl={grid.xl}
-      xxl={grid.xxl}
-      className='default-col'
-    >
-      {defaultCard}
-    </Col>
-  )
+
+  if (badgeRibbonText) {
+    return returnable(
+      <Badge.Ribbon className={badgeRibbonClassName} text={badgeRibbonText}>
+        {defaultCard}
+      </Badge.Ribbon>
+    )
+  }
+
+  return returnable(defaultCard)
 }
