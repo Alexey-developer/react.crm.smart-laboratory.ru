@@ -16,6 +16,10 @@ import { CustomPagination } from '@components/CustomPagination'
 import { IncludedEmployees } from '@components/IncludedEmployees'
 import type { Employees } from '@components/IncludedEmployees'
 
+import { useAPIQuery } from '@api/useAPIQuery'
+import { ProjectGroup } from '@api/models/project/queryGroup'
+import { getMethod } from '@utils/getMethod'
+
 import { SetPageTitle } from '@utils/helpers'
 import { formCardExtra } from '@utils/formCardExtra'
 import { getIcon } from '@utils/getIcon'
@@ -32,10 +36,22 @@ export const ProjectsPage: React.FC = () => {
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(setPageIsLoaded(true))
-  }, [])
+  //   useEffect(() => {
+  //     dispatch(setPageIsLoaded(true))
+  //   }, [])
 
+  const { data, isLoading, isFetching } = useAPIQuery(
+    ProjectGroup,
+    getMethod('INDEX')
+  )
+
+  useEffect(() => {
+    dispatch(setPageIsLoaded(!isLoading))
+  }, [isLoading])
+
+  const projects1 = [getProject(), getProject()]
+
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
   const projects = [
     getProject(),
     getProject(),
@@ -178,10 +194,36 @@ export const ProjectsPage: React.FC = () => {
       </Space>
 
       <Row justify='start'>
-        {/* <Row justify='space-around'> */}
-        {/* <Row justify='space-evenly'> */}
-        {projects.map((project, i) => (
+        {/* {projects1.map((project, i) => (
           <DefaultCard
+            isLoading={true}
+            key={project.id + i + 100}
+            type='default'
+            title={'#' + (project.id + i) + ' ' + project.name}
+            badgeRibbonText={translated_phrase('Statuses.Project.in_progress')}
+            badgeRibbonClassName={'success transparent'}
+            content={formContent(
+              project.description,
+              project.createdAt,
+              project.totalTime,
+              project.incomes,
+              project.costsAuto,
+              project.costs,
+              project.penalty,
+              project.progress,
+              project.employees
+            )}
+            actions={cardActions[i]}
+            extra={formCardExtra(
+              'warning transparent',
+              translated_phrase('Types.Project.development')
+            )}
+          />
+        ))} */}
+
+        {/* {projects.map((project, i) => (
+          <DefaultCard
+            isLoading={isLoading}
             key={project.id + i}
             type='default'
             title={'#' + (project.id + i) + ' ' + project.name}
@@ -204,7 +246,46 @@ export const ProjectsPage: React.FC = () => {
               translated_phrase('Types.Project.development')
             )}
           />
+        ))} */}
+        {data?.map(project => (
+          <DefaultCard
+            isLoading={isLoading}
+            key={project.id}
+            type='default'
+            title={'#' + project.id + ' ' + project.name}
+            badgeRibbonText={translated_phrase(
+              `Statuses.Project.${project.project_status.lang_code}`
+            )}
+            badgeRibbonClassName={project.project_status.class}
+            content={formContent(
+              project.description,
+              project.created_at,
+              project.total_spent_time,
+              project.total_incomes,
+              project.total_costs_auto,
+              project.total_costs,
+              project.total_penalty_funds,
+              project.common_task_progress,
+              projects1[0].employees
+            )}
+            actions={cardActions[project.id]}
+            extra={formCardExtra(
+              project.project_type.class,
+              translated_phrase(
+                `Types.Project.${project.project_type.lang_code}`
+              )
+            )}
+          />
         ))}
+        {!data &&
+          skeletons?.map((skeleton, i) => (
+            <DefaultCard
+              isLoading={isLoading}
+              key={i}
+              title=''
+              content={<></>}
+            />
+          ))}
       </Row>
       <CustomPagination onChange={onChange} total={500} />
     </>
