@@ -23,7 +23,7 @@ import { getMethod } from '@utils/getMethod'
 import { SetPageTitle } from '@utils/helpers'
 import { formCardExtra } from '@utils/formCardExtra'
 import { getIcon } from '@utils/getIcon'
-import { constants } from '@utils/constants.json'
+import { TASKS, COMMON_EDITING } from '@utils/constants/routes'
 import { convert2string } from '@utils/helpers'
 import { getProject } from '@utils/tempData'
 
@@ -42,69 +42,16 @@ export const ProjectsPage: React.FC = () => {
 
   const { data, isLoading, isFetching } = useAPIQuery(
     ProjectGroup,
-    getMethod('INDEX')
+    getMethod('INDEX'),
+    // { filters: { deleted: 'only_deleted' } }
+    { filters: { id: 2 } }
   )
 
   useEffect(() => {
     dispatch(setPageIsLoaded(!isLoading))
   }, [isLoading])
 
-  const projects1 = [getProject(), getProject()]
-
-  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-  const projects = [
-    getProject(),
-    getProject(),
-    getProject(),
-    getProject(),
-    getProject(),
-    getProject(),
-    getProject(),
-    getProject(),
-  ]
-
-  const cardActions: React.ReactNode[][] = []
-
-  projects.map((project, i) => {
-    cardActions.push([
-      <Link to={pathname + '/' + (project.id + i)}>
-        <ActionButton
-          title={translated_phrase('Actions.go')}
-          shape='circle'
-          icon={getIcon('GO')}
-        />
-      </Link>,
-      <Link
-        to={`/${constants.routes.basic.tasks}/?project_id=${project.id + i}`}
-      >
-        <Badge count='+99' offset={[15, 5]}>
-          <ActionButton
-            className='transparent'
-            title={translated_phrase('MenuItems.tasks')}
-            shape='circle'
-            icon={getIcon('TASKS')}
-          />
-        </Badge>
-      </Link>,
-      <Link
-        to={pathname + '/' + (project.id + i) + '/' + constants.routes.editing}
-      >
-        <ActionButton
-          className='warning transparent'
-          title={translated_phrase('Actions.edit')}
-          shape='circle'
-          icon={getIcon('EDIT')}
-        />
-      </Link>,
-      <ActionButton
-        className='danger transparent'
-        title={translated_phrase('Actions.delete')}
-        shape='circle'
-        icon={getIcon('DELETE')}
-        useConfirm={true}
-      />,
-    ])
-  })
+  const tempProject = getProject()
 
   const formContent = (
     description: string,
@@ -179,6 +126,43 @@ export const ProjectsPage: React.FC = () => {
     )
   }
 
+  const formActions = (entityId: number) => {
+    return [
+      <Link to={pathname + '/' + entityId}>
+        <ActionButton
+          title={translated_phrase('Actions.go')}
+          shape='circle'
+          icon={getIcon('GO')}
+        />
+      </Link>,
+      <Link to={`/${TASKS}/?project_id=${entityId}`}>
+        <Badge count='+99' offset={[15, 5]}>
+          <ActionButton
+            className='transparent'
+            title={translated_phrase('MenuItems.tasks')}
+            shape='circle'
+            icon={getIcon('TASKS')}
+          />
+        </Badge>
+      </Link>,
+      <Link to={pathname + '/' + entityId + '/' + COMMON_EDITING}>
+        <ActionButton
+          className='warning transparent'
+          title={translated_phrase('Actions.edit')}
+          shape='circle'
+          icon={getIcon('EDIT')}
+        />
+      </Link>,
+      <ActionButton
+        className='danger transparent'
+        title={translated_phrase('Actions.delete')}
+        shape='circle'
+        icon={getIcon('DELETE')}
+        useConfirm={true}
+      />,
+    ]
+  }
+
   //   const onChange: PaginationProps['onChange'] = pageNumber => {
   //     console.log('Page: ', pageNumber)
   //   }
@@ -190,63 +174,10 @@ export const ProjectsPage: React.FC = () => {
   return (
     <>
       <Space>
-        <Filter filters={[]} />
+        <Filter filters={[]} isLoading={isLoading} />
       </Space>
 
       <Row justify='start'>
-        {/* {projects1.map((project, i) => (
-          <DefaultCard
-            isLoading={true}
-            key={project.id + i + 100}
-            type='default'
-            title={'#' + (project.id + i) + ' ' + project.name}
-            badgeRibbonText={translated_phrase('Statuses.Project.in_progress')}
-            badgeRibbonClassName={'success transparent'}
-            content={formContent(
-              project.description,
-              project.createdAt,
-              project.totalTime,
-              project.incomes,
-              project.costsAuto,
-              project.costs,
-              project.penalty,
-              project.progress,
-              project.employees
-            )}
-            actions={cardActions[i]}
-            extra={formCardExtra(
-              'warning transparent',
-              translated_phrase('Types.Project.development')
-            )}
-          />
-        ))} */}
-
-        {/* {projects.map((project, i) => (
-          <DefaultCard
-            isLoading={isLoading}
-            key={project.id + i}
-            type='default'
-            title={'#' + (project.id + i) + ' ' + project.name}
-            badgeRibbonText={translated_phrase('Statuses.Project.in_progress')}
-            badgeRibbonClassName={'success transparent'}
-            content={formContent(
-              project.description,
-              project.createdAt,
-              project.totalTime,
-              project.incomes,
-              project.costsAuto,
-              project.costs,
-              project.penalty,
-              project.progress,
-              project.employees
-            )}
-            actions={cardActions[i]}
-            extra={formCardExtra(
-              'warning transparent',
-              translated_phrase('Types.Project.development')
-            )}
-          />
-        ))} */}
         {data?.map(project => (
           <DefaultCard
             isLoading={isLoading}
@@ -266,9 +197,9 @@ export const ProjectsPage: React.FC = () => {
               project.total_costs,
               project.total_penalty_funds,
               project.common_task_progress,
-              projects1[0].employees
+              tempProject.employees
             )}
-            actions={cardActions[project.id]}
+            actions={formActions(project.id)}
             extra={formCardExtra(
               project.project_type.class,
               translated_phrase(
@@ -278,7 +209,7 @@ export const ProjectsPage: React.FC = () => {
           />
         ))}
         {!data &&
-          skeletons?.map((skeleton, i) => (
+          [...Array(15)]?.map((skeleton, i) => (
             <DefaultCard
               isLoading={isLoading}
               key={i}

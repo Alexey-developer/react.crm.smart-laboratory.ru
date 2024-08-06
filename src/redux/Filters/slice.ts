@@ -24,12 +24,6 @@ const filtersSlice = createSlice({
 
       state.filters = getStringFromMap(filtersMap)
       localStorage.setItem('filters', state.filters)
-
-      //   if (!state.filters) state.filters = new Map<FilterType, TFilter[]>()
-      //   else state.filters.delete(action.payload.pageKey)
-      //   state.filters.set(action.payload.pageKey, action.payload.filters)
-
-      //   localStorage.setItem('filters', getStringFromMap(state.filters))
     },
   },
 })
