@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Row, Tag, Progress, Tooltip, Space, Badge } from 'antd'
 import type { PaginationProps } from 'antd'
 
@@ -18,6 +18,8 @@ import type { Employees } from '@components/IncludedEmployees'
 
 import { useAPIQuery } from '@api/useAPIQuery'
 import { ProjectGroup } from '@api/models/project/queryGroup'
+// import { ProjectStatusGroup } from '@api/models/projectStatus/queryGroup'
+// import { ProjectTypeGroup } from '@api/models/projectType/queryGroup'
 import { getMethod } from '@utils/getMethod'
 
 import { SetPageTitle } from '@utils/helpers'
@@ -26,6 +28,12 @@ import { getIcon } from '@utils/getIcon'
 import { TASKS, COMMON_EDITING } from '@utils/constants/routes'
 import { convert2string } from '@utils/helpers'
 import { getProject } from '@utils/tempData'
+import { useGetStateCurrentPageFilters } from '@utils/useGetStateCurrentPageFilters'
+import { CheckboxFilter } from '@components/Filter/CheckboxFilter'
+// import { getCheckboxFilterType } from '@utils/getCheckboxFilterType'
+import { TProject } from '@api/models/project/type/TProject'
+import { SelectFilter } from '@components/Filter/SelectFilter'
+import { useReactive } from 'ahooks'
 
 export const ProjectsPage: React.FC = () => {
   const [translated_phrase] = useTranslation('global')
@@ -36,27 +44,36 @@ export const ProjectsPage: React.FC = () => {
 
   const dispatch = useDispatch()
 
-  //   useEffect(() => {
-  //     dispatch(setPageIsLoaded(true))
-  //   }, [])
+  const requestPageState = useReactive<{
+    value: number
+  }>({
+    value: 1,
+  })
 
-  const { data, isLoading, isFetching } = useAPIQuery(
+  const filters = useGetStateCurrentPageFilters()
+
+  const { data, isLoading, isFetching, refetch } = useAPIQuery(
     ProjectGroup,
     getMethod('INDEX'),
-    // { filters: { deleted: 'only_deleted' } }
-    { filters: { id: 2 } }
+    { page: requestPageState.value, filters: filters }
   )
 
-  useEffect(() => {
-    dispatch(setPageIsLoaded(!isLoading))
-  }, [isLoading])
+  React.useEffect(() => {
+    refetch()
+  }, [requestPageState.value])
+
+  //   console.log(123, data)
+
+  React.useEffect(() => {
+    dispatch(setPageIsLoaded(!isLoading && !isFetching))
+  }, [isLoading, isFetching])
 
   const tempProject = getProject()
 
   const formContent = (
     description: string,
     createdAt: string,
-    totalTime: string,
+    totalTime: number,
     incomes: number,
     costsAuto: number,
     costs: number,
@@ -166,59 +183,70 @@ export const ProjectsPage: React.FC = () => {
   //   const onChange: PaginationProps['onChange'] = pageNumber => {
   //     console.log('Page: ', pageNumber)
   //   }
-  const onChange: PaginationProps['onChange'] = (page, pageSize) => {
-    console.log('Page: ', page)
-    console.log('pageSize: ', pageSize)
-  }
+  //   const onChange: PaginationProps['onChange'] = (page, pageSize) => {
+  //     console.log('Page: ', page)
+  //     console.log('pageSize: ', pageSize)
+  //   }
 
   return (
     <>
       <Space>
-        <Filter filters={[]} isLoading={isLoading} />
+        <Filter
+          filters={[
+            CheckboxFilter('STATUS'),
+            CheckboxFilter('TYPE'),
+            SelectFilter('CUSTOMER_COMPANY'),
+            // SelectFilter('CustomerCompanyGroup'),
+          ]}
+          isLoading={isLoading || isFetching}
+          refetch={refetch}
+        />
       </Space>
 
       <Row justify='start'>
-        {data?.map(project => (
-          <DefaultCard
-            isLoading={isLoading}
-            key={project.id}
-            type='default'
-            title={'#' + project.id + ' ' + project.name}
-            badgeRibbonText={translated_phrase(
-              `Statuses.Project.${project.project_status.lang_code}`
-            )}
-            badgeRibbonClassName={project.project_status.class}
-            content={formContent(
-              project.description,
-              project.created_at,
-              project.total_spent_time,
-              project.total_incomes,
-              project.total_costs_auto,
-              project.total_costs,
-              project.total_penalty_funds,
-              project.common_task_progress,
-              tempProject.employees
-            )}
-            actions={formActions(project.id)}
-            extra={formCardExtra(
-              project.project_type.class,
-              translated_phrase(
-                `Types.Project.${project.project_type.lang_code}`
-              )
-            )}
-          />
-        ))}
-        {!data &&
-          [...Array(15)]?.map((skeleton, i) => (
+        {!isLoading /*&& !isFetching */ &&
+          data?.data?.map((project: TProject) => (
             <DefaultCard
               isLoading={isLoading}
-              key={i}
-              title=''
-              content={<></>}
+              key={project.id}
+              type='default'
+              title={'#' + project.id + ' ' + project.name}
+              badgeRibbonText={translated_phrase(project.status.lang_code)}
+              badgeRibbonClassName={project.status.class}
+              content={formContent(
+                project.description,
+                project.created_at,
+                project.total_spent_time,
+                project.total_incomes,
+                project.total_costs_auto,
+                project.total_costs,
+                project.total_penalty_funds,
+                project.common_task_progress,
+                tempProject.employees
+              )}
+              actions={formActions(project.id)}
+              extra={formCardExtra(
+                project.type.class,
+                translated_phrase(project.type.lang_code)
+              )}
             />
           ))}
+        {
+          /*(*/ isLoading /* || isFetching)*/ &&
+            [...Array(15)]?.map((skeleton, i) => (
+              <DefaultCard
+                isLoading={isLoading || isFetching}
+                key={i}
+                title=''
+                content={<></>}
+              />
+            ))
+        }
       </Row>
-      <CustomPagination onChange={onChange} total={500} />
+      <CustomPagination
+        requestPageState={requestPageState}
+        total={data?.meta.total}
+      />
     </>
   )
 }
