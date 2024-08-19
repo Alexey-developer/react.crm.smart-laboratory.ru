@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import {
   Button,
@@ -24,11 +24,13 @@ import { useTranslation } from 'react-i18next'
 
 import { useLocation } from 'react-router-dom'
 
+import { useReactive } from 'ahooks'
+
 import { getDateTimeFormat } from '@utils/helpers'
+import { getFilter } from '@utils/getFilter'
 import { getIcon } from '@utils/getIcon'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { selectFilters } from '@redux/Filters/selectors'
+import { useDispatch } from 'react-redux'
 import { setFilters } from '@redux/Filters/slice'
 import type {
   FilterFieldName,
@@ -36,8 +38,9 @@ import type {
   FilterType,
   TFilter,
 } from '@redux/Filters/types'
+import { useGetStateCurrentPageFilters } from '@utils/useGetStateCurrentPageFilters'
 
-type Filters = {
+export type Filters = {
   groupName: string
   filedName: string
   content: React.ReactNode
@@ -46,83 +49,24 @@ type Filters = {
 type FilterProps = {
   filters: Filters
   isLoading: boolean
+  refetch: () => void
+  total?: number
 }
 
-export const Filter: React.FC<FilterProps> = ({ filters, isLoading }) => {
+export const Filter: React.FC<FilterProps> = ({
+  filters,
+  isLoading,
+  refetch,
+  total,
+}) => {
   const [translated_phrase] = useTranslation('global')
   const dispatch = useDispatch()
-
-  const location = useLocation()
-  const { pathname } = location
 
   // eslint-disable-next-line arrow-body-style
   const disabledDate: RangePickerProps['disabledDate'] = current => {
     // Can not select days before today and today
     return current && current > dayjs().endOf('day')
   }
-  //   console.log(constants.routes.basic.projects)
-
-  //   type FilterType = typeof PROJECTS | 'tasks'
-  //   type Filter = {
-  //     filedName: 'id' | 'deleted' | 'created_at'
-  //     filedValue: string | number
-  //   }
-  //   const newfilters = new Map<FilterType, Filter[]>()
-
-  //   console.log(111, newfilters)
-  //   console.log(16, Object.fromEntries(newfilters))
-  //   console.log(17, JSON.stringify(newfilters).replace(':', ' => '))
-  //   console.log(18, Object.fromEntries(newfilters).JSON.stringify(newfilters))
-
-  //   const state = useReactive({
-  //     str: '',
-  //   })
-
-  React.useEffect(() => {
-    // newfilters.set('projects', [
-    //   { filedName: 'id', filedValue: 4 },
-    //   { filedName: 'deleted', filedValue: 2 },
-    // ])
-    // newfilters.set('tasks', [
-    //   { filedName: 'id', filedValue: 51 },
-    //   { filedName: 'deleted', filedValue: 1 },
-    // ])
-    // newfilters.forEach(function (value, key) {
-    //   state.str += `${key}::${JSON.stringify(value)}|`
-    //   console.log('test4', state.str)
-    //   // console.log(
-    //   //   151,
-    //   //   Object.keys(value)
-    //   //     .map(x => {
-    //   //       return value[x]
-    //   //     })
-    //   //     .join(',')
-    //   // )
-    // })
-    // for (const entry of newfilters) {
-    //   // то же самое, что и recipeMap.entries()
-    //   //   alert() // огурец,500 (и так далее)
-    //   console.log(555, entry[1])
-    //   // огурец,500 (и так далее)
-    // }
-    // const str =
-    //   'projects::[{"filedName":"id","filedValue":4},{"filedName":"deleted","filedValue":2}]|tasks::[{"filedName":"id","filedValue":51},{"filedName":"deleted","filedValue":1}]'
-    // console.log('111-1', newfilters)
-    // console.log('222-2', str)
-    // console.log('333-3', getMapFromString(str))
-    // console.log('444-4', getStringFromMap(newfilters))
-  }, [])
-
-  //   console.log(str)
-  //   const split = str.split('|')
-  //   const pr = split[0]?.split('::')
-  //   console.log(split)
-  //   console.log(pr)
-  //   console.log(JSON.parse(pr[1]))
-
-  //   React.useEffect(() => {
-  //     console.log(222, str)
-  //   }, [str])
 
   const constFilters: Filters = [
     {
@@ -154,10 +98,10 @@ export const Filter: React.FC<FilterProps> = ({ filters, isLoading }) => {
       content: (
         <Radio.Group>
           <Space direction='vertical'>
-            <Radio value={1}>
+            <Radio value={'only_existing'}>
               {translated_phrase('Filters.Deleted.only_existing')}
             </Radio>
-            <Radio value={2}>
+            <Radio value={'only_deleted'}>
               {/* <i className='fa-regular fa-table-list'></i>{' '} */}
               {translated_phrase('Filters.Deleted.only_deleted')}
             </Radio>
@@ -181,108 +125,153 @@ export const Filter: React.FC<FilterProps> = ({ filters, isLoading }) => {
   filters = filters.concat(constFilters)
 
   //
+  const location = useLocation()
+  const { pathname } = location
+
   const [form] = Form.useForm()
   const values = Form.useWatch([], form)
-  const stateFilters = useSelector(selectFilters)?.get(
-    pathname.slice(1) as FilterType
-  )
+  //   const stateFilters = useSelector(selectFilters)?.get(
+  //     pathname.slice(1) as FilterType
+  //   )
 
-  const initialValues: Store = { deleted: 1 }
-  useEffect(() => {
-    console.log(stateFilters)
+  const state = useReactive<{
+    initialValues: Store
+    filterPopoverIsOpened: boolean
+    filterValueChanged: boolean
+    firstEachFilterOpen: boolean //#1
+  }>({
+    initialValues: useGetStateCurrentPageFilters(),
+    filterPopoverIsOpened: false,
+    filterValueChanged: false,
+    firstEachFilterOpen: true, //#1
+  })
 
-    stateFilters?.map(stateFilter => {
-      //   console.log(`filedName: ${stateFilter['filedName']}`)
-      //   console.log(`value: ${stateFilter['filedValue']}`)
-      //   initialValues = {stateFilter['filedName']: stateFilter['filedValue']}
-      //   initialValues[stateFilter['filedName']] = stateFilter['filedValue']
-      //   initialValues = stateFilter['filedName']
-      initialValues[stateFilter['filedName']] = stateFilter['filedValue']
-    })
-    // console.log(777, initialValues)
-  }, [stateFilters])
+  const clearFilters = async () => {
+    state.initialValues = { deleted: 'only_existing' }
+    state.filterValueChanged = true
 
-  React.useEffect(() => {
-    console.log('11-1', values)
+    await new Promise(resolve =>
+      setTimeout(() => {
+        resolve
+        form.resetFields()
+      }, 10)
+    )
+  }
 
+  //   useEffect(() => {
+  //     stateFilters?.map(stateFilter => {
+  //       state.initialValues[stateFilter['filedName']] = stateFilter['filedValue']
+  //     })
+  //   }, [stateFilters])
+
+  const onPopoverOpenChangeHandler = async (isOpened: boolean) => {
+    //#1
+    if (state.firstEachFilterOpen) {
+      await new Promise(resolve =>
+        setTimeout(() => {
+          resolve
+          state.firstEachFilterOpen = false
+        }, 1)
+      )
+    }
+
+    if (isOpened) return
     if (values && Object.entries(values).length) {
-      //   console.log(Object.entries(values))
       const filters: TFilter[] = []
+      console.log('values: ', values)
+
       for (const [key, value] of Object.entries(values)) {
-        // console.log(key, value)
+        if (key === getFilter('CREATED_AT') || value === undefined) {
+          //   console.log('==========')
+          //   console.log('continue')
+          //   console.log(key)
+          //   console.log(value)
+
+          continue
+        }
         filters.push({
           filedName: key as FilterFieldName,
           filedValue: value as FilterFieldValue,
         })
       }
-      dispatch(
-        setFilters({
-          pageKey: pathname.slice(1) as FilterType,
-          filters: filters,
-        })
-      )
+      if (state.filterValueChanged) {
+        state.filterValueChanged = false
+        setFiltersWithRefetch(filters)
+      }
     }
+  }
+  const setFiltersWithRefetch = async (filters: TFilter[]) => {
+    console.log(1, state.initialValues)
+    console.log(2, filters)
 
-    // console.log(values['id'])
-    // values.map((value, key) => {
-    //   console.log(value)
-    //   console.log(key)
-    // })
-    // newfilters.set('projects', [
-    //   { filedName: 'id', filedValue: 4 },
-    //   { filedName: 'deleted', filedValue: 2 },
-    // ])
-    // newfilters.set('tasks', [
-    //   { filedName: 'id', filedValue: 51 },
-    //   { filedName: 'deleted', filedValue: 1 },
-    // ])
+    dispatch(
+      setFilters({
+        pageKey: pathname.slice(1) as FilterType,
+        filters: filters,
+      })
+    )
+    await new Promise(resolve =>
+      setTimeout(() => {
+        resolve
+        refetch()
+      }, 1)
+    )
+  }
 
-    // form
-    //   .validateFields(['phone'])
-    //   .then(e => e && form.getFieldInstance('password').focus())
-  }, [values])
+  //   React.useEffect(() => {
+  //     console.log('11-1', values)
+
+  //   }, [values])
 
   return (
     <Popover
+      //   title='Title'
+      trigger='click'
+      //   open={open}
+      placement='bottomLeft'
+      onOpenChange={onPopoverOpenChangeHandler}
       content={
-        // <>
         <Form
           form={form}
           name='filters'
           autoComplete='off'
           disabled={isLoading}
           //   onFieldsChange
-          // onValuesChange={()=>{}}
-
+          onValuesChange={() => (state.filterValueChanged = true)}
           //   onFinish={onFinish}
           //   onFinishFailed={onFinishFailed}
 
           //   size='large'
-          initialValues={initialValues}
+          initialValues={state.initialValues}
         >
           <Space direction='vertical'>
             {filters.map((filter, index) => (
               <Popover
+                open={
+                  //#1
+                  state.firstEachFilterOpen
+                    ? state.firstEachFilterOpen
+                    : undefined
+                }
                 key={index}
                 content={
                   <Form.Item
-                    //   hasFeedback
-                    //   validateStatus={isPending ? 'validating' : undefined}
                     key={index}
                     noStyle
                     // label={translated_phrase(`Form.${formItem.name}`)}
                     //   label={'test'}
                     name={filter.filedName}
                     //   rules={formItem.rules}
+                    hasFeedback
+                    validateStatus={isLoading ? 'validating' : undefined}
                   >
                     {filter.content}
                   </Form.Item>
                 }
                 trigger='click'
                 placement='right'
-                // arrow
               >
-                <Button className={'smart-btn transparent ' + styles.btn}>
+                <Button className={`smart-btn transparent ${styles.btn}`}>
                   {filter.groupName}
                   <span className='ant-btn-icon'>
                     <i className='fa-solid fa-arrow-right-long'></i>
@@ -291,38 +280,36 @@ export const Filter: React.FC<FilterProps> = ({ filters, isLoading }) => {
               </Popover>
             ))}
             <Button
+              className='smart-btn success transparent'
+              icon={<i className={getIcon('SUCCESS')}></i>}
+              onClick={() => onPopoverOpenChangeHandler(false)}
+            >
+              {translated_phrase('Filters.apply')}
+            </Button>
+            <Button
               className='smart-btn danger transparent'
               icon={<i className={getIcon('DELETE')}></i>}
-              onClick={() => form.resetFields()}
+              onClick={() => clearFilters()}
             >
               {translated_phrase('Filters.clear')}
             </Button>
           </Space>
         </Form>
-
-        // </>
       }
-      //   title='Title'
-      trigger='click'
-      //   open={open}
-      //   onOpenChange={handleOpenChange}
-      placement='bottomLeft'
     >
       <Button
         className='smart-btn'
         icon={<i className='fa-solid fa-filter'></i>}
       >
-        {translated_phrase('Filters.self')}
+        {`${translated_phrase('Filters.self')}${
+          total !== undefined
+            ? ` - (${total}) ${translated_phrase('Items.short_pieces')}`
+            : ''
+        }`}
       </Button>
     </Popover>
   )
 }
 
-// <Button className='smart-btn transparent'>
-//   <Space>
-//     {filter.groupName}
-//     <span className='ant-btn-icon'>
-//       <i className='fa-solid fa-arrow-right-long'></i>
-//     </span>
-//   </Space>
-// </Button>
+//#1
+//console.log(values) = empty без первой отрисовки всех Popover и не работает очистка, если ещё не открывали Popover
