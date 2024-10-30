@@ -1,4 +1,4 @@
-import React, { useEffect, useState, SyntheticEvent } from 'react'
+import React from 'react'
 // import constants from '@utils/constants.json'
 
 // import type { FormProps } from 'antd'
@@ -29,7 +29,8 @@ import styles from './index.module.scss'
 // import styles from './../index.module.scss'
 // import styles from '../../components/Sidebar/index.module.scss'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setAuthToken } from '@redux/CurrentUser/slice'
 import { selectPrefix } from '@redux/PhonePrefix/selectors'
 
 import { useTranslation } from 'react-i18next'
@@ -42,39 +43,16 @@ import { SetPageTitle } from '@utils/helpers'
 import { getIcon } from '@utils/getIcon'
 import { formCardExtra } from '@utils/formCardExtra'
 
+// import { ProjectGroup } from '@api/models/project/queryGroup'
+import { CurrentUserGroup } from '@api/models/currentUser/queryGroup'
+import { getMethod } from '@utils/getMethod'
+
 export const Auth: React.FC = () => {
+  const dispatch = useDispatch()
   const [translated_phrase] = useTranslation('global')
   SetPageTitle(translated_phrase('AuthPage.page_title'))
 
   const passwordInputRef = React.useRef<InputRef>(null)
-
-  //   const navigate = useNavigate()
-
-  //   const state = useReactive({
-  //     error: '',
-  //   })
-
-  //   const emailInputRef = useRef<HTMLInputElement>(null)
-  //   const passwordInputRef = useRef<HTMLInputElement>(null)
-
-  //   const authorize = async () => {
-  //     try {
-  //       state.error = ''
-  //       const { data } = await axios.post(constants.API_URL + 'login', {
-  //         email: emailInputRef.current?.value,
-  //         password: passwordInputRef.current?.value,
-  //       })
-  //       localStorage.setItem('auth_key', data.access_token)
-  //       localStorage.setItem('user_email', data.user.email)
-  //       navigate('/')
-  //     } catch (error) {
-  //       if (!error.response) {
-  //         state.error = 'Введите авторизационные данные'
-  //       } else {
-  //         state.error = error.response.data.message
-  //       }
-  //     }
-  //   }
 
   const formItems: FormItem[] = [
     {
@@ -131,6 +109,13 @@ export const Auth: React.FC = () => {
             prefix: useSelector(selectPrefix),
           }}
           formCard={formCard}
+          requestData={{
+            groupClass: CurrentUserGroup,
+            groupMethod: getMethod('LOGIN'),
+          }}
+          onSuccessMutation={data => {
+            dispatch(setAuthToken(data.data.access_token))
+          }}
         />
       </Col>
     </Row>
