@@ -8,7 +8,7 @@ import type { ItemType } from 'antd/es/breadcrumb/Breadcrumb'
 type BreadcrumbItem = ItemType
 
 import { formLeftMenuItems } from '@utils/formLeftMenuItems'
-import { constants } from '@utils/constants.json'
+import { COMMON_CREATING, COMMON_EDITING } from '@utils/constants/routes'
 import { getIcon } from '@utils/getIcon'
 
 import { Breadcrumb } from 'antd'
@@ -57,7 +57,7 @@ export const Breadcrumbs: React.FC = () => {
       title: secondItem,
     })
 
-    if (pathnames[1] === constants.routes.creating) {
+    if (pathnames[1] === COMMON_CREATING) {
       breadcrumbItems.push({
         title: (
           <>
@@ -69,12 +69,12 @@ export const Breadcrumbs: React.FC = () => {
     } else if (!isNaN(parseInt(pathnames[1]))) {
       let thirdItem = (
         <>
-          <i className='fa-solid fa-hashtag'></i>
+          <i className={getIcon('ID')}></i>
           <span> {pathnames[1]}</span>
         </>
       )
 
-      if (pathnames[2] === constants.routes.editing) {
+      if (pathnames[2] === COMMON_EDITING) {
         thirdItem = (
           <Link to={leftMenuItem.path + '/' + pathnames[1]}>{thirdItem}</Link>
         )
@@ -84,7 +84,7 @@ export const Breadcrumbs: React.FC = () => {
         title: thirdItem,
       })
 
-      if (pathnames[2] === constants.routes.editing) {
+      if (pathnames[2] === COMMON_EDITING) {
         breadcrumbItems.push({
           title: (
             <>

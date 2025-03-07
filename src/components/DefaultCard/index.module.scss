@@ -8,6 +8,14 @@
     .ant-card-head {
       border-color: rgba($LIGHT_COLOR, 0.16);
     }
+    .ant-card-body {
+      h2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
     ul {
       border-color: rgba($LIGHT_COLOR, 0.16) !important;
       li {

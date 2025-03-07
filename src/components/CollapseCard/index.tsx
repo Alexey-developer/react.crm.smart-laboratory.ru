@@ -2,17 +2,12 @@ import React from 'react'
 import { Collapse } from 'antd'
 import type { CollapseProps } from 'antd'
 
+import { TColorType } from '@api/common/types/TColorType'
+
 import './index.module.scss'
 
 type CollapseCardProps = {
-  type?:
-    | 'transparent'
-    | 'success'
-    | 'success transparent'
-    | 'warning'
-    | 'warning transparent'
-    | 'danger'
-    | 'danger transparent'
+  type?: TColorType
   items: CollapseProps['items']
 }
 

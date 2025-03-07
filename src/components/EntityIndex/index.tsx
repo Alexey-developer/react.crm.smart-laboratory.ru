@@ -1,18 +1,8 @@
 import React from 'react'
 
-import {
-  Row,
-  Space,
-  Input,
-  type InputRef,
-  Flex,
-  Popover,
-  Button,
-  Checkbox,
-  Tag,
-  type GetProp,
-} from 'antd'
-const { Search } = Input
+import { Link } from 'react-router-dom'
+
+import { Row, Space, Flex, Button, Tag, Popover } from 'antd'
 
 import { useReactive } from 'ahooks'
 
@@ -30,12 +20,15 @@ import { FormCard } from './FormCard'
 import { FormActions } from './FormActions'
 import { DefaultCard } from '@components/DefaultCard'
 import { type Filters, Filter } from '@components/Filter'
+import { type RequestSortState, Sort } from '@components/Sort'
+import { CustomSearch } from './CustomSearch'
 import { CustomPagination } from '@components/CustomPagination'
 
 import { getMethod } from '@utils/getMethod'
-import { SetPageTitle } from '@utils/helpers'
+import { convert2string, seconds2Time, SetPageTitle } from '@utils/helpers'
 import { useGetStateCurrentPageFilters } from '@utils/useGetStateCurrentPageFilters'
-import { CustomSearch } from './CustomSearch'
+import { getIcon } from '@utils/getIcon'
+import { COMMON_CREATING } from '@utils/constants/routes'
 
 type EntityIndexProps = {
   pageTitleCode: string
@@ -58,8 +51,6 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
   const dispatch = useDispatch()
   const perPage = useSelector(selectPerPage)
 
-  const searchRef = React.useRef<InputRef>(null)
-
   const requestPageState = useReactive<{
     value: number
   }>({
@@ -78,6 +69,11 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
     value: [],
   })
 
+  const requestSortState = useReactive<RequestSortState>({
+    sortByFiledName: 'id',
+    sortDirection: 'desc',
+  })
+
   const filters = useGetStateCurrentPageFilters()
   //   console.log('FILTERS: ', filters)
 
@@ -87,6 +83,8 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
       query: requestQueryState.value,
       query_fields: requestQueryFieldsState.value,
       filters: filters,
+      sort_by: requestSortState.sortByFiledName,
+      sort_direction: requestSortState.sortDirection,
     })
 
   //   console.log('isLoading: ', isLoading)
@@ -105,29 +103,7 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
     isPending: isPendingMutationRestore,
   } = useAPIMutation(groupClass, getMethod('RESTORE'), {})
 
-  //   React.useEffect(() => {
-  //     refetch()
-  //   }, [requestPageState.value])
-
-  //   React.useEffect(() => {
-  //     refetch().then(() => {
-  //       setTimeout(() => {
-  //         searchRef.current?.focus()
-  //       }, 1)
-  //     })
-  //   }, [requestQueryState.value])
-
-  //   React.useEffect(() => {
-  //     if (requestQueryState.value) refetch()
-  //   }, [requestQueryFieldsState.value])
-
   console.log('data: ', data)
-
-  //   const checkedListState = useReactive<{
-  //     value: string[]
-  //   }>({
-  //     value: data?.meta.search_attributes,
-  //   })
 
   React.useEffect(() => {
     dispatch(setPageIsLoaded(!isLoading && !isFetching))
@@ -150,6 +126,42 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
     })
   }
 
+  type Attribute = {
+    field: string
+    value: number
+    type: 'time' | 'money' | 'common'
+  }
+  const Calculation: React.FC<{
+    attribute: Attribute
+  }> = ({ attribute }) => {
+    let value, icon, className
+    switch (attribute.type) {
+      case 'time':
+        value = seconds2Time(attribute.value, translated_phrase)
+        icon = getIcon('TIME')
+        className = 'success transparent'
+        break
+      case 'money':
+        value = convert2string(attribute.value, '₽')
+        icon = getIcon('RUBLE')
+        className = 'warning transparent'
+        break
+      case 'common':
+        value = (attribute.value / data?.meta.total).toFixed(2)
+        icon = getIcon('INFO')
+        className = 'success'
+        break
+    }
+
+    return (
+      <Tag className={className} icon={<i className={icon}></i>}>
+        {`${translated_phrase(
+          `Form.EntitiesFields.${attribute.field}`
+        )}: ${value}`}
+      </Tag>
+    )
+  }
+
   return (
     <>
       <Flex justify='space-between'>
@@ -157,8 +169,12 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
           <Filter
             filters={entityFilters}
             isLoading={isLoading || isFetching}
-            refetch={refetch}
-            total={data?.meta.total}
+            // total={data?.meta.total}
+          />
+          <Sort
+            requestSortState={requestSortState}
+            isLoading={isLoading || isFetching}
+            sortAttributes={data?.meta.sort_attributes}
           />
         </Space>
         {/* <Flex justify='flex-center'>
@@ -169,17 +185,53 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
             {data?.meta.total}
           </Tag>
         </Flex> */}
-        <CustomSearch
-          requestQueryState={requestQueryState}
-          requestQueryFieldsState={requestQueryFieldsState}
-          //   checkedListState={checkedListState}
-          isLoading={isLoading || isFetching}
-          searchAttributes={data?.meta.search_attributes}
-        />
+        <Flex justify='flex-end'>
+          <Space>
+            <Popover
+              //   title={translated_phrase('Search.title')}
+              title='Общие числа'
+              trigger='click'
+              //   open={open}
+              placement='bottom'
+              // onOpenChange={onPopoverOpenChangeHandler}
+              content={
+                <Space direction='vertical'>
+                  {data?.meta.total_calculations.map(
+                    (attribute: Attribute, index: number) => (
+                      <Calculation key={index} attribute={attribute} />
+                    )
+                  )}
+                </Space>
+              }
+            >
+              <Button
+                className={'smart-btn warning transparent'}
+                icon={<i className={getIcon('INFO')}></i>}
+              >
+                {`${translated_phrase('Search.found')} - (${
+                  data?.meta.total ?? 0
+                }) ${translated_phrase('Items.short_pieces')}`}
+              </Button>
+            </Popover>
+            <CustomSearch
+              requestQueryState={requestQueryState}
+              requestQueryFieldsState={requestQueryFieldsState}
+              isLoading={isLoading || isFetching}
+              searchAttributes={data?.meta.search_attributes}
+            />
+            <Link to={COMMON_CREATING}>
+              <Button
+                className='smart-btn success'
+                icon={<i className={getIcon('CREATE')}></i>}
+              />
+            </Link>
+          </Space>
+        </Flex>
       </Flex>
       <CustomPagination
         requestPageState={requestPageState}
         total={data?.meta.total}
+        lastPage={data?.meta.last_page}
       />
       <Row style={{ marginTop: 20 }} justify='start'>
         {!isLoading /*&& !isFetching */ &&
@@ -201,6 +253,7 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
       <CustomPagination
         requestPageState={requestPageState}
         total={data?.meta.total}
+        lastPage={data?.meta.last_page}
       />
     </>
   )

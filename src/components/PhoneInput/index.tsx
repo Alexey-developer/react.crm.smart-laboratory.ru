@@ -1,10 +1,13 @@
 import React, { SyntheticEvent, useEffect, useRef } from 'react'
 
-import { Form, InputRef, Select } from 'antd'
-const { Option } = Select
-import { IMask, MaskedInput } from 'antd-mask-input'
+import { useTranslation } from 'react-i18next'
 
 import { useReactive } from 'ahooks'
+
+import { Form, Select } from 'antd'
+import type { InputRef } from 'antd'
+import { MaskedInput } from 'antd-mask-input'
+const { Option } = Select
 
 import { useDispatch, useSelector } from 'react-redux'
 import { selectPrefix } from '@redux/PhonePrefix/selectors'
@@ -13,13 +16,17 @@ import type { Prefix } from '@redux/PhonePrefix/types'
 
 import { getIcon } from '@utils/getIcon'
 
-export const PhoneInput: React.FC = (/*props: NumericInputProps*/) => {
-  //   const { value, onChange } = props
+type PhoneInputProps = {
+  nextInputRef?: React.RefObject<InputRef>
+}
 
-  const maskedInputRef = useRef<InputRef>(null)
+export const PhoneInput: React.FC<PhoneInputProps> = ({ nextInputRef }) => {
+  const [translated_phrase] = useTranslation('global')
 
   const dispatch = useDispatch()
   const prefix = useSelector(selectPrefix)
+
+  const maskedInputRef = useRef<InputRef>(null)
 
   type PhonePrefixDataType = {
     length: number
@@ -55,19 +62,19 @@ export const PhoneInput: React.FC = (/*props: NumericInputProps*/) => {
   }
 
   const prefixSelector = (
-    // <>
-    //   <i className={getIcon('ID')}></i>
-    <Form.Item name='prefix' noStyle>
-      <Select
-        onChange={onChangePrefixHandler}
-        // defaultValue={prefix}
-        // defaultActiveFirstOption={prefix === 7}
-        style={{ width: 100 }}
-      >
-        {options.map(option => option)}
-      </Select>
-    </Form.Item>
-    // </>
+    <>
+      <i className={getIcon('PHONE')}></i>
+      <Form.Item name='prefix' noStyle>
+        <Select
+          onChange={onChangePrefixHandler}
+          // defaultValue={prefix}
+          // defaultActiveFirstOption={prefix === 7}
+          //   style={{ width: 130 }}
+        >
+          {options.map(option => option)}
+        </Select>
+      </Form.Item>
+    </>
   )
 
   const length = phonePrefixes.get(prefix)?.length
@@ -106,6 +113,12 @@ export const PhoneInput: React.FC = (/*props: NumericInputProps*/) => {
     state.regExp = formRegExp()
   }, [length])
 
+  useEffect(() => {
+    if (nextInputRef?.current && state.numberValid) {
+      nextInputRef.current.focus()
+    }
+  }, [nextInputRef, state.numberValid])
+
   const onPhoneNumberChange = (
     e: SyntheticEvent & { maskedValue: string; unmaskedValue: string }
   ) => {
@@ -117,13 +130,12 @@ export const PhoneInput: React.FC = (/*props: NumericInputProps*/) => {
   }
 
   return (
-    // <span className='ant-input-affix-wrapper css-dev-only-do-not-override-1rqnfsa ant-input-outlined ant-input-status-success'>
-    // <>
     <Form.Item
       name='phone'
       noStyle
       //   initialValue={state.placeholder}
       hasFeedback
+      label={translated_phrase('Form.phone')}
       validateStatus={state.numberValid ? 'success' : 'error'}
       rules={[
         {
@@ -132,7 +144,6 @@ export const PhoneInput: React.FC = (/*props: NumericInputProps*/) => {
           },
           required: true,
           len: length,
-          //   pattern: state.regExp,
         },
       ]}
     >
@@ -145,7 +156,9 @@ export const PhoneInput: React.FC = (/*props: NumericInputProps*/) => {
         placeholder={state.placeholder}
         prefix={'+' + prefix}
         addonBefore={prefixSelector}
-        pattern='[0-9]*'
+        //
+        // pattern='[0-9]*'
+        //  | novalidate
         inputMode='numeric'
         status={state.numberValid ? '' : 'error'}
         //   onPressEnter={async () => {
@@ -155,29 +168,5 @@ export const PhoneInput: React.FC = (/*props: NumericInputProps*/) => {
         //   }}
       />
     </Form.Item>
-
-    // </>
-    //   <span className='ant-input-suffix'>
-    //     <span className='ant-form-item-feedback-icon ant-form-item-feedback-icon-success'>
-    //       <span
-    //         role='img'
-    //         aria-label='check-circle'
-    //         className='anticon anticon-check-circle'
-    //       >
-    //         <svg
-    //           viewBox='64 64 896 896'
-    //           focusable='false'
-    //           data-icon='check-circle'
-    //           width='1em'
-    //           height='1em'
-    //           fill='currentColor'
-    //           aria-hidden='true'
-    //         >
-    //           <path d='M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm193.5 301.7l-210.6 292a31.8 31.8 0 01-51.7 0L318.5 484.9c-3.8-5.3 0-12.7 6.5-12.7h46.9c10.2 0 19.9 4.9 25.9 13.3l71.2 98.8 157.2-218c6-8.3 15.6-13.3 25.9-13.3H699c6.5 0 10.3 7.4 6.5 12.7z'></path>
-    //         </svg>
-    //       </span>
-    //     </span>
-    //   </span>
-    // </span>
   )
 }

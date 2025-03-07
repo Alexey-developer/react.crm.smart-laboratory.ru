@@ -17,8 +17,10 @@
       }
     }
 
-    i.ant-alert-icon {
-      margin-top: 0.75rem;
+    &.ant-alert-with-description {
+      i.ant-alert-icon {
+        margin-top: 0.75rem;
+      }
     }
 
     &.transparent {

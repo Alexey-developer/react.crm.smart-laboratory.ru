@@ -1,24 +1,39 @@
 import React from 'react'
 
-// import { useTranslation } from 'react-i18next'
-
 import { Col, Pagination, Row } from 'antd'
 import type { PaginationProps } from 'antd'
-// import { Avatar, Tooltip } from 'antd'
-// import { Link } from 'react-router-dom'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { selectPerPage } from '@redux/CurrentUser/selectors'
+import { setPerPage } from '@redux/CurrentUser/slice'
+import { PerPageOptions, type PerPage } from '@redux/CurrentUser/types'
 
 import './index.module.scss'
 
 type CustomPaginationProps = {
-  onChange: PaginationProps['onChange']
+  requestPageState: { value: number }
   total: number
+  lastPage: number
 }
 
 export const CustomPagination: React.FC<CustomPaginationProps> = ({
-  onChange,
+  requestPageState,
   total,
+  lastPage,
 }) => {
-  // const [translated_phrase] = useTranslation('global')
+  const dispatch = useDispatch()
+
+  const onChange: PaginationProps['onChange'] = (page, pageSize) => {
+    requestPageState.value = page
+    dispatch(setPerPage(pageSize as PerPage))
+  }
+
+  React.useEffect(() => {
+    if (requestPageState.value > lastPage) {
+      requestPageState.value = lastPage
+    }
+  }, [lastPage])
+
   return (
     <Row>
       <Col span={24} className='default-col'>
@@ -26,7 +41,10 @@ export const CustomPagination: React.FC<CustomPaginationProps> = ({
           showQuickJumper
           showSizeChanger
           defaultCurrent={1}
-          defaultPageSize={10}
+          current={requestPageState.value}
+          defaultPageSize={useSelector(selectPerPage)}
+          pageSize={useSelector(selectPerPage)}
+          pageSizeOptions={[...PerPageOptions]}
           hideOnSinglePage={false}
           total={total}
           onChange={onChange}

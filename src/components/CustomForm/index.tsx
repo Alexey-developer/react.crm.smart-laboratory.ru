@@ -1,28 +1,12 @@
-import React, { useEffect /*, { useRef, useEffect }*/ } from 'react'
-// import constants from '@utils/constants.json'
+import React from 'react'
 
 import type { FormProps } from 'antd'
-import { Button, Form /*, Checkbox*/ } from 'antd'
-
-// import {
-//   Cascader,
-//   ColorPicker,
-//   DatePicker,
-//   InputNumber,
-//   Radio,
-//   Select,
-//   Slider,
-//   Switch,
-//   TreeSelect,
-//   Upload,
-// } from 'antd'
-// const { RangePicker } = DatePicker
-// const { TextArea } = Input
+import { Button, Form } from 'antd'
 
 import type { FormInstance } from 'antd'
 import type { FormLayout } from 'antd/es/form/Form'
-import type { Rule } from '../../../node_modules/rc-field-form/lib/interface.d.ts'
-import type { Store } from '../../../node_modules/rc-field-form/lib/interface.d.ts'
+import type { Rule } from 'rc-field-form/lib/interface'
+import type { Store } from 'rc-field-form/lib/interface'
 
 import { useSelector } from 'react-redux'
 import { selectPrefix } from '@redux/PhonePrefix/selectors'
@@ -35,11 +19,10 @@ import { DefaultCard } from '@components/DefaultCard'
 import type { DefaultCardProps } from '@components/DefaultCard'
 
 import { getIcon } from '@utils/getIcon'
-import { useAPIQuery } from '@api/useAPIQuery.ts'
-import { ProjectGroup } from '@api/models/project/queryGroup/'
-// import { selectAuthToken } from '@redux/CurrentUser/selectors'
 
-// import { TestR } from '@api/requests/testR'
+import type { GroupClass, GroupMethod } from '@api/common/types/TGroups'
+
+import { useAPIMutation } from '@api/useAPIMutation'
 
 interface SubmitButtonProps {
   form: FormInstance
@@ -64,8 +47,6 @@ const SubmitButton: React.FC<React.PropsWithChildren<SubmitButtonProps>> = ({
   const values = Form.useWatch([], form)
   //   console.log(values)
 
-  //   form.getFieldInstance('password').focus()
-
   React.useEffect(() => {
     form
       .validateFields({ validateOnly: true })
@@ -75,9 +56,6 @@ const SubmitButton: React.FC<React.PropsWithChildren<SubmitButtonProps>> = ({
     // form
     //   .validateFields(['phone'])
     //   .then(e => e && form.getFieldInstance('password').focus())
-
-    // form.getFieldInstance('phone').
-    // form.getFieldValue('phone').nora
   }, [form, values])
 
   return (
@@ -103,9 +81,10 @@ export type FormCard = Omit<DefaultCardProps, 'content' | 'hoverable' | 'grid'>
 
 type CustomFormProps = {
   name: string
-  //   fieldType: object
   formItems: FormItem[]
   formCard: FormCard
+  requestData: { groupClass: GroupClass; groupMethod: GroupMethod }
+  onSuccessMutation: (data) => void
   btnIcon?: string
   btnText?: string
   btnClass?: string
@@ -117,6 +96,8 @@ export const CustomForm: React.FC<CustomFormProps> = ({
   name,
   formItems,
   formCard,
+  requestData,
+  onSuccessMutation,
   btnIcon = 'GO',
   btnText = 'Form.BtnTexts.default',
   btnClass = '',
@@ -128,50 +109,32 @@ export const CustomForm: React.FC<CustomFormProps> = ({
   const prefix = useSelector(selectPrefix)
   const [form] = Form.useForm()
 
+  //   type TState = {
+  //     submit: boolean
+  //   }
+  //   const state = useReactive<TState>({
+  //     submit: false,
+  //   })
+
   React.useEffect(() => {
     form.resetFields(['phone'])
   }, [prefix])
 
-  // type FieldType = {
-  //   username: string
-  //   password: string
-  // }
-
-  //   type FieldType = typeof fieldType
-
-  //   useEffect(() => {
-  // TestR()
-
-  //   const PG = new ProjectGroup(
-  //     'Bearer 1|wcKsc30IAcEAC76Clqlnf9RiNx6lLEtS3oJbuQf2bd8e7f3d'
-  //   )
-  //   PG.index()
-
-  //   const { data, isLoading, isSuccess, isError } = useAPIQuery(
-  //     projectGroup.index
-  //   )
-  console.log(1, ProjectGroup.prototype)
-  //   console.log(2, ProjectGroup.prototype.valueOf())
-
-  const { data, isLoading, isSuccess, isError } = useAPIQuery(
-    ProjectGroup,
-    // ProjectGroup.prototype.show
-    // ProjectGroup.prototype.index
-    // ProjectGroup.getPrototypeOf
-    'index'
-    // Object.prototype.
-  )
-  //   console.log(data)
-  //   console.log(isLoading)
-  //   console.log(isSuccess)
-  //   console.log(isError)
-  //   }, [])
-
   const onFinish: FormProps /*<FieldType>*/['onFinish'] = values => {
     console.log('Success:', values)
 
-    // TestR()
+    // state.submit = true
+    mutate(undefined, { onSuccess: onSuccessMutation })
+    console.log(data)
+    console.log(variables)
   }
+
+  const values = Form.useWatch([], form)
+
+  const { mutate, data, isPending, isSuccess, isError, variables } =
+    useAPIMutation(requestData.groupClass, requestData.groupMethod, values)
+
+  //   React.useEffect(function () {}, [])
 
   const onFinishFailed: FormProps /*<FieldType>*/['onFinishFailed'] =
     errorInfo => {
@@ -204,7 +167,7 @@ export const CustomForm: React.FC<CustomFormProps> = ({
           {formItems.map(formItem => (
             <Form.Item /*<FieldType>*/
               hasFeedback
-              //   validateStatus='validating'
+              validateStatus={isPending ? 'validating' : undefined}
               key={formItem.name}
               label={translated_phrase(`Form.${formItem.name}`)}
               name={formItem.name}

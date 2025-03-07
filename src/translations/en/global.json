@@ -1,6 +1,21 @@
 {
   "Common": {
-    "companyName": "SmartLab"
+    "companyName": "SmartLab",
+    "system_type": "CRM"
+  },
+  "Prepositions": {
+    "in": "in"
+  },
+  "Time": {
+    "short_hours": "h.",
+    "short_minutes": "m."
+  },
+  "Items": {
+    "short_pieces": "pi."
+  },
+  "AuthPage": {
+    "page_title": "Authorization",
+    "for_staff": "For staff"
   },
   "MenuItems": {
     "accounting": "Accounting",
@@ -19,6 +34,37 @@
     },
     "employees": "Employees"
   },
+  "Form": {
+    "phone": "Phone number",
+    "password": "Password",
+
+    "Common": {
+      "enter": "Enter "
+    },
+
+    "BtnTexts": {
+      "default": "Submit"
+    },
+    "Errors": {
+      "len": "'${label}' must be '${len}' characters",
+      "min": "'${label}' must be at least '${min}' characters",
+      "max": "'${label}' must be up to '${max}' characters"
+    },
+    "EntitiesFields": {
+      "name": "Name",
+      "description": "Description",
+      "website_url": "Website url",
+      "comment": "Comment",
+      "customer_visible_comment": "Customer visible comment",
+
+      "total_spent_time": "Total spent time",
+      "total_costs_auto": "Total costs (automatic calculation)",
+      "total_costs": "Total costs (actually)",
+      "total_incomes": "Total incomes",
+      "total_penalty_funds": "Penalties",
+      "common_task_progress": "Common tasks progress"
+    }
+  },
   "HeaderProfile": {
     "my_profile": "My profile",
     "settings": "Settings",
@@ -31,8 +77,27 @@
     "home_page": "Home"
   },
   "Filters": {
-    "filters": "Filters",
-    "statuses": "Statuses"
+    "self": "Filters",
+    "id": "Identifier",
+    "statuses": "Statuses",
+    "types": "Types",
+    "Deleted": {
+      "self": "Deleted",
+      "only_existing": "Only existing",
+      "only_deleted": "Only deleted",
+      "all": "All"
+    },
+    "created_at": "Creation date",
+
+    "apply": "Apply",
+    "clear": "Clear"
+  },
+  "Search": {
+    "self": "Search",
+    "found": "Found",
+    "title": "Select fields to search",
+    "impossible": "is impossible",
+    "check_all": "Check all"
   },
   "Statistics": {
     "time_spent": "Time spent",
@@ -57,7 +122,8 @@
     "create": "Create",
     "go": "Go",
     "edit": "Edit",
-    "delete": "Delete"
+    "delete": "Delete",
+    "restore": "Restore"
   },
   "Modes": {
     "creating": "Creating",

@@ -1,0 +1,62 @@
+@import '@utils/scss/variables.scss';
+
+:global {
+  .smart-notification {
+    border-radius: $BORDER_RADIUS;
+    &.smart-notification-INFO {
+      background: $DEFAULT_COLOR_WITH_OPACITY;
+      .ant-notification-notice-icon {
+        i {
+          color: $DEFAULT_COLOR;
+        }
+      }
+    }
+    &.smart-notification-SUCCESS {
+      background: $SUCCESS_COLOR_WITH_OPACITY;
+      .ant-notification-notice-icon {
+        i {
+          color: $SUCCESS_COLOR;
+        }
+      }
+    }
+    &.smart-notification-ERROR {
+      background: $DANGER_COLOR_WITH_OPACITY;
+      .ant-notification-notice-icon {
+        i {
+          color: $DANGER_COLOR;
+        }
+      }
+    }
+  }
+}
+
+//&::-moz-progress-bar,
+//&::-webkit-progress-bar
+progress {
+  & {
+    background: $DEFAULT_COLOR_WITH_OPACITY !important;
+  }
+  &::-webkit-progress-value {
+    background: $DEFAULT_COLOR !important;
+  }
+}
+:global(.smart-notification-SUCCESS) {
+  progress {
+    & {
+      background: $SUCCESS_COLOR_WITH_OPACITY !important;
+    }
+    &::-webkit-progress-value {
+      background: $SUCCESS_COLOR !important;
+    }
+  }
+}
+:global(.smart-notification-ERROR) {
+  progress {
+    & {
+      background: $DANGER_COLOR_WITH_OPACITY !important;
+    }
+    &::-webkit-progress-value {
+      background: $DANGER_COLOR !important;
+    }
+  }
+}

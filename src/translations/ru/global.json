@@ -1,6 +1,21 @@
 {
   "Common": {
-    "companyName": "СмартЛаб"
+    "companyName": "СмартЛаб",
+    "system_type": "CRM"
+  },
+  "Prepositions": {
+    "in": "в"
+  },
+  "Time": {
+    "short_hours": "ч.",
+    "short_minutes": "м."
+  },
+  "Items": {
+    "short_pieces": "шт."
+  },
+  "AuthPage": {
+    "page_title": "Авторизация",
+    "for_staff": "Для сотрудников"
   },
   "MenuItems": {
     "accounting": "Бухгалтерский учёт",
@@ -19,6 +34,37 @@
     },
     "employees": "Сотрудники"
   },
+  "Form": {
+    "phone": "Номер телефона",
+    "password": "Пароль",
+
+    "Common": {
+      "enter": "Введите "
+    },
+
+    "BtnTexts": {
+      "default": "Отправить"
+    },
+    "Errors": {
+      "len": "Поле '${label}' должно состоять из '${len}' символов",
+      "min": "Поле '${label}' должно состоять из '${min}' символов или больше",
+      "max": "Поле '${label}' должно состоять из '${max}' символов или меньше"
+    },
+    "EntitiesFields": {
+      "name": "Название",
+      "description": "Описание",
+      "website_url": "Ссылка на веб-сайт",
+      "comment": "Комментарий",
+      "customer_visible_comment": "Комментарий, видимый клиенту",
+
+      "total_spent_time": "Общее затраченное время",
+      "total_costs_auto": "Общие расходы (авторачёт)",
+      "total_costs": "Расходы (фактически)",
+      "total_incomes": "Общий доходы",
+      "total_penalty_funds": "Штрафные взыскания",
+      "common_task_progress": "Общий прогресс выполнения задач"
+    }
+  },
   "HeaderProfile": {
     "my_profile": "Мой профиль",
     "settings": "Настройки",
@@ -31,8 +77,27 @@
     "home_page": "Главная"
   },
   "Filters": {
-    "filters": "Фильтры",
-    "statuses": "Статусы"
+    "self": "Фильтры",
+    "id": "Идентификатор",
+    "statuses": "Статусы",
+    "types": "Типы",
+    "Deleted": {
+      "self": "Удалённые",
+      "only_existing": "Только существующие",
+      "only_deleted": "Только удалённые",
+      "all": "Все"
+    },
+    "created_at": "Дата создания",
+
+    "apply": "Применить",
+    "clear": "Очистить"
+  },
+  "Search": {
+    "self": "Поиск",
+    "found": "Найдено",
+    "title": "Выбор полей для поиска",
+    "impossible": "невозможен",
+    "check_all": "Выбрать все"
   },
   "Statistics": {
     "time_spent": "Времени потрачено",
@@ -57,7 +122,8 @@
     "create": "Создать",
     "go": "Перейти",
     "edit": "Редактировать",
-    "delete": "Удалить"
+    "delete": "Удалить",
+    "restore": "Восстановить"
   },
   "Modes": {
     "creating": "Создание",

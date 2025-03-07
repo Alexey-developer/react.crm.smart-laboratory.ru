@@ -13,6 +13,10 @@
       .ant-btn {
         // width: 100%;
         text-align: left;
+        display: inline-block;
+        .ant-btn-icon {
+          margin-inline-end: 8px;
+        }
       }
       .ant-space-compact {
         width: 100%;

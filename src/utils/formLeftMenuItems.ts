@@ -1,4 +1,5 @@
 import { getIcon } from '@utils/getIcon'
+import * as URIs from '@utils/constants/routes'
 
 type Badge = {
   className: string
@@ -24,17 +25,17 @@ export const formLeftMenuItems = (): LeftMenuItems => {
   const menuItemsArray: MenuItem[] = [
     {
       name_key: 'MenuItems.accounting',
-      path: 'accounting',
+      path: URIs.ACCOUNTING,
       icon: 'fa-solid fa-calculator',
     },
     {
       name_key: 'MenuItems.budget',
-      path: 'budget',
+      path: URIs.BUDGET,
       icon: 'fa-solid fa-ruble-sign',
     },
     {
       name_key: 'MenuItems.call_history',
-      path: 'call-history',
+      path: URIs.CALL_HISTORY,
       icon: 'fa-solid fa-headset',
       badge: {
         className: 'danger transparent',
@@ -44,12 +45,12 @@ export const formLeftMenuItems = (): LeftMenuItems => {
     },
     {
       name_key: 'MenuItems.general_permission_system',
-      path: 'general-permission-system',
+      path: URIs.GENERAL_PERMISSION_SYSTEM,
       icon: 'fa-solid fa-lock',
     },
     {
       name_key: 'MenuItems.projects',
-      path: 'projects',
+      path: URIs.PROJECTS,
       icon: 'fa-solid fa-diagram-project',
       badge: {
         className: '',
@@ -59,7 +60,7 @@ export const formLeftMenuItems = (): LeftMenuItems => {
     },
     {
       name_key: 'MenuItems.tasks',
-      path: 'tasks',
+      path: URIs.TASKS,
       icon: getIcon('TASKS'),
       badge: {
         className: 'success transparent',
@@ -69,7 +70,7 @@ export const formLeftMenuItems = (): LeftMenuItems => {
     },
     {
       name_key: 'MenuItems.documents',
-      path: 'documents',
+      path: URIs.DOCUMENTS,
       icon: 'fa-solid fa-file-lines',
       badge: {
         className: 'warning transparent',
@@ -79,12 +80,12 @@ export const formLeftMenuItems = (): LeftMenuItems => {
     },
     {
       name_key: 'MenuItems.WorkingWithCustomers.self',
-      path: 'self',
+      path: '',
       icon: 'fa-solid fa-heart',
       childrenMenuItems: [
         {
           name_key: 'MenuItems.WorkingWithCustomers.customers',
-          path: 'customers',
+          path: URIs.CUSTOMERS,
           icon: 'fa-solid fa-users',
           badge: {
             className: 'warning',
@@ -94,7 +95,7 @@ export const formLeftMenuItems = (): LeftMenuItems => {
         },
         {
           name_key: 'MenuItems.WorkingWithCustomers.appeals',
-          path: 'appeals',
+          path: URIs.APPEALS,
           icon: 'fa-solid fa-file-pen',
           badge: {
             className: 'danger transparent',
@@ -104,7 +105,7 @@ export const formLeftMenuItems = (): LeftMenuItems => {
         },
         {
           name_key: 'MenuItems.WorkingWithCustomers.support',
-          path: 'support',
+          path: URIs.SUPPORT,
           icon: 'fa-solid fa-comments',
           badge: {
             className: 'danger transparent',
@@ -114,7 +115,7 @@ export const formLeftMenuItems = (): LeftMenuItems => {
         },
         {
           name_key: 'MenuItems.WorkingWithCustomers.applications_from_website',
-          path: 'applications-from-website',
+          path: URIs.APPLICATIONS_FROM_WEBSITE,
           icon: 'fa-solid fa-envelope-open-text',
           badge: {
             className: 'success transparent',
@@ -126,7 +127,7 @@ export const formLeftMenuItems = (): LeftMenuItems => {
     },
     {
       name_key: 'MenuItems.employees',
-      path: 'employees',
+      path: URIs.EMPLOYEES,
       icon: 'fa-solid fa-users-between-lines',
       badge: {
         className: 'danger',

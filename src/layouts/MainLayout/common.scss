@@ -156,6 +156,7 @@
 }
 
 .ant-progress {
+  margin-bottom: 8px;
   .ant-progress-text {
     color: $LIGHT_COLOR;
   }
@@ -278,4 +279,301 @@
       }
     }
   }
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }
+
+.ant-radio-wrapper {
+  span {
+    color: $LIGHT_COLOR;
+    &.ant-radio-checked {
+      .ant-radio-inner {
+        border-color: $DEFAULT_COLOR;
+        background-color: $DEFAULT_COLOR;
+      }
+    }
+  }
+}
+[data-theme='dark'] {
+  .ant-radio-wrapper {
+    span {
+      color: $DARK_COLOR;
+    }
+  }
+}
+
+.ant-checkbox-group {
+  display: block;
+  .ant-checkbox-wrapper {
+    display: flex;
+    span {
+      color: $LIGHT_COLOR;
+      &.ant-checkbox-checked {
+        .ant-checkbox-inner {
+          & {
+            border-color: $DEFAULT_COLOR !important;
+            background-color: $DEFAULT_COLOR !important;
+          }
+        }
+      }
+    }
+  }
+}
+[data-theme='dark'] {
+  .ant-checkbox-group {
+    .ant-checkbox-wrapper {
+      span {
+        color: $DARK_COLOR;
+      }
+    }
+  }
+}
+
+// .ant-form-item-control-input-content {
+//   .ant-input {
+//     // background: red;
+//     background: $DARK_ELEMENT_BG;
+//   }
+// }
+
+// **********
+//form inputs
+
+.ant-form-item-feedback-icon-error {
+  color: $DANGER_COLOR !important;
+}
+.ant-form-item-feedback-icon-success {
+  color: $SUCCESS_COLOR !important;
+}
+
+.ant-form-item-label {
+  label {
+    color: $LIGHT_COLOR !important;
+  }
+  .ant-form-item-required {
+    &::before {
+      color: $DANGER_COLOR !important;
+    }
+  }
+}
+
+// .ant-form-item-control-input-content {
+.ant-input,
+.ant-input-affix-wrapper {
+  &,
+  &:hover,
+  &:focus {
+    color: $LIGHT_COLOR;
+  }
+  &:hover,
+  &:focus-within {
+    border-color: $ACTIVE_ELEMENT_BG_GRADIENT_COLOR_2;
+    // box-shadow: none;
+  }
+  & {
+    background: $LIGHT_ELEMENT_BG !important;
+  }
+  &:hover,
+  &:focus {
+    //   background: $LIGHT_HOVER_BG;
+  }
+  &.ant-input-status-error {
+    &,
+    &:hover,
+    &:focus {
+      border-color: $DANGER_COLOR !important;
+      box-shadow: $DANGER_ELEMENT_BOX_SHADOW !important;
+    }
+  }
+  .ant-input-prefix {
+    color: $ACTIVE_ELEMENT_BG_GRADIENT_COLOR_1 !important;
+  }
+  .ant-input-suffix {
+    .ant-input-password-icon {
+      color: $LIGHT_COLOR;
+    }
+  }
+}
+.ant-input-affix-wrapper-focused {
+  border-color: $ACTIVE_ELEMENT_BG_GRADIENT_COLOR_2;
+  box-shadow: $ACTIVE_ELEMENT_BOX_SHADOW !important;
+}
+
+.ant-input-group-wrapper-status-error {
+  .ant-input-group-addon {
+    box-shadow: $DANGER_ELEMENT_BOX_SHADOW !important;
+  }
+}
+
+.ant-input-group-addon {
+  i {
+    color: $LIGHT_COLOR;
+  }
+  .ant-select {
+    width: 120px;
+    .ant-select-selector {
+      &,
+      &:hover,
+      &:active {
+        border: none !important;
+        box-shadow: none !important;
+      }
+      .ant-select-selection-item {
+        color: $LIGHT_COLOR;
+      }
+    }
+    .ant-select-arrow {
+      color: $LIGHT_COLOR;
+    }
+  }
+}
+// }
+.ant-select-dropdown {
+  .ant-select-item {
+    color: $LIGHT_COLOR;
+    &.ant-select-item-option-active {
+      color: $LIGHT_HOVER_COLOR !important;
+      background-color: $LIGHT_HOVER_BG !important;
+    }
+    &.ant-select-item-option-selected {
+      //   color: $DANGER_COLOR !important;
+      color: $DARK_HOVER_COLOR !important;
+      background-color: $ACTIVE_ELEMENT_BG_GRADIENT_COLOR_2;
+      @include gradient(
+        $ACTIVE_ELEMENT_BG_GRADIENT_DEG,
+        $ACTIVE_ELEMENT_BG_GRADIENT_COLOR_1,
+        $ACTIVE_ELEMENT_BG_GRADIENT_PERCENT_1,
+        $ACTIVE_ELEMENT_BG_GRADIENT_COLOR_2,
+        $ACTIVE_ELEMENT_BG_GRADIENT_PERCENT_2
+      );
+      box-shadow: $ACTIVE_ELEMENT_BOX_SHADOW;
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .ant-form-item-label {
+    label {
+      color: $DARK_COLOR !important;
+    }
+  }
+  //   .ant-form-item-control-input-content {
+  .ant-input,
+  .ant-input-affix-wrapper {
+    &,
+    &:hover,
+    &:focus {
+      color: $DARK_COLOR;
+      // border-color: $DARK_COLOR;
+    }
+    & {
+      background: $DARK_ELEMENT_BG !important;
+    }
+    &::placeholder {
+      color: $DARK_COLOR;
+    }
+    .ant-input-suffix {
+      .ant-input-password-icon {
+        color: $DARK_COLOR;
+      }
+    }
+  }
+  .ant-input-group-addon {
+    i {
+      color: $DARK_COLOR;
+    }
+    .ant-select {
+      .ant-select-selector {
+        .ant-select-selection-item {
+          color: $DARK_COLOR;
+        }
+      }
+      .ant-select-arrow {
+        color: $DARK_COLOR;
+      }
+    }
+  }
+  //   }
+  .ant-select-dropdown {
+    background: $DARK_BG;
+    .ant-select-item {
+      color: $DARK_COLOR;
+      &.ant-select-item-option-active {
+        color: $DARK_HOVER_COLOR !important;
+        background-color: $DARK_HOVER_BG !important;
+      }
+    }
+  }
+}
+
+//search
+.ant-input-group-addon {
+  .ant-btn {
+    &,
+    &:hover {
+      border: none;
+      background: $DEFAULT_COLOR !important;
+    }
+  }
+}
+[data-theme='dark'] {
+  .ant-input-group-wrapper {
+    .ant-input-outlined {
+      border-color: $DARK_COLOR;
+      .ant-input-clear-icon {
+        color: $DARK_COLOR;
+      }
+    }
+  }
+}
+
+// вернуть
+// .ant-select {
+//   .ant-select-selector {
+//     background: $LIGHT_ELEMENT_BG !important;
+//     color: $LIGHT_COLOR;
+//   }
+// }
+// [data-theme='dark'] {
+//   .ant-select {
+//     .ant-select-selector {
+//       background: $DARK_ELEMENT_BG !important;
+//       color: $DARK_COLOR;
+//     }
+//     .ant-select-arrow {
+//       color: $DARK_COLOR;
+//     }
+//   }
+// }
+//
+
+// [data-theme='dark'] {
+//   .ant-form-item-control-input-content {
+//     .ant-input,
+//     .ant-input-affix-wrapper {
+//       &,
+//       &:hover,
+//       &:focus {
+//         color: $DARK_COLOR;
+//         border-color: $DARK_COLOR;
+//       }
+//       & {
+//         background: $DARK_ELEMENT_BG;
+//       }
+//       &:hover,
+//       &:focus {
+//         // background: $DARK_HOVER_BG;
+//       }
+//     }
+//   }
+// }
+
+// .ant-input-group-wrapper {
+//   .ant-input-group-addon {
+//     border-color: $DARK_BG;
+//     background: $DARK_BG;
+//     color: #fff;
+//   }
+// }

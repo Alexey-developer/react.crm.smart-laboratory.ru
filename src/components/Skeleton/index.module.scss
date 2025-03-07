@@ -1,0 +1,18 @@
+@import '@utils/scss/variables.scss';
+
+:global {
+  .default-col {
+    .skeleton {
+      min-height: 288px;
+      background: $LIGHT_ELEMENT_BG;
+      border-radius: $BORDER_RADIUS;
+    }
+  }
+  [data-theme='dark'] {
+    .default-col {
+      .skeleton {
+        background: $DARK_ELEMENT_BG;
+      }
+    }
+  }
+}

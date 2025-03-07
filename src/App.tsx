@@ -1,4 +1,4 @@
-import { lazy /*FC , LazyExoticComponent*/ } from 'react'
+import { lazy } from 'react'
 
 import { Routes, Route } from 'react-router-dom'
 
@@ -51,59 +51,64 @@ const TaskPage = lazy(() =>
   }))
 )
 
+type IRoute = {
+  uri: string
+  indexComponent: React.ReactNode //LazyExoticComponent<FC>
+  showComponent: React.ReactNode
+  editComponent: React.ReactNode
+  createComponent: React.ReactNode
+}
 const readyRoutes: React.ReactElement[] = []
 
-const formCRUDRoutes = (
-  uri: string,
-  indexComponent: React.ReactNode, //LazyExoticComponent<FC>
-  showComponent: React.ReactNode
-) => {
-  readyRoutes.push(
-    <Route key={readyRoutes.length} path={uri} element={indexComponent} />
-  )
+const formCRUDRoutes = (route: IRoute) => {
   readyRoutes.push(
     <Route
       key={readyRoutes.length}
-      path={`${uri}/:entityId`}
-      element={showComponent}
+      path={route.uri}
+      element={route.indexComponent}
     />
   )
   readyRoutes.push(
     <Route
       key={readyRoutes.length}
-      path={`${uri}/:entityId/${URIs.COMMON_EDITING}`}
-      element={showComponent}
+      path={`${route.uri}/:entityId`}
+      element={route.showComponent}
     />
   )
   readyRoutes.push(
     <Route
       key={readyRoutes.length}
-      path={`${uri}/${URIs.COMMON_CREATING}`}
-      element={showComponent}
+      path={`${route.uri}/:entityId/${URIs.COMMON_EDITING}`}
+      element={route.editComponent}
+    />
+  )
+  readyRoutes.push(
+    <Route
+      key={readyRoutes.length}
+      path={`${route.uri}/${URIs.COMMON_CREATING}`}
+      element={route.createComponent}
     />
   )
 }
 
-const routes: {
-  uri: string
-  indexComponent: React.ReactNode
-  showComponent: React.ReactNode
-}[] = [
+const routes: IRoute[] = [
   {
     uri: URIs.PROJECTS,
     indexComponent: <ProjectsPage />,
     showComponent: <ProjectPage />,
+    editComponent: <EditProjectPage />,
+    createComponent: <CreateProjectPage />,
   },
   {
     uri: URIs.TASKS,
     indexComponent: <TasksPage />,
     showComponent: <TaskPage />,
+    editComponent: <TaskPage />,
+    createComponent: <TaskPage />,
   },
 ]
 
-routes.map(route =>
-  formCRUDRoutes(route.uri, route.indexComponent, route.showComponent)
-)
+routes.map(route => formCRUDRoutes(route))
 
 function App() {
   return (

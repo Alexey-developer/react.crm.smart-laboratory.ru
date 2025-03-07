@@ -1,0 +1,17 @@
+@import '@utils/scss/variables.scss';
+:global {
+  .ant-spin-fullscreen {
+    background-color: $LIGHT_ELEMENT_BG;
+    .ant-spin-dot-item {
+      background-color: $DARK_ELEMENT_BG !important;
+    }
+  }
+  [data-theme='dark'] {
+    .ant-spin-fullscreen {
+      background-color: $DARK_ELEMENT_BG;
+      .ant-spin-dot-item {
+        background-color: $LIGHT_ELEMENT_BG !important;
+      }
+    }
+  }
+}

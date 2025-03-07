@@ -1,0 +1,37 @@
+@import '@utils/scss/variables.scss';
+
+.btn {
+  width: 100%;
+  :global {
+    .ant-btn-icon {
+      float: right;
+      margin: auto;
+      margin-top: 0.3rem;
+      margin-left: 0.5rem;
+      margin-inline-end: 0 !important;
+    }
+  }
+}
+
+:global {
+  .ant-btn {
+    width: 100%;
+  }
+  //   .ant-select {
+  //     min-width: 300px;
+  //     max-width: 350px;
+  //   }
+}
+
+// .test {
+//   :global {
+//     .ant-input-number-group-addon {
+//       background: $DARK_BG;
+//       color: $DARK_COLOR;
+//       border: none;
+//     }
+//     .ant-input-number {
+//       width: 10rem;
+//     }
+//   }
+// }

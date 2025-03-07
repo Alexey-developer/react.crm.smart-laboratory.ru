@@ -3,17 +3,12 @@ import { Button, Tooltip, Popconfirm } from 'antd'
 
 import { useTranslation } from 'react-i18next'
 
+import { TColorType } from '@api/common/types/TColorType'
+
 // import './index.module.scss'
 
 type ActionButtonProps = {
-  className?:
-    | 'transparent'
-    | 'success'
-    | 'success transparent'
-    | 'warning'
-    | 'warning transparent'
-    | 'danger'
-    | 'danger transparent'
+  className?: TColorType
   title: string
   icon: string
   shape?: 'default' | 'circle' | 'round'
@@ -22,6 +17,7 @@ type ActionButtonProps = {
   confirmDescriptionKey?: string
   confirmOkTextKey?: string
   confirmCancelTextKey?: string
+  onConfirm?: () => void
 }
 
 export const ActionButton: React.FC<ActionButtonProps> = ({
@@ -34,6 +30,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   confirmDescriptionKey = 'Confirm.description',
   confirmOkTextKey = 'Confirm.ok_text',
   confirmCancelTextKey = 'Confirm.cancel_text',
+  onConfirm = () => {},
 }) => {
   const [translated_phrase] = useTranslation('global')
 
@@ -55,6 +52,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
         description={translated_phrase(confirmDescriptionKey)}
         okText={translated_phrase(confirmOkTextKey)}
         cancelText={translated_phrase(confirmCancelTextKey)}
+        onConfirm={onConfirm}
       >
         {actionButton}
       </Popconfirm>

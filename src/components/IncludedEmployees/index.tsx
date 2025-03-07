@@ -20,9 +20,11 @@ export const IncludedEmployees: React.FC<IncludedEmployeesProps> = ({
 }) => {
   return (
     <Avatar.Group
-      maxCount={2}
+      //   maxPopoverTrigger='click'
+      //   maxCount={2}
+
+      max={{ count: 2, popover: { trigger: 'click' } }}
       //   shape='square'
-      maxPopoverTrigger='click'
       className={styles.avatar_group}
     >
       {employees.map(employee => (

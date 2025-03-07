@@ -1,0 +1,1 @@
+formItems.map(value => initialValues.push({ [value.name]: '123' }))

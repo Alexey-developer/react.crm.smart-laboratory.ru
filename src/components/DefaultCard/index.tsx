@@ -1,22 +1,21 @@
 import React from 'react'
 import { Card, Col, Badge } from 'antd'
 
+import { TColorType } from '@api/common/types/TColorType'
+
+import { Skeleton } from '@components/Skeleton'
+
+import { formSkeleton } from './formSkeleton'
 import styles from './index.module.scss'
 
 export type DefaultCardProps = {
   title: React.ReactNode
   badgeRibbonText?: string
-  badgeRibbonClassName?:
-    | 'transparent'
-    | 'success'
-    | 'success transparent'
-    | 'warning'
-    | 'warning transparent'
-    | 'danger'
-    | 'danger transparent'
+  badgeRibbonClassName?: TColorType
   content: React.ReactNode
   actions?: React.ReactNode[]
   extra?: React.ReactNode
+  isLoading?: boolean
   hoverable?: boolean
   type?: 'default' | 'success' | 'warning' | 'danger'
   grid?: { xs: number; lg: number; xl: number; xxl: number }
@@ -29,6 +28,7 @@ export const DefaultCard: React.FC<DefaultCardProps> = ({
   content,
   actions,
   extra,
+  isLoading,
   hoverable = true,
   type,
   grid = { xs: 24, lg: 12, xl: 8, xxl: 6 },
@@ -66,13 +66,29 @@ export const DefaultCard: React.FC<DefaultCardProps> = ({
     )
   }
 
+  const intermediateSkeleton = (child: React.ReactNode) => {
+    if (isLoading === undefined) {
+      return returnable(child)
+    } else {
+      return returnable(
+        <Skeleton
+          isLoading={isLoading}
+          width={'100%'}
+          height={'100%'}
+          skeleton={formSkeleton()}
+          content={child}
+        />
+      )
+    }
+  }
+
   if (badgeRibbonText) {
-    return returnable(
+    return intermediateSkeleton(
       <Badge.Ribbon className={badgeRibbonClassName} text={badgeRibbonText}>
         {defaultCard}
       </Badge.Ribbon>
     )
   }
 
-  return returnable(defaultCard)
+  return intermediateSkeleton(defaultCard)
 }

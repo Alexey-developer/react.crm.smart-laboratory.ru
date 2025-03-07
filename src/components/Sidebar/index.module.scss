@@ -24,8 +24,6 @@ $collapsed_sider_width: 80px;
       }
       .ant-menu-item-selected {
         color: $DARK_HOVER_COLOR !important;
-      }
-      .ant-menu-item-selected {
         background-color: $ACTIVE_ELEMENT_BG_GRADIENT_COLOR_2;
         @include gradient(
           $ACTIVE_ELEMENT_BG_GRADIENT_DEG,
@@ -77,7 +75,7 @@ $collapsed_sider_width: 80px;
 
 .site_layout_common {
   @include transition($TRANSITION_TIME);
-
+  min-height: 100vh;
   background: $LIGHT_BG;
   &.collapsed {
     margin-left: $collapsed_sider_width;

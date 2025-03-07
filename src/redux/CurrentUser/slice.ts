@@ -1,11 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { ICurrentUserSliceState, AuthToken } from './types'
+import type { ICurrentUserSliceState, AuthToken, PerPage } from './types'
 
 const initialState: ICurrentUserSliceState = {
-  //   authToken:
-  //     localStorage.getItem('authToken') ??
-  //     'Bearer 1|wcKsc30IAcEAC76Clqlnf9RiNx6lLEtS3oJbuQf2bd8e7f3d',
   authToken: localStorage.getItem('authToken') ?? '',
+  perPage: parseInt(localStorage.getItem('perPage') ?? '15') as PerPage,
 }
 
 const currentUserSlice = createSlice({
@@ -17,9 +15,14 @@ const currentUserSlice = createSlice({
 
       localStorage.setItem('authToken', state.authToken)
     },
+    setPerPage(state, action: PayloadAction<PerPage>) {
+      state.perPage = action.payload
+
+      localStorage.setItem('perPage', `${state.perPage}`)
+    },
   },
 })
 
-export const { setAuthToken } = currentUserSlice.actions
+export const { setAuthToken, setPerPage } = currentUserSlice.actions
 
 export default currentUserSlice.reducer

@@ -18,8 +18,6 @@ import type { GetProps } from 'antd'
 import type { Store } from 'antd/lib/form/interface'
 type RangePickerProps = GetProps<typeof DatePicker.RangePicker>
 
-import styles from './index.module.scss'
-
 import { useTranslation } from 'react-i18next'
 
 import { useLocation } from 'react-router-dom'
@@ -29,6 +27,7 @@ import { useReactive } from 'ahooks'
 import { getDateTimeFormat } from '@utils/helpers'
 import { getFilter } from '@utils/getFilter'
 import { getIcon } from '@utils/getIcon'
+import { useGetStateCurrentPageFilters } from '@utils/useGetStateCurrentPageFilters'
 
 import { useDispatch } from 'react-redux'
 import { setFilters } from '@redux/Filters/slice'
@@ -38,7 +37,8 @@ import type {
   FilterType,
   TFilter,
 } from '@redux/Filters/types'
-import { useGetStateCurrentPageFilters } from '@utils/useGetStateCurrentPageFilters'
+
+import styles from './index.module.scss'
 
 export type Filters = {
   groupName: string
@@ -49,18 +49,18 @@ export type Filters = {
 type FilterProps = {
   filters: Filters
   isLoading: boolean
-  refetch: () => void
   total?: number
 }
 
 export const Filter: React.FC<FilterProps> = ({
   filters,
   isLoading,
-  refetch,
   total,
 }) => {
   const [translated_phrase] = useTranslation('global')
   const dispatch = useDispatch()
+
+  const stateFilters = useGetStateCurrentPageFilters()
 
   // eslint-disable-next-line arrow-body-style
   const disabledDate: RangePickerProps['disabledDate'] = current => {
@@ -93,6 +93,17 @@ export const Filter: React.FC<FilterProps> = ({
       ),
     },
     {
+      groupName: translated_phrase('Filters.created_at'),
+      filedName: 'created_at',
+      content: (
+        <RangePicker
+          format={getDateTimeFormat()}
+          showTime={{ format: 'HH:mm' }}
+          disabledDate={disabledDate}
+        />
+      ),
+    },
+    {
       groupName: translated_phrase('Filters.Deleted.self'),
       filedName: 'deleted',
       content: (
@@ -105,19 +116,11 @@ export const Filter: React.FC<FilterProps> = ({
               {/* <i className='fa-regular fa-table-list'></i>{' '} */}
               {translated_phrase('Filters.Deleted.only_deleted')}
             </Radio>
+            <Radio value={'all'}>
+              {translated_phrase('Filters.Deleted.all')}
+            </Radio>
           </Space>
         </Radio.Group>
-      ),
-    },
-    {
-      groupName: translated_phrase('Filters.created_at'),
-      filedName: 'created_at',
-      content: (
-        <RangePicker
-          format={getDateTimeFormat()}
-          showTime={{ format: 'HH:mm' }}
-          disabledDate={disabledDate}
-        />
       ),
     },
   ]
@@ -130,9 +133,6 @@ export const Filter: React.FC<FilterProps> = ({
 
   const [form] = Form.useForm()
   const values = Form.useWatch([], form)
-  //   const stateFilters = useSelector(selectFilters)?.get(
-  //     pathname.slice(1) as FilterType
-  //   )
 
   const state = useReactive<{
     initialValues: Store
@@ -140,7 +140,7 @@ export const Filter: React.FC<FilterProps> = ({
     filterValueChanged: boolean
     firstEachFilterOpen: boolean //#1
   }>({
-    initialValues: useGetStateCurrentPageFilters(),
+    initialValues: stateFilters,
     filterPopoverIsOpened: false,
     filterValueChanged: false,
     firstEachFilterOpen: true, //#1
@@ -196,13 +196,13 @@ export const Filter: React.FC<FilterProps> = ({
       }
       if (state.filterValueChanged) {
         state.filterValueChanged = false
-        setFiltersWithRefetch(filters)
+        setFiltersAfterChange(filters)
       }
     }
   }
-  const setFiltersWithRefetch = async (filters: TFilter[]) => {
-    console.log(1, state.initialValues)
-    console.log(2, filters)
+  const setFiltersAfterChange = (filters: TFilter[]) => {
+    // console.log(1, state.initialValues)
+    // console.log(2, filters)
 
     dispatch(
       setFilters({
@@ -210,18 +210,20 @@ export const Filter: React.FC<FilterProps> = ({
         filters: filters,
       })
     )
-    await new Promise(resolve =>
-      setTimeout(() => {
-        resolve
-        refetch()
-      }, 1)
-    )
   }
 
-  //   React.useEffect(() => {
-  //     console.log('11-1', values)
-
-  //   }, [values])
+  const isFilterUsed = (filedName: string): string => {
+    if (stateFilters[filedName]) {
+      if (Array.isArray(stateFilters[filedName])) {
+        if (stateFilters[filedName].length > 0) {
+          return ''
+        }
+      } else {
+        return ''
+      }
+    }
+    return 'transparent'
+  }
 
   return (
     <Popover
@@ -271,7 +273,11 @@ export const Filter: React.FC<FilterProps> = ({
                 trigger='click'
                 placement='right'
               >
-                <Button className={`smart-btn transparent ${styles.btn}`}>
+                <Button
+                  className={`smart-btn ${isFilterUsed(filter.filedName)} ${
+                    styles.btn
+                  }`}
+                >
                   {filter.groupName}
                   <span className='ant-btn-icon'>
                     <i className='fa-solid fa-arrow-right-long'></i>
@@ -299,7 +305,7 @@ export const Filter: React.FC<FilterProps> = ({
     >
       <Button
         className='smart-btn'
-        icon={<i className='fa-solid fa-filter'></i>}
+        icon={<i className='fa-solid fa-filter-list'></i>}
       >
         {`${translated_phrase('Filters.self')}${
           total !== undefined

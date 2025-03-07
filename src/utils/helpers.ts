@@ -31,8 +31,10 @@ export const setStatesValuesDebounce = debounce(
 
 export const SetPageTitle = (pageTitle: string) => {
   const [translated_phrase] = useTranslation('global')
-  return (document.title =
-    translated_phrase('Common.companyName') + ' CRM | ' + pageTitle)
+
+  document.title = `${translated_phrase(
+    'Common.companyName'
+  )} CRM | ${pageTitle}`
 }
 
 //
@@ -45,15 +47,6 @@ export const seconds2TimeHelper = (seconds: number) => {
   const minutes = formatMinutes(Math.floor(seconds / 60 - hours * 60))
   return { hours: hours.toLocaleString('ru-RU'), minutes }
 }
-// export const Seconds2Time = (seconds: number) => {
-//   const [translated_phrase] = useTranslation('global')
-
-//   return `${seconds2Time(seconds)['hours']} ${translated_phrase(
-//     'Time.short_hours'
-//   )} ${seconds2Time(seconds)['minutes']} ${translated_phrase(
-//     'Time.short_minutes'
-//   )}`
-// }
 export const seconds2Time = (seconds: number, translated_phrase: TFunction) => {
   return `${seconds2TimeHelper(seconds)['hours']} ${translated_phrase(
     'Time.short_hours'

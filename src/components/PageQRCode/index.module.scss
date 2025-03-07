@@ -1,0 +1,6 @@
+@import '@components/TopHeader/index.module.scss';
+
+:global {
+  [data-theme='dark'] {
+  }
+}

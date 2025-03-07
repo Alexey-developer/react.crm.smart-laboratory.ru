@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next'
 
 import { useReactive } from 'ahooks'
 
+import debounce from 'lodash.debounce'
+
 import { useAPIQuery } from '@api/useAPIQuery'
 
 import {
@@ -12,7 +14,8 @@ import {
   getSelectFilterType,
 } from '@utils/getSelectFilterType'
 import { getMethod } from '@utils/getMethod'
-import type { Groups } from '@utils/getSelectFilterType'
+import { constants } from '@utils/constants/constants.json'
+// import type { Groups } from '@utils/getSelectFilterType'
 
 export const SelectFilter = (type: keyof typeof SelectFilterTypeEnum) => {
   const [translated_phrase] = useTranslation('global')
@@ -130,21 +133,24 @@ export const SelectFilter = (type: keyof typeof SelectFilterTypeEnum) => {
     }
   }
 
+  const setQuery = React.useCallback(
+    debounce((value: string) => {
+      //   console.log('search: ' + value)
+
+      state.requestPage = state.searchedOptionsPage = 1
+      state.searchedOptions = []
+      state.searchValue = value
+    }, constants.SEARCH_TIMEOUT),
+    []
+  )
+
+  React.useEffect(() => {
+    refetch()
+  }, [state.searchValue])
+
   const onSearchHandler = async (event: string) => {
     if (isLoading || isFetching) return
-    state.searchValue = event
-    // console.log(state.searchValue)
-
-    state.requestPage = state.searchedOptionsPage = 1
-    state.searchedOptions = []
-    console.log(state.searchValue)
-
-    await new Promise(resolve =>
-      setTimeout(() => {
-        resolve
-        refetch()
-      }, 10)
-    )
+    setQuery(event)
   }
 
   return {
