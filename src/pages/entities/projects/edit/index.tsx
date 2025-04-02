@@ -82,10 +82,13 @@ export const EditProjectPage: React.FC = () => {
     }
     dispatch(setPageIsLoaded(!isLoading && !isFetching))
 
-    const formItems = getFormItems()
+    const formItems = getFormItems([project.status_id, project.type_id])
     formItems.map(
       value => (state.initialValues[value.name] = project[value.name])
     )
+
+    console.log('initialValues = ')
+    console.log(state.initialValues)
 
     state.customForm = getCustomForm(
       formItems,
@@ -97,7 +100,8 @@ export const EditProjectPage: React.FC = () => {
       'UPDATE',
       'EDIT',
       translated_phrase('Actions.edit'),
-      state.initialValues
+      state.initialValues,
+      entityId as number | undefined
     )
   }, [isLoading, isFetching])
 

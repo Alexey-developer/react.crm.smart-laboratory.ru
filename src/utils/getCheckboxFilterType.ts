@@ -1,13 +1,45 @@
-import { ProjectStatusGroup } from '@api/models/projectStatus/queryGroup'
 import { ProjectTypeGroup } from '@api/models/projectType/queryGroup'
+import { ProjectStatusGroup } from '@api/models/projectStatus/queryGroup'
+import { TaskStatusGroup } from '@api/models/taskStatus/queryGroup'
 
-enum CheckboxFilterLangEnum {
-  STATUS = 'Filters.statuses',
-  TYPE = 'Filters.types',
-}
+export type Groups =
+  | typeof ProjectTypeGroup
+  | typeof ProjectStatusGroup
+  | typeof TaskStatusGroup
+
 export enum CheckboxFilterTypeEnum {
-  STATUS = 'status',
-  TYPE = 'type',
+  PROJECT_TYPE = 'project_type',
+  PROJECT_STATUS = 'project_status',
+  TASK_STATUS = 'task_status',
+}
+
+const getCheckBoxFilterLangCode = (
+  value: keyof typeof CheckboxFilterTypeEnum
+) => {
+  switch (value) {
+    case 'PROJECT_TYPE':
+      return 'Filters.types'
+    case 'PROJECT_STATUS':
+    case 'TASK_STATUS':
+      return 'Filters.statuses'
+    default:
+      return 'no_phrase'
+  }
+}
+
+const getCheckboxFilterGroup = (
+  value: keyof typeof CheckboxFilterTypeEnum
+): Groups => {
+  switch (value) {
+    case 'PROJECT_TYPE':
+      return ProjectTypeGroup
+    case 'PROJECT_STATUS':
+      return ProjectStatusGroup
+    case 'TASK_STATUS':
+      return TaskStatusGroup
+    // default:
+    //   return ''
+  }
 }
 
 const getValueByKeyForStringEnum = (
@@ -18,22 +50,8 @@ const getValueByKeyForStringEnum = (
       Object.entries(CheckboxFilterTypeEnum).find(
         ([key]) => key === value
       )?.[1] ?? 'checkbox',
-    lang_code:
-      Object.entries(CheckboxFilterLangEnum).find(
-        ([key]) => key === value
-      )?.[1] ?? 'no_phrase',
+    lang_code: getCheckBoxFilterLangCode(value),
     group: getCheckboxFilterGroup(value),
-  }
-}
-
-const getCheckboxFilterGroup = (value: keyof typeof CheckboxFilterTypeEnum) => {
-  switch (value) {
-    case 'STATUS':
-      return ProjectStatusGroup
-    case 'TYPE':
-      return ProjectTypeGroup
-    default:
-      return ''
   }
 }
 

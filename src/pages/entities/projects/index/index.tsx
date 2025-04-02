@@ -14,8 +14,8 @@ export const ProjectsPage: React.FC = () => {
       pageTitleCode='MenuItems.projects'
       groupClass={ProjectGroup}
       entityFilters={[
-        CheckboxFilter('STATUS'),
-        CheckboxFilter('TYPE'),
+        CheckboxFilter('PROJECT_STATUS'),
+        CheckboxFilter('PROJECT_TYPE'),
         SelectFilter('CUSTOMER_COMPANY'),
       ]}
       FormContent={FormContent}

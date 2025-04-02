@@ -27,7 +27,7 @@ export const CreateProjectPage: React.FC = () => {
   }, [])
 
   return getCustomForm(
-    getFormItems(),
+    getFormItems([]),
     translated_phrase('Modes.creating'),
     translated_phrase('MenuItems.projects'),
     'success transparent',

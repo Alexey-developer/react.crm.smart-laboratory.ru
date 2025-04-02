@@ -19,15 +19,13 @@ export const useAPIMutation = (
   groupClass: GroupClass,
   groupMethod: GroupMethod,
   //   params: Params
-  params: any
+  params: any,
+  entityId?: number
   //   enabled = true
 ) => {
   const dispatch = useDispatch()
 
   const group = new groupClass(useSelector(selectAuthToken))
-  //   const group = new groupClass(
-  //     'Bearer 1|wcKsc30IAcEAC76Clqlnf9RiNx6lLEtS3oJbuQf2bd8e7f3d'
-  //   )
 
   if (!(groupMethod in group)) {
     const error = 'groupMethod is undefined!'
@@ -36,6 +34,15 @@ export const useAPIMutation = (
     throw error
   }
   //   console.log('params:', params)
+  //   console.log(`variables = ${variables}`)
+
+  //   const temp = params
+  //   params = Object
+  //   params['fields'] = params
+
+  if (params && entityId) {
+    params['id'] = entityId
+  }
 
   //   const { data, isLoading, isSuccess, isError, error } = useMutation({
   const {
@@ -71,7 +78,16 @@ export const useAPIMutation = (
   useEffect(() => {
     if (isSuccess) {
       console.log('Data mutated successfully')
+      console.log(`data = ${data}`)
       console.log(data)
+      //   data.status
+      dispatch(
+        setNotification({
+          title: 'Успешно!',
+          text: 'Data mutated successfully',
+          type: 'SUCCESS',
+        })
+      )
     }
   }, [isSuccess, data])
 

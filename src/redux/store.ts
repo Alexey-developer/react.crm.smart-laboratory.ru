@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
 
 import CollapseSider from './CollapseSider/slice'
+import CurrentForm from './CurrentForm/slice'
 import CurrentUser from './CurrentUser/slice'
 import Filters from './Filters/slice'
 import HeaderNotification from './HeaderNotification/slice'
@@ -15,6 +16,7 @@ import Theme from './Theme/slice'
 export const store = configureStore({
   reducer: {
     CollapseSider,
+    CurrentForm,
     CurrentUser,
     Filters,
     HeaderNotification,

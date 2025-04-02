@@ -62,7 +62,8 @@
       "total_costs": "Total costs (actually)",
       "total_incomes": "Total incomes",
       "total_penalty_funds": "Penalties",
-      "common_task_progress": "Common tasks progress"
+      "common_task_progress": "Common tasks progress",
+      "progress": "Progress"
     }
   },
   "HeaderProfile": {

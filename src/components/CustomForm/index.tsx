@@ -8,8 +8,9 @@ import type { FormLayout } from 'antd/es/form/Form'
 import type { Rule } from 'rc-field-form/lib/interface'
 import type { Store } from 'rc-field-form/lib/interface'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectPrefix } from '@redux/PhonePrefix/selectors'
+import { setSetFieldsValue } from '@redux/CurrentForm/slice'
 
 import { useTranslation } from 'react-i18next'
 
@@ -90,6 +91,7 @@ type CustomFormProps = {
   btnClass?: string
   initialValues?: Store
   layout?: FormLayout
+  entityId?: number
 }
 
 export const CustomForm: React.FC<CustomFormProps> = ({
@@ -103,11 +105,24 @@ export const CustomForm: React.FC<CustomFormProps> = ({
   btnClass = '',
   initialValues = {},
   layout = 'vertical',
+  entityId = undefined,
 }) => {
   const [translated_phrase] = useTranslation('global')
+  const dispatch = useDispatch()
+  console.log(`formItems = `)
+  console.log(formItems)
+  //   console.log(formItems[0].component)
 
   const prefix = useSelector(selectPrefix)
+  //   const form1 = Form.useForm()
   const [form] = Form.useForm()
+  //   console.log(`form = `)
+  //   console.log(typeof form)
+  //   console.log(form)
+  //   console.log(JSON.stringify(form))
+  //   console.log(Object.keys(form))
+
+  dispatch(setSetFieldsValue(form.setFieldsValue))
 
   //   type TState = {
   //     submit: boolean
@@ -130,9 +145,16 @@ export const CustomForm: React.FC<CustomFormProps> = ({
   }
 
   const values = Form.useWatch([], form)
+  console.log(`values = ${values}`)
+  console.log(values)
 
   const { mutate, data, isPending, isSuccess, isError, variables } =
-    useAPIMutation(requestData.groupClass, requestData.groupMethod, values)
+    useAPIMutation(
+      requestData.groupClass,
+      requestData.groupMethod,
+      values,
+      entityId
+    )
 
   //   React.useEffect(function () {}, [])
 
@@ -172,6 +194,9 @@ export const CustomForm: React.FC<CustomFormProps> = ({
               label={translated_phrase(`Form.${formItem.name}`)}
               name={formItem.name}
               rules={formItem.rules}
+              valuePropName={
+                formItem.name.includes('check') ? 'checked' : undefined
+              }
             >
               {formItem.component}
             </Form.Item>

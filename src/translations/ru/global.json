@@ -62,7 +62,8 @@
       "total_costs": "Расходы (фактически)",
       "total_incomes": "Общий доходы",
       "total_penalty_funds": "Штрафные взыскания",
-      "common_task_progress": "Общий прогресс выполнения задач"
+      "common_task_progress": "Общий прогресс выполнения задач",
+      "progress": "Прогресс"
     }
   },
   "HeaderProfile": {

@@ -3,30 +3,19 @@ import { CustomerCompanyGroup } from '@api/models/customerCompany/queryGroup'
 
 export type Groups = typeof ProjectGroup | typeof CustomerCompanyGroup
 
-// import { ProjectTypeGroup } from '@api/models/projectType/queryGroup'
-
-enum SelectFilterLangEnum {
-  PROJECT = 'project',
-  CUSTOMER_COMPANY = 'customerCompany',
-}
 export enum SelectFilterTypeEnum {
   PROJECT = 'project',
   CUSTOMER_COMPANY = 'customerCompany',
 }
 
-const getValueByKeyForStringEnum = (
-  value: keyof typeof SelectFilterTypeEnum
-) => {
-  return {
-    type:
-      Object.entries(SelectFilterTypeEnum).find(
-        ([key]) => key === value
-      )?.[1] ?? 'select',
-    lang_code:
-      Object.entries(SelectFilterLangEnum).find(
-        ([key]) => key === value
-      )?.[1] ?? 'no_phrase',
-    group: getSelectFilterGroup(value),
+const getSelectFilterLangCode = (value: keyof typeof SelectFilterTypeEnum) => {
+  switch (value) {
+    case 'PROJECT':
+      return 'project'
+    case 'CUSTOMER_COMPANY':
+      return 'customerCompany'
+    default:
+      return 'no_phrase'
   }
 }
 
@@ -40,6 +29,19 @@ const getSelectFilterGroup = (
       return CustomerCompanyGroup
     // default:
     //   return ''
+  }
+}
+
+const getValueByKeyForStringEnum = (
+  value: keyof typeof SelectFilterTypeEnum
+) => {
+  return {
+    type:
+      Object.entries(SelectFilterTypeEnum).find(
+        ([key]) => key === value
+      )?.[1] ?? 'select',
+    lang_code: getSelectFilterLangCode(value),
+    group: getSelectFilterGroup(value),
   }
 }
 

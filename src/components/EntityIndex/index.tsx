@@ -2,7 +2,16 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 
-import { Row, Space, Flex, Button, Tag, Popover } from 'antd'
+import {
+  Row,
+  Space,
+  Flex,
+  Button,
+  Tag,
+  Popover,
+  Table,
+  type TableColumnsType,
+} from 'antd'
 
 import { useReactive } from 'ahooks'
 
@@ -11,6 +20,7 @@ import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectPerPage } from '@redux/CurrentUser/selectors'
 import { setPageIsLoaded } from '@redux/PageLoading/slice'
+import type { ViewType } from '@redux/TasksView/types'
 
 import type { GroupClass } from '@api/common/types/TGroups'
 import { useAPIQuery } from '@api/useAPIQuery'
@@ -23,12 +33,14 @@ import { type Filters, Filter } from '@components/Filter'
 import { type RequestSortState, Sort } from '@components/Sort'
 import { CustomSearch } from './CustomSearch'
 import { CustomPagination } from '@components/CustomPagination'
+import { AlertCard } from '@components/AlertCard'
 
 import { getMethod } from '@utils/getMethod'
 import { convert2string, seconds2Time, SetPageTitle } from '@utils/helpers'
 import { useGetStateCurrentPageFilters } from '@utils/useGetStateCurrentPageFilters'
 import { getIcon } from '@utils/getIcon'
 import { COMMON_CREATING } from '@utils/constants/routes'
+import { getCheckboxFilterType } from '@utils/getCheckboxFilterType'
 
 type EntityIndexProps = {
   pageTitleCode: string
@@ -36,6 +48,9 @@ type EntityIndexProps = {
   entityFilters: Filters
   FormContent: (entity: any) => React.ReactNode
   actionIndexes: number[]
+  extraTopComponents?: React.ReactNode[]
+  viewType?: ViewType
+  state?: TState
 }
 
 export const EntityIndex: React.FC<EntityIndexProps> = ({
@@ -44,6 +59,9 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
   entityFilters,
   FormContent,
   actionIndexes,
+  extraTopComponents,
+  viewType,
+  state,
 }) => {
   const [translated_phrase] = useTranslation('global')
   SetPageTitle(translated_phrase(pageTitleCode))
@@ -77,15 +95,22 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
   const filters = useGetStateCurrentPageFilters()
   //   console.log('FILTERS: ', filters)
 
-  const { data, isLoading, isFetching, refetch, isRefetching, isPending } =
-    useAPIQuery(groupClass, getMethod('INDEX'), {
-      page: requestPageState.value,
-      query: requestQueryState.value,
-      query_fields: requestQueryFieldsState.value,
-      filters: filters,
-      sort_by: requestSortState.sortByFiledName,
-      sort_direction: requestSortState.sortDirection,
-    })
+  const {
+    data,
+    isLoading,
+    isFetching,
+    refetch,
+    isRefetching,
+    isPending,
+    error,
+  } = useAPIQuery(groupClass, getMethod('INDEX'), {
+    page: requestPageState.value,
+    query: requestQueryState.value,
+    query_fields: requestQueryFieldsState.value,
+    filters: filters,
+    sort_by: requestSortState.sortByFiledName,
+    sort_direction: requestSortState.sortDirection,
+  })
 
   //   console.log('isLoading: ', isLoading)
   //   console.log('isFetching: ', isFetching)
@@ -103,7 +128,7 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
     isPending: isPendingMutationRestore,
   } = useAPIMutation(groupClass, getMethod('RESTORE'), {})
 
-  console.log('data: ', data)
+  //   console.log('data: ', data)
 
   React.useEffect(() => {
     dispatch(setPageIsLoaded(!isLoading && !isFetching))
@@ -121,8 +146,13 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
           entity.deleted_at
             ? mutateAsyncRestore(entity.id).then(() => refetch())
             : mutateAsyncDelete(entity.id).then(() => refetch())
-        }
+        },
+        entity.project?.id
       ),
+      grid:
+        !viewType || viewType === 'list'
+          ? undefined
+          : { xs: 24, lg: 24, xl: 24, xxl: 24 },
     })
   }
 
@@ -162,6 +192,85 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
     )
   }
 
+  //
+  let tasksViewScrum = <></>
+  //   console.log(1111111, tasksViewScrum)
+  const taskStatuses = useAPIQuery(
+    getCheckboxFilterType('TASK_STATUS').group,
+    getMethod('INDEX')
+  )
+  if (viewType === 'scrum') {
+    interface DataType {
+      // key: React.Key
+      // name: string
+      [name: string]: any
+    }
+    const rows: DataType[] = []
+
+    data?.data?.map((entity: any, i: number) => {
+      let createNewRow = true
+      //   console.log(235235, entity.status)
+
+      if (!rows.length) {
+        rows.push({
+          key: rows.length + 1,
+          [entity.status.lang_code]: (
+            <Row justify='start'>{<Card key={i} entity={entity} />}</Row>
+          ),
+        })
+        return
+      }
+      rows.map(row => {
+        if (typeof row[entity.status.lang_code] === 'undefined') {
+          row[entity.status.lang_code] = (
+            <Row justify='start'>{<Card key={i} entity={entity} />}</Row>
+          )
+          createNewRow = false
+          return
+        }
+      })
+      if (createNewRow) {
+        rows.push({
+          key: rows.length + 1,
+          [entity.status.lang_code]: (
+            <Row justify='start'>{<Card key={i} entity={entity} />}</Row>
+          ),
+        })
+      }
+      // return
+    })
+
+    const columns: TableColumnsType<DataType> = []
+    taskStatuses?.data?.map(taskStatus => {
+      columns.push({
+        title: translated_phrase(taskStatus.lang_code),
+        dataIndex: taskStatus.lang_code,
+        key: taskStatus.id,
+      })
+    })
+
+    const newColumns = columns.map(item => ({
+      ...item,
+      hidden: !state?.checkedList.includes(item.key as number),
+    }))
+    tasksViewScrum = (
+      <>
+        <Table
+          // loading
+          bordered
+          // virtual
+          scroll={{ x: 1900, y: 1000 }}
+          columns={newColumns}
+          dataSource={rows}
+          //   style={{ marginTop: 24 }}
+          pagination={false}
+        />
+      </>
+    )
+  }
+
+  //
+
   return (
     <>
       <Flex justify='space-between'>
@@ -176,6 +285,7 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
             isLoading={isLoading || isFetching}
             sortAttributes={data?.meta.sort_attributes}
           />
+          {extraTopComponents?.map(topComponent => topComponent)}
         </Space>
         {/* <Flex justify='flex-center'>
           <Tag
@@ -235,9 +345,11 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
       />
       <Row style={{ marginTop: 20 }} justify='start'>
         {!isLoading /*&& !isFetching */ &&
+          (!viewType || viewType === 'list') &&
           data?.data?.map((entity: any, i: number) => (
             <Card key={i} entity={entity} />
           ))}
+        {!isLoading && viewType === 'scrum' && tasksViewScrum}
         {
           /*(*/ isLoading /* || isFetching)*/ &&
             [...Array(perPage)]?.map((skeleton, i) => (
@@ -250,6 +362,15 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
             ))
         }
       </Row>
+      {error && (
+        <AlertCard
+          message={error.response?.statusText}
+          description={error.message}
+          icon={<i className={getIcon('ERROR')}></i>}
+          type='danger'
+          col={false}
+        />
+      )}
       <CustomPagination
         requestPageState={requestPageState}
         total={data?.meta.total}

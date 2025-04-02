@@ -41,7 +41,8 @@ export const getCustomForm = (
   methodType: string,
   btnIcon: string,
   btnText: string,
-  initialValues?: Store
+  initialValues?: Store,
+  entityId?: number
 ) => (
   <CustomForm
     name='entityCreateEdit'
@@ -57,5 +58,6 @@ export const getCustomForm = (
     }}
     btnIcon={btnIcon}
     btnText={btnText}
+    entityId={entityId}
   />
 )

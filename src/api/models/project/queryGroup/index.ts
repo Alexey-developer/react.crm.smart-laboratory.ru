@@ -2,8 +2,9 @@ import { APIBase } from '@api/common/abstract/APIBase'
 import { ICRUDModel, type ID } from '@api/common/interfaces/ICRUDModel'
 import { RequestResult } from '@api/common/responseModels/requestResult'
 
-import { TProjectResponse } from '../responseModels/TProjectResponse'
-import { TProjectParams } from '../params/TProjectParams'
+import type { TProjectResponse } from '../responseModels/TProjectResponse'
+import type { TProjectParams } from '../params/TProjectParams'
+import type { TProject } from '../type/TProject'
 
 export class ProjectGroup extends APIBase implements ICRUDModel {
   readonly _URI: string
@@ -28,25 +29,34 @@ export class ProjectGroup extends APIBase implements ICRUDModel {
 
     return result
   }
-  store = async (): Promise<RequestResult<TProjectResponse>> => {
-    const result = await this.post<TProjectResponse>(`${this._URI}`)
+
+  store = async (
+    project: TProject
+  ): Promise<RequestResult<TProjectResponse>> => {
+    const result = await this.post<TProjectResponse>(`${this._URI}`, project)
 
     return result
   }
-  update = async (id: number): Promise<RequestResult<TProjectResponse>> => {
-    const result = await this.put<TProjectResponse>(`${this._URI}/${id}`)
+
+  update = async (
+    project: TProject
+  ): Promise<RequestResult<TProjectResponse>> => {
+    const result = await this.put<TProjectResponse>(
+      `${this._URI}/${project.id}`,
+      project
+    )
 
     return result
   }
+
   destroy = async (id: number): Promise<RequestResult<TProjectResponse>> => {
     const result = await this.delete<TProjectResponse>(`${this._URI}/${id}`)
 
     return result
   }
+
   restore = async (id: number): Promise<RequestResult<TProjectResponse>> => {
-    const result = await this.post<TProjectResponse>(
-      `${this._URI}/${id}/${this._restoreUri}`
-    )
+    const result = await this.Restore<TProjectResponse>(`${this._URI}/${id}`)
 
     return result
   }

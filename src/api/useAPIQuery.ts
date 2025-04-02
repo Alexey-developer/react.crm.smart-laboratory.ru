@@ -57,6 +57,14 @@ export const useAPIQuery = (
     queryKey += `/page=${params.page}`
   }
   if (params.filters) {
+    const statusKey = Object.keys(params.filters).find(key =>
+      key.includes('_status')
+    )
+    if (statusKey) {
+      params.filters['status'] = params.filters[statusKey]
+      delete params.filters[statusKey]
+    }
+
     queryKey += `/filters=${JSON.stringify(params.filters)}`
   }
   if (params.sort_by && params.sort_direction) {
@@ -68,7 +76,7 @@ export const useAPIQuery = (
   if (params.id) {
     queryKey += `/id=${params.id}`
   }
-  console.log(queryKey)
+  console.log(`queryKey = ${queryKey}`)
 
   const {
     data,
@@ -150,5 +158,6 @@ export const useAPIQuery = (
     refetch,
     isRefetching,
     isPending,
+    error,
   }
 }

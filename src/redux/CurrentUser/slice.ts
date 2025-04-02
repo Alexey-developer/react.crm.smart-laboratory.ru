@@ -3,7 +3,7 @@ import type { ICurrentUserSliceState, AuthToken, PerPage } from './types'
 
 const initialState: ICurrentUserSliceState = {
   authToken: localStorage.getItem('authToken') ?? '',
-  perPage: parseInt(localStorage.getItem('perPage') ?? '15') as PerPage,
+  perPage: parseInt(localStorage.getItem('perPage') ?? '16') as PerPage,
 }
 
 const currentUserSlice = createSlice({

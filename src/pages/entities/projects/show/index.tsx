@@ -49,10 +49,17 @@ export const ProjectPage: React.FC = () => {
 
   const dispatch = useDispatch()
 
-  const { data, isLoading, isFetching, refetch, isRefetching, isPending } =
-    useAPIQuery(ProjectGroup, getMethod('SHOW'), {
-      id: entityId,
-    })
+  const {
+    data,
+    isLoading,
+    isFetching,
+    refetch,
+    isRefetching,
+    isPending,
+    error,
+  } = useAPIQuery(ProjectGroup, getMethod('SHOW'), {
+    id: entityId,
+  })
 
   const project = data?.data
   console.log(project)
@@ -213,13 +220,23 @@ export const ProjectPage: React.FC = () => {
             translated_phrase(project.type.lang_code)
           )}
         />
-      ) : (
+      ) : isLoading ? (
         <DefaultCard
           grid={{ xs: 24, lg: 24, xl: 24, xxl: 24 }}
           isLoading={true}
           title=''
           content={<></>}
         />
+      ) : (
+        error && (
+          <AlertCard
+            message={error.response?.statusText}
+            description={error.message}
+            icon={<i className={getIcon('ERROR')}></i>}
+            type='danger'
+            col={false}
+          />
+        )
       )}
       <Skeleton
         isLoading={isLoading}

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Checkbox } from 'antd'
 import type { CheckboxOptionType, TableColumnsType } from 'antd'
 
@@ -17,7 +16,9 @@ import {
   getCheckboxFilterType,
 } from '@utils/getCheckboxFilterType'
 
-export const CheckboxFilter = (type: keyof typeof CheckboxFilterTypeEnum) => {
+export type CheckboxFilterType = keyof typeof CheckboxFilterTypeEnum
+
+export const CheckboxFilter = (type: CheckboxFilterType) => {
   const [translated_phrase] = useTranslation('global')
 
   const { data, isLoading, isFetching } = useAPIQuery(
@@ -43,24 +44,21 @@ export const CheckboxFilter = (type: keyof typeof CheckboxFilterTypeEnum) => {
     })
   })
 
-  const defaultCheckedList = columns.map(item => item.key as string)
-  const [checkedList, setCheckedList] = React.useState(defaultCheckedList)
-
   const options = columns.map(({ key, title }) => ({
     label: title,
     value: key,
   }))
+  console.log(`options = `)
+  console.log(options)
 
   return {
     groupName: translated_phrase(getCheckboxFilterType(type).lang_code),
     filedName: getCheckboxFilterType(type).type,
     content: (
       <Checkbox.Group
-        value={checkedList}
         options={options as CheckboxOptionType[]}
-        onChange={value => {
-          setCheckedList(value as string[])
-        }}
+        // onChange={value => {
+        // }}
       />
     ),
   }

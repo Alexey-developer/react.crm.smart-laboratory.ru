@@ -8,6 +8,8 @@ import { Skeleton } from '@components/Skeleton'
 import { formSkeleton } from './formSkeleton'
 import styles from './index.module.scss'
 
+export type Grid = { xs: number; lg: number; xl: number; xxl: number }
+
 export type DefaultCardProps = {
   title: React.ReactNode
   badgeRibbonText?: string
@@ -18,7 +20,7 @@ export type DefaultCardProps = {
   isLoading?: boolean
   hoverable?: boolean
   type?: 'default' | 'success' | 'warning' | 'danger'
-  grid?: { xs: number; lg: number; xl: number; xxl: number }
+  grid?: Grid
 }
 
 export const DefaultCard: React.FC<DefaultCardProps> = ({

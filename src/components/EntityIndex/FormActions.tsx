@@ -7,12 +7,13 @@ import { useTranslation } from 'react-i18next'
 import { ActionButton } from '@components/ActionButton'
 
 import { getIcon } from '@utils/getIcon'
-import { COMMON_EDITING, TASKS } from '@utils/constants/routes'
+import { COMMON_EDITING, TASKS, PROJECTS } from '@utils/constants/routes'
 
 export const FormActions = (
   entityId: number,
   actionIndexes: number[],
-  onConfirm: () => void
+  onConfirm: () => void,
+  parentEntityId?: number
 ) => {
   const [translated_phrase] = useTranslation('global')
   const location = useLocation()
@@ -65,6 +66,17 @@ export const FormActions = (
           icon={getIcon('TASKS')}
         />
       </Badge>
+    </Link>,
+    <Link to={`/${PROJECTS}/${parentEntityId}`}>
+      <ActionButton
+        className='transparent'
+        title={translated_phrase('MenuItems.projects').substring(
+          0,
+          translated_phrase('MenuItems.projects').length - 1
+        )}
+        shape='circle'
+        icon={getIcon('PROJECTS')}
+      />
     </Link>,
   ]
 
