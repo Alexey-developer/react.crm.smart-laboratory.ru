@@ -10,7 +10,6 @@ import type { Store } from 'rc-field-form/lib/interface'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { selectPrefix } from '@redux/PhonePrefix/selectors'
-import { setSetFieldsValue } from '@redux/CurrentForm/slice'
 
 import { useTranslation } from 'react-i18next'
 
@@ -29,6 +28,7 @@ interface SubmitButtonProps {
   form: FormInstance
   btnIcon: string
   btnClass: string
+  isPending: boolean
 }
 
 const SubmitButton: React.FC<React.PropsWithChildren<SubmitButtonProps>> = ({
@@ -36,6 +36,7 @@ const SubmitButton: React.FC<React.PropsWithChildren<SubmitButtonProps>> = ({
   btnIcon,
   btnClass,
   children,
+  isPending,
 }) => {
   type TState = {
     submittable: boolean
@@ -65,7 +66,7 @@ const SubmitButton: React.FC<React.PropsWithChildren<SubmitButtonProps>> = ({
       //   htmlType='button'
       className={`smart-btn ${btnClass}`}
       icon={<i className={getIcon(btnIcon)}></i>}
-      disabled={!state.submittable}
+      disabled={!state.submittable || isPending}
     >
       {children}
     </Button>
@@ -121,8 +122,6 @@ export const CustomForm: React.FC<CustomFormProps> = ({
   //   console.log(form)
   //   console.log(JSON.stringify(form))
   //   console.log(Object.keys(form))
-
-  dispatch(setSetFieldsValue(form.setFieldsValue))
 
   //   type TState = {
   //     submit: boolean
@@ -204,7 +203,12 @@ export const CustomForm: React.FC<CustomFormProps> = ({
           <Form.Item
           //   wrapperCol={{ offset: 8, span: 16 }}
           >
-            <SubmitButton form={form} btnIcon={btnIcon} btnClass={btnClass}>
+            <SubmitButton
+              form={form}
+              btnIcon={btnIcon}
+              btnClass={btnClass}
+              isPending={isPending}
+            >
               {translated_phrase(btnText)}
             </SubmitButton>
           </Form.Item>

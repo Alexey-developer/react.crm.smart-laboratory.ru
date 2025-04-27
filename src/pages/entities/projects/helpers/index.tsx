@@ -3,7 +3,7 @@ import type { FormInstance } from 'antd/lib'
 const { TextArea } = Input
 
 import type { FormItem } from '@components/CustomForm'
-import { CustomSimpleSelect } from '@components/CustomSelect'
+import { CustomSimpleSelect } from '@components/CustomSimpleSelect'
 
 import { getIcon } from '@utils/getIcon'
 import { constants } from '@utils/constants/constants.json'
@@ -14,33 +14,24 @@ export const getFormItems = (
   const formItems: FormItem[] = [
     {
       name: 'status_id',
-      rules: [
-        // { required: true }
-      ],
+      rules: [{ required: true }],
       component: (
         <CustomSimpleSelect
           type='PROJECT_STATUS'
           name='status_id'
-          //   onChange={(value: number) => {
-          //     form.setFieldsValue({ status_id: value })
-          //   }}
           defaultValue={defaultValue[0]}
         />
       ),
     },
     {
       name: 'type_id',
-      rules: [
-        // { required: true }
-      ],
+      rules: [{ required: true }],
       component: (
         <CustomSimpleSelect
           type='PROJECT_TYPE'
           name='type_id'
-          //   onChange={(value: number) => {
-          //     form.setFieldsValue({ type_id: value })
-          //   }}
           defaultValue={defaultValue[1]}
+          mode='multiple'
         />
       ),
     },
@@ -60,7 +51,7 @@ export const getFormItems = (
     },
     {
       name: 'description',
-      rules: [],
+      rules: [{ max: constants.MAX_TEXT_INPUT_LENGTH }],
       component: <TextArea maxLength={constants.MAX_TEXT_INPUT_LENGTH} />,
     },
     {
@@ -75,12 +66,12 @@ export const getFormItems = (
     },
     {
       name: 'comment',
-      rules: [],
+      rules: [{ max: constants.MAX_TEXT_INPUT_LENGTH }],
       component: <TextArea maxLength={constants.MAX_TEXT_INPUT_LENGTH} />,
     },
     {
       name: 'customer_visible_comment',
-      rules: [],
+      rules: [{ max: constants.MAX_TEXT_INPUT_LENGTH }],
       component: <TextArea maxLength={constants.MAX_TEXT_INPUT_LENGTH} />,
     },
     {
