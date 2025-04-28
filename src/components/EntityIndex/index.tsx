@@ -11,7 +11,10 @@ import {
   Popover,
   Table,
   type TableColumnsType,
+  Tabs,
 } from 'antd'
+
+import type { Tab } from 'rc-tabs/lib/interface.d.ts'
 
 import { useReactive } from 'ahooks'
 
@@ -177,7 +180,8 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
         className = 'warning transparent'
         break
       case 'common':
-        value = (attribute.value / data?.meta.total).toFixed(2)
+        // value = (attribute.value / data?.meta.total).toFixed(2)
+        value = attribute.value
         icon = getIcon('INFO')
         className = 'success'
         break
@@ -269,6 +273,49 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
     )
   }
 
+  const tabs: Tab[] = [
+    {
+      key: '1',
+      label: 'total',
+      children: (
+        <Space direction='vertical'>
+          {data?.meta.total_calculations.map(
+            (attribute: Attribute, index: number) => (
+              <Calculation key={index} attribute={attribute} />
+            )
+          )}
+        </Space>
+      ),
+      icon: '',
+    },
+    {
+      key: '2',
+      label: 'average',
+      children: (
+        <Space direction='vertical'>
+          {data?.meta.average_calculations.map(
+            (attribute: Attribute, index: number) => (
+              <Calculation key={index} attribute={attribute} />
+            )
+          )}
+        </Space>
+      ),
+      icon: '',
+    },
+  ]
+
+  // <Space direction='vertical'>
+  //   {data?.meta.total_calculations.map(
+  //     (attribute: Attribute, index: number) => (
+  //       <Calculation key={index} attribute={attribute} />
+  //     )
+  //   )}
+  //   {data?.meta.average_calculations.map(
+  //     (attribute: Attribute, index: number) => (
+  //       <Calculation key={index} attribute={attribute} />
+  //     )
+  //   )}
+  // </Space>
   //
 
   return (
@@ -305,13 +352,32 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
               placement='bottom'
               // onOpenChange={onPopoverOpenChangeHandler}
               content={
-                <Space direction='vertical'>
-                  {data?.meta.total_calculations.map(
-                    (attribute: Attribute, index: number) => (
-                      <Calculation key={index} attribute={attribute} />
-                    )
-                  )}
-                </Space>
+                <Tabs
+                  defaultActiveKey='1'
+                  items={tabs}
+                  // items={[AppleOutlined, AndroidOutlined].map((Icon, i) => {
+                  //   const id = String(i + 1);
+                  //   return {
+                  //     key: id,
+                  //     label: `Tab ${id}`,
+                  //     children: `Tab ${id}`,
+                  //     icon: <Icon />,
+                  //   };
+                  // })}
+                />
+
+                // <Space direction='vertical'>
+                //   {data?.meta.total_calculations.map(
+                //     (attribute: Attribute, index: number) => (
+                //       <Calculation key={index} attribute={attribute} />
+                //     )
+                //   )}
+                //   {data?.meta.average_calculations.map(
+                //     (attribute: Attribute, index: number) => (
+                //       <Calculation key={index} attribute={attribute} />
+                //     )
+                //   )}
+                // </Space>
               }
             >
               <Button
