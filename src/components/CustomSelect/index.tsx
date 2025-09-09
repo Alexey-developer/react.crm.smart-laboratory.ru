@@ -16,9 +16,15 @@ import { constants } from '@utils/constants/constants.json'
 
 type CustomSelectProps = {
   type: keyof typeof SelectFilterTypeEnum
+  mode?: 'multiple'
+  name?: string
 }
 
-export const CustomSelect: React.FC<CustomSelectProps> = ({ type }) => {
+export const CustomSelect: React.FC<CustomSelectProps> = ({
+  type,
+  mode,
+  name,
+}) => {
   const state = useReactive<{
     requestPage: number
     options: { label: string; value: number }[]
@@ -69,6 +75,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({ type }) => {
   const onPopupScrollHandler = async (
     event: React.UIEvent<HTMLDivElement, UIEvent>
   ) => {
+    if (!data) return
     state.requestPage = state.searchValue
       ? state.searchedOptionsPage /* + 1*/
       : state.optionsPage
@@ -120,9 +127,9 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({ type }) => {
   }
 
   return (
-    <Form.Item name={getSelectFilterType(type).type} noStyle>
+    <Form.Item name={name ?? getSelectFilterType(type).type} noStyle>
       <Select
-        mode='multiple'
+        mode={mode}
         //   value={1}
         loading={isLoading || isFetching}
         showSearch

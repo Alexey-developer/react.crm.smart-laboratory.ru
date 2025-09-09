@@ -18,7 +18,7 @@ type CustomSimpleSelectProps = {
   type: CheckboxFilterType
   name: string
   defaultValue?: number
-  mode?: 'multiple' | undefined
+  mode?: 'multiple'
 }
 
 export const CustomSimpleSelect: React.FC<CustomSimpleSelectProps> = ({

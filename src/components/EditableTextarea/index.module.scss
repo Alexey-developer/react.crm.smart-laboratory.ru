@@ -1,0 +1,16 @@
+@import '@utils/scss/variables.scss';
+
+:global {
+  .jodit_theme_dark_custom {
+    --jd-color-background-default: rgba(15, 20, 34, 0.95);
+    --jd-color-border: rgba(208, 212, 241, 0.68);
+    --jd-color-panel: rgba(15, 20, 34, 0.9);
+    --jd-color-icon: rgba(208, 212, 241, 0.68);
+  }
+  .jodit_theme_light_custom {
+    --jd-color-background-default: rgba(47, 43, 61, 0.1);
+    --jd-color-border: rgba(47, 43, 61, 0.68);
+    --jd-color-panel: rgba(47, 43, 61, 0.15);
+    --jd-color-icon: rgba(47, 43, 61, 0.68);
+  }
+}

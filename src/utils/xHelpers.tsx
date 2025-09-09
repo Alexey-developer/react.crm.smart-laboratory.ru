@@ -39,10 +39,12 @@ export const getCustomForm = (
   iconType: string,
   groupClass: GroupClass,
   methodType: string,
+  onSuccessMutation: (data) => void,
   btnIcon: string,
   btnText: string,
   initialValues?: Store,
-  entityId?: number
+  entityId?: number,
+  langSubCode?: string
 ) => (
   <CustomForm
     name='entityCreateEdit'
@@ -53,11 +55,10 @@ export const getCustomForm = (
       groupClass: groupClass,
       groupMethod: getMethod(methodType),
     }}
-    onSuccessMutation={data => {
-      // dispatch(setAuthToken(data.data.access_token))
-    }}
+    onSuccessMutation={onSuccessMutation}
     btnIcon={btnIcon}
     btnText={btnText}
     entityId={entityId}
+    langSubCode={langSubCode}
   />
 )

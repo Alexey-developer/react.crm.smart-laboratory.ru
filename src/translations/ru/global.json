@@ -34,6 +34,15 @@
     },
     "employees": "Сотрудники"
   },
+  "Messages": {
+    "Info": {
+      "switch_textarea_mode_is_available": "Доступна смена режима области ввода текста"
+    },
+    "Warnings": {
+      "switch_textarea_mode_is_not_available": "Смена режима области ввода текста не доступна, область содержит контент"
+    },
+    "Errors": {}
+  },
   "Form": {
     "phone": "Номер телефона",
     "password": "Пароль",
@@ -57,10 +66,17 @@
       "comment": "Комментарий",
       "customer_visible_comment": "Комментарий, видимый клиенту",
 
+      "status_id": "Статус",
+      "type_id": "Тип",
+      "customer_company_id": "Компания-клиент",
+
+      "check_performance": "Проверять работоспособность",
+      "check_expirations": "Проверять экспирации",
+
       "total_spent_time": "Общее затраченное время",
       "total_costs_auto": "Общие расходы (авторачёт)",
       "total_costs": "Расходы (фактически)",
-      "total_incomes": "Общий доходы",
+      "total_incomes": "Общие доходы",
       "total_penalty_funds": "Штрафные взыскания",
       "common_task_progress": "Общий прогресс выполнения задач",
       "progress": "Прогресс"
@@ -128,7 +144,10 @@
   },
   "Modes": {
     "creating": "Создание",
-    "editing": "Редактирование"
+    "editing": "Редактирование",
+
+    "simple": "Простой",
+    "advanced": "Расширенный"
   },
   "Confirm": {
     "title": "Требуется подтверждение",

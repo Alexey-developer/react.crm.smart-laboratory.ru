@@ -304,20 +304,6 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
     },
   ]
 
-  // <Space direction='vertical'>
-  //   {data?.meta.total_calculations.map(
-  //     (attribute: Attribute, index: number) => (
-  //       <Calculation key={index} attribute={attribute} />
-  //     )
-  //   )}
-  //   {data?.meta.average_calculations.map(
-  //     (attribute: Attribute, index: number) => (
-  //       <Calculation key={index} attribute={attribute} />
-  //     )
-  //   )}
-  // </Space>
-  //
-
   return (
     <>
       <Flex justify='space-between'>
@@ -351,34 +337,7 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
               //   open={open}
               placement='bottom'
               // onOpenChange={onPopoverOpenChangeHandler}
-              content={
-                <Tabs
-                  defaultActiveKey='1'
-                  items={tabs}
-                  // items={[AppleOutlined, AndroidOutlined].map((Icon, i) => {
-                  //   const id = String(i + 1);
-                  //   return {
-                  //     key: id,
-                  //     label: `Tab ${id}`,
-                  //     children: `Tab ${id}`,
-                  //     icon: <Icon />,
-                  //   };
-                  // })}
-                />
-
-                // <Space direction='vertical'>
-                //   {data?.meta.total_calculations.map(
-                //     (attribute: Attribute, index: number) => (
-                //       <Calculation key={index} attribute={attribute} />
-                //     )
-                //   )}
-                //   {data?.meta.average_calculations.map(
-                //     (attribute: Attribute, index: number) => (
-                //       <Calculation key={index} attribute={attribute} />
-                //     )
-                //   )}
-                // </Space>
-              }
+              content={<Tabs defaultActiveKey='1' items={tabs} />}
             >
               <Button
                 className={'smart-btn warning transparent'}

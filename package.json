@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host --open",
     "build": "tsc && vite build",
+    "build-error": "vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -16,7 +17,10 @@
     "antd": "5.18",
     "antd-mask-input": "^2.0.7",
     "axios": "^1.7.2",
+    "html-react-parser": "^5.2.3",
     "i18next": "^23.7.7",
+    "jodit-pro": "^4.6.4",
+    "jodit-pro-react": "^5.2.26",
     "lodash.debounce": "^4.0.8",
     "react": "^18.2.0",
     "react-content-loader": "^7.0.2",

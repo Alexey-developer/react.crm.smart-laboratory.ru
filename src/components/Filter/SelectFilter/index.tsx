@@ -13,6 +13,6 @@ export const SelectFilter = (type: keyof typeof SelectFilterTypeEnum) => {
   return {
     groupName: translated_phrase(getSelectFilterType(type).lang_code),
     filedName: getSelectFilterType(type).type,
-    content: <CustomSelect type={type} />,
+    content: <CustomSelect type={type} mode='multiple' />,
   }
 }

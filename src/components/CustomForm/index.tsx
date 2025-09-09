@@ -93,6 +93,7 @@ type CustomFormProps = {
   initialValues?: Store
   layout?: FormLayout
   entityId?: number
+  langSubCode?: string
 }
 
 export const CustomForm: React.FC<CustomFormProps> = ({
@@ -107,21 +108,15 @@ export const CustomForm: React.FC<CustomFormProps> = ({
   initialValues = {},
   layout = 'vertical',
   entityId = undefined,
+  langSubCode = '',
 }) => {
   const [translated_phrase] = useTranslation('global')
-  const dispatch = useDispatch()
   console.log(`formItems = `)
   console.log(formItems)
   //   console.log(formItems[0].component)
 
   const prefix = useSelector(selectPrefix)
-  //   const form1 = Form.useForm()
   const [form] = Form.useForm()
-  //   console.log(`form = `)
-  //   console.log(typeof form)
-  //   console.log(form)
-  //   console.log(JSON.stringify(form))
-  //   console.log(Object.keys(form))
 
   //   type TState = {
   //     submit: boolean
@@ -190,7 +185,7 @@ export const CustomForm: React.FC<CustomFormProps> = ({
               hasFeedback
               validateStatus={isPending ? 'validating' : undefined}
               key={formItem.name}
-              label={translated_phrase(`Form.${formItem.name}`)}
+              label={translated_phrase(`Form.${langSubCode}${formItem.name}`)}
               name={formItem.name}
               rules={formItem.rules}
               valuePropName={

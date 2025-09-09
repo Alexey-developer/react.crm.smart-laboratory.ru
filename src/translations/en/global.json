@@ -34,6 +34,15 @@
     },
     "employees": "Employees"
   },
+  "Messages": {
+    "Info": {
+      "switch_textarea_mode_is_available": "Textarea mode switch is available"
+    },
+    "Warnings": {
+      "switch_textarea_mode_is_not_available": "Textarea mode switch is not available, the area contains content"
+    },
+    "Errors": {}
+  },
   "Form": {
     "phone": "Phone number",
     "password": "Password",
@@ -56,6 +65,13 @@
       "website_url": "Website url",
       "comment": "Comment",
       "customer_visible_comment": "Customer visible comment",
+
+      "status_id": "Status",
+      "type_id": "Type",
+      "customer_company_id": "Customer company",
+
+      "check_performance": "Check performance",
+      "check_expirations": "Check expirations",
 
       "total_spent_time": "Total spent time",
       "total_costs_auto": "Total costs (automatic calculation)",
@@ -128,7 +144,10 @@
   },
   "Modes": {
     "creating": "Creating",
-    "editing": "Editing"
+    "editing": "Editing",
+
+    "simple": "Simple",
+    "advanced": "Advanced"
   },
   "Confirm": {
     "title": "Confirmation required",

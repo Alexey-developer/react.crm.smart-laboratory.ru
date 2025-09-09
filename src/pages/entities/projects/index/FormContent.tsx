@@ -62,7 +62,8 @@ export const FormContent = (project: TProject) => {
         className={'success'}
         icon={<i className='fa-solid fa-chart-line-up'></i>}
       >
-        {(project.total_incomes / project.total_costs_auto).toFixed(2)}
+        {project.total_costs_auto &&
+          (project.total_incomes / project.total_costs_auto).toFixed(2)}
       </Tag>
       <Tag
         className={'transparent'}

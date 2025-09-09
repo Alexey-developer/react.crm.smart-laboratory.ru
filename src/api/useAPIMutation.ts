@@ -62,7 +62,7 @@ export const useAPIMutation = (
     submittedAt,
     variables,
   } = useMutation({
-    mutationFn: (variables: any) => group[groupMethod](variables ?? params), //as keyof typeof group
+    mutationFn: (variables: any) => group[groupMethod](variables ?? params), //as keyof typeof group //variables ?? params -> не срабатывает с пустым объектом
     //   console.log('====================================')
     //   console.log(1, variables)
     //   console.log(2, params)

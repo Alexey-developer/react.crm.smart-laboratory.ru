@@ -2,7 +2,7 @@ import React from 'react'
 // import { Row, Col, Tag, Progress } from 'antd'
 
 import { useTranslation } from 'react-i18next'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useReactive } from 'ahooks'
 
 import type { Store } from 'rc-field-form/lib/interface'
@@ -18,6 +18,7 @@ import { useAPIQuery } from '@api/useAPIQuery'
 import { DefaultCard } from '@components/DefaultCard'
 import { Skeleton } from '@components/Skeleton'
 
+import * as URIs from '@utils/constants/routes'
 import { getMethod } from '@utils/getMethod'
 import { formCardExtra } from '@utils/formCardExtra'
 import { SetPageTitle } from '@utils/helpers'
@@ -36,6 +37,7 @@ export const EditProjectPage: React.FC = () => {
   )
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const { data, isLoading, isFetching, refetch, isRefetching, isPending } =
     useAPIQuery(ProjectGroup, getMethod('SHOW'), {
@@ -98,10 +100,14 @@ export const EditProjectPage: React.FC = () => {
       getIconType(),
       ProjectGroup,
       'UPDATE',
+      data => {
+        navigate(`/${URIs.PROJECTS}/${data.data.data.id}`)
+      },
       'EDIT',
       translated_phrase('Actions.edit'),
       state.initialValues,
-      entityId as number | undefined
+      entityId as number | undefined,
+      'EntitiesFields.'
     )
   }, [isLoading, isFetching])
 

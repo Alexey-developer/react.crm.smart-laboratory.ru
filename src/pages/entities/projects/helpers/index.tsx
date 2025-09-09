@@ -1,5 +1,5 @@
 import { Input, Checkbox } from 'antd'
-import type { FormInstance } from 'antd/lib'
+
 const { TextArea } = Input
 
 import type { FormItem } from '@components/CustomForm'
@@ -7,6 +7,8 @@ import { CustomSimpleSelect } from '@components/CustomSimpleSelect'
 
 import { getIcon } from '@utils/getIcon'
 import { constants } from '@utils/constants/constants.json'
+import { CustomSelect } from '@components/CustomSelect'
+import { EditableTextarea } from '@components/EditableTextarea'
 
 export const getFormItems = (
   defaultValue: number[] /*, form: FormInstance*/
@@ -31,8 +33,15 @@ export const getFormItems = (
           type='PROJECT_TYPE'
           name='type_id'
           defaultValue={defaultValue[1]}
-          mode='multiple'
+          //   mode='multiple'
         />
+      ),
+    },
+    {
+      name: 'customer_company_id',
+      rules: [{ required: true }],
+      component: (
+        <CustomSelect type='CUSTOMER_COMPANY' name='customer_company_id' />
       ),
     },
     {
@@ -67,7 +76,8 @@ export const getFormItems = (
     {
       name: 'comment',
       rules: [{ max: constants.MAX_TEXT_INPUT_LENGTH }],
-      component: <TextArea maxLength={constants.MAX_TEXT_INPUT_LENGTH} />,
+      //   component: <TextArea maxLength={constants.MAX_TEXT_INPUT_LENGTH} />,
+      component: <EditableTextarea name='comment' />,
     },
     {
       name: 'customer_visible_comment',
@@ -77,12 +87,12 @@ export const getFormItems = (
     {
       name: 'check_performance',
       rules: [],
-      component: <Checkbox>check_performance</Checkbox>,
+      component: <Checkbox></Checkbox>,
     },
     {
       name: 'check_expirations',
       rules: [],
-      component: <Checkbox>check_expirations</Checkbox>,
+      component: <Checkbox></Checkbox>,
     },
   ]
 
