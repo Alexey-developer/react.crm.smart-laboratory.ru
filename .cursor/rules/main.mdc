@@ -1,0 +1,36 @@
+---
+description: React frontend rules (smart-lab-crm)
+alwaysApply: true
+---
+
+# React CRM — Cursor rules (для запуска IDE из корня этого приложения)
+
+Полная онтология — в `../../../docs/ai/react/`. Читай перед предложением любого изменения кода.
+
+## Обязательное чтение
+
+1. `../../../docs/ai/react/rules.md` — MUST / MUST NOT
+2. `../../../docs/ai/react/overview.md` — стек и архитектура
+3. `../../../docs/ai/react/golden-paths.md` — частые сценарии
+
+## Ключевые инварианты
+
+- HTTP — **только** через `useAPIQuery`/`useAPIMutation` (не `useQuery`/`useMutation`/`fetch`/`axios` напрямую).
+- UI-state — **только** Redux Toolkit. Server-state — **только** React Query.
+- i18n — **любая** видимая строка через `translated_phrase('Key.Path')`; ключи в `src/translations/{ru,en}/global.json` синхронно.
+- Иконки — **только** через `getIcon('KEY')` (IconEnum в `@utils/getIcon.ts`).
+- Пути — **только** через `@aliases` (`@api`, `@components`, `@redux`, `@pages`, `@translations`, `@utils`, `@layouts`, `@assets`).
+- Маршруты CRUD — через `routes` массив + `formCRUDRoutes` в `App.tsx`; URI — из `@utils/constants/routes`.
+- SCSS — переменные из `@utils/scss/variables.scss`; темы — через `[data-theme='dark']`.
+
+## Слои
+
+При работе с конкретным слоем (api/components/pages/routing/redux/i18n/styles/skeleton/icons/utils/layout) — открой соответствующий файл в `../../../docs/ai/react/layers/`.
+
+## Legacy
+
+Папка `../../../../crm.smart-laboratory.ru/` (в корне монорепо) — заморожена. Не редактируется.
+
+## Язык
+
+Пояснения — на русском, имена классов/файлов/код — на английском.
