@@ -15,7 +15,8 @@ export abstract class APIBase {
     this._token = token
 
     this._httpClient = axios.create({
-      baseURL: constants.BASE_URL,
+      //   baseURL: constants.BASE_URL,
+      baseURL: `${import.meta.env.VITE_API_URL}/api/v1`,
       //   timeout: GlobalConstants.RequestTimeout,
     })
     this._httpClient.defaults.headers.post['Content-Type'] =

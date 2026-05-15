@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: crm_frontend_dev
+    working_dir: /app
+    volumes:
+      - .:/app
+      # отдельный volume для node_modules внутри контейнера
+      - /app/node_modules
+    ports:
+      - '5173:5173'
+    environment:
+      # Фронту нужно знать, куда ходить за API
+      # Для Vite — все переменные должны начинаться с VITE_
+      VITE_API_URL: 'http://localhost:8000'
+    command: >
+      sh -c "
+      echo 'Installing dependencies in container...' &&
+      npm install &&
+      npm run dev -- --host 0.0.0.0 --port 5173
+      "
