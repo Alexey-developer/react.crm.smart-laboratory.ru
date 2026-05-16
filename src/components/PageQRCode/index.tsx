@@ -24,6 +24,9 @@ export const PageQRCode: React.FC = () => {
           color={
             currentTheme === 'dark' ? 'rgba(208, 212, 241)' : 'rgba(47, 43, 61)'
           }
+          // antd v6: без явного bgColor рендерится прозрачный canvas — светлые точки
+          // QR в dark-теме невидимы на белом popover. Задаём фон под тему.
+          bgColor={currentTheme === 'dark' ? 'rgb(47, 51, 73)' : '#ffffff'}
           //   type='svg'
         />
       }
