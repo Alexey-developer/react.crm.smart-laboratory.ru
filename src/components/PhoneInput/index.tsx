@@ -70,10 +70,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({ nextInputRef }) => {
           onChange={onChangePrefixHandler}
           // defaultValue={prefix}
           // defaultActiveFirstOption={prefix === 7}
-          // antd v6: Select получил padding 4px 11px на корне → раньше .ant-input-group-addon
-          // делал его 120px и было ок, теперь "+7" + стрелка визуально занимают мало,
-          // а select занимает 120px → выходит за границы addon. Задаём явную ширину.
-          style={{ width: 80 }}
+          //   style={{ width: 130 }}
         >
           {options.map(option => option)}
         </Select>
