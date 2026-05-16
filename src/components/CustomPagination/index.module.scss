@@ -27,12 +27,16 @@
     }
 
     .ant-select {
-      .ant-select-selector {
+      // antd v6: ant-select-selector → ant-select-content; ant-select-arrow → ant-select-suffix.
+      // ant-select-selection-item больше нет — текст рендерится прямо в ant-select-content.
+      .ant-select-selector,
+      .ant-select-content {
         background-color: $DEFAULT_COLOR !important;
         border: none !important;
         color: #fff;
       }
       .ant-select-arrow,
+      .ant-select-suffix,
       .ant-select-selection-item {
         color: #fff !important;
         cursor: pointer;
