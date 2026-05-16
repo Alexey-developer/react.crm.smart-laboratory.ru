@@ -606,6 +606,56 @@
     }
   }
 
+  // antd v6 Checkbox: убран .ant-checkbox-inner, визуальный квадратик
+  // теперь на самом .ant-checkbox (через background/border). Default bg белый — перекрываем.
+  // Также добавлены legacy v5 .ant-checkbox-inner для совместимости.
+  .ant-checkbox {
+    background-color: $DARK_ELEMENT_BG !important;
+    border-color: rgba($DARK_COLOR, 0.4) !important;
+    .ant-checkbox-inner {
+      background-color: $DARK_ELEMENT_BG !important;
+      border-color: rgba($DARK_COLOR, 0.4) !important;
+    }
+    &.ant-checkbox-checked {
+      background-color: $DEFAULT_COLOR !important;
+      border-color: $DEFAULT_COLOR !important;
+      .ant-checkbox-inner {
+        background-color: $DEFAULT_COLOR !important;
+        border-color: $DEFAULT_COLOR !important;
+      }
+    }
+    &.ant-checkbox-disabled {
+      background-color: rgba($DARK_COLOR, 0.08) !important;
+      border-color: rgba($DARK_COLOR, 0.16) !important;
+      .ant-checkbox-inner {
+        background-color: rgba($DARK_COLOR, 0.08) !important;
+        border-color: rgba($DARK_COLOR, 0.16) !important;
+      }
+    }
+  }
+  .ant-checkbox-wrapper {
+    color: $DARK_COLOR;
+    &:hover .ant-checkbox,
+    &:hover .ant-checkbox .ant-checkbox-inner {
+      border-color: $DEFAULT_COLOR !important;
+    }
+  }
+
+  // antd v6 Radio.Button: default bg белый — переопределяем в dark
+  .ant-radio-button-wrapper {
+    background-color: $DARK_ELEMENT_BG !important;
+    color: $DARK_COLOR;
+    border-color: rgba($DARK_COLOR, 0.16) !important;
+    &-checked {
+      background-color: $DEFAULT_COLOR !important;
+      color: #fff !important;
+      border-color: $DEFAULT_COLOR !important;
+    }
+    &:hover {
+      color: $DARK_HOVER_COLOR;
+    }
+  }
+
   // antd v6 Table в dark-теме: default фон белый — перекрываем
   .ant-table {
     background: $DARK_ELEMENT_BG !important;

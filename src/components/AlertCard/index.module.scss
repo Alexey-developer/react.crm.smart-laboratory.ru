@@ -4,8 +4,10 @@
   .ant-alert {
     background: $DEFAULT_COLOR;
     border: none;
+    // antd v6: .ant-alert-message → .ant-alert-title (заголовок алерта)
     .ant-alert-icon,
     .ant-alert-message,
+    .ant-alert-title,
     .ant-alert-description,
     .ant-alert-close-icon span {
       color: #fff;
@@ -39,6 +41,7 @@
         &,
         .ant-alert-icon,
         .ant-alert-message,
+        .ant-alert-title,
         .ant-alert-description,
         .ant-alert-close-icon {
           color: $SUCCESS_COLOR;
@@ -52,6 +55,7 @@
         &,
         .ant-alert-icon,
         .ant-alert-message,
+        .ant-alert-title,
         .ant-alert-description,
         .ant-alert-close-icon {
           color: $WARNING_COLOR;
@@ -65,6 +69,7 @@
         &,
         .ant-alert-icon,
         .ant-alert-message,
+        .ant-alert-title,
         .ant-alert-description,
         .ant-alert-close-icon {
           color: $DANGER_COLOR;

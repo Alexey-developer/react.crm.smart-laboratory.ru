@@ -20,7 +20,7 @@ import { Notification } from '@components/Notification'
 import { TopLoadingBar } from '@components/TopLoadingBar'
 import { Auth } from '@components/Auth'
 
-const { Content, Footer, Sider } = Layout
+const { Content, Sider } = Layout
 
 export const Sidebar: React.FC = () => {
   //   const dispatch = useDispatch()
@@ -104,9 +104,6 @@ export const Sidebar: React.FC = () => {
         <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
           {authToken ? content : <Auth />}
         </Content>
-        <Footer style={{ textAlign: 'center' }}>
-          Ant Design ©2023 Created by Ant UED
-        </Footer>
       </Layout>
     </Layout>
   )

@@ -6,7 +6,9 @@
       background: $DEFAULT_COLOR;
       border-top-left-radius: $BORDER_RADIUS !important;
       border-top-right-radius: $BORDER_RADIUS !important;
+      // antd v6: .ant-collapse-header-text → .ant-collapse-title
       .ant-collapse-header-text,
+      .ant-collapse-title,
       .ant-collapse-expand-icon {
         color: #fff;
       }
@@ -21,6 +23,7 @@
         background: $DEFAULT_COLOR_WITH_OPACITY;
 
         .ant-collapse-header-text,
+        .ant-collapse-title,
         .ant-collapse-expand-icon {
           color: $DEFAULT_COLOR;
         }
@@ -35,6 +38,7 @@
           background: $SUCCESS_COLOR_WITH_OPACITY;
 
           .ant-collapse-header-text,
+          .ant-collapse-title,
           .ant-collapse-expand-icon {
             color: $SUCCESS_COLOR;
           }
@@ -49,6 +53,7 @@
         .ant-collapse-header {
           background: $WARNING_COLOR_WITH_OPACITY;
           .ant-collapse-header-text,
+          .ant-collapse-title,
           .ant-collapse-expand-icon {
             color: $WARNING_COLOR;
           }
@@ -63,6 +68,7 @@
         .ant-collapse-header {
           background: $DANGER_COLOR_WITH_OPACITY;
           .ant-collapse-header-text,
+          .ant-collapse-title,
           .ant-collapse-expand-icon {
             color: $DANGER_COLOR;
           }
