@@ -1,7 +1,9 @@
 import React from 'react'
 
 import { Form, Select } from 'antd'
-import type { DefaultOptionType } from 'antd/es/select'
+import type { SelectProps } from 'antd'
+// Локальный тип взамен legacy `antd/es/select` (несовместим с antd v6).
+type DefaultOptionType = NonNullable<SelectProps['options']>[number]
 
 import { useTranslation } from 'react-i18next'
 

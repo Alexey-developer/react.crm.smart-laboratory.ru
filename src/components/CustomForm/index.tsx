@@ -4,7 +4,8 @@ import type { FormProps } from 'antd'
 import { Button, Form } from 'antd'
 
 import type { FormInstance } from 'antd'
-import type { FormLayout } from 'antd/es/form/Form'
+// Локальный тип взамен legacy `antd/es/form/Form` (несовместим с antd v6).
+type FormLayout = 'horizontal' | 'vertical' | 'inline'
 import type { Rule } from 'rc-field-form/lib/interface'
 import type { Store } from 'rc-field-form/lib/interface'
 

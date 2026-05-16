@@ -4,14 +4,15 @@ import { Link, useLocation } from 'react-router-dom'
 
 import { useTranslation } from 'react-i18next'
 
-import type { ItemType } from 'antd/es/breadcrumb/Breadcrumb'
-type BreadcrumbItem = ItemType
+import { Breadcrumb } from 'antd'
+import type { BreadcrumbProps } from 'antd'
+// Локальный тип взамен legacy `antd/es/breadcrumb/Breadcrumb` (несовместим с antd v6).
+// Public idiom: items — Required<BreadcrumbProps>['items'].
+type BreadcrumbItem = NonNullable<BreadcrumbProps['items']>[number]
 
 import { formLeftMenuItems } from '@utils/formLeftMenuItems'
 import { COMMON_CREATING, COMMON_EDITING } from '@utils/constants/routes'
 import { getIcon } from '@utils/getIcon'
-
-import { Breadcrumb } from 'antd'
 
 import './index.module.scss'
 

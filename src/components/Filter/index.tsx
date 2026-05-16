@@ -15,7 +15,8 @@ const { RangePicker } = DatePicker
 import dayjs from 'dayjs'
 
 import type { GetProps } from 'antd'
-import type { Store } from 'antd/lib/form/interface'
+// Локальный тип взамен legacy `antd/lib/form/interface` (несовместим с antd v6).
+type FormStore = Record<string, any>
 type RangePickerProps = GetProps<typeof DatePicker.RangePicker>
 
 import { useTranslation } from 'react-i18next'
@@ -135,7 +136,7 @@ export const Filter: React.FC<FilterProps> = ({
   const values = Form.useWatch([], form)
 
   const state = useReactive<{
-    initialValues: Store
+    initialValues: FormStore
     filterPopoverIsOpened: boolean
     filterValueChanged: boolean
     firstEachFilterOpen: boolean //#1

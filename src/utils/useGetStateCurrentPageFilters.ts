@@ -5,13 +5,15 @@ import { selectFiltersMap } from '@redux/Filters/selectors'
 
 import type { FilterType, TFilter } from '@redux/Filters/types'
 
-import type { Store } from 'antd/lib/form/interface'
+// Локальный тип взамен legacy `antd/lib/form/interface` (несовместим с antd v6).
+// Эквивалентен antd internal Store: ассоциативный массив имя_поля → значение.
+type FormStore = Record<string, any>
 
 export const useGetStateCurrentPageFilters = () => {
   const location = useLocation()
   const { pathname } = location
 
-  const stateCurrentPageFilters: Store = { deleted: 'only_existing' }
+  const stateCurrentPageFilters: FormStore = { deleted: 'only_existing' }
 
   const filtersMap: Map<FilterType, TFilter[]> = useSelector(selectFiltersMap)
 

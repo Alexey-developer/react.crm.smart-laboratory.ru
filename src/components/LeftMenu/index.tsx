@@ -9,9 +9,11 @@ import { Menu, Badge } from 'antd'
 import { formLeftMenuItems } from '@utils/formLeftMenuItems'
 
 import type { MenuItem } from '@utils/formLeftMenuItems'
-import type { SubMenuType } from 'antd/lib/menu/hooks/useItems'
 import type { MenuProps } from 'antd'
-import type { ItemType } from 'antd/es/menu/hooks/useItems'
+// Локальные типы взамен legacy `antd/lib|es/menu/hooks/useItems` (несовместимы с antd v6).
+// Public idiom (см. docs/menu): items — Required<MenuProps>['items'].
+type ItemType = NonNullable<MenuProps['items']>[number]
+type SubMenuType = ItemType & { children: ItemType[] }
 
 export const LeftMenu: React.FC = () => {
   //2 перерисовки при смене языка
