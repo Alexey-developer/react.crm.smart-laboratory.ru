@@ -14,7 +14,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@tanstack/react-query": "^5.51.1",
     "ahooks": "^3.7.10",
-    "antd": "5.18",
+    "antd": "^5.29.3",
     "antd-mask-input": "^2.0.7",
     "axios": "^1.7.2",
     "html-react-parser": "^5.2.3",
