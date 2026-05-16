@@ -17,7 +17,8 @@ import type { Prefix } from '@redux/PhonePrefix/types'
 import { getIcon } from '@utils/getIcon'
 
 type PhoneInputProps = {
-  nextInputRef?: React.RefObject<InputRef>
+  // React 19: useRef<T>(null) → RefObject<T | null>
+  nextInputRef?: React.RefObject<InputRef | null>
 }
 
 export const PhoneInput: React.FC<PhoneInputProps> = ({ nextInputRef }) => {

@@ -38,7 +38,8 @@ export const EditableTextarea: React.FC<EditableTextareaProps> = ({
   const currentTheme = useSelector(selectCurrentTheme)
 
   const sw = React.useRef<HTMLButtonElement>(null)
-  const editor = React.useRef<typeof Jodit>(null)
+  // React 19: useRef<T>(null) → RefObject<T | null>. Используем instance-тип Jodit, не typeof.
+  const editor = React.useRef<Jodit | null>(null)
 
   type SizeType = 'tiny' | 'xsmall' | 'small' | 'middle' | 'large'
   //   const sizes: SizeType[] = ['tiny', 'xsmall', 'small', 'middle', 'large']
