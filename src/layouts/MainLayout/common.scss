@@ -572,6 +572,22 @@
     color: #fff !important;
   }
 }
+
+// antd v6 даёт search-кнопке padding 0 15px и flex:0 1 auto → она расползается на ~123px
+// при иконке 14px. Возвращаем компактный вид как в v5 (32×32, только иконка) и
+// разрешаем input занимать оставшееся пространство.
+.ant-input-search {
+  .ant-input-search-btn {
+    width: 32px !important;
+    min-width: 32px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    flex: 0 0 32px !important;
+  }
+  .ant-input-affix-wrapper {
+    flex: 1 1 auto !important;
+  }
+}
 [data-theme='dark'] {
   .ant-input-group-wrapper {
     .ant-input-outlined {
