@@ -67,7 +67,9 @@
   }
   &.transparent {
     background: $DEFAULT_COLOR_WITH_OPACITY !important;
-    .ant-ribbon-text {
+    // antd v6: .ant-ribbon-text → .ant-ribbon-content
+    .ant-ribbon-text,
+    .ant-ribbon-content {
       color: $DEFAULT_COLOR;
     }
     .ant-ribbon-corner {
@@ -81,7 +83,9 @@
     }
     &.transparent {
       background: $SUCCESS_COLOR_WITH_OPACITY !important;
-      .ant-ribbon-text {
+      // antd v6: .ant-ribbon-text → .ant-ribbon-content
+    .ant-ribbon-text,
+    .ant-ribbon-content {
         color: $SUCCESS_COLOR;
       }
       .ant-ribbon-corner {
@@ -96,7 +100,9 @@
     }
     &.transparent {
       background: $WARNING_COLOR_WITH_OPACITY !important;
-      .ant-ribbon-text {
+      // antd v6: .ant-ribbon-text → .ant-ribbon-content
+    .ant-ribbon-text,
+    .ant-ribbon-content {
         color: $WARNING_COLOR;
       }
       .ant-ribbon-corner {
@@ -111,7 +117,9 @@
     }
     &.transparent {
       background: $DANGER_COLOR_WITH_OPACITY !important;
-      .ant-ribbon-text {
+      // antd v6: .ant-ribbon-text → .ant-ribbon-content
+    .ant-ribbon-text,
+    .ant-ribbon-content {
         color: $DANGER_COLOR;
       }
       .ant-ribbon-corner {
