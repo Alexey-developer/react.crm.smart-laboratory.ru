@@ -17,6 +17,8 @@ services:
       # Фронту нужно знать, куда ходить за API
       # Для Vite — все переменные должны начинаться с VITE_
       VITE_API_URL: 'http://localhost:8000'
+      # HMR при bind-mount с хоста (Windows/macOS): inotify не всегда доходит до Vite в контейнере
+      CHOKIDAR_USEPOLLING: 'true'
     command: >
       sh -c "
       echo 'Installing dependencies in container...' &&
