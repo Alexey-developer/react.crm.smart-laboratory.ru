@@ -9,6 +9,8 @@ import { useTranslation } from 'react-i18next'
 
 // import JoditEditor from 'jodit-react'
 import JoditEditor, { Jodit } from 'jodit-pro-react'
+// jodit-pro-react 5.5+ (ESM): стили не в бандле — раньше подтягивал webpack main (jodit-react.js)
+import 'jodit-pro/es2021/jodit.min.css'
 // import type { Config } from 'jodit-pro/esm/config'
 // import type { DeepPartial } from 'jodit-pro/esm/types'
 
@@ -48,8 +50,6 @@ export const EditableTextarea: React.FC<EditableTextareaProps> = ({
     mode: mode === 'advanced' || false /*extended*/ ? 'advanced' : 'simple',
     size: 'middle',
   })
-  console.log('state.content')
-  console.log(state.content)
 
   const config = React.useMemo(
     () => ({
