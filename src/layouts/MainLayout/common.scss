@@ -228,6 +228,70 @@
   }
 }
 
+// Scrum / bordered Table — full width + brand grid borders (light & dark)
+.ant-table-wrapper {
+  width: 100%;
+}
+
+.ant-table-bordered {
+  > .ant-table-container {
+    border-left: 1px solid $DEFAULT_COLOR_WITH_OPACITY !important;
+    border-top: 1px solid $DEFAULT_COLOR_WITH_OPACITY !important;
+  }
+
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td {
+    border-right: 1px solid $DEFAULT_COLOR_WITH_OPACITY !important;
+    border-bottom: 1px solid $DEFAULT_COLOR_WITH_OPACITY !important;
+  }
+
+  // antd v6: gutter-cell под вертикальный scrollbar — без padding и box-shadow
+  .ant-table-cell-scrollbar {
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-right-color: $DEFAULT_COLOR_WITH_OPACITY !important;
+  }
+}
+
+// Scrum board: растягивается на 100% контейнера, но не уже min-content; горизонтальный scroll
+.tasks-scrum-table {
+  .ant-table-header table,
+  .ant-table-body table {
+    width: 100% !important;
+    min-width: max(100%, 1900px) !important;
+  }
+
+  .ant-table-thead > tr > th.ant-table-cell-scrollbar {
+    background: $LIGHT_ELEMENT_BG !important;
+  }
+}
+
+// antd v6 Table (light): тело — $LIGHT_BG, шапка — $LIGHT_ELEMENT_BG
+.ant-table {
+  background: $LIGHT_BG !important;
+  color: $LIGHT_COLOR;
+  .ant-table-thead > tr > th {
+    background: $LIGHT_ELEMENT_BG !important;
+    color: $LIGHT_COLOR;
+  }
+  .ant-table-cell-fix-left,
+  .ant-table-cell-fix-right {
+    background: $LIGHT_BG !important;
+  }
+  .ant-table-cell-scrollbar {
+    background: $LIGHT_ELEMENT_BG !important;
+    box-shadow: none !important;
+  }
+}
+
+[data-theme='dark'] {
+  .tasks-scrum-table {
+    .ant-table-thead > tr > th.ant-table-cell-scrollbar {
+      background: $DARK_ELEMENT_BG !important;
+    }
+  }
+}
+
 .ant-empty-small {
   .ant-empty-image {
   }
@@ -684,19 +748,17 @@
     }
   }
 
-  // antd v6 Table в dark-теме: default фон белый — перекрываем
+  // antd v6 Table (dark): тело — $DARK_BG, шапка — $DARK_ELEMENT_BG
   .ant-table {
-    background: $DARK_ELEMENT_BG !important;
+    background: $DARK_BG !important;
     color: $DARK_COLOR;
     .ant-table-thead > tr > th {
-      background: $DARK_BG !important;
+      background: $DARK_ELEMENT_BG !important;
       color: $DARK_COLOR;
-      border-bottom-color: rgba($DARK_COLOR, 0.16) !important;
     }
     .ant-table-tbody > tr {
       > td {
         color: $DARK_COLOR;
-        border-bottom-color: rgba($DARK_COLOR, 0.16) !important;
       }
       &:hover > td {
         background: $DARK_HOVER_BG !important;
@@ -708,7 +770,11 @@
     // fixed-column тени иногда оставляют светлый bg
     .ant-table-cell-fix-left,
     .ant-table-cell-fix-right {
+      background: $DARK_BG !important;
+    }
+    .ant-table-cell-scrollbar {
       background: $DARK_ELEMENT_BG !important;
+      box-shadow: none !important;
     }
   }
 }

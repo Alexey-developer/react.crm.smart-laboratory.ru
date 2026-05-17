@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import {
   Row,
+  Col,
   Space,
   Flex,
   Button,
@@ -55,6 +56,10 @@ type EntityIndexProps = {
   viewType?: ViewType
   state?: TState
 }
+
+const SCRUM_COLUMN_MIN_WIDTH = 380
+const SCRUM_TABLE_MIN_SCROLL_X = 1200
+const SCRUM_TABLE_SCROLL_Y = 1000
 
 export const EntityIndex: React.FC<EntityIndexProps> = ({
   pageTitleCode,
@@ -250,6 +255,7 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
         title: translated_phrase(taskStatus.lang_code),
         dataIndex: taskStatus.lang_code,
         key: taskStatus.id,
+        minWidth: SCRUM_COLUMN_MIN_WIDTH,
       })
     })
 
@@ -257,19 +263,24 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
       ...item,
       hidden: !state?.checkedList.includes(item.key as number),
     }))
+    const visibleColumnCount = newColumns.filter(column => !column.hidden).length
+    const scrollX = Math.max(
+      visibleColumnCount * SCRUM_COLUMN_MIN_WIDTH,
+      SCRUM_TABLE_MIN_SCROLL_X
+    )
+
     tasksViewScrum = (
-      <>
-        <Table
-          // loading
-          bordered
-          // virtual
-          scroll={{ x: 1900, y: 1000 }}
-          columns={newColumns}
-          dataSource={rows}
-          //   style={{ marginTop: 24 }}
-          pagination={false}
-        />
-      </>
+      <Table
+        //loading
+        //virtual
+        bordered
+        className='tasks-scrum-table'
+        style={{ width: '100%' }}
+        scroll={{ x: scrollX, y: SCRUM_TABLE_SCROLL_Y }}
+        columns={newColumns}
+        dataSource={rows}
+        pagination={false}
+      />
     )
   }
 
@@ -368,13 +379,15 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
         total={data?.meta.total}
         lastPage={data?.meta.last_page}
       />
-      <Row style={{ marginTop: 20 }} justify='start'>
+      <Row style={{ marginTop: 20, width: '100%' }} justify='start'>
         {!isLoading /*&& !isFetching */ &&
           (!viewType || viewType === 'list') &&
           data?.data?.map((entity: any, i: number) => (
             <Card key={i} entity={entity} />
           ))}
-        {!isLoading && viewType === 'scrum' && tasksViewScrum}
+        {!isLoading && viewType === 'scrum' && (
+          <Col span={24}>{tasksViewScrum}</Col>
+        )}
         {
           /*(*/ isLoading /* || isFetching)*/ &&
             [...Array(perPage)]?.map((skeleton, i) => (
