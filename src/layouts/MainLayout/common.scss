@@ -433,10 +433,10 @@
     color: $LIGHT_COLOR;
   }
   .ant-select {
-    width: 120px;
-    // antd v6: корневой .ant-select получил padding 4px 11px по умолчанию —
-    // в контексте addon он съедает ~22px и контент ("+7" + стрелка + clear) обрезается.
-    // Возвращаем padding 0, как было в v5.
+    // antd v6 даёт корневому .ant-select padding 4px 11px и шире default-min-width.
+    // В контексте addon с иконкой слева (см. PhoneInput) лишние px съедают место
+    // для иконки телефона. Возвращаем v5-поведение: компактная ширина + padding 0.
+    width: 90px;
     padding: 0 !important;
     // antd v6: ant-select-selector → ant-select-content
     // ant-select-selection-item больше нет — текст рендерится прямо в ant-select-content
