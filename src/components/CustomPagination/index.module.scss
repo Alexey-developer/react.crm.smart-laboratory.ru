@@ -94,6 +94,13 @@
           color: $DARK_COLOR;
         }
       }
+      li.ant-pagination-item-active {
+        background-color: $DEFAULT_COLOR;
+        border: none;
+        a {
+          color: #fff !important;
+        }
+      }
       .ant-pagination-item-ellipsis {
         color: $DARK_COLOR !important;
       }
