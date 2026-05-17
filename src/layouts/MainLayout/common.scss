@@ -84,8 +84,8 @@
     &.transparent {
       background: $SUCCESS_COLOR_WITH_OPACITY !important;
       // antd v6: .ant-ribbon-text → .ant-ribbon-content
-    .ant-ribbon-text,
-    .ant-ribbon-content {
+      .ant-ribbon-text,
+      .ant-ribbon-content {
         color: $SUCCESS_COLOR;
       }
       .ant-ribbon-corner {
@@ -101,8 +101,8 @@
     &.transparent {
       background: $WARNING_COLOR_WITH_OPACITY !important;
       // antd v6: .ant-ribbon-text → .ant-ribbon-content
-    .ant-ribbon-text,
-    .ant-ribbon-content {
+      .ant-ribbon-text,
+      .ant-ribbon-content {
         color: $WARNING_COLOR;
       }
       .ant-ribbon-corner {
@@ -118,8 +118,8 @@
     &.transparent {
       background: $DANGER_COLOR_WITH_OPACITY !important;
       // antd v6: .ant-ribbon-text → .ant-ribbon-content
-    .ant-ribbon-text,
-    .ant-ribbon-content {
+      .ant-ribbon-text,
+      .ant-ribbon-content {
         color: $DANGER_COLOR;
       }
       .ant-ribbon-corner {
@@ -432,31 +432,57 @@
   i {
     color: $LIGHT_COLOR;
   }
-  .ant-select {
-    // antd v6 даёт корневому .ant-select padding 4px 11px и шире default-min-width.
-    // В контексте addon с иконкой слева (см. PhoneInput) лишние px съедают место
-    // для иконки телефона. Возвращаем v5-поведение: компактная ширина + padding 0.
-    width: 90px;
-    padding: 0 !important;
-    // antd v6: ant-select-selector → ant-select-content
-    // ant-select-selection-item больше нет — текст рендерится прямо в ant-select-content
-    .ant-select-selector,
-    .ant-select-content {
-      &,
-      &:hover,
-      &:active {
+  // PhoneInput: prefix Select (+7) + стрелка + иконка валидации в addonBefore (как в antd v5).
+  // Классы только v6: .ant-select-content, .ant-select-suffix — см. docs/ai/react/layers/styles.md.
+  .phone-input-prefix {
+    display: inline-flex;
+    align-items: center;
+    // Отступ крестика hasFeedback от правой границы addon (разделитель с полем маски).
+    padding-right: 6px;
+
+    > i {
+      flex-shrink: 0;
+    }
+
+    .ant-form-item {
+      margin: 0;
+    }
+
+    .ant-select {
+      // antd v6: корневой .ant-select получил padding 4px 11px и ширину по умолчанию —
+      // suffix (стрелка + feedback) уезжает к правому краю addon.
+      width: auto !important;
+      min-width: 2.75em;
+      // noStyle Form.Item ломает flex-gap: без margin «+» наезжает на иконку телефона.
+      margin-left: 6px;
+      padding: 0 !important;
+      background: transparent !important;
+
+      // v6: .ant-select-selector → .ant-select-content (текст «+7» / «+994»).
+      .ant-select-content {
         border: none !important;
         box-shadow: none !important;
-      }
-      color: $LIGHT_COLOR;
-      .ant-select-selection-item {
+        background: transparent !important;
+        display: inline-flex !important;
+        align-items: center;
+        width: auto !important;
+        padding-left: 4px !important;
+        padding-right: 0 !important;
         color: $LIGHT_COLOR;
       }
-    }
-    // antd v6: ant-select-arrow → ant-select-suffix
-    .ant-select-arrow,
-    .ant-select-suffix {
-      color: $LIGHT_COLOR;
+
+      // v6: .ant-select-arrow → .ant-select-suffix; порядок в DOM: стрелка, затем feedback-icon.
+      // position: static — сброс absolute-позиционирования suffix в v6.
+      .ant-select-suffix {
+        position: static !important;
+        inset: auto !important;
+        display: inline-flex !important;
+        align-items: center;
+        // gap: 6px;
+        margin-left: 4px;
+        flex-shrink: 0;
+        color: $LIGHT_COLOR;
+      }
     }
   }
 }
@@ -515,16 +541,15 @@
     i {
       color: $DARK_COLOR;
     }
-    .ant-select {
-      // antd v6: ant-select-selector → ant-select-content; ant-select-arrow → ant-select-suffix
-      .ant-select-selector,
+    // PhoneInput: перебить общее [data-theme='dark'] .ant-select { background: $DARK_ELEMENT_BG }.
+    .phone-input-prefix .ant-select {
+      background: transparent !important;
+
       .ant-select-content {
+        background: transparent !important;
         color: $DARK_COLOR;
-        .ant-select-selection-item {
-          color: $DARK_COLOR;
-        }
       }
-      .ant-select-arrow,
+
       .ant-select-suffix {
         color: $DARK_COLOR;
       }
@@ -533,8 +558,7 @@
   //   }
   // antd v6: background-color теперь на корне .ant-select (раньше был на .ant-select-selector).
   // Общее dark-правило для всех Select (в формах, фильтрах, dropdown trigger'ах).
-  // Специфичные случаи (.ant-pagination .ant-select, .ant-input-group-addon .ant-select)
-  // перебивают это правило выше через свою специфичность.
+  // Исключения: .ant-pagination .ant-select, .phone-input-prefix .ant-select — перебивают ниже.
   .ant-select {
     background-color: $DARK_ELEMENT_BG !important;
     .ant-select-selector,

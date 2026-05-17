@@ -63,11 +63,13 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({ nextInputRef }) => {
   }
 
   const prefixSelector = (
-    <>
+    <span className='phone-input-prefix'>
       <i className={getIcon('PHONE')}></i>
       <Form.Item name='prefix' noStyle>
         <Select
           onChange={onChangePrefixHandler}
+          allowClear={false}
+          variant='borderless'
           // defaultValue={prefix}
           // defaultActiveFirstOption={prefix === 7}
           //   style={{ width: 130 }}
@@ -75,7 +77,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({ nextInputRef }) => {
           {options.map(option => option)}
         </Select>
       </Form.Item>
-    </>
+    </span>
   )
 
   const length = phonePrefixes.get(prefix)?.length
