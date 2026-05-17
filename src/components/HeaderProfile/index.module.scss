@@ -1,9 +1,17 @@
 @import '@components/TopHeader/index.module.scss';
+
+.profile_user_row {
+  gap: 16px;
+}
+
 :global {
   .ant-popover {
-    .ant-popover-inner {
+    // antd v6: .ant-popover-inner → .ant-popover-container, .ant-popover-inner-content → .ant-popover-content
+    .ant-popover-inner,
+    .ant-popover-container {
       background-color: $LIGHT_ELEMENT_BG;
       .ant-popover-inner-content,
+      .ant-popover-content,
       .ant-btn {
         color: $LIGHT_COLOR;
       }
@@ -11,9 +19,9 @@
         margin: 8px 0;
       }
       .ant-btn {
-        // width: 100%;
+        width: 100%;
+        justify-content: flex-start;
         text-align: left;
-        display: inline-block;
         .ant-btn-icon {
           margin-inline-end: 8px;
         }
@@ -34,9 +42,11 @@
   }
   [data-theme='dark'] {
     .ant-popover {
-      .ant-popover-inner {
+      .ant-popover-inner,
+      .ant-popover-container {
         background-color: $DARK_ELEMENT_BG;
         .ant-popover-inner-content,
+        .ant-popover-content,
         .ant-btn {
           color: $DARK_COLOR;
         }

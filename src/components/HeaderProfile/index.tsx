@@ -21,7 +21,7 @@ export const HeaderProfile: React.FC = () => {
 
   const { data, isLoading, isFetching } = useAPIQuery(
     CurrentUserGroup,
-    getMethod('CURRENT_USER')
+    getMethod('CURRENT_USER'),
   )
 
   return (
@@ -34,7 +34,11 @@ export const HeaderProfile: React.FC = () => {
           skeleton={formSkeleton()}
           content={
             <>
-              <Flex justify='space-evenly' align='flex-start'>
+              <Flex
+                className={styles.profile_user_row}
+                justify='flex-start'
+                align='flex-start'
+              >
                 <Badge offset={[-22, 28]} dot={true} className='success'>
                   <Avatar icon={<i className='fa-solid fa-user'></i>} />
                 </Badge>
