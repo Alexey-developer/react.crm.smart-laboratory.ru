@@ -26,7 +26,17 @@
   height: 64px;
   width: 64px !important;
   background-color: transparent;
-  border: none;
+  // antd v6: при `border: none` + transition:all на hover мелькает рамка.
+  // Стабильный прозрачный border — без отключения hover-фона и прочих эффектов antd.
+  border: 1px solid transparent !important;
+
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:active {
+    border-color: transparent !important;
+  }
+
   &:hover {
     color: #000 !important;
   }
