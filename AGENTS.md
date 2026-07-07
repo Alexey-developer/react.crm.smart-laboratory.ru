@@ -2,6 +2,10 @@
 
 Идентичен `CLAUDE.md`. Источник правды — `../../docs/ai/react/`.
 
+## Контекст workspace
+
+Ты запущен **только в React-приложении**. Сквозные задачи (новая сущность + бэк, смена API-контракта) — в корневом `smart-lab-crm/`. См. [`../../docs/ai/workflow.md`](../../docs/ai/workflow.md).
+
 ## Порядок чтения
 
 1. [`../../docs/ai/react/rules.md`](../../docs/ai/react/rules.md) — MUST / MUST NOT.

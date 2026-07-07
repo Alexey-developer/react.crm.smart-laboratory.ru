@@ -2,6 +2,8 @@
 
 Это **тонкий адаптер** для случая, когда Claude Code запущен из директории этого приложения. Источник правды — `../../docs/ai/react/` (то есть `smart-lab-crm/docs/ai/react/`).
 
+Сквозные задачи (сущность + бэк, API-контракт) — workspace корня `smart-lab-crm/`. См. [`../../docs/ai/workflow.md`](../../docs/ai/workflow.md).
+
 ## Порядок чтения
 
 1. [`../../docs/ai/react/rules.md`](../../docs/ai/react/rules.md) — MUST / MUST NOT. **Читать первым перед любым изменением.**
