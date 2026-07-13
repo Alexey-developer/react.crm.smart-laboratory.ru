@@ -18,9 +18,16 @@
   "extraEntries": [
     "../../src/api/useAPIQuery.ts"
   ],
+  "extraFonts": [
+    "../../src/assets/fontawesome/v6.5.1/css/all.css"
+  ],
+  "storyImports": {
+    "shim": ["@tanstack/react-query"]
+  },
   "overrides": {
     "EditableTextarea": { "cardMode": "single", "primaryStory": "AdvancedLongContent" },
     "CustomPagination": { "cardMode": "column" },
-    "CustomSpin": { "cardMode": "single", "primaryStory": "Spinning", "skip": ["primitives-customspin--hidden"] }
+    "CustomSpin": { "cardMode": "single", "primaryStory": "Spinning", "skip": ["primitives-customspin--hidden"] },
+    "Skeleton": { "cardMode": "column" }
   }
 }
