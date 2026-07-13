@@ -16,7 +16,12 @@
       "Bash(node .ds-sync/package-build.mjs --config .design-sync/config.json --node-modules ./node_modules --out ./ds-bundle)",
       "Bash(node .ds-sync/package-validate.mjs ./ds-bundle)",
       "Bash(node -e ' *)",
-      "Bash(grep -no \"__require\\([a-zA-Z0-9_$]*\\)\" ds-bundle/_ds_bundle.js)"
+      "Bash(grep -no \"__require\\([a-zA-Z0-9_$]*\\)\" ds-bundle/_ds_bundle.js)",
+      "Bash(node .ds-sync/resync.mjs --help)",
+      "Bash(xargs -I{} echo {})"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "context7"
+  ]
 }

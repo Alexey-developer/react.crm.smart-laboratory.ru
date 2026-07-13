@@ -14,5 +14,13 @@
   },
   "titleMap": {
     "DesignTokens": null
+  },
+  "extraEntries": [
+    "../../src/api/useAPIQuery.ts"
+  ],
+  "overrides": {
+    "EditableTextarea": { "cardMode": "single", "primaryStory": "AdvancedLongContent" },
+    "CustomPagination": { "cardMode": "column" },
+    "CustomSpin": { "cardMode": "single", "primaryStory": "Spinning", "skip": ["primitives-customspin--hidden"] }
   }
 }

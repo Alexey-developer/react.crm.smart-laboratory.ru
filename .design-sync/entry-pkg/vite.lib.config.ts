@@ -33,20 +33,27 @@ export default defineConfig({
       fileName: () => 'entry.mjs',
     },
     rollupOptions: {
-      // react/react-dom subpaths (react-dom/client, react/jsx-runtime, …)
-      // AND use-sync-external-store (a react-redux dependency): Rollup's CJS
-      // interop rewrites its internal `require('react')` into a runtime
-      // require() shim that is no longer real import/require syntax by the
-      // time esbuild sees it, so esbuild's react-shim plugin (package-build.mjs,
-      // not forkable) never gets a chance to redirect it to window.React — it
-      // throws at runtime instead. Marking the whole family external here
-      // means esbuild resolves and bundles it itself, fresh from
-      // node_modules, where the shim plugin works. Do NOT broaden this to
-      // "every bare specifier" — that also externalizes this repo's OWN
-      // @component/@utils/etc. aliases (Rollup checks `external` against the
-      // raw specifier before Vite's alias plugin resolves it), which then
-      // reach esbuild as unprocessed raw .scss imports again.
-      external: (id) => /^(react(-dom)?|use-sync-external-store)(\/|$)/.test(id),
+      // This Vite pass exists ONLY so our own component tree's .scss imports
+      // compile (esbuild alone can't). Every THIRD-PARTY package must stay
+      // external and get bundled fresh by esbuild instead: several antd
+      // transitive deps (rc-util, use-sync-external-store, …) ship raw CJS
+      // with an internal `require('react')` that Rollup's CJS interop
+      // rewrites into a runtime require() shim — no longer real
+      // import/require syntax by the time esbuild sees it, so esbuild's
+      // react-shim plugin (package-build.mjs, not forkable) never gets a
+      // chance to redirect it to window.React and it throws at runtime
+      // instead. Whack-a-moling individual offending packages isn't
+      // reliable, so every bare npm specifier is external EXCEPT this repo's
+      // own tsconfig path aliases (those must stay so Vite/Sass still
+      // resolves and compiles this repo's own .scss — Rollup's `external`
+      // check runs on the raw specifier before Vite's alias plugin resolves
+      // it, so aliases need an explicit exception here).
+      external: (id) => {
+        if (/^[./]|^[A-Za-z]:[\\/]/.test(id)) return false; // relative/absolute
+        const OWN_ALIASES = ['@api', '@assets', '@components', '@layouts', '@redux', '@pages', '@translations', '@utils']
+        if (OWN_ALIASES.some((a) => id === a || id.startsWith(a + '/'))) return false;
+        return true;
+      },
     },
   },
 })
