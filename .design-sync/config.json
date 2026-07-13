@@ -22,7 +22,7 @@
     "../../src/assets/fontawesome/v6.5.1/css/all.css"
   ],
   "storyImports": {
-    "shim": ["@tanstack/react-query"]
+    "shim": ["@tanstack/react-query", "react-router-dom"]
   },
   "overrides": {
     "EditableTextarea": { "cardMode": "single", "primaryStory": "AdvancedLongContent" },

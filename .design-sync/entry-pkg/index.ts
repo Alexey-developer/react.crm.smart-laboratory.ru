@@ -21,6 +21,15 @@ import './fontawesome-classes.css'
 // singular. See .design-sync/NOTES.md.
 export { useQueryClient } from '@tanstack/react-query'
 
+// Same dual-instance problem for react-router-dom: storyDecorators.tsx's
+// MemoryRouter/useInRouterContext (per-story compile) is a different module
+// instance than what Breadcrumbs/Filter (this entry's bundle) call
+// useLocation() against, so a router mounted by the story-side copy is
+// invisible to the component's own copy → "useLocation() may be used only
+// in the context of a <Router>". Shim story-side react-router-dom imports to
+// this instance too (cfg.storyImports.shim in config.json).
+export { MemoryRouter, useInRouterContext } from 'react-router-dom'
+
 export { ActionButton } from '../../src/components/ActionButton'
 export { AlertCard } from '../../src/components/AlertCard'
 export { Breadcrumbs } from '../../src/components/Breadcrumbs'
