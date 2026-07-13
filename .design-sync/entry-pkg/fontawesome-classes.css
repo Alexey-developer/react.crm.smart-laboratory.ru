@@ -1,7 +1,7 @@
 /* GENERATED for design-sync — src/assets/fontawesome/v6.5.1/css/all.css with
- * every @font-face block stripped (fonts ship separately via fontawesome-fonts.css
- * + cfg.extraFonts). Each --fa-* variable tagged /* @kind other *\/ for Claude
- * Design token export. Regenerate after an FA version bump:
+ * every @font-face block stripped (fonts ship separately via design-sync-fonts.css
+ * + cfg.extraFonts). Each --fa-* variable tagged @kind other for Claude Design.
+ * Regenerate after an FA version bump:
  *   node .design-sync/entry-pkg/regenerate-fontawesome-classes.mjs
  * See .design-sync/NOTES.md.
  */

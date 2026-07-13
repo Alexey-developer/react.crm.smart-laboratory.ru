@@ -25,8 +25,9 @@ Vite — bundles it fresh (its react-shim plugin needs to see the raw import).
   not mis-classify FA internals as palette tokens. Regenerate via
   `node .design-sync/entry-pkg/regenerate-fontawesome-classes.mjs` after an
   FA version bump. The actual font FILES ship separately via `cfg.extraFonts`
-  pointing at `.design-sync/entry-pkg/fontawesome-fonts.css` — a minimal
-  subset (Pro solid 900 + regular 400 only). Do NOT point `extraFonts` at the
+  pointing at `src/assets/fontawesome/v6.5.1/css/design-sync-fonts.css` — a minimal
+  subset (Pro solid 900 + regular 400 only), with `url(../webfonts/…)` beside
+  `all.css` so `extractFonts()` resolves files the same way as before. Do NOT
   full `all.css`: it includes FA5 legacy aliases and duplicate weight-400
   `@font-face` blocks that make Claude Design's read-only `fonts/fonts.css`
   invalid. Do NOT import the raw `all.css` (with fonts) directly into
@@ -37,8 +38,13 @@ Vite — bundles it fresh (its react-shim plugin needs to see the raw import).
   classes (grep before adding them back if that changes) — hence
   `[FONT_MISSING] "Font Awesome 6 Sharp"` in every build: accepted, no
   sharp icon is ever rendered so the missing face is invisible in practice.
-  `[FONT_MISSING] "oxygen-sans"` is a pre-existing, separately-accepted gap
-  (system-font substitute).
+  Same reasoning covers `[FONT_MISSING] "Font Awesome 6 Brands"` and
+  `"Font Awesome 6 Duotone"` — grepped, nothing in `src/` uses `fa-brands`/
+  `fab fa-*`/`fa-duotone`/`fad fa-*` classes or brand-icon names
+  (github/twitter/facebook/etc.); `design-sync-fonts.css`'s minimal subset
+  intentionally ships only Pro solid 900 + regular 400. `[FONT_MISSING]
+  "oxygen-sans"` is a pre-existing, separately-accepted gap (system-font
+  substitute).
 
 - **`useQueryClient()` throws "No QueryClient set" / `useLocation()` throws
   "may be used only in the context of a `<Router>`"** (CustomSelect,
@@ -177,8 +183,8 @@ Vite — bundles it fresh (its react-shim plugin needs to see the raw import).
   `all.css` v6.5.1 by `regenerate-fontawesome-classes.mjs` (`@font-face`
   stripped, `--fa-*` tagged `/* @kind other */`). If Font Awesome is upgraded
   in `src/assets/fontawesome/`, regenerate that script — no build warning
-  will fire. `fontawesome-fonts.css` (`extraFonts`) must stay minimal; add a
-  weight there only when a storied component actually uses that FA style.
+  will fire. `design-sync-fonts.css` (`extraFonts`, beside `all.css`) must stay
+  minimal; add a weight there only when a storied component actually uses that FA style.
 - `cfg.storyImports.shim` for `@tanstack/react-query`/`react-router-dom` is
   load-bearing for EVERY component whose story uses `storyDecorators.tsx`.
   Adding a new story decorator that imports a THIRD package needing shared
@@ -189,8 +195,11 @@ Vite — bundles it fresh (its react-shim plugin needs to see the raw import).
   `useParams` — even transitively, even without its own `router:` story
   parameter — needs `withStoryRouter` added to its story's `decorators:`,
   or its design-sync preview will throw.
-- `[FONT_MISSING]` for "Font Awesome 6 Sharp" and "oxygen-sans" is accepted
-  and expected on every future build — not a regression to chase.
+- `[FONT_MISSING]` for "Font Awesome 6 Sharp", "Font Awesome 6 Brands",
+  "Font Awesome 6 Duotone", and "oxygen-sans" is accepted and expected on
+  every future build — not a regression to chase, as long as `src/` still
+  has no `fa-sharp-*`/`fa-brands`/`fab fa-*`/`fa-duotone`/`fad fa-*` usage
+  (re-grep if that changes).
 - `PreviewProviders`'s `createStoryStore` preloadedState keys must stay
   PascalCase (`Theme`, `CurrentUser`) matching `createStoryStore.ts`'s
   rootReducer — a future edit that "helpfully" lowercases them re-introduces
@@ -212,3 +221,28 @@ Vite — bundles it fresh (its react-shim plugin needs to see the raw import).
   `wmic process where "name='node.exe'" get CommandLine,ProcessId` for a
   `storybook dev` process first before assuming a config change broke
   something.
+
+## Orphaned remote font files (resolved 2026-07-13)
+
+- Previously flagged: `fonts/fa-brands-400.*`, `fa-duotone-900.*`,
+  `fa-light-300.*`, `fa-thin-100.*`, `fa-v4compatibility.*` were leftover
+  in the project from before the minimal-subset fix — the re-sync driver's
+  per-component delete tracking doesn't cover aux/font files, so they
+  weren't auto-cleaned. Deleted via a one-off `finalize_plan` scoped to
+  those 10 exact paths + `delete_files`. Reminder for next time this
+  recurs: the anchored-resync diff still won't catch aux/font orphans —
+  a manual sweep is needed if the font subset changes again.
+
+## conventions.md drift (resolved 2026-07-13)
+
+- Previously flagged: line 19 oversold the icon surface ("solid/regular/
+  light/thin/duotone/brands all ship; sharp does not") against a build that
+  actually ships only Pro solid 900 + regular 400. Fixed — conventions.md's
+  icon sentence now reads "only solid and regular ship; light, thin,
+  duotone, brands, and sharp classes render with missing or wrong glyphs."
+  Re-verified against this build's `[FONT_MISSING]` list; no further action.
+- **UI references** — curated CRM/SaaS demo links for the design agent live in
+  `.design-sync/conventions.md` (synced via `readmeHeader`) and the extended catalog
+  in `.design-sync/ui-references.md` (repo-only; mirror URL/rule changes into
+  `conventions.md` before `/design-sync`). Claude Design `templates/` is the only
+  in-project folder for custom pages/docs without re-sync.

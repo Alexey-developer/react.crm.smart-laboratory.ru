@@ -1,7 +1,7 @@
 /**
  * Regenerate fontawesome-classes.css from src/assets/fontawesome/.../all.css:
- * 1. Strip every @font-face (fonts ship via fontawesome-fonts.css + extraFonts).
- * 2. Annotate each --fa-* custom property with /* @kind other *\/ for Claude Design token export.
+ * 1. Strip every @font-face (fonts ship via design-sync-fonts.css + extraFonts).
+ * 2. Annotate each --fa-* custom property with @kind other metadata for Claude Design.
  *
  * Run from repo root: node .design-sync/entry-pkg/regenerate-fontawesome-classes.mjs
  */
@@ -18,9 +18,9 @@ const sourcePath = path.join(
 const outPath = path.join(dirname, 'fontawesome-classes.css')
 
 const header = `/* GENERATED for design-sync — src/assets/fontawesome/v6.5.1/css/all.css with
- * every @font-face block stripped (fonts ship separately via fontawesome-fonts.css
- * + cfg.extraFonts). Each --fa-* variable tagged /* @kind other *\\/ for Claude
- * Design token export. Regenerate after an FA version bump:
+ * every @font-face block stripped (fonts ship separately via design-sync-fonts.css
+ * + cfg.extraFonts). Each --fa-* variable tagged @kind other for Claude Design.
+ * Regenerate after an FA version bump:
  *   node .design-sync/entry-pkg/regenerate-fontawesome-classes.mjs
  * See .design-sync/NOTES.md.
  */

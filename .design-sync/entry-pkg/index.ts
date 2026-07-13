@@ -6,7 +6,7 @@
 // className="fa-solid fa-…"> in ActionButton/AlertCard/CollapseCard/
 // Breadcrumbs/etc.) are imported only by .storybook/preview.tsx normally, so
 // esbuild's own bundle graph never sees them. This side-effect import ships
-// the class→glyph rules (font files ship separately via fontawesome-fonts.css +
+// the class→glyph rules (font files ship separately via design-sync-fonts.css +
 // cfg.extraFonts — regenerate via regenerate-fontawesome-classes.mjs).
 import './fontawesome-classes.css'
 
