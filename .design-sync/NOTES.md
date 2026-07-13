@@ -20,12 +20,16 @@ Vite — bundles it fresh (its react-shim plugin needs to see the raw import).
   `src/assets/fontawesome/v6.5.1/css/all.css` with every `@font-face` block
   stripped (regenerate command in its own header comment), imported as a
   side-effect from `entry-pkg/index.ts` — pure class/glyph-mapping text, no
-  `url()` refs, so Vite has nothing to base64-inline. The actual font FILES
-  ship separately via `cfg.extraFonts` pointing at the real (unstripped)
-  `all.css` — the converter's `extractFonts()` copies real woff2/ttf files
-  for every family the CSS references (brands/duotone/light/regular/solid/
-  thin/v4compat — all of `all.css`, not just what's used; harmless, each
-  file is small). Do NOT import the raw `all.css` (with fonts) directly into
+  `url()` refs, so Vite has nothing to base64-inline. Each `--fa-*` custom
+  property is tagged `/* @kind other */` so Claude Design's token export does
+  not mis-classify FA internals as palette tokens. Regenerate via
+  `node .design-sync/entry-pkg/regenerate-fontawesome-classes.mjs` after an
+  FA version bump. The actual font FILES ship separately via `cfg.extraFonts`
+  pointing at `.design-sync/entry-pkg/fontawesome-fonts.css` — a minimal
+  subset (Pro solid 900 + regular 400 only). Do NOT point `extraFonts` at the
+  full `all.css`: it includes FA5 legacy aliases and duplicate weight-400
+  `@font-face` blocks that make Claude Design's read-only `fonts/fonts.css`
+  invalid. Do NOT import the raw `all.css` (with fonts) directly into
   `entry-pkg/index.ts` — Vite's CSS pipeline base64-inlines every referenced
   font in lib+`cssCodeSplit:false` mode regardless of `assetsInlineLimit`,
   producing a 32MB `_ds_bundle.css` (confirmed empirically, twice).
@@ -169,11 +173,12 @@ Vite — bundles it fresh (its react-shim plugin needs to see the raw import).
 
 ## Re-sync risks (read this before trusting a fast/no-op re-sync)
 
-- The FA icon subset (`fontawesome-classes.css`) is a snapshot of
-  `all.css` v6.5.1 with `@font-face` stripped. If Font Awesome is upgraded
-  in `src/assets/fontawesome/`, this file goes stale silently — no build
-  warning will fire (it's just CSS text, no version check). Regenerate via
-  the command in the file's own header comment.
+- The FA icon subset (`fontawesome-classes.css`) is generated from
+  `all.css` v6.5.1 by `regenerate-fontawesome-classes.mjs` (`@font-face`
+  stripped, `--fa-*` tagged `/* @kind other */`). If Font Awesome is upgraded
+  in `src/assets/fontawesome/`, regenerate that script — no build warning
+  will fire. `fontawesome-fonts.css` (`extraFonts`) must stay minimal; add a
+  weight there only when a storied component actually uses that FA style.
 - `cfg.storyImports.shim` for `@tanstack/react-query`/`react-router-dom` is
   load-bearing for EVERY component whose story uses `storyDecorators.tsx`.
   Adding a new story decorator that imports a THIRD package needing shared

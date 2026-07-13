@@ -20,7 +20,7 @@
     "../../src/api/useAPIQuery.ts"
   ],
   "extraFonts": [
-    "../../src/assets/fontawesome/v6.5.1/css/all.css"
+    ".design-sync/entry-pkg/fontawesome-fonts.css"
   ],
   "storyImports": {
     "shim": ["@tanstack/react-query", "react-router-dom"]
