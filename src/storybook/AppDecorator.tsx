@@ -13,18 +13,12 @@ import { GetValidateMessages } from '@utils/helpers'
 import { getAntdThemeConfig } from './antdTheme'
 import { createStoryStore, type StoryReduxState } from './createStoryStore'
 import { setStorybookLocale, storybookI18n } from './i18n'
+import { seedAPIQueries, type APIQuerySeed } from './queryMocks'
 import type { Lang } from '@redux/Language/types'
 import type { CurrentTheme } from '@redux/Theme/types'
 import { setCurrentTheme } from '@redux/Theme/slice'
 
 import styles from './AppDecorator.module.scss'
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: { retry: false, refetchOnWindowFocus: false },
-    mutations: { retry: false },
-  },
-})
 
 type StoryContext = {
   globals: {
@@ -33,6 +27,10 @@ type StoryContext = {
   }
   parameters: {
     reduxState?: StoryReduxState
+    router?: {
+      initialEntries?: string[]
+    }
+    querySeeds?: APIQuerySeed[]
   }
 }
 
@@ -58,10 +56,24 @@ const AntdStoryShell: React.FC<{ children: React.ReactNode; locale: Lang }> = ({
 
 export const AppDecorator = (
   Story: React.FC,
-  context: StoryContext
+  context: StoryContext & { id: string }
 ): React.ReactElement => {
   const locale = context.globals.locale ?? 'ru'
   const reduxTheme = context.globals.theme ?? readBodyTheme()
+  const initialEntries = context.parameters.router?.initialEntries ?? ['/projects']
+
+  const queryClient = React.useMemo(() => {
+    const client = new QueryClient({
+      defaultOptions: {
+        queries: { retry: false, refetchOnWindowFocus: false },
+        mutations: { retry: false },
+      },
+    })
+    if (context.parameters.querySeeds?.length) {
+      seedAPIQueries(client, context.parameters.querySeeds)
+    }
+    return client
+  }, [context.id, context.parameters.querySeeds])
 
   React.useEffect(() => {
     setStorybookLocale(locale)
@@ -75,6 +87,7 @@ export const AppDecorator = (
     () =>
       createStoryStore({
         theme: { currentTheme: reduxTheme },
+        currentUser: { authToken: 'storybook-token', perPage: 16 },
         ...context.parameters.reduxState,
       }),
     [reduxTheme, context.parameters.reduxState]
@@ -88,7 +101,7 @@ export const AppDecorator = (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <I18nextProvider i18n={storybookI18n}>
-          <MemoryRouter>
+          <MemoryRouter initialEntries={initialEntries}>
             <AntdStoryShell locale={locale}>
               <Story />
             </AntdStoryShell>

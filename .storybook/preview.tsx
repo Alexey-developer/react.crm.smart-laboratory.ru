@@ -27,7 +27,7 @@ const preview: Preview = {
       storySort: {
         order: [
           'Design System',
-          ['README', 'Design Tokens', '*'],
+          ['Design Tokens', '*'],
           'Primitives',
           '*',
           'Connected (wave 2)',
