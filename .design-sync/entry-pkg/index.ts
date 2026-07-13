@@ -1,0 +1,20 @@
+// Synthetic entry for design-sync: this repo is an application (no published
+// component-library dist/), so this file re-exports every storied component
+// from source as the bundle's public API surface. See .design-sync/NOTES.md.
+export { ActionButton } from '../../src/components/ActionButton'
+export { AlertCard } from '../../src/components/AlertCard'
+export { Breadcrumbs } from '../../src/components/Breadcrumbs'
+export { CollapseCard } from '../../src/components/CollapseCard'
+export { CustomAvatar } from '../../src/components/CustomAvatar'
+export { CustomPagination } from '../../src/components/CustomPagination'
+export { CustomSelect } from '../../src/components/CustomSelect'
+export { CustomSimpleSelect } from '../../src/components/CustomSimpleSelect'
+export { CustomSpin } from '../../src/components/CustomSpin'
+export { DefaultCard } from '../../src/components/DefaultCard'
+export { EditableTextarea } from '../../src/components/EditableTextarea'
+export { Filter } from '../../src/components/Filter'
+export { IncludedEmployees } from '../../src/components/IncludedEmployees'
+export { PhoneInput } from '../../src/components/PhoneInput'
+export { Skeleton } from '../../src/components/Skeleton'
+export { Sort } from '../../src/components/Sort'
+export { PreviewProviders } from '../../src/storybook/PreviewProviders'

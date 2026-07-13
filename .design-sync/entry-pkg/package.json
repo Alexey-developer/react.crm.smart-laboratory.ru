@@ -1,0 +1,6 @@
+{
+  "name": "react-crm-components",
+  "version": "0.0.0",
+  "private": true,
+  "types": "./index.ts"
+}

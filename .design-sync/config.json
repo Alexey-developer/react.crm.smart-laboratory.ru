@@ -1,0 +1,18 @@
+{
+  "projectId": "a727c621-aafa-4e97-a979-25ac81c6dc7a",
+  "shape": "storybook",
+  "storybookConfigDir": ".storybook",
+  "storybookStatic": ".design-sync/sb-reference",
+  "pkg": "react-crm-components",
+  "globalName": "SmartLabCrm",
+  "entry": ".design-sync/entry-pkg/dist/entry.mjs",
+  "cssEntry": "dist/react.crm.smart-laboratory.ru.css",
+  "buildCmd": "npx vite build --config .design-sync/entry-pkg/vite.lib.config.ts",
+  "tsconfig": "../../tsconfig.json",
+  "provider": {
+    "component": "PreviewProviders"
+  },
+  "titleMap": {
+    "DesignTokens": null
+  }
+}
