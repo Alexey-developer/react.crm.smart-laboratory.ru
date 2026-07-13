@@ -1,6 +1,6 @@
 import { TColorType } from '@api/common/types/TColorType'
 
-export type TProjectType = {
+export type TDirectionFamily = {
   id: number
   lang_code: string
   class: TColorType

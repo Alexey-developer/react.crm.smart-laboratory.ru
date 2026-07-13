@@ -4,19 +4,18 @@ import { useTranslation } from 'react-i18next'
 
 import type { TProject } from '@api/models/project/type/TProject'
 
-import { IncludedEmployees } from '@components/IncludedEmployees'
-
 import { getIcon } from '@utils/getIcon'
 import { convert2string, seconds2Time } from '@utils/helpers'
-
-//temp
-import { getProject } from '@utils/tempData'
 
 export const FormContent = (project: TProject) => {
   const [translated_phrase] = useTranslation('global')
   return (
     <>
       <h2>{project.description}</h2>
+      {project.monitoring_enabled && (        <Tag className='success' icon={<i className='fa-solid fa-heart-pulse'></i>}>
+          {translated_phrase('Form.EntitiesFields.monitoring_enabled')}
+        </Tag>
+      )}
       <Tooltip title={translated_phrase('Statistics.time_spent')}>
         <Tag
           className={'warning transparent'}
@@ -72,7 +71,6 @@ export const FormContent = (project: TProject) => {
         {project.created_at}
       </Tag>
       <Progress percent={project.common_task_progress} />
-      <IncludedEmployees employees={getProject().employees} />
     </>
   )
 }

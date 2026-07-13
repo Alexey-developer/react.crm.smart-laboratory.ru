@@ -134,20 +134,22 @@ export const useAPIQuery = (
       console.log('Error fetching data')
       console.log('ERROR:', error)
 
-      if (error.response.status === 401) {
+      const axiosError = error as { response?: { status?: number; statusText?: string } }
+
+      if (axiosError.response?.status === 401) {
         dispatch(setAuthToken(''))
         return
       }
 
       dispatch(
         setNotification({
-          title: error.response?.statusText,
-          text: error.message,
+          title: axiosError.response?.statusText ?? 'Error',
+          text: error instanceof Error ? error.message : String(error),
           type: 'ERROR',
         })
       )
     }
-  }, [isError])
+  }, [dispatch, error, isError])
 
   return {
     data,

@@ -15,11 +15,10 @@ export const ProjectsPage: React.FC = () => {
       groupClass={ProjectGroup}
       entityFilters={[
         CheckboxFilter('PROJECT_STATUS'),
-        CheckboxFilter('PROJECT_TYPE'),
         SelectFilter('CUSTOMER_COMPANY'),
       ]}
       FormContent={FormContent}
-      actionIndexes={[0, 4, 1, 2]}
+      actionIndexes={[0, 6, 4, 1, 2]}
     />
   )
 }

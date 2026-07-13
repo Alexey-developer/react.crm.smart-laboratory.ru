@@ -40,6 +40,27 @@ const EditProjectPage = lazy(() =>
   }))
 )
 
+const DirectionsPage = lazy(() =>
+  import('@pages/entities/directions/index').then(module => ({
+    default: module.DirectionsPage,
+  }))
+)
+const DirectionPage = lazy(() =>
+  import('@pages/entities/directions/show').then(module => ({
+    default: module.DirectionPage,
+  }))
+)
+const CreateDirectionPage = lazy(() =>
+  import('@pages/entities/directions/create').then(module => ({
+    default: module.CreateDirectionPage,
+  }))
+)
+const EditDirectionPage = lazy(() =>
+  import('@pages/entities/directions/edit').then(module => ({
+    default: module.EditDirectionPage,
+  }))
+)
+
 const TasksPage = lazy(() =>
   import('@pages/entities/tasks/index').then(module => ({
     default: module.TasksPage,
@@ -98,6 +119,13 @@ const routes: IRoute[] = [
     showComponent: <ProjectPage />,
     editComponent: <EditProjectPage />,
     createComponent: <CreateProjectPage />,
+  },
+  {
+    uri: URIs.DIRECTIONS,
+    indexComponent: <DirectionsPage />,
+    showComponent: <DirectionPage />,
+    editComponent: <EditDirectionPage />,
+    createComponent: <CreateDirectionPage />,
   },
   {
     uri: URIs.TASKS,

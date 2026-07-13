@@ -1,8 +1,8 @@
-import { PROJECTS, TASKS } from '@utils/constants/routes'
+import { PROJECTS, DIRECTIONS, TASKS } from '@utils/constants/routes'
 
 import { FilterEnum } from 'utils/getFilter'
 
-export type FilterType = typeof PROJECTS | typeof TASKS
+export type FilterType = typeof PROJECTS | typeof DIRECTIONS | typeof TASKS
 
 export interface IFiltersSliceState {
   filters: string

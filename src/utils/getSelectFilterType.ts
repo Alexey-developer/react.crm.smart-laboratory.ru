@@ -1,19 +1,26 @@
 import { ProjectGroup } from '@api/models/project/queryGroup'
+import { DirectionGroup } from '@api/models/direction/queryGroup'
 import { CustomerCompanyGroup } from '@api/models/customerCompany/queryGroup'
 
-export type Groups = typeof ProjectGroup | typeof CustomerCompanyGroup
+export type Groups =
+  | typeof ProjectGroup
+  | typeof DirectionGroup
+  | typeof CustomerCompanyGroup
 
 export enum SelectFilterTypeEnum {
   PROJECT = 'project',
+  DIRECTION = 'direction',
   CUSTOMER_COMPANY = 'customerCompany',
 }
 
 const getSelectFilterLangCode = (value: keyof typeof SelectFilterTypeEnum) => {
   switch (value) {
     case 'PROJECT':
-      return 'project'
+      return 'Form.EntitiesFields.project_id'
+    case 'DIRECTION':
+      return 'Form.EntitiesFields.direction_id'
     case 'CUSTOMER_COMPANY':
-      return 'customerCompany'
+      return 'Form.EntitiesFields.customer_company_id'
     default:
       return 'no_phrase'
   }
@@ -25,10 +32,10 @@ const getSelectFilterGroup = (
   switch (value) {
     case 'PROJECT':
       return ProjectGroup
+    case 'DIRECTION':
+      return DirectionGroup
     case 'CUSTOMER_COMPANY':
       return CustomerCompanyGroup
-    // default:
-    //   return ''
   }
 }
 

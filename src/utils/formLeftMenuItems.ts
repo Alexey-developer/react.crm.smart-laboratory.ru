@@ -59,6 +59,16 @@ export const formLeftMenuItems = (): LeftMenuItems => {
       },
     },
     {
+      name_key: 'MenuItems.directions',
+      path: URIs.DIRECTIONS,
+      icon: getIcon('DIRECTIONS'),
+      badge: {
+        className: 'warning transparent',
+        offset: badge_offset,
+        count: 99,
+      },
+    },
+    {
       name_key: 'MenuItems.tasks',
       path: URIs.TASKS,
       icon: getIcon('TASKS'),

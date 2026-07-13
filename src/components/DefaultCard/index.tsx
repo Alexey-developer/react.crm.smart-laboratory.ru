@@ -18,6 +18,7 @@ export type DefaultCardProps = {
   actions?: React.ReactNode[]
   extra?: React.ReactNode
   isLoading?: boolean
+  skeletonActionCount?: number
   hoverable?: boolean
   type?: 'default' | 'success' | 'warning' | 'danger'
   grid?: Grid
@@ -31,6 +32,7 @@ export const DefaultCard: React.FC<DefaultCardProps> = ({
   actions,
   extra,
   isLoading,
+  skeletonActionCount = 4,
   hoverable = true,
   type,
   grid = { xs: 24, lg: 12, xl: 8, xxl: 6 },
@@ -77,7 +79,7 @@ export const DefaultCard: React.FC<DefaultCardProps> = ({
           isLoading={isLoading}
           width={'100%'}
           height={'100%'}
-          skeleton={formSkeleton()}
+          skeleton={formSkeleton(skeletonActionCount)}
           content={child}
         />
       )

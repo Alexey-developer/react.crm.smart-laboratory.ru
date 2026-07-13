@@ -1,6 +1,14 @@
-import { TFilter } from '@api/common/types/TFilter'
-
-export type TTaskFilter = TFilter & {
-  sortBy: 'name' | 'created_at' | 'updated_at' | 'price'
-  //   price: [string, string]
-}
+import { TFilter } from '@api/common/types/TFilter'
+
+export type TTaskFilter = TFilter & {
+  sortBy:
+    | 'name'
+    | 'total_spent_time'
+    | 'total_costs_auto'
+    | 'total_costs'
+    | 'total_incomes'
+    | 'total_penalty_funds'
+    | 'progress'
+    | 'created_at'
+    | 'updated_at'
+}

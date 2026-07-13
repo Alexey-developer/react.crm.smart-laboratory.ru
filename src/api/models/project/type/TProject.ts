@@ -1,13 +1,14 @@
-import { TProjectType } from '@api/models/projectType/type/TProjectType'
+import { TCustomerCompany } from '@api/models/customerCompany/type/TCustomerCompany'
 import { TProjectStatus } from '@api/models/projectStatus/type/TProjectStatus'
 
 export type TProject = {
   id: number
   name: string
   description: string
-  website_url?: string
-  comment: string
-  customer_visible_comment: string
+  customer_company_id: number
+  status_id: number
+  monitoring_enabled: boolean
+  directions_count: number
   total_spent_time: number
   total_costs_auto: number
   total_costs: number
@@ -16,12 +17,9 @@ export type TProject = {
   total_incomes: number
   total_penalty_funds: number
   common_task_progress: number
-  check_performance: boolean
-  check_expirations: boolean
   created_at: string
   updated_at: string
-  deleted_at: string
-  type: TProjectType
-  status: TProjectStatus
-  //   customer_company: TCustomerCompany
+  deleted_at: string | null
+  customer_company?: TCustomerCompany
+  status?: TProjectStatus
 }

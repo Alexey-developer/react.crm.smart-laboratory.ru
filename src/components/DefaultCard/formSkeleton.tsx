@@ -1,4 +1,4 @@
-export const formSkeleton = () => {
+export const formSkeleton = (actionCount = 4) => {
   const skeletonElements = []
   //   let height = 75
   skeletonElements.push(
@@ -44,10 +44,11 @@ export const formSkeleton = () => {
       />
     )
   }
-  skeletonElements.push(<circle key={25} cx={'10%'} cy='90.17%' r='18' />)
-  skeletonElements.push(<circle key={26} cx={'38%'} cy='90.17%' r='18' />)
-  skeletonElements.push(<circle key={27} cx={'62%'} cy='90.17%' r='18' />)
-  skeletonElements.push(<circle key={28} cx={'90%'} cy='90.17%' r='18' />)
+  for (let i = 0; i < actionCount; i++) {
+    const cx =
+      actionCount === 1 ? '50%' : `${10 + (80 * i) / (actionCount - 1)}%`
+    skeletonElements.push(<circle key={28 + i} cx={cx} cy='90.17%' r='18' />)
+  }
 
   return skeletonElements
 }

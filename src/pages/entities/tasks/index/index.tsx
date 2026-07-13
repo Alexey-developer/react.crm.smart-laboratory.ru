@@ -18,6 +18,8 @@ import type { ViewType } from '@redux/TasksView/types'
 
 import { FormContent } from './FormContent'
 
+import { projectParentEntity } from '@utils/entityFormActions/projectParentEntity'
+import { taskDirectionEntity } from '@utils/entityFormActions/taskDirectionEntity'
 import { useGetStateCurrentPageFilters } from '@utils/useGetStateCurrentPageFilters'
 
 export const TasksPage: React.FC = () => {
@@ -86,9 +88,17 @@ export const TasksPage: React.FC = () => {
     <EntityIndex
       pageTitleCode='MenuItems.tasks'
       groupClass={TaskGroup}
-      entityFilters={[CheckboxFilter('TASK_STATUS'), SelectFilter('PROJECT')]}
+      entityFilters={[
+        CheckboxFilter('TASK_STATUS'),
+        SelectFilter('PROJECT'),
+        SelectFilter('DIRECTION'),
+      ]}
       FormContent={FormContent}
-      actionIndexes={[0, 5, 1, 2]}
+      actionIndexes={[0, 5, 7, 1, 2]}
+      formActions={{
+        parentEntity: projectParentEntity,
+        directionEntity: taskDirectionEntity,
+      }}
       extraTopComponents={[viewTypeComponent]}
       viewType={viewType}
       state={state}

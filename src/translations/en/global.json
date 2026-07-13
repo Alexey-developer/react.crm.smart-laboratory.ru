@@ -23,6 +23,9 @@
     "call_history": "Call history",
     "general_permission_system": "General permission system",
     "projects": "Projects",
+    "project": "Project",
+    "directions": "Directions",
+    "direction": "Direction",
     "tasks": "Tasks",
     "documents": "Documents",
     "WorkingWithCustomers": {
@@ -33,6 +36,10 @@
       "applications_from_website": "Applications from website"
     },
     "employees": "Employees"
+  },
+  "Tasks": {
+    "recurring": "Recurring",
+    "one_time": "One-time"
   },
   "Messages": {
     "Info": {
@@ -69,6 +76,15 @@
       "status_id": "Status",
       "type_id": "Type",
       "customer_company_id": "Customer company",
+      "project_id": "Project",
+      "direction_id": "Direction",
+      "direction_family_id": "Direction family",
+      "direction_type_id": "Direction type",
+      "payment_model_id": "Payment model",
+      "payment_period_id": "Payment period",
+      "contract_amount": "Contract amount",
+      "billing_anchor_date": "Billing anchor date",
+      "monitoring_enabled": "Monitoring enabled",
 
       "check_performance": "Check performance",
       "check_expirations": "Check expirations",
@@ -98,6 +114,10 @@
     "id": "Identifier",
     "statuses": "Statuses",
     "types": "Types",
+    "direction_family": "Direction family",
+    "direction_type": "Direction type",
+    "payment_model": "Payment model",
+    "payment_period": "Payment period",
     "Deleted": {
       "self": "Deleted",
       "only_existing": "Only existing",
@@ -128,7 +148,9 @@
     "repositories": "Repositories",
     "technology_stack": "Technology stack",
     "expirations": "Expirations",
-    "other_links": "Other links"
+    "other_links": "Other links",
+    "endpoints": "Endpoints",
+    "coming_soon": "Coming soon"
   },
   "PermissionSystem": {
     "permission_system": "Permission system",
@@ -156,6 +178,11 @@
     "cancel_text": "Cancel"
   },
   "Statuses": {
+    "Direction": {
+      "in_progress": "In progress",
+      "upcoming": "Upcoming",
+      "completed": "Completed"
+    },
     "Project": {
       "in_progress": "In progress",
       "upcoming": "Upcoming",
@@ -183,15 +210,56 @@
       "made": "Made"
     }
   },
+  "DirectionFamilies": {
+    "development": "Development",
+    "promotion": "Promotion",
+    "maintenance": "Maintenance"
+  },
+  "DirectionTypes": {
+    "website": "Website",
+    "mobile_app": "Mobile app",
+    "business_process_automation": "Business process automation",
+    "integration": "Integration",
+    "devops": "DevOps",
+    "seo": "SEO",
+    "advertising": "Advertising",
+    "smm": "SMM",
+    "maps": "Maps",
+    "tech_support": "Tech support",
+    "rework": "Rework"
+  },
+  "PaymentModels": {
+    "piecework": "Piecework",
+    "periodic": "Periodic"
+  },
+  "PaymentPeriods": {
+    "week": "Week",
+    "month": "Month",
+    "year": "Year",
+    "interval_days": "Interval (days)"
+  },
+  "BillingDocumentStatuses": {
+    "not_started": "Not started",
+    "issued": "Issued",
+    "paid": "Paid",
+    "generated": "Generated",
+    "sent": "Sent"
+  },
+  "RecurrenceTypes": {
+    "monthly": "Monthly",
+    "weekly": "Weekly",
+    "interval_days": "Interval days"
+  },
+  "Endpoints": {
+    "Environment": {
+      "production": "Production",
+      "staging": "Staging",
+      "test": "Test",
+      "redirect": "Redirect",
+      "other": "Other"
+    }
+  },
   "Types": {
-    "Project": {
-      "development": "Development",
-      "seo": "SEO",
-      "support": "Support",
-      "rework": "Rework",
-      "advertising_promotion": "Advertising promotion",
-      "business_process_automation": "Business process automation"
-    },
     "FinancialTransaction": {
       "income": "Income",
       "cost": "Cost"

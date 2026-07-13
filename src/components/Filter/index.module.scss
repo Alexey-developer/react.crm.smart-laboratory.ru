@@ -2,13 +2,18 @@
 
 .btn {
   width: 100%;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
   :global {
     .ant-btn-icon {
-      float: right;
-      margin: auto;
-      margin-top: 0.3rem;
+      float: none;
+      margin: 0;
       margin-left: 0.5rem;
-      margin-inline-end: 0 !important;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
     }
   }
 }

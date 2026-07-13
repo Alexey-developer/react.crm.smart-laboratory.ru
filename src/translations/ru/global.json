@@ -23,6 +23,9 @@
     "call_history": "История звонков",
     "general_permission_system": "Система общих разрешений",
     "projects": "Проекты",
+    "project": "Проект",
+    "directions": "Направления",
+    "direction": "Направление",
     "tasks": "Задачи",
     "documents": "Документы",
     "WorkingWithCustomers": {
@@ -33,6 +36,10 @@
       "applications_from_website": "Заявки с вебсайта"
     },
     "employees": "Сотрудники"
+  },
+  "Tasks": {
+    "recurring": "Регулярная",
+    "one_time": "Разовая"
   },
   "Messages": {
     "Info": {
@@ -69,6 +76,15 @@
       "status_id": "Статус",
       "type_id": "Тип",
       "customer_company_id": "Компания-клиент",
+      "project_id": "Проект",
+      "direction_id": "Направление",
+      "direction_family_id": "Семейство направлений",
+      "direction_type_id": "Тип направления",
+      "payment_model_id": "Модель оплаты",
+      "payment_period_id": "Период оплаты",
+      "contract_amount": "Сумма договора",
+      "billing_anchor_date": "Дата начала биллинга",
+      "monitoring_enabled": "Мониторинг включён",
 
       "check_performance": "Проверять работоспособность",
       "check_expirations": "Проверять экспирации",
@@ -98,6 +114,10 @@
     "id": "Идентификатор",
     "statuses": "Статусы",
     "types": "Типы",
+    "direction_family": "Семейство направлений",
+    "direction_type": "Тип направления",
+    "payment_model": "Модель оплаты",
+    "payment_period": "Период оплаты",
     "Deleted": {
       "self": "Удалённые",
       "only_existing": "Только существующие",
@@ -128,7 +148,9 @@
     "repositories": "Репозитории",
     "technology_stack": "Стек технологий",
     "expirations": "Экспирации",
-    "other_links": "Прочие ссылки"
+    "other_links": "Прочие ссылки",
+    "endpoints": "Эндпоинты",
+    "coming_soon": "Скоро"
   },
   "PermissionSystem": {
     "permission_system": "Система разрешений",
@@ -156,6 +178,11 @@
     "cancel_text": "Отменить"
   },
   "Statuses": {
+    "Direction": {
+      "in_progress": "В работе",
+      "upcoming": "Предстоящий",
+      "completed": "Завершён"
+    },
     "Project": {
       "in_progress": "В работе",
       "upcoming": "Предстоящий",
@@ -183,15 +210,56 @@
       "made": "Проведена"
     }
   },
+  "DirectionFamilies": {
+    "development": "Разработка",
+    "promotion": "Продвижение",
+    "maintenance": "Сопровождение"
+  },
+  "DirectionTypes": {
+    "website": "Веб-сайт",
+    "mobile_app": "Мобильное приложение",
+    "business_process_automation": "Автоматизация бизнес-процессов",
+    "integration": "Интеграция",
+    "devops": "DevOps",
+    "seo": "SEO",
+    "advertising": "Реклама",
+    "smm": "SMM",
+    "maps": "Карты",
+    "tech_support": "Техподдержка",
+    "rework": "Доработка"
+  },
+  "PaymentModels": {
+    "piecework": "Сдельная",
+    "periodic": "Абонентская"
+  },
+  "PaymentPeriods": {
+    "week": "Неделя",
+    "month": "Месяц",
+    "year": "Год",
+    "interval_days": "Интервал (дни)"
+  },
+  "BillingDocumentStatuses": {
+    "not_started": "Не начато",
+    "issued": "Выставлено",
+    "paid": "Оплачено",
+    "generated": "Сформировано",
+    "sent": "Отправлено"
+  },
+  "RecurrenceTypes": {
+    "monthly": "Ежемесячно",
+    "weekly": "Еженедельно",
+    "interval_days": "Через N дней"
+  },
+  "Endpoints": {
+    "Environment": {
+      "production": "Продакшн",
+      "staging": "Стейджинг",
+      "test": "Тест",
+      "redirect": "Редирект",
+      "other": "Другое"
+    }
+  },
   "Types": {
-    "Project": {
-      "development": "Разработка",
-      "seo": "SEO",
-      "support": "Поддержка",
-      "rework": "Доработка",
-      "advertising_promotion": "Рекламное продвижение",
-      "business_process_automation": "Автоматизация бизнес процессов"
-    },
     "FinancialTransaction": {
       "income": "Доход",
       "cost": "Расход"

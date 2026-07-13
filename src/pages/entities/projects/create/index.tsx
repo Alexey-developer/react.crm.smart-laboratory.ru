@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Row, Col, Tag, Progress } from 'antd'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -31,7 +30,7 @@ export const CreateProjectPage: React.FC = () => {
   }, [])
 
   return getCustomForm(
-    getFormItems([]),
+    getFormItems(),
     translated_phrase('Modes.creating'),
     translated_phrase('MenuItems.projects'),
     'success transparent',
@@ -43,12 +42,7 @@ export const CreateProjectPage: React.FC = () => {
     },
     'CREATE',
     translated_phrase('Actions.create'),
-    {
-      status_id: 1,
-      type_id: 1,
-      check_performance: true,
-      check_expirations: true,
-    },
+    {},
     undefined,
     'EntitiesFields.'
   )

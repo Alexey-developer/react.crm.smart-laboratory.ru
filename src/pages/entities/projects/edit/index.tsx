@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Row, Col, Tag, Progress } from 'antd'
 
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -14,7 +13,6 @@ import { ProjectGroup } from '@api/models/project/queryGroup'
 
 import { useAPIQuery } from '@api/useAPIQuery'
 
-// import { CollapseCard } from '@components/CollapseCard'
 import { DefaultCard } from '@components/DefaultCard'
 import { Skeleton } from '@components/Skeleton'
 
@@ -39,13 +37,15 @@ export const EditProjectPage: React.FC = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const { data, isLoading, isFetching, refetch, isRefetching, isPending } =
-    useAPIQuery(ProjectGroup, getMethod('SHOW'), {
+  const { data, isLoading, isFetching } = useAPIQuery(
+    ProjectGroup,
+    getMethod('SHOW'),
+    {
       id: entityId,
-    })
+    }
+  )
 
   const project = data?.data
-  //   console.log(project)
 
   const state = useReactive<{
     initialValues: Store
@@ -60,15 +60,13 @@ export const EditProjectPage: React.FC = () => {
         badgeRibbonText={translated_phrase('Modes.editing')}
         badgeRibbonClassName={'warning'}
         content={
-          //   <div style={{ minHeight: '800px' }}>
           <Skeleton
             isLoading={isLoading}
             width='100%'
-            height='720px'
+            height='320px'
             skeleton={formSkeleton()}
             content={<></>}
           />
-          //   </div>
         }
         extra={formCardExtra(
           'warning transparent',
@@ -79,18 +77,15 @@ export const EditProjectPage: React.FC = () => {
   })
 
   React.useEffect(() => {
-    if (isLoading || isFetching) {
+    if (isLoading || isFetching || !project) {
       return
     }
     dispatch(setPageIsLoaded(!isLoading && !isFetching))
 
-    const formItems = getFormItems([project.status_id, project.type_id])
+    const formItems = getFormItems()
     formItems.map(
       value => (state.initialValues[value.name] = project[value.name])
     )
-
-    console.log('initialValues = ')
-    console.log(state.initialValues)
 
     state.customForm = getCustomForm(
       formItems,
@@ -109,7 +104,7 @@ export const EditProjectPage: React.FC = () => {
       entityId as number | undefined,
       'EntitiesFields.'
     )
-  }, [isLoading, isFetching])
+  }, [isLoading, isFetching, project])
 
   return state.customForm
 }

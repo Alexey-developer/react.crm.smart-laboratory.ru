@@ -11,6 +11,7 @@ enum IconEnum {
 
   TASKS = 'fa-solid fa-list-check',
   PROJECTS = 'fa-solid fa-diagram-project',
+  DIRECTIONS = 'fa-solid fa-route',
 
   PHONE = 'fa-solid fa-phone',
   PASSWORD = 'fa-solid fa-lock',

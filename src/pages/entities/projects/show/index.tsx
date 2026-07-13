@@ -1,8 +1,8 @@
 import React from 'react'
-import { Row, Col, Tag, Progress, Badge } from 'antd'
+import { Row, Col, Tag, Progress } from 'antd'
 
 import { useTranslation } from 'react-i18next'
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import { useDispatch } from 'react-redux'
 import { setPageIsLoaded } from '@redux/PageLoading/slice'
@@ -10,11 +10,12 @@ import { setPageIsLoaded } from '@redux/PageLoading/slice'
 import { ProjectGroup } from '@api/models/project/queryGroup'
 
 import { useAPIQuery } from '@api/useAPIQuery'
+import { useAPIMutation } from '@api/useAPIMutation'
 
 import { Skeleton } from '@components/Skeleton'
+import { useFormActions } from '@components/EntityIndex/FormActions'
 import { CollapseCard } from '@components/CollapseCard'
 import { AlertCard } from '@components/AlertCard'
-import { IncludedEmployees } from '@components/IncludedEmployees'
 import { PermissionSystem } from '@components/PermissionSystem'
 import { DefaultCard } from '@components/DefaultCard'
 
@@ -22,47 +23,44 @@ import { ActionButton } from '@components/ActionButton'
 
 import { getMethod } from '@utils/getMethod'
 import { SetPageTitle } from '@utils/helpers'
-import { formCardExtra } from '@utils/formCardExtra'
 import { getIcon } from '@utils/getIcon'
-import { TASKS, COMMON_EDITING } from '@utils/constants/routes'
+import { PROJECTS } from '@utils/constants/routes'
 import { convert2string, seconds2Time } from '@utils/helpers'
-
-// import { DefaultCard } from '@components/DefaultCard'
-// import { ActionButton } from '@components/ActionButton'
-// import { IncludedEmployees } from '@components/IncludedEmployees'
-// import type { Employees } from '@components/IncludedEmployees'
-
-// import { formCardExtra } from '@utils/formCardExtra'
 
 import { formSkeletonTop } from './formSkeleton'
 import { formSkeletonBottom } from './formSkeleton'
 
-import { getProject } from '@utils/tempData'
-
 export const ProjectPage: React.FC = () => {
   const { entityId } = useParams()
+  const projectId = Number(entityId)
   const [translated_phrase] = useTranslation('global')
   SetPageTitle(`${translated_phrase('MenuItems.projects')}: #${entityId}`)
 
-  const location = useLocation()
-  const { pathname } = location
-
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const {
-    data,
-    isLoading,
-    isFetching,
-    refetch,
-    isRefetching,
-    isPending,
-    error,
-  } = useAPIQuery(ProjectGroup, getMethod('SHOW'), {
-    id: entityId,
-  })
+  const { data, isLoading, isFetching, error } = useAPIQuery(
+    ProjectGroup,
+    getMethod('SHOW'),
+    {
+      id: entityId,
+    }
+  )
 
   const project = data?.data
-  console.log(project)
+
+  const { mutateAsync: mutateAsyncDelete } = useAPIMutation(
+    ProjectGroup,
+    getMethod('DESTROY'),
+    {}
+  )
+
+  const cardActions = useFormActions(
+    projectId,
+    [6, 4, 1, 2],
+    () => mutateAsyncDelete(projectId).then(() => navigate(`/${PROJECTS}`)),
+    { directionsCount: project?.directions_count }
+  )
 
   React.useEffect(() => {
     dispatch(setPageIsLoaded(!isLoading && !isFetching))
@@ -167,8 +165,14 @@ export const ProjectPage: React.FC = () => {
           key={project.id}
           type='default'
           title={`# ${project.id} ${project.name}`}
-          badgeRibbonText={translated_phrase(project.status.lang_code)}
-          badgeRibbonClassName={project.status.class}
+          badgeRibbonText={
+            project.monitoring_enabled
+              ? translated_phrase('Form.EntitiesFields.monitoring_enabled')
+              : ''
+          }
+          badgeRibbonClassName={
+            project.monitoring_enabled ? 'success' : 'transparent'
+          }
           content={
             <>
               <h2>{project.description}</h2>
@@ -176,7 +180,9 @@ export const ProjectPage: React.FC = () => {
                 className={'success'}
                 icon={<i className='fa-solid fa-chart-line-up'></i>}
               >
-                {(project.total_incomes / project.total_costs_auto).toFixed(2)}
+                {project.total_costs_auto
+                  ? (project.total_incomes / project.total_costs_auto).toFixed(2)
+                  : '—'}
               </Tag>
               <Tag
                 className={'transparent'}
@@ -185,40 +191,9 @@ export const ProjectPage: React.FC = () => {
                 {project.created_at}
               </Tag>
               <Progress percent={project.common_task_progress} />
-              <IncludedEmployees employees={getProject().employees} />
             </>
           }
-          actions={[
-            <Link to={`/${TASKS}/?project_id=${project.id}`}>
-              <Badge count='+99' offset={[15, 5]}>
-                <ActionButton
-                  className='transparent'
-                  title={translated_phrase('MenuItems.tasks')}
-                  shape='circle'
-                  icon={getIcon('TASKS')}
-                />
-              </Badge>
-            </Link>,
-            <Link to={pathname + '/' + COMMON_EDITING}>
-              <ActionButton
-                className='warning transparent'
-                title={translated_phrase('Actions.edit')}
-                shape='circle'
-                icon={getIcon('EDIT')}
-              />
-            </Link>,
-            <ActionButton
-              className='danger transparent'
-              title={translated_phrase('Actions.delete')}
-              shape='circle'
-              icon={getIcon('DELETE')}
-              useConfirm={true}
-            />,
-          ]}
-          extra={formCardExtra(
-            project.type.class,
-            translated_phrase(project.type.lang_code)
-          )}
+          actions={cardActions}
         />
       ) : isLoading ? (
         <DefaultCard
@@ -257,64 +232,12 @@ export const ProjectPage: React.FC = () => {
                 </Col>
                 <Col span={24} className='default-col'>
                   <CollapseCard
-                    type='danger transparent'
-                    items={[
-                      {
-                        key: '1',
-                        label: translated_phrase('Info.accesses'),
-                        children: <div>text</div>,
-                        // extra: <div>extra</div>,
-                      },
-                    ]}
-                  />
-                </Col>
-                <Col span={24} className='default-col'>
-                  <CollapseCard
-                    type='success transparent'
-                    items={[
-                      {
-                        key: '1',
-                        label: translated_phrase('Info.repositories'),
-                        children: <div>text</div>,
-                        // extra: <div>extra</div>,
-                      },
-                    ]}
-                  />
-                </Col>
-                <Col span={24} className='default-col'>
-                  <CollapseCard
-                    type='warning transparent'
-                    items={[
-                      {
-                        key: '1',
-                        label: translated_phrase('Info.technology_stack'),
-                        children: <div>text</div>,
-                        // extra: <div>extra</div>,
-                      },
-                    ]}
-                  />
-                </Col>
-                <Col span={24} className='default-col'>
-                  <CollapseCard
                     type='transparent'
                     items={[
                       {
                         key: '1',
-                        label: translated_phrase('Info.expirations'),
-                        children: <div>text</div>,
-                        // extra: <div>extra</div>,
-                      },
-                    ]}
-                  />
-                </Col>
-                <Col span={24} className='default-col'>
-                  <CollapseCard
-                    items={[
-                      {
-                        key: '1',
-                        label: translated_phrase('Info.other_links'),
-                        children: <div>text</div>,
-                        // extra: <div>extra</div>,
+                        label: translated_phrase('Info.endpoints'),
+                        children: <div>{translated_phrase('Info.coming_soon')}</div>,
                       },
                     ]}
                   />

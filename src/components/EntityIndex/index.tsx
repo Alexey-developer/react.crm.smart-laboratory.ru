@@ -31,7 +31,7 @@ import { useAPIQuery } from '@api/useAPIQuery'
 import { useAPIMutation } from '@api/useAPIMutation'
 
 import { FormCard } from './FormCard'
-import { FormActions } from './FormActions'
+import { useFormActions } from './FormActions'
 import { DefaultCard } from '@components/DefaultCard'
 import { type Filters, Filter } from '@components/Filter'
 import { type RequestSortState, Sort } from '@components/Sort'
@@ -46,12 +46,23 @@ import { getIcon } from '@utils/getIcon'
 import { COMMON_CREATING } from '@utils/constants/routes'
 import { getCheckboxFilterType } from '@utils/getCheckboxFilterType'
 
+export type EntityFormActionsConfig = {
+  tasksFilterKey?: 'project_id' | 'direction_id'
+  parentEntity?: (entity: any) =>
+    | { id: number; label?: string }
+    | undefined
+  directionEntity?: (entity: any) =>
+    | { id: number; label?: string }
+    | undefined
+}
+
 type EntityIndexProps = {
   pageTitleCode: string
   groupClass: GroupClass
   entityFilters: Filters
   FormContent: (entity: any) => React.ReactNode
   actionIndexes: number[]
+  formActions?: EntityFormActionsConfig
   extraTopComponents?: React.ReactNode[]
   viewType?: ViewType
   state?: TState
@@ -67,6 +78,7 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
   entityFilters,
   FormContent,
   actionIndexes,
+  formActions,
   extraTopComponents,
   viewType,
   state,
@@ -143,11 +155,10 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
   }, [isLoading, isFetching])
 
   const Card: React.FC<{ entity: any }> = ({ entity }) => {
-    return FormCard({
-      isLoading: isLoading,
-      entity: entity,
-      FormContent: FormContent,
-      cardActions: FormActions(
+    const parentEntity = formActions?.parentEntity?.(entity)
+    const directionEntity = formActions?.directionEntity?.(entity)
+
+    const cardActions = useFormActions(
         entity.id,
         entity.deleted_at ? [3] : actionIndexes,
         () => {
@@ -155,8 +166,21 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
             ? mutateAsyncRestore(entity.id).then(() => refetch())
             : mutateAsyncDelete(entity.id).then(() => refetch())
         },
-        entity.project?.id
-      ),
+        {
+          tasksFilterKey: formActions?.tasksFilterKey,
+          parentEntityId: parentEntity?.id,
+          parentEntityTitle: parentEntity?.label,
+          directionEntityId: directionEntity?.id,
+          directionEntityTitle: directionEntity?.label,
+          directionsCount: entity.directions_count,
+        }
+    )
+
+    return FormCard({
+      isLoading: isLoading,
+      entity: entity,
+      FormContent: FormContent,
+      cardActions: cardActions,
       grid:
         !viewType || viewType === 'list'
           ? undefined
@@ -393,6 +417,7 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
             [...Array(perPage)]?.map((skeleton, i) => (
               <DefaultCard
                 isLoading={isLoading || isFetching}
+                skeletonActionCount={actionIndexes.length}
                 key={i}
                 title=''
                 content={<></>}
