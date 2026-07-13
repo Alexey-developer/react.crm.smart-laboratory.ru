@@ -42,6 +42,7 @@ import { AlertCard } from '@components/AlertCard'
 import { getMethod } from '@utils/getMethod'
 import { convert2string, seconds2Time, SetPageTitle } from '@utils/helpers'
 import { useGetStateCurrentPageFilters } from '@utils/useGetStateCurrentPageFilters'
+import { useSyncFiltersFromSearchParams } from '@utils/useSyncFiltersFromSearchParams'
 import { getIcon } from '@utils/getIcon'
 import { COMMON_CREATING } from '@utils/constants/routes'
 import { getCheckboxFilterType } from '@utils/getCheckboxFilterType'
@@ -111,6 +112,8 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
     sortByFiledName: 'id',
     sortDirection: 'desc',
   })
+
+  useSyncFiltersFromSearchParams()
 
   const filters = useGetStateCurrentPageFilters()
   //   console.log('FILTERS: ', filters)

@@ -50,8 +50,8 @@ export const useFormActions = (
 
   const tasksLink =
     tasksFilterKey === 'direction_id' && parentEntityId
-      ? `/${TASKS}/?direction_id=${entityId}&project_id=${parentEntityId}`
-      : `/${TASKS}/?${tasksFilterKey}=${entityId}`
+      ? `/${TASKS}/?direction_id=${entityId}&project=${parentEntityId}`
+      : `/${TASKS}/?project=${entityId}`
 
   const allActions = [
     <Link key='go' to={entityPath}>
