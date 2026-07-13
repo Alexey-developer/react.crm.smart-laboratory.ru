@@ -6,7 +6,7 @@ import english from 'antd/locale/en_US'
 import russian from 'antd/locale/ru_RU'
 import { Provider } from 'react-redux'
 import { I18nextProvider } from 'react-i18next'
-import { MemoryRouter } from 'react-router-dom'
+import { MemoryRouter, useInRouterContext } from 'react-router-dom'
 
 import { GetValidateMessages } from '@utils/helpers'
 
@@ -52,6 +52,19 @@ const AntdStoryShell: React.FC<{ children: React.ReactNode; locale: Lang }> = ({
       <div className={styles.canvas}>{children}</div>
     </ConfigProvider>
   )
+}
+
+const StoryMemoryRouter: React.FC<{
+  children: React.ReactNode
+  initialEntries: string[]
+}> = ({ children, initialEntries }) => {
+  const isInRouterContext = useInRouterContext()
+
+  if (isInRouterContext) {
+    return <>{children}</>
+  }
+
+  return <MemoryRouter initialEntries={initialEntries}>{children}</MemoryRouter>
 }
 
 export const AppDecorator = (
@@ -101,11 +114,11 @@ export const AppDecorator = (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <I18nextProvider i18n={storybookI18n}>
-          <MemoryRouter initialEntries={initialEntries}>
+          <StoryMemoryRouter initialEntries={initialEntries}>
             <AntdStoryShell locale={locale}>
               <Story />
             </AntdStoryShell>
-          </MemoryRouter>
+          </StoryMemoryRouter>
         </I18nextProvider>
       </QueryClientProvider>
     </Provider>

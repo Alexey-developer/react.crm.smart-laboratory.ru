@@ -5,6 +5,8 @@ import { useReactive } from 'ahooks'
 
 import { CustomPagination } from '@components/CustomPagination'
 
+import { withStoryReduxState } from '../../storybook/storyDecorators'
+
 const PaginationDemo: React.FC<{
   total: number
   lastPage: number
@@ -25,6 +27,7 @@ const meta = {
   title: 'Primitives/CustomPagination',
   component: PaginationDemo,
   tags: ['autodocs'],
+  decorators: [withStoryReduxState],
   parameters: {
     reduxState: {
       currentUser: { authToken: '', perPage: 16 },

@@ -4,12 +4,14 @@ import { CustomSelect } from '@components/CustomSelect'
 
 import { projectSelectQuerySeeds, directionSelectQuerySeeds } from '../../storybook/fixtures/apiMocks'
 import { StoryForm } from '../../storybook/StoryForm'
+import { withStoryQuerySeeds } from '../../storybook/storyDecorators'
 
 const meta = {
   title: 'Connected (wave 2)/CustomSelect',
   component: CustomSelect,
   tags: ['autodocs'],
   decorators: [
+    withStoryQuerySeeds,
     Story => (
       <StoryForm>
         <Story />

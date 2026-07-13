@@ -7,6 +7,7 @@ import { CheckboxFilter } from '@components/Filter/CheckboxFilter'
 import { SelectFilter } from '@components/Filter/SelectFilter'
 
 import { projectsFilterQuerySeeds } from '../../storybook/fixtures/apiMocks'
+import { withStoryQuerySeeds, withStoryRouter } from '../../storybook/storyDecorators'
 
 const FilterProjectsDemo: React.FC<{
   isLoading?: boolean
@@ -24,6 +25,7 @@ const meta = {
   title: 'Connected (wave 2)/Filter',
   component: FilterProjectsDemo,
   tags: ['autodocs'],
+  decorators: [withStoryRouter, withStoryQuerySeeds],
   parameters: {
     router: { initialEntries: ['/projects'] },
     querySeeds: projectsFilterQuerySeeds,

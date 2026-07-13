@@ -3,12 +3,14 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { PhoneInput } from '@components/PhoneInput'
 
 import { StoryForm } from '../../storybook/StoryForm'
+import { withStoryReduxState } from '../../storybook/storyDecorators'
 
 const meta = {
   title: 'Connected (wave 2)/PhoneInput',
   component: PhoneInput,
   tags: ['autodocs'],
   decorators: [
+    withStoryReduxState,
     Story => (
       <StoryForm initialValues={{ prefix: 7, phone: '' }}>
         <Story />
@@ -36,6 +38,7 @@ export const RussiaPrefix: Story = {}
 
 export const AzerbaijanPrefix: Story = {
   decorators: [
+    withStoryReduxState,
     Story => (
       <StoryForm initialValues={{ prefix: 994, phone: '' }}>
         <Story />

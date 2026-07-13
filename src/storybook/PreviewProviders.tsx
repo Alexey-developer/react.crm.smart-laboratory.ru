@@ -5,7 +5,6 @@ import { ConfigProvider } from 'antd'
 import russian from 'antd/locale/ru_RU'
 import { Provider } from 'react-redux'
 import { I18nextProvider } from 'react-i18next'
-import { MemoryRouter } from 'react-router-dom'
 
 import { GetValidateMessages } from '@utils/helpers'
 
@@ -13,12 +12,14 @@ import { getAntdThemeConfig } from './antdTheme'
 import { createStoryStore } from './createStoryStore'
 import { storybookI18n } from './i18n'
 
+import styles from './AppDecorator.module.scss'
+
 const AntdShell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const validateMessages = GetValidateMessages()
 
   return (
     <ConfigProvider locale={russian} theme={getAntdThemeConfig()} form={{ validateMessages }}>
-      {children}
+      <div className={styles.canvas}>{children}</div>
     </ConfigProvider>
   )
 }
@@ -26,11 +27,16 @@ const AntdShell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 /**
  * Provider chain for design-sync previews (claude.ai/design): same context
  * AppDecorator gives Storybook stories (Redux, react-query, i18n, router,
- * antd), but as a plain {children} wrapper (no Storybook Story/context args)
- * and with no CSS side-effect imports (design-sync's esbuild pass has no
- * .scss loader — see .design-sync/NOTES.md).
+ * antd), but as a plain {children} wrapper (no Storybook Story/context args).
+ *
+ * Per-story router / redux / querySeeds — through storyDecorators in *.stories.tsx
+ * (design-sync compose применяет decorators внутри этого shell).
  */
 export const PreviewProviders: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  React.useEffect(() => {
+    document.body.setAttribute('data-theme', 'light')
+  }, [])
+
   const queryClient = React.useMemo(
     () =>
       new QueryClient({
@@ -54,9 +60,7 @@ export const PreviewProviders: React.FC<{ children: React.ReactNode }> = ({ chil
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <I18nextProvider i18n={storybookI18n}>
-          <MemoryRouter initialEntries={['/projects']}>
-            <AntdShell>{children}</AntdShell>
-          </MemoryRouter>
+          <AntdShell>{children}</AntdShell>
         </I18nextProvider>
       </QueryClientProvider>
     </Provider>

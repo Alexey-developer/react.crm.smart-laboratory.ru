@@ -4,12 +4,14 @@ import { CustomSimpleSelect } from '@components/CustomSimpleSelect'
 
 import { projectStatusSimpleSelectSeeds } from '../../storybook/fixtures/apiMocks'
 import { StoryForm } from '../../storybook/StoryForm'
+import { withStoryQuerySeeds } from '../../storybook/storyDecorators'
 
 const meta = {
   title: 'Connected (wave 2)/CustomSimpleSelect',
   component: CustomSimpleSelect,
   tags: ['autodocs'],
   decorators: [
+    withStoryQuerySeeds,
     Story => (
       <StoryForm>
         <Story />

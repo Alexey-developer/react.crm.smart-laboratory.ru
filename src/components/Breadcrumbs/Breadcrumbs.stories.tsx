@@ -2,10 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Breadcrumbs } from '@components/Breadcrumbs'
 
+import { withStoryRouter } from '../../storybook/storyDecorators'
+
 const meta = {
   title: 'Connected (wave 2)/Breadcrumbs',
   component: Breadcrumbs,
   tags: ['autodocs'],
+  decorators: [withStoryRouter],
   parameters: {
     docs: {
       description: {

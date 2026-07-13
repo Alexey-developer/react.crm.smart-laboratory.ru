@@ -2,10 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { CustomSpin } from '@components/CustomSpin'
 
+import { withStoryReduxState } from '../../storybook/storyDecorators'
+
 const meta = {
   title: 'Primitives/CustomSpin',
   component: CustomSpin,
   tags: ['autodocs'],
+  decorators: [withStoryReduxState],
   parameters: {
     docs: {
       description: {

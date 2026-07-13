@@ -5,6 +5,8 @@ import {
   type Employees,
 } from '@components/IncludedEmployees'
 
+import { withStoryRouter } from '../../storybook/storyDecorators'
+
 const employees: Employees[] = [
   { id: 1, name: 'Иван', surname: 'Петров' },
   { id: 2, name: 'Мария', surname: 'Сидорова' },
@@ -16,6 +18,7 @@ const meta = {
   title: 'Primitives/IncludedEmployees',
   component: IncludedEmployees,
   tags: ['autodocs'],
+  decorators: [withStoryRouter],
   args: {
     employees,
   },

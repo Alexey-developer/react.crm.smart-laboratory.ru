@@ -1,13 +1,7 @@
 import type { Preview } from '@storybook/react-vite'
 import { withThemeByDataAttribute } from '@storybook/addon-themes'
 
-import '@layouts/MainLayout/reset.css'
-import '@layouts/MainLayout/common.scss'
-import '@assets/fontawesome/v6.5.1/css/all.css'
-import '@assets/fontawesome/v6.5.1/css/sharp-thin.css'
-import '@assets/fontawesome/v6.5.1/css/sharp-solid.css'
-import '@assets/fontawesome/v6.5.1/css/sharp-regular.css'
-import '@assets/fontawesome/v6.5.1/css/sharp-light.css'
+import '../src/storybook/globalStyles'
 
 import { AppDecorator } from '../src/storybook/AppDecorator'
 

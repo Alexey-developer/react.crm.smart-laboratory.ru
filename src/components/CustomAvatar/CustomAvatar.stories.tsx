@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { CustomAvatar, type Employee } from '@components/CustomAvatar'
 
+import { withStoryRouter } from '../../storybook/storyDecorators'
+
 const sampleEmployee: Employee = {
   id: 42,
   name: 'Иван',
@@ -12,6 +14,7 @@ const meta = {
   title: 'Primitives/CustomAvatar',
   component: CustomAvatar,
   tags: ['autodocs'],
+  decorators: [withStoryRouter],
   parameters: {
     docs: {
       description: {
