@@ -29,6 +29,7 @@ argument-hint: Name
    - `index.tsx` — named export, типизированные props, использование `getIcon`/`translated_phrase`/`useAPIQuery` где нужно.
    - (Опц.) `index.module.scss` — стили + `@import '@utils/scss/variables.scss'`.
    - (Опц.) Под-компоненты в той же папке.
+   - **`{Name}.stories.tsx`** — если компонент UI-примитив (не app-chrome): минимум `Default` + варианты состояний. См. `docs/ai/react/layers/storybook.md`.
 
 6. **Соблюдай правила**:
    - **Named export** (`export const {Name}: React.FC<...> = ...`).
@@ -56,6 +57,7 @@ import { {Name} } from '@components/{Name}'
 - [ ] Используются helpers (`getIcon`, `translated_phrase`, `useAPIQuery`).
 - [ ] Темизация (если есть стили цветов/фонов).
 - [ ] Импорты только через `@aliases`.
+- [ ] (Примитив) `{Name}.stories.tsx` создан, `npm run storybook` без ошибок.
 
 ## Язык
 

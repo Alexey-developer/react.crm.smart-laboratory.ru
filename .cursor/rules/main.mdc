@@ -22,10 +22,11 @@ alwaysApply: true
 - Пути — **только** через `@aliases` (`@api`, `@components`, `@redux`, `@pages`, `@translations`, `@utils`, `@layouts`, `@assets`).
 - Маршруты CRUD — через `routes` массив + `formCRUDRoutes` в `App.tsx`; URI — из `@utils/constants/routes`.
 - SCSS — переменные из `@utils/scss/variables.scss`; темы — через `[data-theme='dark']`.
+- Storybook — при новом UI-примитиве добавлять `{Name}.stories.tsx`; при изменении визуала/токенов — обновлять stories. См. `../../../docs/ai/react/layers/storybook.md`.
 
 ## Слои
 
-При работе с конкретным слоем (api/components/pages/routing/redux/i18n/styles/skeleton/icons/utils/layout) — открой соответствующий файл в `../../../docs/ai/react/layers/`.
+При работе с конкретным слоем (api/components/pages/routing/redux/i18n/styles/skeleton/icons/utils/layout/**storybook**) — открой соответствующий файл в `../../../docs/ai/react/layers/`.
 
 ## Legacy
 

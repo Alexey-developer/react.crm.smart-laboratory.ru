@@ -1,0 +1,19 @@
+@import '@utils/scss/variables.scss';
+
+.canvas {
+  min-height: 100vh;
+  padding: 1rem;
+  background: $LIGHT_BG;
+  color: $LIGHT_COLOR;
+}
+
+[data-theme='dark'] {
+  .canvas {
+    background: $DARK_BG;
+    color: $DARK_COLOR;
+  }
+}
+
+.row {
+  width: 100%;
+}
