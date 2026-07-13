@@ -50,8 +50,8 @@ export const PreviewProviders: React.FC<{ children: React.ReactNode }> = ({ chil
   const store = React.useMemo(
     () =>
       createStoryStore({
-        theme: { currentTheme: 'light' },
-        currentUser: { authToken: 'design-sync-token', perPage: 16 },
+        Theme: { currentTheme: 'light' },
+        CurrentUser: { authToken: 'design-sync-token', perPage: 16 },
       }),
     []
   )

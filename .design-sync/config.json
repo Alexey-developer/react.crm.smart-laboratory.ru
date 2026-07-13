@@ -13,7 +13,8 @@
     "component": "PreviewProviders"
   },
   "titleMap": {
-    "DesignTokens": null
+    "DesignTokens": null,
+    "EditableTextarea": null
   },
   "extraEntries": [
     "../../src/api/useAPIQuery.ts"
@@ -24,8 +25,8 @@
   "storyImports": {
     "shim": ["@tanstack/react-query", "react-router-dom"]
   },
+  "readmeHeader": ".design-sync/conventions.md",
   "overrides": {
-    "EditableTextarea": { "cardMode": "single", "primaryStory": "AdvancedLongContent" },
     "CustomPagination": { "cardMode": "column" },
     "CustomSpin": { "cardMode": "single", "primaryStory": "Spinning", "skip": ["primitives-customspin--hidden"] },
     "Skeleton": { "cardMode": "column" }

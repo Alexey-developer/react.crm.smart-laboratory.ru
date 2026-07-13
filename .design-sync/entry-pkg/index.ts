@@ -10,6 +10,16 @@
 // see fontawesome-classes.css's header for why the split).
 import './fontawesome-classes.css'
 
+// Same problem for the app's global button/reset styles (.smart-btn and its
+// .warning/.success/.danger/.transparent color variants — ActionButton/
+// CollapseCard use them via plain className strings, not a co-located
+// .module.scss): normally shipped only through .storybook/preview.tsx via
+// globalStyles.ts, invisible to this entry's own bundle graph. Neither file
+// has any url()-referenced asset, so — unlike the Font Awesome CSS — they're
+// safe to import directly through Vite without base64-inlining risk.
+import '../../src/layouts/MainLayout/reset.css'
+import '../../src/layouts/MainLayout/common.scss'
+
 // storyDecorators.tsx (compiled per-story, a SEPARATE esbuild pass from this
 // entry) calls useQueryClient() to seed API mocks. Without a shared module
 // instance, that separate compile's copy of @tanstack/react-query has its
@@ -40,7 +50,8 @@ export { CustomSelect } from '../../src/components/CustomSelect'
 export { CustomSimpleSelect } from '../../src/components/CustomSimpleSelect'
 export { CustomSpin } from '../../src/components/CustomSpin'
 export { DefaultCard } from '../../src/components/DefaultCard'
-export { EditableTextarea } from '../../src/components/EditableTextarea'
+// EditableTextarea excluded (cfg.titleMap): jodit-pro-react pushes
+// _ds_bundle.js past the upload's 5MB per-file cap. See NOTES.md.
 export { Filter } from '../../src/components/Filter'
 export { IncludedEmployees } from '../../src/components/IncludedEmployees'
 export { PhoneInput } from '../../src/components/PhoneInput'
