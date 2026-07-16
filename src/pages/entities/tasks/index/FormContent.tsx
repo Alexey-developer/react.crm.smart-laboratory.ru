@@ -76,7 +76,11 @@ export const FormContent = (task: TTask) => {
         className={'success'}
         icon={<i className='fa-solid fa-chart-line-up'></i>}
       >
-        {formatIncomeToCostRatio(task.total_incomes, task.financial_projections)}
+        {formatIncomeToCostRatio(
+          task.total_incomes,
+          task.financial_projections,
+          billingCurrency?.id
+        )}
       </Tag>
       <Tag
         className={'transparent'}

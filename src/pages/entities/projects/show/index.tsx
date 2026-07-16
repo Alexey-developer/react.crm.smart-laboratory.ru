@@ -28,6 +28,7 @@ import { PROJECTS } from '@utils/constants/routes'
 import {
   formatBillingMoney,
   formatCostsAutoVsBilling,
+  formatIncomeToCostRatio,
   formatProjectionMoney,
 } from '@utils/formatFinancialMoney'
 
@@ -188,9 +189,11 @@ export const ProjectPage: React.FC = () => {
                 className={'success'}
                 icon={<i className='fa-solid fa-chart-line-up'></i>}
               >
-                {project.total_costs_auto
-                  ? (project.total_incomes / project.total_costs_auto).toFixed(2)
-                  : '—'}
+                {formatIncomeToCostRatio(
+                  project.total_incomes,
+                  project.financial_projections,
+                  project.currency?.id
+                )}
               </Tag>
               <Tag
                 className={'transparent'}

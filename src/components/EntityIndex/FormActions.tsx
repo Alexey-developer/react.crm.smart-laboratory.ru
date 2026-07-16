@@ -16,12 +16,15 @@ import {
 } from '@utils/constants/routes'
 import { getProjectActionTitle } from '@utils/entityFormActions/getProjectActionTitle'
 import { getDirectionActionTitle } from '@utils/entityFormActions/getDirectionActionTitle'
+import { getTaskActionTitle } from '@utils/entityFormActions/getTaskActionTitle'
 
 export type FormActionsOptions = {
   parentEntityId?: number
   parentEntityTitle?: string
   directionEntityId?: number
   directionEntityTitle?: string
+  taskEntityId?: number
+  taskEntityTitle?: string
   tasksFilterKey?: 'project_id' | 'direction_id'
   directionsCount?: number
 }
@@ -37,6 +40,8 @@ export const useFormActions = (
     parentEntityTitle,
     directionEntityId,
     directionEntityTitle,
+    taskEntityId,
+    taskEntityTitle,
     tasksFilterKey = 'project_id',
     directionsCount,
   } = options
@@ -125,6 +130,15 @@ export const useFormActions = (
           )}
           shape='circle'
           icon={getIcon('DIRECTIONS')}
+        />
+      </Link>
+    ) : null,
+    taskEntityId ? (
+      <Link key='task' to={`/${TASKS}/${taskEntityId}`}>
+        <ActionButton
+          title={getTaskActionTitle(translated_phrase, taskEntityTitle)}
+          shape='circle'
+          icon={getIcon('TASKS')}
         />
       </Link>
     ) : null,

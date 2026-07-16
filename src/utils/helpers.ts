@@ -60,7 +60,15 @@ export const convert2string = (
   str: string = '',
   locale: string = 'ru-RU'
 ) => {
-  return number.toLocaleString(locale) + (str ? ' ' + str : '')
+  const value = Number(number)
+  const formatted = Number.isFinite(value)
+    ? value.toLocaleString(locale, {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2,
+      })
+    : '—'
+
+  return formatted + (str ? ' ' + str : '')
 }
 
 export const getDateTimeFormat = (locale: string = 'ru-RU') => {

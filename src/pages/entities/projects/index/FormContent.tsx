@@ -76,7 +76,8 @@ export const FormContent = (project: TProject) => {
       >
         {formatIncomeToCostRatio(
           project.total_incomes,
-          project.financial_projections
+          project.financial_projections,
+          project.currency?.id
         )}
       </Tag>
       <Tag

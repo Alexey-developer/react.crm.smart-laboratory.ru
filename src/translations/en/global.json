@@ -98,6 +98,8 @@
       "check_expirations": "Check expirations",
 
       "total_spent_time": "Total spent time",
+      "total_time": "Time spent",
+      "money": "Amount",
       "total_costs_auto": "Total costs (automatic calculation)",
       "total_costs": "Total costs (actually)",
       "total_incomes": "Total incomes",

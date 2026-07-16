@@ -77,7 +77,8 @@ export const FormContent = (direction: TDirection) => {
       >
         {formatIncomeToCostRatio(
           direction.total_incomes,
-          direction.financial_projections
+          direction.financial_projections,
+          billingCurrency?.id
         )}
       </Tag>
       <Tag

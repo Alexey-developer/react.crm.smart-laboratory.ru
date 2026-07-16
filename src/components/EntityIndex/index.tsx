@@ -55,6 +55,9 @@ export type EntityFormActionsConfig = {
   directionEntity?: (entity: any) =>
     | { id: number; label?: string }
     | undefined
+  taskEntity?: (entity: any) =>
+    | { id: number; label?: string }
+    | undefined
 }
 
 type EntityIndexProps = {
@@ -160,6 +163,7 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
   const Card: React.FC<{ entity: any }> = ({ entity }) => {
     const parentEntity = formActions?.parentEntity?.(entity)
     const directionEntity = formActions?.directionEntity?.(entity)
+    const taskEntity = formActions?.taskEntity?.(entity)
 
     const cardActions = useFormActions(
         entity.id,
@@ -175,6 +179,8 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
           parentEntityTitle: parentEntity?.label,
           directionEntityId: directionEntity?.id,
           directionEntityTitle: directionEntity?.label,
+          taskEntityId: taskEntity?.id,
+          taskEntityTitle: taskEntity?.label,
           directionsCount: entity.directions_count,
         }
     )

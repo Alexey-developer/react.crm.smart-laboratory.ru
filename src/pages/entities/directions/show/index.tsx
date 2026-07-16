@@ -30,6 +30,7 @@ import { DIRECTIONS } from '@utils/constants/routes'
 import {
   formatBillingMoney,
   formatCostsAutoVsBilling,
+  formatIncomeToCostRatio,
   formatProjectionMoney,
 } from '@utils/formatFinancialMoney'
 
@@ -194,11 +195,11 @@ export const DirectionPage: React.FC = () => {
                 className={'success'}
                 icon={<i className='fa-solid fa-chart-line-up'></i>}
               >
-                {direction.total_costs_auto
-                  ? (
-                      direction.total_incomes / direction.total_costs_auto
-                    ).toFixed(2)
-                  : '—'}
+                {formatIncomeToCostRatio(
+                  direction.total_incomes,
+                  direction.financial_projections,
+                  direction.currency?.id ?? direction.project?.currency?.id
+                )}
               </Tag>
               <Tag
                 className={'transparent'}

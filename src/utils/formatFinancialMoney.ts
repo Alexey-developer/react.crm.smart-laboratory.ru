@@ -65,16 +65,27 @@ export const formatCostsAutoVsBilling = (
 
 export const formatIncomeToCostRatio = (
   incomes: number,
-  projections: TFinancialProjection[] | undefined
+  projections: TFinancialProjection[] | undefined,
+  billingCurrencyId?: number | null
 ): string => {
-  if (projections?.length !== 1) {
+  if (!projections?.length) {
     return '—'
   }
 
-  const costsAuto = Number(projections[0].total_costs_auto ?? 0)
+  const preferred =
+    (billingCurrencyId != null
+      ? projections.find((projection) => projection.currency_id === billingCurrencyId)
+      : undefined) ??
+    (projections.length === 1 ? projections[0] : undefined)
+
+  if (!preferred) {
+    return '—'
+  }
+
+  const costsAuto = Number(preferred.total_costs_auto ?? 0)
   if (!costsAuto) {
     return '—'
   }
 
-  return (incomes / costsAuto).toFixed(2)
+  return (Number(incomes) / costsAuto).toFixed(2)
 }

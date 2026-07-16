@@ -98,6 +98,8 @@
       "check_expirations": "Проверять экспирации",
 
       "total_spent_time": "Общее затраченное время",
+      "total_time": "Затраченное время",
+      "money": "Сумма",
       "total_costs_auto": "Общие расходы (авторачёт)",
       "total_costs": "Расходы (фактически)",
       "total_incomes": "Общие доходы",

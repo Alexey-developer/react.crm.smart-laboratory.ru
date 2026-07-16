@@ -32,6 +32,18 @@ const workTimeRangeDirectionEntity = (workTimeRange: TWorkTimeRange) => {
   }
 }
 
+const workTimeRangeTaskEntity = (workTimeRange: TWorkTimeRange) => {
+  const task = workTimeRange.task
+  if (!task) {
+    return undefined
+  }
+
+  return {
+    id: task.id,
+    label: task.name,
+  }
+}
+
 export const WorkTimeRangesPage: React.FC = () => {
   return (
     <EntityIndex
@@ -44,10 +56,11 @@ export const WorkTimeRangesPage: React.FC = () => {
         SelectFilter('WORKER_PROFILE'),
       ]}
       FormContent={FormContent}
-      actionIndexes={[0, 5, 7, 1, 2]}
+      actionIndexes={[5, 7, 8, 1, 2]}
       formActions={{
         parentEntity: workTimeRangeProjectEntity,
         directionEntity: workTimeRangeDirectionEntity,
+        taskEntity: workTimeRangeTaskEntity,
       }}
     />
   )

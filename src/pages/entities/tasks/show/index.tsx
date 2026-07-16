@@ -170,7 +170,8 @@ export const TaskPage: React.FC = () => {
                 >
                   {formatIncomeToCostRatio(
                     task.total_incomes,
-                    task.financial_projections
+                    task.financial_projections,
+                    task.project?.currency?.id ?? task.direction?.currency?.id
                   )}
                 </Tag>
                 <Tag

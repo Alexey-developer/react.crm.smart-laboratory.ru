@@ -9,6 +9,7 @@ import {
   getTaskRecurrenceRibbon,
   isTaskEntity,
 } from '@utils/entityFormActions/getTaskRecurrenceRibbon'
+import { convert2string } from '@utils/helpers'
 
 type TProps = {
   isLoading: boolean
@@ -17,6 +18,9 @@ type TProps = {
   cardActions: React.ReactNode[]
   grid?: Grid
 }
+
+const isWorkTimeRangeEntity = (entity: any): boolean =>
+  entity?.task_item_id != null || entity?.task_item != null
 
 export const FormCard = (props: TProps) => {
   const { isLoading, entity, FormContent, cardActions, grid } = props
@@ -35,6 +39,9 @@ export const FormCard = (props: TProps) => {
     const ribbon = getTaskRecurrenceRibbon(entity, translated_phrase)
     badgeRibbonText = ribbon.text
     badgeRibbonClassName = ribbon.className
+  } else if (isWorkTimeRangeEntity(entity)) {
+    const itemName = entity.task_item?.name ?? ''
+    badgeRibbonText = `#${entity.id}${itemName ? ` ${itemName}` : ''}`
   } else if (entity.project) {
     badgeRibbonText = `#${entity.project.id} ${entity.project.name}`
   }
@@ -44,6 +51,17 @@ export const FormCard = (props: TProps) => {
     formCardExtra(
       entity.status.class,
       translated_phrase(entity.status.lang_code)
+    )
+
+  const rateExtra =
+    isWorkTimeRangeEntity(entity) &&
+    entity.rate != null &&
+    formCardExtra(
+      'warning',
+      convert2string(
+        entity.rate,
+        `${entity.salary_currency?.symbol ?? ''}/${translated_phrase('Time.short_hours')}`
+      )
     )
 
   return (
@@ -56,7 +74,7 @@ export const FormCard = (props: TProps) => {
       badgeRibbonClassName={badgeRibbonClassName}
       content={FormContent(entity)}
       actions={cardActions}
-      extra={statusExtra}
+      extra={statusExtra || rateExtra || undefined}
       grid={grid}
     />
   )
