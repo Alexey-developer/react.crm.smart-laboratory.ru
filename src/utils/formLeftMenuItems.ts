@@ -79,6 +79,11 @@ export const formLeftMenuItems = (): LeftMenuItems => {
       },
     },
     {
+      name_key: 'MenuItems.work_time_ranges',
+      path: URIs.WORK_TIME_RANGES,
+      icon: 'fa-solid fa-stopwatch',
+    },
+    {
       name_key: 'MenuItems.documents',
       path: URIs.DOCUMENTS,
       icon: 'fa-solid fa-file-lines',

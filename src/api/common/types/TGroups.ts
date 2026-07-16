@@ -3,7 +3,9 @@ import { ProjectGroup } from '@api/models/project/queryGroup'
 import { DirectionGroup } from '@api/models/direction/queryGroup'
 import { ProjectEndpointGroup } from '@api/models/projectEndpoint/queryGroup'
 import { DirectionBillingPeriodGroup } from '@api/models/directionBillingPeriod/queryGroup'
-import { RecurringTaskScheduleGroup } from '@api/models/recurringTaskSchedule/queryGroup'
+import { CurrencyGroup } from '@api/models/currency/queryGroup'
+import { WorkerProfileGroup } from '@api/models/workerProfile/queryGroup'
+import { WorkTimeRangeGroup } from '@api/models/workTimeRange/queryGroup'
 import { ProjectStatusGroup } from '@api/models/projectStatus/queryGroup'
 import { DirectionStatusGroup } from '@api/models/directionStatus/queryGroup'
 import { DirectionFamilyGroup } from '@api/models/directionFamily/queryGroup'
@@ -23,7 +25,9 @@ export type GroupClass =
   | typeof DirectionGroup
   | typeof ProjectEndpointGroup
   | typeof DirectionBillingPeriodGroup
-  | typeof RecurringTaskScheduleGroup
+  | typeof CurrencyGroup
+  | typeof WorkerProfileGroup
+  | typeof WorkTimeRangeGroup
   | typeof ProjectStatusGroup
   | typeof DirectionStatusGroup
   | typeof DirectionFamilyGroup
@@ -42,7 +46,9 @@ export type GroupMethod =
   | keyof DirectionGroup
   | keyof ProjectEndpointGroup
   | keyof DirectionBillingPeriodGroup
-  | keyof RecurringTaskScheduleGroup
+  | keyof CurrencyGroup
+  | keyof WorkerProfileGroup
+  | keyof WorkTimeRangeGroup
   | keyof ProjectStatusGroup
   | keyof DirectionStatusGroup
   | keyof DirectionFamilyGroup

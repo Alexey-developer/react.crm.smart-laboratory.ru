@@ -5,14 +5,21 @@ import { useTranslation } from 'react-i18next'
 import type { TProject } from '@api/models/project/type/TProject'
 
 import { getIcon } from '@utils/getIcon'
-import { convert2string, seconds2Time } from '@utils/helpers'
+import { seconds2Time } from '@utils/helpers'
+import {
+  formatBillingMoney,
+  formatCostsAutoVsBilling,
+  formatIncomeToCostRatio,
+  formatProjectionMoney,
+} from '@utils/formatFinancialMoney'
 
 export const FormContent = (project: TProject) => {
   const [translated_phrase] = useTranslation('global')
   return (
     <>
       <h2>{project.description}</h2>
-      {project.monitoring_enabled && (        <Tag className='success' icon={<i className='fa-solid fa-heart-pulse'></i>}>
+      {project.monitoring_enabled && (
+        <Tag className='success' icon={<i className='fa-solid fa-heart-pulse'></i>}>
           {translated_phrase('Form.EntitiesFields.monitoring_enabled')}
         </Tag>
       )}
@@ -29,7 +36,7 @@ export const FormContent = (project: TProject) => {
           className={'success transparent'}
           icon={<i className={getIcon('RUBLE')}></i>}
         >
-          {convert2string(project.total_incomes, '₽')}
+          {formatBillingMoney(project.total_incomes, project.currency)}
         </Tag>
       </Tooltip>
       <Tooltip
@@ -43,9 +50,11 @@ export const FormContent = (project: TProject) => {
           className={'danger transparent'}
           icon={<i className={getIcon('RUBLE')}></i>}
         >
-          {convert2string(project.total_costs_auto, '₽ - ')}
-          {convert2string(project.total_costs, '₽ = ')}
-          {convert2string(project.total_costs_auto - project.total_costs, '₽')}
+          {formatCostsAutoVsBilling(
+            project.financial_projections,
+            project.total_costs,
+            project.currency
+          )}
         </Tag>
       </Tooltip>
       <Tooltip title={translated_phrase('Statistics.penalty')}>
@@ -53,7 +62,11 @@ export const FormContent = (project: TProject) => {
           className={'warning transparent'}
           icon={<i className={getIcon('RUBLE')}></i>}
         >
-          {convert2string(project.total_penalty_funds, '₽')}
+          {formatProjectionMoney(
+            project.financial_projections,
+            'total_penalty_funds',
+            project.currency?.symbol
+          )}
         </Tag>
       </Tooltip>
 
@@ -61,8 +74,10 @@ export const FormContent = (project: TProject) => {
         className={'success'}
         icon={<i className='fa-solid fa-chart-line-up'></i>}
       >
-        {project.total_costs_auto &&
-          (project.total_incomes / project.total_costs_auto).toFixed(2)}
+        {formatIncomeToCostRatio(
+          project.total_incomes,
+          project.financial_projections
+        )}
       </Tag>
       <Tag
         className={'transparent'}

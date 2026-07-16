@@ -27,6 +27,7 @@
     "directions": "Направления",
     "direction": "Направление",
     "tasks": "Задачи",
+    "work_time_ranges": "Временные диапазоны",
     "documents": "Документы",
     "WorkingWithCustomers": {
       "self": "Работа с клиентами",
@@ -39,7 +40,14 @@
   },
   "Tasks": {
     "recurring": "Регулярная",
-    "one_time": "Разовая"
+    "one_time": "Разовая",
+    "repeat_mode_interval_days": "Интервал (дни)",
+    "repeat_mode_monthly": "Ежемесячно",
+    "repeat_mode_billing_period": "Биллинговый период"
+  },
+  "WorkTimeRanges": {
+    "total_time": "Затраченное время",
+    "money": "Сумма"
   },
   "Messages": {
     "Info": {
@@ -95,7 +103,18 @@
       "total_incomes": "Общие доходы",
       "total_penalty_funds": "Штрафные взыскания",
       "common_task_progress": "Общий прогресс выполнения задач",
-      "progress": "Прогресс"
+      "progress": "Прогресс",
+
+      "task_id": "Задача",
+      "worker_profile_id": "Сотрудник",
+      "reason_type": "Тип причины",
+      "reason": "Пояснение причины",
+      "default_rate": "Ставка по умолчанию",
+      "is_repeat_enabled": "Повторяющаяся задача",
+      "repeat_mode": "Режим повторения",
+      "repeat_interval_days": "Интервал повторения (дни)",
+      "repeat_next_at": "Следующее повторение",
+      "repeat_source_task_id": "Исходная задача"
     }
   },
   "HeaderProfile": {
@@ -256,6 +275,23 @@
       "staging": "Стейджинг",
       "test": "Тест",
       "redirect": "Редирект",
+      "other": "Другое"
+    }
+  },
+  "Reasons": {
+    "Bonus": {
+      "salary": "Оклад",
+      "kpi_achievement": "Достижение KPI",
+      "special_merit": "Особые заслуги",
+      "other": "Другое"
+    },
+    "Penalty": {
+      "lateness": "Опоздание",
+      "absence": "Прогул",
+      "error": "Допущение ошибки",
+      "resource_outage": "Нарушение работоспособности ресурса",
+      "rudeness_to_customer": "Проявление грубости с заказчиком",
+      "customer_misinform": "Дезинформирование заказчика",
       "other": "Другое"
     }
   },

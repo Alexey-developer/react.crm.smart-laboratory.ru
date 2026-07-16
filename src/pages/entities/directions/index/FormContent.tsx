@@ -7,12 +7,20 @@ import type { TDirection } from '@api/models/direction/type/TDirection'
 import { IncludedEmployees } from '@components/IncludedEmployees'
 
 import { getIcon } from '@utils/getIcon'
-import { convert2string, seconds2Time } from '@utils/helpers'
+import { seconds2Time } from '@utils/helpers'
+import {
+  formatBillingMoney,
+  formatCostsAutoVsBilling,
+  formatIncomeToCostRatio,
+  formatProjectionMoney,
+} from '@utils/formatFinancialMoney'
 
 import { getProject } from '@utils/tempData'
 
 export const FormContent = (direction: TDirection) => {
   const [translated_phrase] = useTranslation('global')
+  const billingCurrency = direction.currency ?? direction.project?.currency
+
   return (
     <>
       <h2>{direction.description}</h2>
@@ -29,7 +37,7 @@ export const FormContent = (direction: TDirection) => {
           className={'success transparent'}
           icon={<i className={getIcon('RUBLE')}></i>}
         >
-          {convert2string(direction.total_incomes, '₽')}
+          {formatBillingMoney(direction.total_incomes, billingCurrency)}
         </Tag>
       </Tooltip>
       <Tooltip
@@ -43,11 +51,10 @@ export const FormContent = (direction: TDirection) => {
           className={'danger transparent'}
           icon={<i className={getIcon('RUBLE')}></i>}
         >
-          {convert2string(direction.total_costs_auto, '₽ - ')}
-          {convert2string(direction.total_costs, '₽ = ')}
-          {convert2string(
-            direction.total_costs_auto - direction.total_costs,
-            '₽'
+          {formatCostsAutoVsBilling(
+            direction.financial_projections,
+            direction.total_costs,
+            billingCurrency
           )}
         </Tag>
       </Tooltip>
@@ -56,7 +63,11 @@ export const FormContent = (direction: TDirection) => {
           className={'warning transparent'}
           icon={<i className={getIcon('RUBLE')}></i>}
         >
-          {convert2string(direction.total_penalty_funds, '₽')}
+          {formatProjectionMoney(
+            direction.financial_projections,
+            'total_penalty_funds',
+            billingCurrency?.symbol
+          )}
         </Tag>
       </Tooltip>
 
@@ -64,8 +75,10 @@ export const FormContent = (direction: TDirection) => {
         className={'success'}
         icon={<i className='fa-solid fa-chart-line-up'></i>}
       >
-        {direction.total_costs_auto &&
-          (direction.total_incomes / direction.total_costs_auto).toFixed(2)}
+        {formatIncomeToCostRatio(
+          direction.total_incomes,
+          direction.financial_projections
+        )}
       </Tag>
       <Tag
         className={'transparent'}

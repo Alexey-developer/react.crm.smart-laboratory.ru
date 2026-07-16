@@ -5,6 +5,7 @@ export const URL_FILTER_PARAM_TO_FIELD = {
   project: 'project',
   project_id: 'project',
   direction_id: 'direction',
+  worker_profile_id: 'worker_profile',
 } as const
 
 export type UrlFilterParam = keyof typeof URL_FILTER_PARAM_TO_FIELD

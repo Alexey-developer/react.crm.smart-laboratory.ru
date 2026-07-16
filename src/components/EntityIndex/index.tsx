@@ -193,21 +193,37 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
 
   type Attribute = {
     field: string
-    value: number
-    type: 'time' | 'money' | 'common'
+    value: number | null
+    type: 'time' | 'money' | 'common' | 'money_by_currency'
+    by_currency?: Array<{
+      currency_id: number
+      code: string
+      symbol: string
+      value: number
+    }>
   }
   const Calculation: React.FC<{
     attribute: Attribute
   }> = ({ attribute }) => {
-    let value, icon, className
+    let value: React.ReactNode
+    let icon
+    let className
     switch (attribute.type) {
       case 'time':
-        value = seconds2Time(attribute.value, translated_phrase)
+        value = seconds2Time(attribute.value ?? 0, translated_phrase)
         icon = getIcon('TIME')
         className = 'success transparent'
         break
       case 'money':
-        value = convert2string(attribute.value, '₽')
+        // Prefer money_by_currency in meta; leftover single-currency totals (e.g. WTR.money) have no symbol in payload
+        value = convert2string(attribute.value ?? 0, '')
+        icon = getIcon('RUBLE')
+        className = 'warning transparent'
+        break
+      case 'money_by_currency':
+        value = (attribute.by_currency ?? [])
+          .map((row) => convert2string(row.value, row.symbol))
+          .join(' · ')
         icon = getIcon('RUBLE')
         className = 'warning transparent'
         break

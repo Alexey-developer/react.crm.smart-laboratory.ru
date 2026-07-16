@@ -27,6 +27,7 @@
     "directions": "Directions",
     "direction": "Direction",
     "tasks": "Tasks",
+    "work_time_ranges": "Work time ranges",
     "documents": "Documents",
     "WorkingWithCustomers": {
       "self": "Working with customers",
@@ -39,7 +40,14 @@
   },
   "Tasks": {
     "recurring": "Recurring",
-    "one_time": "One-time"
+    "one_time": "One-time",
+    "repeat_mode_interval_days": "Interval (days)",
+    "repeat_mode_monthly": "Monthly",
+    "repeat_mode_billing_period": "Billing period"
+  },
+  "WorkTimeRanges": {
+    "total_time": "Time spent",
+    "money": "Amount"
   },
   "Messages": {
     "Info": {
@@ -95,7 +103,18 @@
       "total_incomes": "Total incomes",
       "total_penalty_funds": "Penalties",
       "common_task_progress": "Common tasks progress",
-      "progress": "Progress"
+      "progress": "Progress",
+
+      "task_id": "Task",
+      "worker_profile_id": "Worker",
+      "reason_type": "Reason type",
+      "reason": "Reason details",
+      "default_rate": "Default rate",
+      "is_repeat_enabled": "Recurring task",
+      "repeat_mode": "Repeat mode",
+      "repeat_interval_days": "Repeat interval (days)",
+      "repeat_next_at": "Next repeat at",
+      "repeat_source_task_id": "Source task"
     }
   },
   "HeaderProfile": {
@@ -256,6 +275,23 @@
       "staging": "Staging",
       "test": "Test",
       "redirect": "Redirect",
+      "other": "Other"
+    }
+  },
+  "Reasons": {
+    "Bonus": {
+      "salary": "Salary",
+      "kpi_achievement": "KPI achievement",
+      "special_merit": "Special merit",
+      "other": "Other"
+    },
+    "Penalty": {
+      "lateness": "Lateness",
+      "absence": "Absence",
+      "error": "Error",
+      "resource_outage": "Resource outage",
+      "rudeness_to_customer": "Rudeness toward customer",
+      "customer_misinform": "Misleading the customer",
       "other": "Other"
     }
   },

@@ -1,6 +1,4 @@
 import { TUser } from '@api/models/user/type/TUser'
 
-export type TCurrentUser = {
-  user: TUser
-  access_token: string
-}
+/** Ответ `GET /current-user` — UserResource. Login отдаёт другую форму. */
+export type TCurrentUser = TUser

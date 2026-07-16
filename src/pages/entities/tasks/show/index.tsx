@@ -19,11 +19,17 @@ import { ActionButton } from '@components/ActionButton'
 import { useFormActions } from '@components/EntityIndex/FormActions'
 
 import { getMethod } from '@utils/getMethod'
-import { SetPageTitle, convert2string, seconds2Time } from '@utils/helpers'
+import { SetPageTitle, seconds2Time } from '@utils/helpers'
 import { formCardExtra } from '@utils/formCardExtra'
 import { getIcon } from '@utils/getIcon'
 import { projectParentEntity } from '@utils/entityFormActions/projectParentEntity'
 import { taskDirectionEntity } from '@utils/entityFormActions/taskDirectionEntity'
+import {
+  formatBillingMoney,
+  formatCostsAutoVsBilling,
+  formatIncomeToCostRatio,
+  formatProjectionMoney,
+} from '@utils/formatFinancialMoney'
 
 import { getTaskRecurrenceRibbon } from '@utils/entityFormActions/getTaskRecurrenceRibbon'
 
@@ -46,6 +52,7 @@ export const TaskPage: React.FC = () => {
   )
 
   const task = data?.data
+  const billingCurrency = task?.project?.currency ?? task?.direction?.currency
   const parentProject = task ? projectParentEntity(task) : undefined
   const parentDirection = task ? taskDirectionEntity(task) : undefined
   const recurrenceRibbon = task
@@ -88,7 +95,7 @@ export const TaskPage: React.FC = () => {
             type='transparent'
           />
           <AlertCard
-            message={convert2string(task.total_incomes, '₽')}
+            message={formatBillingMoney(task.total_incomes, billingCurrency)}
             description={translated_phrase('Statistics.incomes')}
             icon={<i className={getIcon('RUBLE')}></i>}
             action={
@@ -104,11 +111,11 @@ export const TaskPage: React.FC = () => {
             type='success transparent'
           />
           <AlertCard
-            message={
-              convert2string(task.total_costs_auto, '₽ - ') +
-              convert2string(task.total_costs, '₽ = ') +
-              convert2string(task.total_costs_auto - task.total_costs, '₽')
-            }
+            message={formatCostsAutoVsBilling(
+              task.financial_projections,
+              task.total_costs,
+              billingCurrency
+            )}
             description={
               translated_phrase('Statistics.costs_auto') +
               ' - ' +
@@ -128,7 +135,11 @@ export const TaskPage: React.FC = () => {
             type='danger transparent'
           />
           <AlertCard
-            message={convert2string(task.total_penalty_funds, '₽')}
+            message={formatProjectionMoney(
+              task.financial_projections,
+              'total_penalty_funds',
+              billingCurrency?.symbol
+            )}
             description={translated_phrase('Statistics.penalty')}
             icon={<i className={getIcon('RUBLE')}></i>}
             action={
@@ -157,9 +168,10 @@ export const TaskPage: React.FC = () => {
                   className={'success'}
                   icon={<i className='fa-solid fa-chart-line-up'></i>}
                 >
-                  {task.total_costs_auto
-                    ? (task.total_incomes / task.total_costs_auto).toFixed(2)
-                    : '—'}
+                  {formatIncomeToCostRatio(
+                    task.total_incomes,
+                    task.financial_projections
+                  )}
                 </Tag>
                 <Tag
                   className={'transparent'}

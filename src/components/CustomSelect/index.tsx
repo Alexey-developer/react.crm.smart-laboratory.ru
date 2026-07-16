@@ -14,6 +14,24 @@ import {
 import { getMethod } from '@utils/getMethod'
 import { constants } from '@utils/constants/constants.json'
 
+type SelectOptionSource = {
+  id: number
+  name?: string
+  user?: { name?: string }
+}
+
+const getSelectOptionLabel = (
+  select: SelectOptionSource,
+  type: keyof typeof SelectFilterTypeEnum
+) => {
+  if (type === 'WORKER_PROFILE') {
+    const workerName = select.user?.name ?? ''
+    return `${select.id} ${workerName}`.trim()
+  }
+
+  return `${select.id} ${select.name ?? ''}`.trim()
+}
+
 type CustomSelectProps = {
   type: keyof typeof SelectFilterTypeEnum
   mode?: 'multiple'
@@ -56,16 +74,22 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
     if (state.searchValue) {
       state.searchedOptions = [
         ...state.searchedOptions,
-        ...data.data.map((select: { id: number; name: string }) => {
-          return { value: select.id, label: `${select.id} ${select.name}` }
+        ...data.data.map((select: SelectOptionSource) => {
+          return {
+            value: select.id,
+            label: getSelectOptionLabel(select, type),
+          }
         }),
       ]
       console.log('state.searchValue')
     } else {
       state.options = [
         ...state.options,
-        ...data.data.map((select: { id: number; name: string }) => {
-          return { value: select.id, label: `${select.id} ${select.name}` }
+        ...data.data.map((select: SelectOptionSource) => {
+          return {
+            value: select.id,
+            label: getSelectOptionLabel(select, type),
+          }
         }),
       ]
       console.log('!state.searchValue')

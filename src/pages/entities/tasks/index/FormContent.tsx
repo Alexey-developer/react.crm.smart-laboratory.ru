@@ -7,13 +7,21 @@ import type { TTask } from '@api/models/task/type/TTask'
 import { IncludedEmployees } from '@components/IncludedEmployees'
 
 import { getIcon } from '@utils/getIcon'
-import { convert2string, seconds2Time } from '@utils/helpers'
+import { seconds2Time } from '@utils/helpers'
+import {
+  formatBillingMoney,
+  formatCostsAutoVsBilling,
+  formatIncomeToCostRatio,
+  formatProjectionMoney,
+} from '@utils/formatFinancialMoney'
 
 //temp
 import { getProject } from '@utils/tempData'
 
 export const FormContent = (task: TTask) => {
   const [translated_phrase] = useTranslation('global')
+  const billingCurrency = task.project?.currency ?? task.direction?.currency
+
   return (
     <>
       <h2>{task.description}</h2>
@@ -30,7 +38,7 @@ export const FormContent = (task: TTask) => {
           className={'success transparent'}
           icon={<i className={getIcon('RUBLE')}></i>}
         >
-          {convert2string(task.total_incomes, '₽')}
+          {formatBillingMoney(task.total_incomes, billingCurrency)}
         </Tag>
       </Tooltip>
       <Tooltip
@@ -44,9 +52,11 @@ export const FormContent = (task: TTask) => {
           className={'danger transparent'}
           icon={<i className={getIcon('RUBLE')}></i>}
         >
-          {convert2string(task.total_costs_auto, '₽ - ')}
-          {convert2string(task.total_costs, '₽ = ')}
-          {convert2string(task.total_costs_auto - task.total_costs, '₽')}
+          {formatCostsAutoVsBilling(
+            task.financial_projections,
+            task.total_costs,
+            billingCurrency
+          )}
         </Tag>
       </Tooltip>
       <Tooltip title={translated_phrase('Statistics.penalty')}>
@@ -54,7 +64,11 @@ export const FormContent = (task: TTask) => {
           className={'warning transparent'}
           icon={<i className={getIcon('RUBLE')}></i>}
         >
-          {convert2string(task.total_penalty_funds, '₽')}
+          {formatProjectionMoney(
+            task.financial_projections,
+            'total_penalty_funds',
+            billingCurrency?.symbol
+          )}
         </Tag>
       </Tooltip>
 
@@ -62,7 +76,7 @@ export const FormContent = (task: TTask) => {
         className={'success'}
         icon={<i className='fa-solid fa-chart-line-up'></i>}
       >
-        {(task.total_incomes / task.total_costs_auto).toFixed(2)}
+        {formatIncomeToCostRatio(task.total_incomes, task.financial_projections)}
       </Tag>
       <Tag
         className={'transparent'}

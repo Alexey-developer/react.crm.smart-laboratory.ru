@@ -1,8 +1,9 @@
 import type { TColorType } from '@api/common/types/TColorType'
+import type { TTaskRepeatMode } from '@api/models/task/type/TTask'
 
 type TTaskRecurrenceSource = {
-  is_recurring?: boolean
-  recurring_task_schedule_id?: number | null
+  is_repeat_enabled?: boolean
+  repeat_mode?: TTaskRepeatMode | null
 }
 
 export const isTaskEntity = (entity: {
@@ -15,11 +16,22 @@ export const getTaskRecurrenceRibbon = (
   task: TTaskRecurrenceSource,
   translate: (key: string) => string
 ): { text: string; className: TColorType } => {
-  const isRecurring =
-    task.is_recurring ?? Boolean(task.recurring_task_schedule_id)
+  const isRecurring = Boolean(task.is_repeat_enabled)
+
+  if (!isRecurring) {
+    return {
+      text: translate('Tasks.one_time'),
+      className: 'transparent',
+    }
+  }
+
+  const repeatMode = task.repeat_mode
+  const text = repeatMode
+    ? translate(`Tasks.repeat_mode_${repeatMode}`)
+    : translate('Tasks.recurring')
 
   return {
-    text: translate(isRecurring ? 'Tasks.recurring' : 'Tasks.one_time'),
-    className: isRecurring ? 'warning' : 'transparent',
+    text,
+    className: 'warning',
   }
 }

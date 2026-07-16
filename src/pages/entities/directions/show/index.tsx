@@ -23,11 +23,15 @@ import { DefaultCard } from '@components/DefaultCard'
 import { ActionButton } from '@components/ActionButton'
 
 import { getMethod } from '@utils/getMethod'
-import { SetPageTitle } from '@utils/helpers'
+import { SetPageTitle, seconds2Time } from '@utils/helpers'
 import { formCardExtra } from '@utils/formCardExtra'
 import { getIcon } from '@utils/getIcon'
 import { DIRECTIONS } from '@utils/constants/routes'
-import { convert2string, seconds2Time } from '@utils/helpers'
+import {
+  formatBillingMoney,
+  formatCostsAutoVsBilling,
+  formatProjectionMoney,
+} from '@utils/formatFinancialMoney'
 
 import { formSkeletonTop } from './formSkeleton'
 import { formSkeletonBottom } from './formSkeleton'
@@ -106,7 +110,10 @@ export const DirectionPage: React.FC = () => {
                   type='transparent'
                 />
                 <AlertCard
-                  message={convert2string(direction.total_incomes, '₽')}
+                  message={formatBillingMoney(
+                    direction.total_incomes,
+                    direction.currency ?? direction.project?.currency
+                  )}
                   description={translated_phrase('Statistics.incomes')}
                   icon={<i className={getIcon('RUBLE')}></i>}
                   action={
@@ -122,14 +129,11 @@ export const DirectionPage: React.FC = () => {
                   type='success transparent'
                 />
                 <AlertCard
-                  message={
-                    convert2string(direction.total_costs_auto, '₽ - ') +
-                    convert2string(direction.total_costs, '₽ = ') +
-                    convert2string(
-                      direction.total_costs_auto - direction.total_costs,
-                      '₽'
-                    )
-                  }
+                  message={formatCostsAutoVsBilling(
+                    direction.financial_projections,
+                    direction.total_costs,
+                    direction.currency ?? direction.project?.currency
+                  )}
                   description={
                     translated_phrase('Statistics.costs_auto') +
                     ' - ' +
@@ -149,7 +153,11 @@ export const DirectionPage: React.FC = () => {
                   type='danger transparent'
                 />
                 <AlertCard
-                  message={convert2string(direction.total_penalty_funds, '₽')}
+                  message={formatProjectionMoney(
+                    direction.financial_projections,
+                    'total_penalty_funds',
+                    (direction.currency ?? direction.project?.currency)?.symbol
+                  )}
                   description={translated_phrase('Statistics.penalty')}
                   icon={<i className={getIcon('RUBLE')}></i>}
                   action={

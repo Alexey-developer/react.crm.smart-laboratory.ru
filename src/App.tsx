@@ -72,6 +72,12 @@ const TaskPage = lazy(() =>
   }))
 )
 
+const WorkTimeRangesPage = lazy(() =>
+  import('@pages/entities/workTimeRanges/index').then(module => ({
+    default: module.WorkTimeRangesPage,
+  }))
+)
+
 type IRoute = {
   uri: string
   indexComponent: React.ReactNode //LazyExoticComponent<FC>
@@ -133,6 +139,13 @@ const routes: IRoute[] = [
     showComponent: <TaskPage />,
     editComponent: <TaskPage />,
     createComponent: <TaskPage />,
+  },
+  {
+    uri: URIs.WORK_TIME_RANGES,
+    indexComponent: <WorkTimeRangesPage />,
+    showComponent: <WorkTimeRangesPage />,
+    editComponent: <WorkTimeRangesPage />,
+    createComponent: <WorkTimeRangesPage />,
   },
 ]
 

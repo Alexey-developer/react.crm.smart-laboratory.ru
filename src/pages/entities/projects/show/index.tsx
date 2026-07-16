@@ -22,10 +22,14 @@ import { DefaultCard } from '@components/DefaultCard'
 import { ActionButton } from '@components/ActionButton'
 
 import { getMethod } from '@utils/getMethod'
-import { SetPageTitle } from '@utils/helpers'
+import { SetPageTitle, seconds2Time } from '@utils/helpers'
 import { getIcon } from '@utils/getIcon'
 import { PROJECTS } from '@utils/constants/routes'
-import { convert2string, seconds2Time } from '@utils/helpers'
+import {
+  formatBillingMoney,
+  formatCostsAutoVsBilling,
+  formatProjectionMoney,
+} from '@utils/formatFinancialMoney'
 
 import { formSkeletonTop } from './formSkeleton'
 import { formSkeletonBottom } from './formSkeleton'
@@ -96,7 +100,10 @@ export const ProjectPage: React.FC = () => {
                   type='transparent'
                 />
                 <AlertCard
-                  message={convert2string(project.total_incomes, '₽')}
+                  message={formatBillingMoney(
+                    project.total_incomes,
+                    project.currency
+                  )}
                   description={translated_phrase('Statistics.incomes')}
                   icon={<i className={getIcon('RUBLE')}></i>}
                   action={
@@ -112,14 +119,11 @@ export const ProjectPage: React.FC = () => {
                   type='success transparent'
                 />
                 <AlertCard
-                  message={
-                    convert2string(project.total_costs_auto, '₽ - ') +
-                    convert2string(project.total_costs, '₽ = ') +
-                    convert2string(
-                      project.total_costs_auto - project.total_costs,
-                      '₽'
-                    )
-                  }
+                  message={formatCostsAutoVsBilling(
+                    project.financial_projections,
+                    project.total_costs,
+                    project.currency
+                  )}
                   description={
                     translated_phrase('Statistics.costs_auto') +
                     ' - ' +
@@ -139,7 +143,11 @@ export const ProjectPage: React.FC = () => {
                   type='danger transparent'
                 />
                 <AlertCard
-                  message={convert2string(project.total_penalty_funds, '₽')}
+                  message={formatProjectionMoney(
+                    project.financial_projections,
+                    'total_penalty_funds',
+                    project.currency?.symbol
+                  )}
                   description={translated_phrase('Statistics.penalty')}
                   icon={<i className={getIcon('RUBLE')}></i>}
                   action={

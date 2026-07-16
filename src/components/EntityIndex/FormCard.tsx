@@ -51,7 +51,7 @@ export const FormCard = (props: TProps) => {
       isLoading={isLoading}
       key={entity.id}
       type='default'
-      title={`# ${entity.id} ${entity.name}`}
+      title={`# ${entity.id} ${entity.name ?? entity.task?.name ?? ''}`}
       badgeRibbonText={badgeRibbonText}
       badgeRibbonClassName={badgeRibbonClassName}
       content={FormContent(entity)}

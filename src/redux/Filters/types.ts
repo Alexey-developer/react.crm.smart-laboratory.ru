@@ -1,8 +1,12 @@
-import { PROJECTS, DIRECTIONS, TASKS } from '@utils/constants/routes'
+import { PROJECTS, DIRECTIONS, TASKS, WORK_TIME_RANGES } from '@utils/constants/routes'
 
 import { FilterEnum } from 'utils/getFilter'
 
-export type FilterType = typeof PROJECTS | typeof DIRECTIONS | typeof TASKS
+export type FilterType =
+  | typeof PROJECTS
+  | typeof DIRECTIONS
+  | typeof TASKS
+  | typeof WORK_TIME_RANGES
 
 export interface IFiltersSliceState {
   filters: string

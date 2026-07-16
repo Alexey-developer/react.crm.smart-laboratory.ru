@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Popover, Badge, Divider, Avatar, Flex, Space } from 'antd'
 
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 import { useDispatch } from 'react-redux'
 import { setAuthToken } from '@redux/CurrentUser/slice'
@@ -14,6 +15,7 @@ import { Skeleton } from '@components/Skeleton'
 
 import { formSkeleton } from './formSkeleton'
 import styles from './index.module.scss'
+import * as URIs from '@utils/constants/routes'
 
 export const HeaderProfile: React.FC = () => {
   const dispatch = useDispatch()
@@ -43,7 +45,7 @@ export const HeaderProfile: React.FC = () => {
                   <Avatar icon={<i className='fa-solid fa-user'></i>} />
                 </Badge>
                 <div>
-                  Деревенсков {data?.name}
+                  Деревенсков {data?.data?.name}
                   <br />
                   Руководитель
                 </div>
@@ -63,12 +65,20 @@ export const HeaderProfile: React.FC = () => {
                   {translated_phrase('HeaderProfile.settings')}
                 </Button>
                 <Divider />
-                <Button
-                  type='text'
-                  icon={<i className='fa-solid fa-stopwatch'></i>}
+                <Link
+                  to={
+                    data?.data?.worker_profile?.id
+                      ? `/${URIs.WORK_TIME_RANGES}/?worker_profile_id=${data.data.worker_profile.id}`
+                      : `/${URIs.WORK_TIME_RANGES}`
+                  }
                 >
-                  {translated_phrase('HeaderProfile.my_time_ranges')}
-                </Button>
+                  <Button
+                    type='text'
+                    icon={<i className='fa-solid fa-stopwatch'></i>}
+                  >
+                    {translated_phrase('HeaderProfile.my_time_ranges')}
+                  </Button>
+                </Link>
                 <Button
                   type='text'
                   icon={<i className='fa-solid fa-credit-card'></i>}
