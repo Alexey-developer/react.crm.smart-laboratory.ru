@@ -1,0 +1,302 @@
+{
+  "Common": {
+    "companyName": "SmartLab",
+    "system_type": "CRM"
+  },
+  "Prepositions": {
+    "in": "在"
+  },
+  "Time": {
+    "short_hours": "时",
+    "short_minutes": "分"
+  },
+  "Items": {
+    "short_pieces": "件"
+  },
+  "AuthPage": {
+    "page_title": "授权",
+    "for_staff": "员工专用"
+  },
+  "MenuItems": {
+    "accounting": "会计",
+    "budget": "预算",
+    "call_history": "通话记录",
+    "general_permission_system": "通用权限系统",
+    "projects": "项目",
+    "project": "项目",
+    "directions": "方向",
+    "direction": "方向",
+    "tasks": "任务",
+    "work_time_ranges": "工作时间段",
+    "documents": "文档",
+    "WorkingWithCustomers": {
+      "self": "客户工作",
+      "customers": "客户",
+      "appeals": "申诉",
+      "support": "支持",
+      "applications_from_website": "网站申请"
+    },
+    "employees": "员工"
+  },
+  "Tasks": {
+    "recurring": "定期",
+    "one_time": "一次性",
+    "repeat_mode_interval_days": "间隔（天）",
+    "repeat_mode_monthly": "每月",
+    "repeat_mode_billing_period": "结算周期"
+  },
+  "WorkTimeRanges": {
+    "total_time": "已用时间",
+    "money": "金额"
+  },
+  "Messages": {
+    "Info": {
+      "switch_textarea_mode_is_available": "可切换文本区域模式"
+    },
+    "Warnings": {
+      "switch_textarea_mode_is_not_available": "无法切换文本区域模式，该区域包含内容"
+    },
+    "Errors": {}
+  },
+  "Form": {
+    "phone": "电话号码",
+    "password": "密码",
+    "Common": {
+      "enter": "请输入 "
+    },
+    "BtnTexts": {
+      "default": "提交"
+    },
+    "Errors": {
+      "len": "'${label}' 必须为 '${len}' 个字符",
+      "min": "'${label}' 至少为 '${min}' 个字符",
+      "max": "'${label}' 最多为 '${max}' 个字符"
+    },
+    "EntitiesFields": {
+      "name": "名称",
+      "description": "描述",
+      "website_url": "网站地址",
+      "comment": "备注",
+      "customer_visible_comment": "客户可见备注",
+      "status_id": "状态",
+      "type_id": "类型",
+      "customer_company_id": "客户公司",
+      "project_id": "项目",
+      "direction_id": "方向",
+      "direction_family_id": "方向族",
+      "direction_type_id": "方向类型",
+      "payment_model_id": "付款模式",
+      "payment_period_id": "付款周期",
+      "contract_amount": "合同金额",
+      "billing_anchor_date": "结算锚定日期",
+      "monitoring_enabled": "已启用监控",
+      "check_performance": "检查性能",
+      "check_expirations": "检查到期",
+      "total_spent_time": "总耗时",
+      "total_time": "已用时间",
+      "money": "金额",
+      "total_costs_auto": "总成本（自动计算）",
+      "total_costs": "总成本（实际）",
+      "total_incomes": "总收入",
+      "total_penalty_funds": "罚款",
+      "common_task_progress": "任务总体进度",
+      "progress": "进度",
+      "task_id": "任务",
+      "worker_profile_id": "员工",
+      "reason_type": "原因类型",
+      "reason": "原因详情",
+      "default_rate": "默认费率",
+      "is_repeat_enabled": "定期任务",
+      "repeat_mode": "重复模式",
+      "repeat_interval_days": "重复间隔（天）",
+      "repeat_next_at": "下次重复时间",
+      "repeat_source_task_id": "源任务"
+    }
+  },
+  "HeaderProfile": {
+    "my_profile": "我的资料",
+    "settings": "设置",
+    "my_time_ranges": "我的时间段",
+    "my_payments": "我的付款",
+    "my_unfinished_tasks": "我的未完成任务",
+    "sign_out": "退出登录"
+  },
+  "Extra": {
+    "home_page": "首页"
+  },
+  "Filters": {
+    "self": "筛选",
+    "id": "标识符",
+    "statuses": "状态",
+    "types": "类型",
+    "direction_family": "方向族",
+    "direction_type": "方向类型",
+    "payment_model": "付款模式",
+    "payment_period": "付款周期",
+    "Deleted": {
+      "self": "已删除",
+      "only_existing": "仅现有",
+      "only_deleted": "仅已删除",
+      "all": "全部"
+    },
+    "created_at": "创建日期",
+    "apply": "应用",
+    "clear": "清除"
+  },
+  "Search": {
+    "self": "搜索",
+    "found": "已找到",
+    "title": "选择要搜索的字段",
+    "impossible": "不可能",
+    "check_all": "全选"
+  },
+  "Statistics": {
+    "time_spent": "已用时间",
+    "incomes": "收入",
+    "costs_auto": "成本（自动计算）",
+    "costs": "成本（实际）",
+    "penalty": "罚款"
+  },
+  "Info": {
+    "accesses": "访问权限",
+    "repositories": "代码仓库",
+    "technology_stack": "技术栈",
+    "expirations": "到期项",
+    "other_links": "其他链接",
+    "endpoints": "端点",
+    "coming_soon": "即将推出"
+  },
+  "PermissionSystem": {
+    "permission_system": "权限系统",
+    "allow": "允许",
+    "disallow": "禁止"
+  },
+  "Actions": {
+    "create": "创建",
+    "go": "前往",
+    "edit": "编辑",
+    "delete": "删除",
+    "restore": "恢复"
+  },
+  "Modes": {
+    "creating": "创建中",
+    "editing": "编辑中",
+    "simple": "简单",
+    "advanced": "高级"
+  },
+  "Confirm": {
+    "title": "需要确认",
+    "description": "您确定要执行此操作吗？",
+    "ok_text": "是",
+    "cancel_text": "取消"
+  },
+  "Statuses": {
+    "Direction": {
+      "in_progress": "进行中",
+      "upcoming": "即将开始",
+      "completed": "已完成"
+    },
+    "Project": {
+      "in_progress": "进行中",
+      "upcoming": "即将开始",
+      "completed": "已完成"
+    },
+    "Task": {
+      "completed": "已完成",
+      "in_progress": "进行中",
+      "went_beyond_planned_time": "超出计划时间",
+      "expired": "已过期",
+      "planned": "已计划"
+    },
+    "Employee": {
+      "works": "在职",
+      "internship": "实习",
+      "fired": "已解雇"
+    },
+    "Customer": {
+      "collaborates": "合作中",
+      "potential": "潜在",
+      "former": "前任"
+    },
+    "FinancialTransaction": {
+      "scheduled": "已安排",
+      "made": "已完成"
+    }
+  },
+  "DirectionFamilies": {
+    "development": "开发",
+    "promotion": "推广",
+    "maintenance": "维护"
+  },
+  "DirectionTypes": {
+    "website": "网站",
+    "mobile_app": "移动应用",
+    "business_process_automation": "业务流程自动化",
+    "integration": "集成",
+    "devops": "DevOps",
+    "seo": "SEO",
+    "advertising": "广告",
+    "smm": "SMM",
+    "maps": "地图",
+    "tech_support": "技术支持",
+    "rework": "返工"
+  },
+  "PaymentModels": {
+    "piecework": "计件",
+    "periodic": "周期"
+  },
+  "PaymentPeriods": {
+    "week": "周",
+    "month": "月",
+    "year": "年",
+    "interval_days": "间隔（天）"
+  },
+  "BillingDocumentStatuses": {
+    "not_started": "未开始",
+    "issued": "已开具",
+    "paid": "已付款",
+    "generated": "已生成",
+    "sent": "已发送"
+  },
+  "RecurrenceTypes": {
+    "monthly": "每月",
+    "weekly": "每周",
+    "interval_days": "间隔天数"
+  },
+  "Endpoints": {
+    "Environment": {
+      "production": "Production",
+      "staging": "Staging",
+      "test": "Test",
+      "redirect": "Redirect",
+      "other": "其他"
+    }
+  },
+  "Reasons": {
+    "Bonus": {
+      "salary": "薪资",
+      "kpi_achievement": "KPI 达成",
+      "special_merit": "特殊贡献",
+      "other": "其他"
+    },
+    "Penalty": {
+      "lateness": "迟到",
+      "absence": "缺勤",
+      "error": "错误",
+      "resource_outage": "资源中断",
+      "rudeness_to_customer": "对客户无礼",
+      "customer_misinform": "误导客户",
+      "other": "其他"
+    }
+  },
+  "Types": {
+    "FinancialTransaction": {
+      "income": "收入",
+      "cost": "成本"
+    },
+    "PaymentMethod": {
+      "invoicing": "开具发票",
+      "credit_card": "信用卡"
+    }
+  }
+}

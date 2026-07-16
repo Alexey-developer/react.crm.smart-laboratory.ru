@@ -9,6 +9,8 @@
 
   .ant-dropdown-menu {
     background-color: $LIGHT_ELEMENT_BG;
+    max-height: 70vh;
+    overflow-y: auto;
     .ant-dropdown-menu-item {
       .ant-badge-status-text {
         color: $LIGHT_COLOR;

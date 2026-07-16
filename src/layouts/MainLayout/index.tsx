@@ -11,27 +11,36 @@ import '@assets/fontawesome/v6.5.1/css/sharp-light.css'
 
 import { useSelector } from 'react-redux'
 import { selectLang } from '@redux/Language/selectors'
+import { getDayjsLocale } from '@redux/Language/languages'
 
 import { ConfigProvider } from 'antd'
 
-import english from 'antd/locale/en_US'
-import russian from 'antd/locale/ru_RU'
-
 import dayjs from 'dayjs'
 import updateLocale from 'dayjs/plugin/updateLocale'
+import 'dayjs/locale/az'
+import 'dayjs/locale/be'
+import 'dayjs/locale/de'
+import 'dayjs/locale/fr'
+import 'dayjs/locale/ja'
+import 'dayjs/locale/kk'
+import 'dayjs/locale/ky'
 import 'dayjs/locale/ru'
+import 'dayjs/locale/tr'
+import 'dayjs/locale/zh-cn'
 // import 'dayjs/locale/en'
 
 import { Sidebar } from '@components/Sidebar'
 
+import { getAntdLocale } from '@utils/getAntdLocale'
 import { GetValidateMessages } from '@utils/helpers'
 
 export const MainLayout: React.FC = () => {
   const lang = useSelector(selectLang)
+  const dayjsLocale = getDayjsLocale(lang)
 
   dayjs.extend(updateLocale)
 
-  dayjs.updateLocale(lang, {
+  dayjs.updateLocale(dayjsLocale, {
     weekStart: 1,
   })
 
@@ -39,7 +48,7 @@ export const MainLayout: React.FC = () => {
 
   return (
     <ConfigProvider
-      locale={lang === 'ru' ? russian : english}
+      locale={getAntdLocale(lang)}
       form={{ validateMessages }}
     >
       <div className='wrapper'>

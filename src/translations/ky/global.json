@@ -1,0 +1,302 @@
+{
+  "Common": {
+    "companyName": "SmartLab",
+    "system_type": "CRM"
+  },
+  "Prepositions": {
+    "in": "ичинде"
+  },
+  "Time": {
+    "short_hours": "с.",
+    "short_minutes": "м."
+  },
+  "Items": {
+    "short_pieces": "дана"
+  },
+  "AuthPage": {
+    "page_title": "Авторизация",
+    "for_staff": "Кызматкерлер үчүн"
+  },
+  "MenuItems": {
+    "accounting": "Бухгалтердик эсеп",
+    "budget": "Бюджет",
+    "call_history": "Чалуулар тарыхы",
+    "general_permission_system": "Жалпы уруксаттар системасы",
+    "projects": "Долбоорлор",
+    "project": "Долбоор",
+    "directions": "Багыттар",
+    "direction": "Багыт",
+    "tasks": "Тапшырмалар",
+    "work_time_ranges": "Иш убакыт аралыктары",
+    "documents": "Документтер",
+    "WorkingWithCustomers": {
+      "self": "Кардарлар менен иштөө",
+      "customers": "Кардарлар",
+      "appeals": "Кайрылуулар",
+      "support": "Колдоо",
+      "applications_from_website": "Веб-сайттан арыздар"
+    },
+    "employees": "Кызматкерлер"
+  },
+  "Tasks": {
+    "recurring": "Кайталануучу",
+    "one_time": "Бир жолку",
+    "repeat_mode_interval_days": "Интервал (күндөр)",
+    "repeat_mode_monthly": "Ай сайын",
+    "repeat_mode_billing_period": "Биллинг мезгили"
+  },
+  "WorkTimeRanges": {
+    "total_time": "Сарпталган убакыт",
+    "money": "Сумма"
+  },
+  "Messages": {
+    "Info": {
+      "switch_textarea_mode_is_available": "Текст киргизүү аймагынын режимин которуу жеткиликтүү"
+    },
+    "Warnings": {
+      "switch_textarea_mode_is_not_available": "Текст киргизүү аймагынын режимин которуу жеткиликтүү эмес, аймакта мазмун бар"
+    },
+    "Errors": {}
+  },
+  "Form": {
+    "phone": "Телефон номери",
+    "password": "Сырсөз",
+    "Common": {
+      "enter": "Киргизиңиз "
+    },
+    "BtnTexts": {
+      "default": "Жөнөтүү"
+    },
+    "Errors": {
+      "len": "'${label}' '${len}' белгиден турушу керек",
+      "min": "'${label}' кеминде '${min}' белгиден турушу керек",
+      "max": "'${label}' эң көп '${max}' белгиден турушу керек"
+    },
+    "EntitiesFields": {
+      "name": "Аталышы",
+      "description": "Сүрөттөмө",
+      "website_url": "Веб-сайт URL",
+      "comment": "Комментарий",
+      "customer_visible_comment": "Кардарга көрүнгөн комментарий",
+      "status_id": "Статус",
+      "type_id": "Түрү",
+      "customer_company_id": "Кардар компаниясы",
+      "project_id": "Долбоор",
+      "direction_id": "Багыт",
+      "direction_family_id": "Багыттар үй-бүлөсү",
+      "direction_type_id": "Багыт түрү",
+      "payment_model_id": "Төлөм модели",
+      "payment_period_id": "Төлөм мезгили",
+      "contract_amount": "Келишим суммасы",
+      "billing_anchor_date": "Биллинг башталуу күнү",
+      "monitoring_enabled": "Мониторинг күйгүзүлгөн",
+      "check_performance": "Иштөө жөндөмдүүлүгүн текшерүү",
+      "check_expirations": "Мөөнөттөрдүн бүтүшүн текшерүү",
+      "total_spent_time": "Жалпы сарпталган убакыт",
+      "total_time": "Сарпталган убакыт",
+      "money": "Сумма",
+      "total_costs_auto": "Жалпы чыгымдар (автоматтык эсептөө)",
+      "total_costs": "Жалпы чыгымдар (иш жүзүндө)",
+      "total_incomes": "Жалпы кирешелер",
+      "total_penalty_funds": "Айып пулдар",
+      "common_task_progress": "Тапшырмалардын жалпы прогресси",
+      "progress": "Прогресс",
+      "task_id": "Тапшырма",
+      "worker_profile_id": "Кызматкер",
+      "reason_type": "Себеп түрү",
+      "reason": "Себептин чоо-жайы",
+      "default_rate": "Демейки ставка",
+      "is_repeat_enabled": "Кайталануучу тапшырма",
+      "repeat_mode": "Кайталоо режими",
+      "repeat_interval_days": "Кайталоо интервалы (күндөр)",
+      "repeat_next_at": "Кийинки кайталоо",
+      "repeat_source_task_id": "Баштапкы тапшырма"
+    }
+  },
+  "HeaderProfile": {
+    "my_profile": "Менин профилим",
+    "settings": "Жөндөөлөр",
+    "my_time_ranges": "Менин убакыт аралыктарым",
+    "my_payments": "Менин төлөмдөрүм",
+    "my_unfinished_tasks": "Менин бүтпөгөн тапшырмаларым",
+    "sign_out": "Чыгуу"
+  },
+  "Extra": {
+    "home_page": "Башкы бет"
+  },
+  "Filters": {
+    "self": "Чыпкалар",
+    "id": "Идентификатор",
+    "statuses": "Статустар",
+    "types": "Түрлөр",
+    "direction_family": "Багыттар үй-бүлөсү",
+    "direction_type": "Багыт түрү",
+    "payment_model": "Төлөм модели",
+    "payment_period": "Төлөм мезгили",
+    "Deleted": {
+      "self": "Өчүрүлгөндөр",
+      "only_existing": "Жалгыз барлар",
+      "only_deleted": "Жалгыз өчүрүлгөндөр",
+      "all": "Баары"
+    },
+    "created_at": "Түзүлгөн күнү",
+    "apply": "Колдонуу",
+    "clear": "Тазалоо"
+  },
+  "Search": {
+    "self": "Издөө",
+    "found": "Табылды",
+    "title": "Издөө үчүн талааларды тандаңыз",
+    "impossible": "мүмкүн эмес",
+    "check_all": "Баарын тандоо"
+  },
+  "Statistics": {
+    "time_spent": "Сарпталган убакыт",
+    "incomes": "Кирешелер",
+    "costs_auto": "Чыгымдар (автоматтык эсептөө)",
+    "costs": "Чыгымдар (иш жүзүндө)",
+    "penalty": "Айып пул"
+  },
+  "Info": {
+    "accesses": "Кирүүлөр",
+    "repositories": "Репозиторийлер",
+    "technology_stack": "Технологиялар стеги",
+    "expirations": "Мөөнөттөрдүн бүтүшү",
+    "other_links": "Башка шилтемелер",
+    "endpoints": "Эндпоинттер",
+    "coming_soon": "Жакында"
+  },
+  "PermissionSystem": {
+    "permission_system": "Уруксаттар системасы",
+    "allow": "Уруксат берүү",
+    "disallow": "Тыюу салуу"
+  },
+  "Actions": {
+    "create": "Түзүү",
+    "go": "Өтүү",
+    "edit": "Түзөтүү",
+    "delete": "Өчүрүү",
+    "restore": "Калыбына келтирүү"
+  },
+  "Modes": {
+    "creating": "Түзүү",
+    "editing": "Түзөтүү",
+    "simple": "Жөнөкөй",
+    "advanced": "Кеңейтилген"
+  },
+  "Confirm": {
+    "title": "Ырастоо талап кылынат",
+    "description": "Бул аракетти аткаргыңыз келерине ишенесизби?",
+    "ok_text": "Ооба",
+    "cancel_text": "Жокко чыгаруу"
+  },
+  "Statuses": {
+    "Direction": {
+      "in_progress": "Иштелип жатат",
+      "upcoming": "Алдагы",
+      "completed": "Аяктаган"
+    },
+    "Project": {
+      "in_progress": "Иштелип жатат",
+      "upcoming": "Алдагы",
+      "completed": "Аяктаган"
+    },
+    "Task": {
+      "completed": "Аткарылган",
+      "in_progress": "Аткарылууда",
+      "went_beyond_planned_time": "Пландалган убакыттан ашты",
+      "expired": "Мөөнөтү өткөн",
+      "planned": "Пландалган"
+    },
+    "Employee": {
+      "works": "Иштейт",
+      "internship": "Стажировка",
+      "fired": "Иштен бошотулган"
+    },
+    "Customer": {
+      "collaborates": "Кызматташат",
+      "potential": "Потенциалдуу",
+      "former": "Мурунку"
+    },
+    "FinancialTransaction": {
+      "scheduled": "Пландалган",
+      "made": "Аткарылган"
+    }
+  },
+  "DirectionFamilies": {
+    "development": "Иштеп чыгуу",
+    "promotion": "Жылдыруу",
+    "maintenance": "Коштоо"
+  },
+  "DirectionTypes": {
+    "website": "Веб-сайт",
+    "mobile_app": "Мобилдик тиркеме",
+    "business_process_automation": "Бизнес-процесстерди автоматташтыруу",
+    "integration": "Интеграция",
+    "devops": "DevOps",
+    "seo": "SEO",
+    "advertising": "Жарнама",
+    "smm": "SMM",
+    "maps": "Карталар",
+    "tech_support": "Техникалык колдоо",
+    "rework": "Кайра иштеп чыгуу"
+  },
+  "PaymentModels": {
+    "piecework": "Кесимдүү",
+    "periodic": "Мезгилдүү"
+  },
+  "PaymentPeriods": {
+    "week": "Жума",
+    "month": "Ай",
+    "year": "Жыл",
+    "interval_days": "Интервал (күндөр)"
+  },
+  "BillingDocumentStatuses": {
+    "not_started": "Башталган эмес",
+    "issued": "Чыгарылган",
+    "paid": "Төлөнгөн",
+    "generated": "Түзүлгөн",
+    "sent": "Жөнөтүлгөн"
+  },
+  "RecurrenceTypes": {
+    "monthly": "Ай сайын",
+    "weekly": "Жума сайын",
+    "interval_days": "Күндөр интервалы"
+  },
+  "Endpoints": {
+    "Environment": {
+      "production": "Production",
+      "staging": "Staging",
+      "test": "Test",
+      "redirect": "Redirect",
+      "other": "Башка"
+    }
+  },
+  "Reasons": {
+    "Bonus": {
+      "salary": "Айлык",
+      "kpi_achievement": "KPI жетишкендиги",
+      "special_merit": "Өзгөчө эмгек",
+      "other": "Башка"
+    },
+    "Penalty": {
+      "lateness": "Кечикүү",
+      "absence": "Жумушка келбөө",
+      "error": "Ката",
+      "resource_outage": "Ресурстун иштен чыгышы",
+      "rudeness_to_customer": "Кардарга оройлук",
+      "customer_misinform": "Кардарды жаңылыштыруу",
+      "other": "Башка"
+    }
+  },
+  "Types": {
+    "FinancialTransaction": {
+      "income": "Киреше",
+      "cost": "Чыгым"
+    },
+    "PaymentMethod": {
+      "invoicing": "Эсеп коюу",
+      "credit_card": "Кредиттик карта"
+    }
+  }
+}

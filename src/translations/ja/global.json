@@ -1,0 +1,302 @@
+{
+  "Common": {
+    "companyName": "SmartLab",
+    "system_type": "CRM"
+  },
+  "Prepositions": {
+    "in": "の"
+  },
+  "Time": {
+    "short_hours": "時間",
+    "short_minutes": "分"
+  },
+  "Items": {
+    "short_pieces": "個"
+  },
+  "AuthPage": {
+    "page_title": "認証",
+    "for_staff": "スタッフ向け"
+  },
+  "MenuItems": {
+    "accounting": "会計",
+    "budget": "予算",
+    "call_history": "通話履歴",
+    "general_permission_system": "共通権限システム",
+    "projects": "プロジェクト",
+    "project": "プロジェクト",
+    "directions": "方向",
+    "direction": "方向",
+    "tasks": "タスク",
+    "work_time_ranges": "勤務時間帯",
+    "documents": "書類",
+    "WorkingWithCustomers": {
+      "self": "顧客対応",
+      "customers": "顧客",
+      "appeals": "申立て",
+      "support": "サポート",
+      "applications_from_website": "ウェブサイトからの申請"
+    },
+    "employees": "従業員"
+  },
+  "Tasks": {
+    "recurring": "定期",
+    "one_time": "単発",
+    "repeat_mode_interval_days": "間隔（日）",
+    "repeat_mode_monthly": "毎月",
+    "repeat_mode_billing_period": "請求期間"
+  },
+  "WorkTimeRanges": {
+    "total_time": "使用時間",
+    "money": "金額"
+  },
+  "Messages": {
+    "Info": {
+      "switch_textarea_mode_is_available": "テキストエリアモードの切り替えが可能です"
+    },
+    "Warnings": {
+      "switch_textarea_mode_is_not_available": "テキストエリアモードの切り替えはできません。エリアに内容があります"
+    },
+    "Errors": {}
+  },
+  "Form": {
+    "phone": "電話番号",
+    "password": "パスワード",
+    "Common": {
+      "enter": "入力してください "
+    },
+    "BtnTexts": {
+      "default": "送信"
+    },
+    "Errors": {
+      "len": "'${label}' は '${len}' 文字である必要があります",
+      "min": "'${label}' は少なくとも '${min}' 文字である必要があります",
+      "max": "'${label}' は '${max}' 文字以下である必要があります"
+    },
+    "EntitiesFields": {
+      "name": "名前",
+      "description": "説明",
+      "website_url": "ウェブサイトURL",
+      "comment": "コメント",
+      "customer_visible_comment": "顧客に表示されるコメント",
+      "status_id": "ステータス",
+      "type_id": "タイプ",
+      "customer_company_id": "顧客会社",
+      "project_id": "プロジェクト",
+      "direction_id": "方向",
+      "direction_family_id": "方向ファミリー",
+      "direction_type_id": "方向タイプ",
+      "payment_model_id": "支払いモデル",
+      "payment_period_id": "支払い期間",
+      "contract_amount": "契約金額",
+      "billing_anchor_date": "請求基準日",
+      "monitoring_enabled": "監視が有効",
+      "check_performance": "パフォーマンスを確認",
+      "check_expirations": "有効期限を確認",
+      "total_spent_time": "合計使用時間",
+      "total_time": "使用時間",
+      "money": "金額",
+      "total_costs_auto": "合計コスト（自動計算）",
+      "total_costs": "合計コスト（実際）",
+      "total_incomes": "合計収入",
+      "total_penalty_funds": "罰金",
+      "common_task_progress": "タスク全体の進捗",
+      "progress": "進捗",
+      "task_id": "タスク",
+      "worker_profile_id": "担当者",
+      "reason_type": "理由の種類",
+      "reason": "理由の詳細",
+      "default_rate": "デフォルトレート",
+      "is_repeat_enabled": "定期タスク",
+      "repeat_mode": "繰り返しモード",
+      "repeat_interval_days": "繰り返し間隔（日）",
+      "repeat_next_at": "次回繰り返し日時",
+      "repeat_source_task_id": "元タスク"
+    }
+  },
+  "HeaderProfile": {
+    "my_profile": "マイプロフィール",
+    "settings": "設定",
+    "my_time_ranges": "自分の時間帯",
+    "my_payments": "自分の支払い",
+    "my_unfinished_tasks": "未完了のタスク",
+    "sign_out": "サインアウト"
+  },
+  "Extra": {
+    "home_page": "ホーム"
+  },
+  "Filters": {
+    "self": "フィルター",
+    "id": "識別子",
+    "statuses": "ステータス",
+    "types": "タイプ",
+    "direction_family": "方向ファミリー",
+    "direction_type": "方向タイプ",
+    "payment_model": "支払いモデル",
+    "payment_period": "支払い期間",
+    "Deleted": {
+      "self": "削除済み",
+      "only_existing": "既存のみ",
+      "only_deleted": "削除済みのみ",
+      "all": "すべて"
+    },
+    "created_at": "作成日",
+    "apply": "適用",
+    "clear": "クリア"
+  },
+  "Search": {
+    "self": "検索",
+    "found": "見つかりました",
+    "title": "検索するフィールドを選択",
+    "impossible": "できません",
+    "check_all": "すべて選択"
+  },
+  "Statistics": {
+    "time_spent": "使用時間",
+    "incomes": "収入",
+    "costs_auto": "コスト（自動計算）",
+    "costs": "コスト（実際）",
+    "penalty": "罰金"
+  },
+  "Info": {
+    "accesses": "アクセス",
+    "repositories": "リポジトリ",
+    "technology_stack": "技術スタック",
+    "expirations": "有効期限",
+    "other_links": "その他のリンク",
+    "endpoints": "エンドポイント",
+    "coming_soon": "近日公開"
+  },
+  "PermissionSystem": {
+    "permission_system": "権限システム",
+    "allow": "許可",
+    "disallow": "禁止"
+  },
+  "Actions": {
+    "create": "作成",
+    "go": "移動",
+    "edit": "編集",
+    "delete": "削除",
+    "restore": "復元"
+  },
+  "Modes": {
+    "creating": "作成中",
+    "editing": "編集中",
+    "simple": "簡易",
+    "advanced": "詳細"
+  },
+  "Confirm": {
+    "title": "確認が必要です",
+    "description": "この操作を実行してもよろしいですか？",
+    "ok_text": "はい",
+    "cancel_text": "キャンセル"
+  },
+  "Statuses": {
+    "Direction": {
+      "in_progress": "進行中",
+      "upcoming": "予定",
+      "completed": "完了"
+    },
+    "Project": {
+      "in_progress": "進行中",
+      "upcoming": "予定",
+      "completed": "完了"
+    },
+    "Task": {
+      "completed": "完了",
+      "in_progress": "進行中",
+      "went_beyond_planned_time": "予定時間を超過",
+      "expired": "期限切れ",
+      "planned": "計画済み"
+    },
+    "Employee": {
+      "works": "勤務中",
+      "internship": "インターンシップ",
+      "fired": "解雇済み"
+    },
+    "Customer": {
+      "collaborates": "協力中",
+      "potential": "見込み",
+      "former": "元顧客"
+    },
+    "FinancialTransaction": {
+      "scheduled": "予定済み",
+      "made": "実行済み"
+    }
+  },
+  "DirectionFamilies": {
+    "development": "開発",
+    "promotion": "プロモーション",
+    "maintenance": "保守"
+  },
+  "DirectionTypes": {
+    "website": "ウェブサイト",
+    "mobile_app": "モバイルアプリ",
+    "business_process_automation": "業務プロセス自動化",
+    "integration": "統合",
+    "devops": "DevOps",
+    "seo": "SEO",
+    "advertising": "広告",
+    "smm": "SMM",
+    "maps": "地図",
+    "tech_support": "テクニカルサポート",
+    "rework": "再作業"
+  },
+  "PaymentModels": {
+    "piecework": "出来高制",
+    "periodic": "定期"
+  },
+  "PaymentPeriods": {
+    "week": "週",
+    "month": "月",
+    "year": "年",
+    "interval_days": "間隔（日）"
+  },
+  "BillingDocumentStatuses": {
+    "not_started": "未開始",
+    "issued": "発行済み",
+    "paid": "支払済み",
+    "generated": "生成済み",
+    "sent": "送信済み"
+  },
+  "RecurrenceTypes": {
+    "monthly": "毎月",
+    "weekly": "毎週",
+    "interval_days": "日数間隔"
+  },
+  "Endpoints": {
+    "Environment": {
+      "production": "Production",
+      "staging": "Staging",
+      "test": "Test",
+      "redirect": "Redirect",
+      "other": "その他"
+    }
+  },
+  "Reasons": {
+    "Bonus": {
+      "salary": "給与",
+      "kpi_achievement": "KPI達成",
+      "special_merit": "特別な功績",
+      "other": "その他"
+    },
+    "Penalty": {
+      "lateness": "遅刻",
+      "absence": "欠勤",
+      "error": "ミス",
+      "resource_outage": "リソース障害",
+      "rudeness_to_customer": "顧客への無礼",
+      "customer_misinform": "顧客への誤案内",
+      "other": "その他"
+    }
+  },
+  "Types": {
+    "FinancialTransaction": {
+      "income": "収入",
+      "cost": "コスト"
+    },
+    "PaymentMethod": {
+      "invoicing": "請求書発行",
+      "credit_card": "クレジットカード"
+    }
+  }
+}

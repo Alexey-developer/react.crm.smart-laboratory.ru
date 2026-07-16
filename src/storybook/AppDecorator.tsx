@@ -2,12 +2,11 @@ import React from 'react'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ConfigProvider, Row } from 'antd'
-import english from 'antd/locale/en_US'
-import russian from 'antd/locale/ru_RU'
 import { Provider } from 'react-redux'
 import { I18nextProvider } from 'react-i18next'
 import { MemoryRouter, useInRouterContext } from 'react-router-dom'
 
+import { getAntdLocale } from '@utils/getAntdLocale'
 import { GetValidateMessages } from '@utils/helpers'
 
 import { getAntdThemeConfig } from './antdTheme'
@@ -45,7 +44,7 @@ const AntdStoryShell: React.FC<{ children: React.ReactNode; locale: Lang }> = ({
 
   return (
     <ConfigProvider
-      locale={locale === 'ru' ? russian : english}
+      locale={getAntdLocale(locale)}
       theme={getAntdThemeConfig()}
       form={{ validateMessages }}
     >

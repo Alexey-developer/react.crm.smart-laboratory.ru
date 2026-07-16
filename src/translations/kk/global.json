@@ -1,0 +1,302 @@
+{
+  "Common": {
+    "companyName": "SmartLab",
+    "system_type": "CRM"
+  },
+  "Prepositions": {
+    "in": "ішінде"
+  },
+  "Time": {
+    "short_hours": "сағ.",
+    "short_minutes": "мин."
+  },
+  "Items": {
+    "short_pieces": "дана"
+  },
+  "AuthPage": {
+    "page_title": "Авторизация",
+    "for_staff": "Қызметкерлер үшін"
+  },
+  "MenuItems": {
+    "accounting": "Бухгалтерлік есеп",
+    "budget": "Бюджет",
+    "call_history": "Қоңыраулар тарихы",
+    "general_permission_system": "Жалпы рұқсаттар жүйесі",
+    "projects": "Жобалар",
+    "project": "Жоба",
+    "directions": "Бағыттар",
+    "direction": "Бағыт",
+    "tasks": "Тапсырмалар",
+    "work_time_ranges": "Жұмыс уақыты аралықтары",
+    "documents": "Құжаттар",
+    "WorkingWithCustomers": {
+      "self": "Клиенттермен жұмыс",
+      "customers": "Клиенттер",
+      "appeals": "Өтініштер",
+      "support": "Қолдау",
+      "applications_from_website": "Веб-сайттан өтінімдер"
+    },
+    "employees": "Қызметкерлер"
+  },
+  "Tasks": {
+    "recurring": "Қайталанатын",
+    "one_time": "Бір реттік",
+    "repeat_mode_interval_days": "Аралық (күндер)",
+    "repeat_mode_monthly": "Ай сайын",
+    "repeat_mode_billing_period": "Биллинг кезеңі"
+  },
+  "WorkTimeRanges": {
+    "total_time": "Жұмсалған уақыт",
+    "money": "Сома"
+  },
+  "Messages": {
+    "Info": {
+      "switch_textarea_mode_is_available": "Мәтін енгізу аймағының режимін ауыстыру қолжетімді"
+    },
+    "Warnings": {
+      "switch_textarea_mode_is_not_available": "Мәтін енгізу аймағының режимін ауыстыру қолжетімсіз, аймақта мазмұн бар"
+    },
+    "Errors": {}
+  },
+  "Form": {
+    "phone": "Телефон нөмірі",
+    "password": "Құпия сөз",
+    "Common": {
+      "enter": "Енгізіңіз "
+    },
+    "BtnTexts": {
+      "default": "Жіберу"
+    },
+    "Errors": {
+      "len": "'${label}' '${len}' таңбадан тұруы керек",
+      "min": "'${label}' кемінде '${min}' таңбадан тұруы керек",
+      "max": "'${label}' ең көбі '${max}' таңбадан тұруы керек"
+    },
+    "EntitiesFields": {
+      "name": "Атауы",
+      "description": "Сипаттама",
+      "website_url": "Веб-сайт URL",
+      "comment": "Пікір",
+      "customer_visible_comment": "Клиентке көрінетін пікір",
+      "status_id": "Мәртебе",
+      "type_id": "Түрі",
+      "customer_company_id": "Клиент компаниясы",
+      "project_id": "Жоба",
+      "direction_id": "Бағыт",
+      "direction_family_id": "Бағыттар тобы",
+      "direction_type_id": "Бағыт түрі",
+      "payment_model_id": "Төлем моделі",
+      "payment_period_id": "Төлем кезеңі",
+      "contract_amount": "Шарт сомасы",
+      "billing_anchor_date": "Биллинг басталу күні",
+      "monitoring_enabled": "Мониторинг қосылған",
+      "check_performance": "Жұмыс қабілеттілігін тексеру",
+      "check_expirations": "Мерзімдердің аяқталуын тексеру",
+      "total_spent_time": "Жалпы жұмсалған уақыт",
+      "total_time": "Жұмсалған уақыт",
+      "money": "Сома",
+      "total_costs_auto": "Жалпы шығындар (автоматты есептеу)",
+      "total_costs": "Жалпы шығындар (нақты)",
+      "total_incomes": "Жалпы кірістер",
+      "total_penalty_funds": "Айыппұлдар",
+      "common_task_progress": "Тапсырмалардың жалпы прогресі",
+      "progress": "Прогресс",
+      "task_id": "Тапсырма",
+      "worker_profile_id": "Қызметкер",
+      "reason_type": "Себеп түрі",
+      "reason": "Себеп мәліметтері",
+      "default_rate": "Әдепкі мөлшерлеме",
+      "is_repeat_enabled": "Қайталанатын тапсырма",
+      "repeat_mode": "Қайталау режимі",
+      "repeat_interval_days": "Қайталау аралығы (күндер)",
+      "repeat_next_at": "Келесі қайталау",
+      "repeat_source_task_id": "Бастапқы тапсырма"
+    }
+  },
+  "HeaderProfile": {
+    "my_profile": "Менің профилім",
+    "settings": "Параметрлер",
+    "my_time_ranges": "Менің уақыт аралықтарым",
+    "my_payments": "Менің төлемдерім",
+    "my_unfinished_tasks": "Менің аяқталмаған тапсырмаларым",
+    "sign_out": "Шығу"
+  },
+  "Extra": {
+    "home_page": "Басты бет"
+  },
+  "Filters": {
+    "self": "Сүзгілер",
+    "id": "Идентификатор",
+    "statuses": "Мәртебелер",
+    "types": "Түрлер",
+    "direction_family": "Бағыттар тобы",
+    "direction_type": "Бағыт түрі",
+    "payment_model": "Төлем моделі",
+    "payment_period": "Төлем кезеңі",
+    "Deleted": {
+      "self": "Жойылғандар",
+      "only_existing": "Тек барлары",
+      "only_deleted": "Тек жойылғандар",
+      "all": "Барлығы"
+    },
+    "created_at": "Жасалған күні",
+    "apply": "Қолдану",
+    "clear": "Тазалау"
+  },
+  "Search": {
+    "self": "Іздеу",
+    "found": "Табылды",
+    "title": "Іздеу үшін өрістерді таңдаңыз",
+    "impossible": "мүмкін емес",
+    "check_all": "Барлығын таңдау"
+  },
+  "Statistics": {
+    "time_spent": "Жұмсалған уақыт",
+    "incomes": "Кірістер",
+    "costs_auto": "Шығындар (автоматты есептеу)",
+    "costs": "Шығындар (нақты)",
+    "penalty": "Айыппұл"
+  },
+  "Info": {
+    "accesses": "Қолжетімділіктер",
+    "repositories": "Репозиторийлер",
+    "technology_stack": "Технологиялар стегі",
+    "expirations": "Мерзімдердің аяқталуы",
+    "other_links": "Басқа сілтемелер",
+    "endpoints": "Эндпоинттер",
+    "coming_soon": "Жақында"
+  },
+  "PermissionSystem": {
+    "permission_system": "Рұқсаттар жүйесі",
+    "allow": "Рұқсат ету",
+    "disallow": "Тыйым салу"
+  },
+  "Actions": {
+    "create": "Жасау",
+    "go": "Өту",
+    "edit": "Өңдеу",
+    "delete": "Жою",
+    "restore": "Қалпына келтіру"
+  },
+  "Modes": {
+    "creating": "Жасау",
+    "editing": "Өңдеу",
+    "simple": "Қарапайым",
+    "advanced": "Кеңейтілген"
+  },
+  "Confirm": {
+    "title": "Растау қажет",
+    "description": "Осы әрекетті орындағыңыз келетініне сенімдісіз бе?",
+    "ok_text": "Иә",
+    "cancel_text": "Болдырмау"
+  },
+  "Statuses": {
+    "Direction": {
+      "in_progress": "Жұмыс үстінде",
+      "upcoming": "Алдағы",
+      "completed": "Аяқталған"
+    },
+    "Project": {
+      "in_progress": "Жұмыс үстінде",
+      "upcoming": "Алдағы",
+      "completed": "Аяқталған"
+    },
+    "Task": {
+      "completed": "Орындалған",
+      "in_progress": "Орындалуда",
+      "went_beyond_planned_time": "Жоспарланған уақыттан асып кетті",
+      "expired": "Мерзімі өткен",
+      "planned": "Жоспарланған"
+    },
+    "Employee": {
+      "works": "Жұмыс істейді",
+      "internship": "Тағылымдама",
+      "fired": "Жұмыстан шығарылған"
+    },
+    "Customer": {
+      "collaborates": "Ынтымақтасады",
+      "potential": "Әлеуетті",
+      "former": "Бұрынғы"
+    },
+    "FinancialTransaction": {
+      "scheduled": "Жоспарланған",
+      "made": "Орындалған"
+    }
+  },
+  "DirectionFamilies": {
+    "development": "Әзірлеу",
+    "promotion": "Жылжыту",
+    "maintenance": "Қолдау"
+  },
+  "DirectionTypes": {
+    "website": "Веб-сайт",
+    "mobile_app": "Мобильді қосымша",
+    "business_process_automation": "Бизнес-процестерді автоматтандыру",
+    "integration": "Интеграция",
+    "devops": "DevOps",
+    "seo": "SEO",
+    "advertising": "Жарнама",
+    "smm": "SMM",
+    "maps": "Карталар",
+    "tech_support": "Техникалық қолдау",
+    "rework": "Қайта өңдеу"
+  },
+  "PaymentModels": {
+    "piecework": "Кесімді",
+    "periodic": "Мерзімді"
+  },
+  "PaymentPeriods": {
+    "week": "Апта",
+    "month": "Ай",
+    "year": "Жыл",
+    "interval_days": "Аралық (күндер)"
+  },
+  "BillingDocumentStatuses": {
+    "not_started": "Басталмаған",
+    "issued": "Шығарылған",
+    "paid": "Төленген",
+    "generated": "Жасалған",
+    "sent": "Жіберілген"
+  },
+  "RecurrenceTypes": {
+    "monthly": "Ай сайын",
+    "weekly": "Апта сайын",
+    "interval_days": "Күндер аралығы"
+  },
+  "Endpoints": {
+    "Environment": {
+      "production": "Production",
+      "staging": "Staging",
+      "test": "Test",
+      "redirect": "Redirect",
+      "other": "Басқа"
+    }
+  },
+  "Reasons": {
+    "Bonus": {
+      "salary": "Жалақы",
+      "kpi_achievement": "KPI жетістігі",
+      "special_merit": "Ерекше еңбек сіңіргені",
+      "other": "Басқа"
+    },
+    "Penalty": {
+      "lateness": "Кешігу",
+      "absence": "Жұмысқа келмеу",
+      "error": "Қате",
+      "resource_outage": "Ресурс істен шығуы",
+      "rudeness_to_customer": "Клиентке дөрекілік",
+      "customer_misinform": "Клиентті жаңылыстыру",
+      "other": "Басқа"
+    }
+  },
+  "Types": {
+    "FinancialTransaction": {
+      "income": "Кіріс",
+      "cost": "Шығын"
+    },
+    "PaymentMethod": {
+      "invoicing": "Шот ұсыну",
+      "credit_card": "Несие картасы"
+    }
+  }
+}

@@ -51,7 +51,7 @@ argument-hint: Name --type=CRUD|R
 
 - **`src/api/common/types/TGroups.ts`** — обязательно добавить `{Entity}Group` в **оба** union'а (`GroupClass`, `GroupMethod`). Без этого TS не выведет тип.
 - **`src/App.tsx`** (только для CRUD) — добавить lazy-импорты 4 page-компонентов + запись в массив `routes`.
-- **`src/translations/ru/global.json` И `src/translations/en/global.json`** — синхронно добавить:
+- **`src/translations/*/global.json`** — синхронно во все локали добавить:
   - `MenuItems.{entityPlural}` (если есть пункт меню)
   - `Form.EntitiesFields.{each_field}` для каждого поля формы (CRUD)
   - `Statuses.{Entity}.*`, `Types.{Entity}.*` если R-справочники приходят с бэка с этими ключами.
@@ -66,7 +66,7 @@ argument-hint: Name --type=CRUD|R
 
 - **Не использовать** `useQuery`/`useMutation` напрямую — только `useAPIQuery`/`useAPIMutation`.
 - **Не использовать** `axios`/`fetch` напрямую — только через group-класс.
-- **Ключи переводов** — в **оба** словаря синхронно.
+- **Ключи переводов** — во **все** словари (`LANG_OPTIONS`) синхронно.
 - **Иконки** — только через `getIcon('KEY')`, никаких прямых `'fa-solid fa-...'`.
 - **URI** — только через константы `@utils/constants/routes`.
 - **Импорты** — только через `@aliases`.

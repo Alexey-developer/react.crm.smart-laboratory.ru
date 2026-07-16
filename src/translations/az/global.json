@@ -1,0 +1,310 @@
+{
+  "Common": {
+    "companyName": "SmartLab",
+    "system_type": "CRM"
+  },
+  "Prepositions": {
+    "in": "içində"
+  },
+  "Time": {
+    "short_hours": "s.",
+    "short_minutes": "d."
+  },
+  "Items": {
+    "short_pieces": "əd."
+  },
+  "AuthPage": {
+    "page_title": "Avtorizasiya",
+    "for_staff": "Əməkdaşlar üçün"
+  },
+  "MenuItems": {
+    "accounting": "Mühasibat uçotu",
+    "budget": "Büdcə",
+    "call_history": "Zəng tarixçəsi",
+    "general_permission_system": "Ümumi icazələr sistemi",
+    "projects": "Layihələr",
+    "project": "Layihə",
+    "directions": "İstiqamətlər",
+    "direction": "İstiqamət",
+    "tasks": "Tapşırıqlar",
+    "work_time_ranges": "Vaxt aralıqları",
+    "documents": "Sənədlər",
+    "WorkingWithCustomers": {
+      "self": "Müştərilərlə iş",
+      "customers": "Müştərilər",
+      "appeals": "Müraciətlər",
+      "support": "Dəstək",
+      "applications_from_website": "Vebsaytdan müraciətlər"
+    },
+    "employees": "Əməkdaşlar"
+  },
+  "Tasks": {
+    "recurring": "Müntəzəm",
+    "one_time": "Birdəfəlik",
+    "repeat_mode_interval_days": "İnterval (günlər)",
+    "repeat_mode_monthly": "Aylıq",
+    "repeat_mode_billing_period": "Billing dövrü"
+  },
+  "WorkTimeRanges": {
+    "total_time": "Sərf olunan vaxt",
+    "money": "Məbləğ"
+  },
+  "Messages": {
+    "Info": {
+      "switch_textarea_mode_is_available": "Mətn sahəsinin rejimini dəyişmək mümkündür"
+    },
+    "Warnings": {
+      "switch_textarea_mode_is_not_available": "Mətn sahəsinin rejimini dəyişmək mümkün deyil, sahədə məzmun var"
+    },
+    "Errors": {}
+  },
+  "Form": {
+    "phone": "Telefon nömrəsi",
+    "password": "Şifrə",
+
+    "Common": {
+      "enter": "Daxil edin "
+    },
+
+    "BtnTexts": {
+      "default": "Göndər"
+    },
+    "Errors": {
+      "len": "'${label}' sahəsi '${len}' simvoldan ibarət olmalıdır",
+      "min": "'${label}' sahəsi ən azı '${min}' simvoldan ibarət olmalıdır",
+      "max": "'${label}' sahəsi ən çox '${max}' simvoldan ibarət olmalıdır"
+    },
+    "EntitiesFields": {
+      "name": "Ad",
+      "description": "Təsvir",
+      "website_url": "Vebsayt linki",
+      "comment": "Şərh",
+      "customer_visible_comment": "Müştəriyə görünən şərh",
+
+      "status_id": "Status",
+      "type_id": "Tip",
+      "customer_company_id": "Müştəri şirkəti",
+      "project_id": "Layihə",
+      "direction_id": "İstiqamət",
+      "direction_family_id": "İstiqamət ailəsi",
+      "direction_type_id": "İstiqamət tipi",
+      "payment_model_id": "Ödəniş modeli",
+      "payment_period_id": "Ödəniş dövrü",
+      "contract_amount": "Müqavilə məbləği",
+      "billing_anchor_date": "Billingin başlama tarixi",
+      "monitoring_enabled": "Monitorinq aktivdir",
+
+      "check_performance": "İşləmə qabiliyyətini yoxla",
+      "check_expirations": "Müddət bitmələrini yoxla",
+
+      "total_spent_time": "Ümumi sərf olunan vaxt",
+      "total_time": "Sərf olunan vaxt",
+      "money": "Məbləğ",
+      "total_costs_auto": "Ümumi xərclər (avtomatik hesablama)",
+      "total_costs": "Xərclər (faktiki)",
+      "total_incomes": "Ümumi gəlirlər",
+      "total_penalty_funds": "Cərimə tutulmaları",
+      "common_task_progress": "Tapşırıqların ümumi irəliləyişi",
+      "progress": "İrəliləyiş",
+
+      "task_id": "Tapşırıq",
+      "worker_profile_id": "Əməkdaş",
+      "reason_type": "Səbəb tipi",
+      "reason": "Səbəbin izahı",
+      "default_rate": "Susmaya görə dərəcə",
+      "is_repeat_enabled": "Təkrarlanan tapşırıq",
+      "repeat_mode": "Təkrarlanma rejimi",
+      "repeat_interval_days": "Təkrarlanma intervalı (günlər)",
+      "repeat_next_at": "Növbəti təkrarlanma",
+      "repeat_source_task_id": "Mənbə tapşırıq"
+    }
+  },
+  "HeaderProfile": {
+    "my_profile": "Profilim",
+    "settings": "Parametrlər",
+    "my_time_ranges": "Vaxt aralıqlarım",
+    "my_payments": "Ödənişlərim",
+    "my_unfinished_tasks": "Bitməmiş tapşırıqlarım",
+    "sign_out": "Çıxış"
+  },
+  "Extra": {
+    "home_page": "Ana səhifə"
+  },
+  "Filters": {
+    "self": "Filtrlər",
+    "id": "İdentifikator",
+    "statuses": "Statuslar",
+    "types": "Tiplər",
+    "direction_family": "İstiqamət ailəsi",
+    "direction_type": "İstiqamət tipi",
+    "payment_model": "Ödəniş modeli",
+    "payment_period": "Ödəniş dövrü",
+    "Deleted": {
+      "self": "Silinmişlər",
+      "only_existing": "Yalnız mövcud olanlar",
+      "only_deleted": "Yalnız silinmişlər",
+      "all": "Hamısı"
+    },
+    "created_at": "Yaradılma tarixi",
+
+    "apply": "Tətbiq et",
+    "clear": "Təmizlə"
+  },
+  "Search": {
+    "self": "Axtarış",
+    "found": "Tapıldı",
+    "title": "Axtarış üçün sahələrin seçimi",
+    "impossible": "mümkün deyil",
+    "check_all": "Hamısını seç"
+  },
+  "Statistics": {
+    "time_spent": "Sərf olunan vaxt",
+    "incomes": "Gəlirlər",
+    "costs_auto": "Xərclər (avtomatik hesablama)",
+    "costs": "Xərclər (faktiki)",
+    "penalty": "Cərimələr"
+  },
+  "Info": {
+    "accesses": "Girişlər",
+    "repositories": "Repozitorilər",
+    "technology_stack": "Texnologiya steki",
+    "expirations": "Müddət bitmələri",
+    "other_links": "Digər keçidlər",
+    "endpoints": "Endpointlər",
+    "coming_soon": "Tezliklə"
+  },
+  "PermissionSystem": {
+    "permission_system": "İcazələr sistemi",
+    "allow": "İcazə ver",
+    "disallow": "Qadağan et"
+  },
+  "Actions": {
+    "create": "Yarat",
+    "go": "Keç",
+    "edit": "Redaktə et",
+    "delete": "Sil",
+    "restore": "Bərpa et"
+  },
+  "Modes": {
+    "creating": "Yaratma",
+    "editing": "Redaktə",
+
+    "simple": "Sadə",
+    "advanced": "Genişləndirilmiş"
+  },
+  "Confirm": {
+    "title": "Təsdiq tələb olunur",
+    "description": "Bu əməliyyatı yerinə yetirmək istədiyinizə əminsiniz?",
+    "ok_text": "Bəli",
+    "cancel_text": "Ləğv et"
+  },
+  "Statuses": {
+    "Direction": {
+      "in_progress": "İşdədir",
+      "upcoming": "Gələcək",
+      "completed": "Tamamlanıb"
+    },
+    "Project": {
+      "in_progress": "İşdədir",
+      "upcoming": "Gələcək",
+      "completed": "Tamamlanıb"
+    },
+    "Task": {
+      "completed": "Yerinə yetirilib",
+      "in_progress": "Yerinə yetirilir",
+      "went_beyond_planned_time": "Planlaşdırılmış vaxtı keçib",
+      "expired": "Müddəti bitib",
+      "planned": "Planlaşdırılıb"
+    },
+    "Employee": {
+      "works": "İşləyir",
+      "internship": "Staj keçir",
+      "fired": "İşdən çıxarılıb"
+    },
+    "Customer": {
+      "collaborates": "Əməkdaşlıq edir",
+      "potential": "Potensial",
+      "former": "Keçmiş"
+    },
+    "FinancialTransaction": {
+      "scheduled": "Planlaşdırılıb",
+      "made": "Həyata keçirilib"
+    }
+  },
+  "DirectionFamilies": {
+    "development": "İnkişaf",
+    "promotion": "Təşviq",
+    "maintenance": "Dəstəkləmə"
+  },
+  "DirectionTypes": {
+    "website": "Vebsayt",
+    "mobile_app": "Mobil tətbiq",
+    "business_process_automation": "Biznes proseslərinin avtomatlaşdırılması",
+    "integration": "İnteqrasiya",
+    "devops": "DevOps",
+    "seo": "SEO",
+    "advertising": "Reklam",
+    "smm": "SMM",
+    "maps": "Xəritələr",
+    "tech_support": "Texniki dəstək",
+    "rework": "Yenidən işləmə"
+  },
+  "PaymentModels": {
+    "piecework": "Parça-haqq",
+    "periodic": "Abunə"
+  },
+  "PaymentPeriods": {
+    "week": "Həftə",
+    "month": "Ay",
+    "year": "İl",
+    "interval_days": "İnterval (günlər)"
+  },
+  "BillingDocumentStatuses": {
+    "not_started": "Başlanmayıb",
+    "issued": "Təqdim edilib",
+    "paid": "Ödənilib",
+    "generated": "Formalaşdırılıb",
+    "sent": "Göndərilib"
+  },
+  "RecurrenceTypes": {
+    "monthly": "Aylıq",
+    "weekly": "Həftəlik",
+    "interval_days": "N gündən bir"
+  },
+  "Endpoints": {
+    "Environment": {
+      "production": "Production",
+      "staging": "Staging",
+      "test": "Test",
+      "redirect": "Redirect",
+      "other": "Digər"
+    }
+  },
+  "Reasons": {
+    "Bonus": {
+      "salary": "Maaş",
+      "kpi_achievement": "KPI nailiyyəti",
+      "special_merit": "Xüsusi xidmətlər",
+      "other": "Digər"
+    },
+    "Penalty": {
+      "lateness": "Gecikmə",
+      "absence": "İş buraxma",
+      "error": "Səhv buraxma",
+      "resource_outage": "Resursun işləməsinin pozulması",
+      "rudeness_to_customer": "Müştəriyə qarşı kobudluq",
+      "customer_misinform": "Müştərinin yanlış məlumatlandırılması",
+      "other": "Digər"
+    }
+  },
+  "Types": {
+    "FinancialTransaction": {
+      "income": "Gəlir",
+      "cost": "Xərc"
+    },
+    "PaymentMethod": {
+      "invoicing": "Rekvizitlərlə (hesab təqdimi)",
+      "credit_card": "Köçürmə (karta)"
+    }
+  }
+}

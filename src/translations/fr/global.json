@@ -1,0 +1,302 @@
+{
+  "Common": {
+    "companyName": "SmartLab",
+    "system_type": "CRM"
+  },
+  "Prepositions": {
+    "in": "dans"
+  },
+  "Time": {
+    "short_hours": "h",
+    "short_minutes": "min"
+  },
+  "Items": {
+    "short_pieces": "pcs"
+  },
+  "AuthPage": {
+    "page_title": "Autorisation",
+    "for_staff": "Pour le personnel"
+  },
+  "MenuItems": {
+    "accounting": "Comptabilité",
+    "budget": "Budget",
+    "call_history": "Historique des appels",
+    "general_permission_system": "Système général d'autorisations",
+    "projects": "Projets",
+    "project": "Projet",
+    "directions": "Directions",
+    "direction": "Direction",
+    "tasks": "Tâches",
+    "work_time_ranges": "Plages de temps de travail",
+    "documents": "Documents",
+    "WorkingWithCustomers": {
+      "self": "Travail avec les clients",
+      "customers": "Clients",
+      "appeals": "Demandes",
+      "support": "Support",
+      "applications_from_website": "Demandes depuis le site web"
+    },
+    "employees": "Employés"
+  },
+  "Tasks": {
+    "recurring": "Récurrente",
+    "one_time": "Ponctuelle",
+    "repeat_mode_interval_days": "Intervalle (jours)",
+    "repeat_mode_monthly": "Mensuel",
+    "repeat_mode_billing_period": "Période de facturation"
+  },
+  "WorkTimeRanges": {
+    "total_time": "Temps passé",
+    "money": "Montant"
+  },
+  "Messages": {
+    "Info": {
+      "switch_textarea_mode_is_available": "Le changement de mode de zone de texte est disponible"
+    },
+    "Warnings": {
+      "switch_textarea_mode_is_not_available": "Le changement de mode de zone de texte n'est pas disponible, la zone contient du contenu"
+    },
+    "Errors": {}
+  },
+  "Form": {
+    "phone": "Numéro de téléphone",
+    "password": "Mot de passe",
+    "Common": {
+      "enter": "Saisir "
+    },
+    "BtnTexts": {
+      "default": "Envoyer"
+    },
+    "Errors": {
+      "len": "'${label}' doit comporter '${len}' caractères",
+      "min": "'${label}' doit comporter au moins '${min}' caractères",
+      "max": "'${label}' doit comporter au maximum '${max}' caractères"
+    },
+    "EntitiesFields": {
+      "name": "Nom",
+      "description": "Description",
+      "website_url": "URL du site web",
+      "comment": "Commentaire",
+      "customer_visible_comment": "Commentaire visible par le client",
+      "status_id": "Statut",
+      "type_id": "Type",
+      "customer_company_id": "Entreprise cliente",
+      "project_id": "Projet",
+      "direction_id": "Direction",
+      "direction_family_id": "Famille de directions",
+      "direction_type_id": "Type de direction",
+      "payment_model_id": "Modèle de paiement",
+      "payment_period_id": "Période de paiement",
+      "contract_amount": "Montant du contrat",
+      "billing_anchor_date": "Date d'ancrage de facturation",
+      "monitoring_enabled": "Surveillance activée",
+      "check_performance": "Vérifier les performances",
+      "check_expirations": "Vérifier les expirations",
+      "total_spent_time": "Temps total passé",
+      "total_time": "Temps passé",
+      "money": "Montant",
+      "total_costs_auto": "Coûts totaux (calcul automatique)",
+      "total_costs": "Coûts totaux (réels)",
+      "total_incomes": "Revenus totaux",
+      "total_penalty_funds": "Pénalités",
+      "common_task_progress": "Progression globale des tâches",
+      "progress": "Progression",
+      "task_id": "Tâche",
+      "worker_profile_id": "Employé",
+      "reason_type": "Type de motif",
+      "reason": "Détails du motif",
+      "default_rate": "Taux par défaut",
+      "is_repeat_enabled": "Tâche récurrente",
+      "repeat_mode": "Mode de répétition",
+      "repeat_interval_days": "Intervalle de répétition (jours)",
+      "repeat_next_at": "Prochaine répétition le",
+      "repeat_source_task_id": "Tâche source"
+    }
+  },
+  "HeaderProfile": {
+    "my_profile": "Mon profil",
+    "settings": "Paramètres",
+    "my_time_ranges": "Mes plages de temps",
+    "my_payments": "Mes paiements",
+    "my_unfinished_tasks": "Mes tâches non terminées",
+    "sign_out": "Se déconnecter"
+  },
+  "Extra": {
+    "home_page": "Accueil"
+  },
+  "Filters": {
+    "self": "Filtres",
+    "id": "Identifiant",
+    "statuses": "Statuts",
+    "types": "Types",
+    "direction_family": "Famille de directions",
+    "direction_type": "Type de direction",
+    "payment_model": "Modèle de paiement",
+    "payment_period": "Période de paiement",
+    "Deleted": {
+      "self": "Supprimés",
+      "only_existing": "Uniquement existants",
+      "only_deleted": "Uniquement supprimés",
+      "all": "Tous"
+    },
+    "created_at": "Date de création",
+    "apply": "Appliquer",
+    "clear": "Effacer"
+  },
+  "Search": {
+    "self": "Recherche",
+    "found": "Trouvé",
+    "title": "Sélectionner les champs à rechercher",
+    "impossible": "est impossible",
+    "check_all": "Tout sélectionner"
+  },
+  "Statistics": {
+    "time_spent": "Temps passé",
+    "incomes": "Revenus",
+    "costs_auto": "Coûts (calcul automatique)",
+    "costs": "Coûts (réels)",
+    "penalty": "Pénalité"
+  },
+  "Info": {
+    "accesses": "Accès",
+    "repositories": "Dépôts",
+    "technology_stack": "Stack technologique",
+    "expirations": "Expirations",
+    "other_links": "Autres liens",
+    "endpoints": "Points de terminaison",
+    "coming_soon": "Bientôt disponible"
+  },
+  "PermissionSystem": {
+    "permission_system": "Système d'autorisations",
+    "allow": "Autoriser",
+    "disallow": "Interdire"
+  },
+  "Actions": {
+    "create": "Créer",
+    "go": "Aller",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "restore": "Restaurer"
+  },
+  "Modes": {
+    "creating": "Création",
+    "editing": "Modification",
+    "simple": "Simple",
+    "advanced": "Avancé"
+  },
+  "Confirm": {
+    "title": "Confirmation requise",
+    "description": "Êtes-vous sûr de vouloir effectuer cette action ?",
+    "ok_text": "Oui",
+    "cancel_text": "Annuler"
+  },
+  "Statuses": {
+    "Direction": {
+      "in_progress": "En cours",
+      "upcoming": "À venir",
+      "completed": "Terminé"
+    },
+    "Project": {
+      "in_progress": "En cours",
+      "upcoming": "À venir",
+      "completed": "Terminé"
+    },
+    "Task": {
+      "completed": "Terminée",
+      "in_progress": "En cours",
+      "went_beyond_planned_time": "Dépassement du temps prévu",
+      "expired": "Expirée",
+      "planned": "Planifiée"
+    },
+    "Employee": {
+      "works": "Travaille",
+      "internship": "Stage",
+      "fired": "Licencié"
+    },
+    "Customer": {
+      "collaborates": "Collabore",
+      "potential": "Potentiel",
+      "former": "Ancien"
+    },
+    "FinancialTransaction": {
+      "scheduled": "Planifiée",
+      "made": "Effectuée"
+    }
+  },
+  "DirectionFamilies": {
+    "development": "Développement",
+    "promotion": "Promotion",
+    "maintenance": "Maintenance"
+  },
+  "DirectionTypes": {
+    "website": "Site web",
+    "mobile_app": "Application mobile",
+    "business_process_automation": "Automatisation des processus métier",
+    "integration": "Intégration",
+    "devops": "DevOps",
+    "seo": "SEO",
+    "advertising": "Publicité",
+    "smm": "SMM",
+    "maps": "Cartes",
+    "tech_support": "Support technique",
+    "rework": "Retouche"
+  },
+  "PaymentModels": {
+    "piecework": "À la pièce",
+    "periodic": "Périodique"
+  },
+  "PaymentPeriods": {
+    "week": "Semaine",
+    "month": "Mois",
+    "year": "Année",
+    "interval_days": "Intervalle (jours)"
+  },
+  "BillingDocumentStatuses": {
+    "not_started": "Non commencé",
+    "issued": "Émis",
+    "paid": "Payé",
+    "generated": "Généré",
+    "sent": "Envoyé"
+  },
+  "RecurrenceTypes": {
+    "monthly": "Mensuel",
+    "weekly": "Hebdomadaire",
+    "interval_days": "Intervalle en jours"
+  },
+  "Endpoints": {
+    "Environment": {
+      "production": "Production",
+      "staging": "Staging",
+      "test": "Test",
+      "redirect": "Redirect",
+      "other": "Autre"
+    }
+  },
+  "Reasons": {
+    "Bonus": {
+      "salary": "Salaire",
+      "kpi_achievement": "Atteinte des KPI",
+      "special_merit": "Mérite spécial",
+      "other": "Autre"
+    },
+    "Penalty": {
+      "lateness": "Retard",
+      "absence": "Absence",
+      "error": "Erreur",
+      "resource_outage": "Panne de ressource",
+      "rudeness_to_customer": "Impertinence envers le client",
+      "customer_misinform": "Tromperie du client",
+      "other": "Autre"
+    }
+  },
+  "Types": {
+    "FinancialTransaction": {
+      "income": "Revenu",
+      "cost": "Coût"
+    },
+    "PaymentMethod": {
+      "invoicing": "Facturation",
+      "credit_card": "Carte de crédit"
+    }
+  }
+}

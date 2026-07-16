@@ -1,0 +1,302 @@
+{
+  "Common": {
+    "companyName": "SmartLab",
+    "system_type": "CRM"
+  },
+  "Prepositions": {
+    "in": "içinde"
+  },
+  "Time": {
+    "short_hours": "sa.",
+    "short_minutes": "dk."
+  },
+  "Items": {
+    "short_pieces": "ad."
+  },
+  "AuthPage": {
+    "page_title": "Yetkilendirme",
+    "for_staff": "Personel için"
+  },
+  "MenuItems": {
+    "accounting": "Muhasebe",
+    "budget": "Bütçe",
+    "call_history": "Arama geçmişi",
+    "general_permission_system": "Genel izin sistemi",
+    "projects": "Projeler",
+    "project": "Proje",
+    "directions": "Yönler",
+    "direction": "Yön",
+    "tasks": "Görevler",
+    "work_time_ranges": "Çalışma zaman aralıkları",
+    "documents": "Belgeler",
+    "WorkingWithCustomers": {
+      "self": "Müşterilerle çalışma",
+      "customers": "Müşteriler",
+      "appeals": "Başvurular",
+      "support": "Destek",
+      "applications_from_website": "Web sitesinden başvurular"
+    },
+    "employees": "Çalışanlar"
+  },
+  "Tasks": {
+    "recurring": "Tekrarlayan",
+    "one_time": "Tek seferlik",
+    "repeat_mode_interval_days": "Aralık (gün)",
+    "repeat_mode_monthly": "Aylık",
+    "repeat_mode_billing_period": "Faturalama dönemi"
+  },
+  "WorkTimeRanges": {
+    "total_time": "Harcanan süre",
+    "money": "Tutar"
+  },
+  "Messages": {
+    "Info": {
+      "switch_textarea_mode_is_available": "Metin alanı modu geçişi kullanılabilir"
+    },
+    "Warnings": {
+      "switch_textarea_mode_is_not_available": "Metin alanı modu geçişi kullanılamaz, alan içerik içeriyor"
+    },
+    "Errors": {}
+  },
+  "Form": {
+    "phone": "Telefon numarası",
+    "password": "Şifre",
+    "Common": {
+      "enter": "Girin "
+    },
+    "BtnTexts": {
+      "default": "Gönder"
+    },
+    "Errors": {
+      "len": "'${label}' '${len}' karakter olmalıdır",
+      "min": "'${label}' en az '${min}' karakter olmalıdır",
+      "max": "'${label}' en fazla '${max}' karakter olmalıdır"
+    },
+    "EntitiesFields": {
+      "name": "Ad",
+      "description": "Açıklama",
+      "website_url": "Web sitesi URL'si",
+      "comment": "Yorum",
+      "customer_visible_comment": "Müşteriye görünür yorum",
+      "status_id": "Durum",
+      "type_id": "Tür",
+      "customer_company_id": "Müşteri şirketi",
+      "project_id": "Proje",
+      "direction_id": "Yön",
+      "direction_family_id": "Yön ailesi",
+      "direction_type_id": "Yön türü",
+      "payment_model_id": "Ödeme modeli",
+      "payment_period_id": "Ödeme dönemi",
+      "contract_amount": "Sözleşme tutarı",
+      "billing_anchor_date": "Faturalama referans tarihi",
+      "monitoring_enabled": "İzleme etkin",
+      "check_performance": "Performansı kontrol et",
+      "check_expirations": "Süre dolumlarını kontrol et",
+      "total_spent_time": "Toplam harcanan süre",
+      "total_time": "Harcanan süre",
+      "money": "Tutar",
+      "total_costs_auto": "Toplam maliyetler (otomatik hesaplama)",
+      "total_costs": "Toplam maliyetler (gerçek)",
+      "total_incomes": "Toplam gelirler",
+      "total_penalty_funds": "Cezalar",
+      "common_task_progress": "Ortak görev ilerlemesi",
+      "progress": "İlerleme",
+      "task_id": "Görev",
+      "worker_profile_id": "Çalışan",
+      "reason_type": "Neden türü",
+      "reason": "Neden ayrıntıları",
+      "default_rate": "Varsayılan oran",
+      "is_repeat_enabled": "Tekrarlayan görev",
+      "repeat_mode": "Tekrarlama modu",
+      "repeat_interval_days": "Tekrarlama aralığı (gün)",
+      "repeat_next_at": "Sonraki tekrar",
+      "repeat_source_task_id": "Kaynak görev"
+    }
+  },
+  "HeaderProfile": {
+    "my_profile": "Profilim",
+    "settings": "Ayarlar",
+    "my_time_ranges": "Zaman aralıklarım",
+    "my_payments": "Ödemelerim",
+    "my_unfinished_tasks": "Tamamlanmamış görevlerim",
+    "sign_out": "Çıkış yap"
+  },
+  "Extra": {
+    "home_page": "Ana sayfa"
+  },
+  "Filters": {
+    "self": "Filtreler",
+    "id": "Tanımlayıcı",
+    "statuses": "Durumlar",
+    "types": "Türler",
+    "direction_family": "Yön ailesi",
+    "direction_type": "Yön türü",
+    "payment_model": "Ödeme modeli",
+    "payment_period": "Ödeme dönemi",
+    "Deleted": {
+      "self": "Silinenler",
+      "only_existing": "Yalnızca mevcut olanlar",
+      "only_deleted": "Yalnızca silinenler",
+      "all": "Tümü"
+    },
+    "created_at": "Oluşturma tarihi",
+    "apply": "Uygula",
+    "clear": "Temizle"
+  },
+  "Search": {
+    "self": "Arama",
+    "found": "Bulundu",
+    "title": "Aranacak alanları seçin",
+    "impossible": "mümkün değil",
+    "check_all": "Tümünü seç"
+  },
+  "Statistics": {
+    "time_spent": "Harcanan süre",
+    "incomes": "Gelirler",
+    "costs_auto": "Maliyetler (otomatik hesaplama)",
+    "costs": "Maliyetler (gerçek)",
+    "penalty": "Ceza"
+  },
+  "Info": {
+    "accesses": "Erişimler",
+    "repositories": "Depolar",
+    "technology_stack": "Teknoloji yığını",
+    "expirations": "Süre dolumları",
+    "other_links": "Diğer bağlantılar",
+    "endpoints": "Uç noktalar",
+    "coming_soon": "Yakında"
+  },
+  "PermissionSystem": {
+    "permission_system": "İzin sistemi",
+    "allow": "İzin ver",
+    "disallow": "Yasakla"
+  },
+  "Actions": {
+    "create": "Oluştur",
+    "go": "Git",
+    "edit": "Düzenle",
+    "delete": "Sil",
+    "restore": "Geri yükle"
+  },
+  "Modes": {
+    "creating": "Oluşturma",
+    "editing": "Düzenleme",
+    "simple": "Basit",
+    "advanced": "Gelişmiş"
+  },
+  "Confirm": {
+    "title": "Onay gerekli",
+    "description": "Bu eylemi gerçekleştirmek istediğinizden emin misiniz?",
+    "ok_text": "Evet",
+    "cancel_text": "İptal"
+  },
+  "Statuses": {
+    "Direction": {
+      "in_progress": "Devam ediyor",
+      "upcoming": "Yaklaşan",
+      "completed": "Tamamlandı"
+    },
+    "Project": {
+      "in_progress": "Devam ediyor",
+      "upcoming": "Yaklaşan",
+      "completed": "Tamamlandı"
+    },
+    "Task": {
+      "completed": "Tamamlandı",
+      "in_progress": "Devam ediyor",
+      "went_beyond_planned_time": "Planlanan süreyi aştı",
+      "expired": "Süresi doldu",
+      "planned": "Planlandı"
+    },
+    "Employee": {
+      "works": "Çalışıyor",
+      "internship": "Staj",
+      "fired": "İşten çıkarıldı"
+    },
+    "Customer": {
+      "collaborates": "İşbirliği yapıyor",
+      "potential": "Potansiyel",
+      "former": "Eski"
+    },
+    "FinancialTransaction": {
+      "scheduled": "Planlandı",
+      "made": "Yapıldı"
+    }
+  },
+  "DirectionFamilies": {
+    "development": "Geliştirme",
+    "promotion": "Tanıtım",
+    "maintenance": "Bakım"
+  },
+  "DirectionTypes": {
+    "website": "Web sitesi",
+    "mobile_app": "Mobil uygulama",
+    "business_process_automation": "İş süreci otomasyonu",
+    "integration": "Entegrasyon",
+    "devops": "DevOps",
+    "seo": "SEO",
+    "advertising": "Reklam",
+    "smm": "SMM",
+    "maps": "Haritalar",
+    "tech_support": "Teknik destek",
+    "rework": "Yeniden çalışma"
+  },
+  "PaymentModels": {
+    "piecework": "Parça başı",
+    "periodic": "Periyodik"
+  },
+  "PaymentPeriods": {
+    "week": "Hafta",
+    "month": "Ay",
+    "year": "Yıl",
+    "interval_days": "Aralık (gün)"
+  },
+  "BillingDocumentStatuses": {
+    "not_started": "Başlamadı",
+    "issued": "Düzenlendi",
+    "paid": "Ödendi",
+    "generated": "Oluşturuldu",
+    "sent": "Gönderildi"
+  },
+  "RecurrenceTypes": {
+    "monthly": "Aylık",
+    "weekly": "Haftalık",
+    "interval_days": "Gün aralığı"
+  },
+  "Endpoints": {
+    "Environment": {
+      "production": "Production",
+      "staging": "Staging",
+      "test": "Test",
+      "redirect": "Redirect",
+      "other": "Diğer"
+    }
+  },
+  "Reasons": {
+    "Bonus": {
+      "salary": "Maaş",
+      "kpi_achievement": "KPI başarısı",
+      "special_merit": "Özel başarı",
+      "other": "Diğer"
+    },
+    "Penalty": {
+      "lateness": "Geç kalma",
+      "absence": "Devamsızlık",
+      "error": "Hata",
+      "resource_outage": "Kaynak kesintisi",
+      "rudeness_to_customer": "Müşteriye kabalık",
+      "customer_misinform": "Müşteriyi yanıltma",
+      "other": "Diğer"
+    }
+  },
+  "Types": {
+    "FinancialTransaction": {
+      "income": "Gelir",
+      "cost": "Gider"
+    },
+    "PaymentMethod": {
+      "invoicing": "Fatura kesme",
+      "credit_card": "Kredi kartı"
+    }
+  }
+}

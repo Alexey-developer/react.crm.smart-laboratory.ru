@@ -1,0 +1,302 @@
+{
+  "Common": {
+    "companyName": "SmartLab",
+    "system_type": "CRM"
+  },
+  "Prepositions": {
+    "in": "у"
+  },
+  "Time": {
+    "short_hours": "г.",
+    "short_minutes": "хв."
+  },
+  "Items": {
+    "short_pieces": "шт."
+  },
+  "AuthPage": {
+    "page_title": "Аўтарызацыя",
+    "for_staff": "Для супрацоўнікаў"
+  },
+  "MenuItems": {
+    "accounting": "Бухгалтарскі ўлік",
+    "budget": "Бюджэт",
+    "call_history": "Гісторыя званкоў",
+    "general_permission_system": "Агульная сістэма дазволаў",
+    "projects": "Праекты",
+    "project": "Праект",
+    "directions": "Напрамкі",
+    "direction": "Напрамак",
+    "tasks": "Задачы",
+    "work_time_ranges": "Працоўныя часавыя дыяпазоны",
+    "documents": "Дакументы",
+    "WorkingWithCustomers": {
+      "self": "Праца з кліентамі",
+      "customers": "Кліенты",
+      "appeals": "Звароты",
+      "support": "Падтрымка",
+      "applications_from_website": "Заяўкі з вэб-сайта"
+    },
+    "employees": "Супрацоўнікі"
+  },
+  "Tasks": {
+    "recurring": "Рэгулярная",
+    "one_time": "Аднаразовая",
+    "repeat_mode_interval_days": "Інтэрвал (дні)",
+    "repeat_mode_monthly": "Штомесяц",
+    "repeat_mode_billing_period": "Білінгавы перыяд"
+  },
+  "WorkTimeRanges": {
+    "total_time": "Вытрачаны час",
+    "money": "Сума"
+  },
+  "Messages": {
+    "Info": {
+      "switch_textarea_mode_is_available": "Пераключэнне рэжыму вобласці ўводу тэксту даступнае"
+    },
+    "Warnings": {
+      "switch_textarea_mode_is_not_available": "Пераключэнне рэжыму вобласці ўводу тэксту недаступнае, вобласць змяшчае кантэнт"
+    },
+    "Errors": {}
+  },
+  "Form": {
+    "phone": "Нумар тэлефона",
+    "password": "Пароль",
+    "Common": {
+      "enter": "Увядзіце "
+    },
+    "BtnTexts": {
+      "default": "Адправіць"
+    },
+    "Errors": {
+      "len": "'${label}' павінна складацца з '${len}' сімвалаў",
+      "min": "'${label}' павінна складацца не менш за '${min}' сімвалаў",
+      "max": "'${label}' павінна складацца не больш за '${max}' сімвалаў"
+    },
+    "EntitiesFields": {
+      "name": "Назва",
+      "description": "Апісанне",
+      "website_url": "URL вэб-сайта",
+      "comment": "Каментарый",
+      "customer_visible_comment": "Каментарый, бачны кліенту",
+      "status_id": "Статус",
+      "type_id": "Тып",
+      "customer_company_id": "Кампанія-кліент",
+      "project_id": "Праект",
+      "direction_id": "Напрамак",
+      "direction_family_id": "Сямейства напрамкаў",
+      "direction_type_id": "Тып напрамку",
+      "payment_model_id": "Мадэль аплаты",
+      "payment_period_id": "Перыяд аплаты",
+      "contract_amount": "Сума дагавора",
+      "billing_anchor_date": "Дата пачатку білінгу",
+      "monitoring_enabled": "Маніторынг уключаны",
+      "check_performance": "Правяраць працаздольнасць",
+      "check_expirations": "Правяраць заканчэнне тэрмінаў",
+      "total_spent_time": "Агульны вытрачаны час",
+      "total_time": "Вытрачаны час",
+      "money": "Сума",
+      "total_costs_auto": "Агульныя расходы (аўтаматычны разлік)",
+      "total_costs": "Агульныя расходы (фактычна)",
+      "total_incomes": "Агульныя даходы",
+      "total_penalty_funds": "Штрафы",
+      "common_task_progress": "Агульны прагрэс задач",
+      "progress": "Прагрэс",
+      "task_id": "Задача",
+      "worker_profile_id": "Супрацоўнік",
+      "reason_type": "Тып прычыны",
+      "reason": "Падрабязнасці прычыны",
+      "default_rate": "Стаўка па змаўчанні",
+      "is_repeat_enabled": "Паўтаральная задача",
+      "repeat_mode": "Рэжым паўтарэння",
+      "repeat_interval_days": "Інтэрвал паўтарэння (дні)",
+      "repeat_next_at": "Наступнае паўтарэнне",
+      "repeat_source_task_id": "Зыходная задача"
+    }
+  },
+  "HeaderProfile": {
+    "my_profile": "Мой профіль",
+    "settings": "Налады",
+    "my_time_ranges": "Мае часавыя дыяпазоны",
+    "my_payments": "Мае выплаты",
+    "my_unfinished_tasks": "Мае нязавершаныя задачы",
+    "sign_out": "Выйсці"
+  },
+  "Extra": {
+    "home_page": "Галоўная"
+  },
+  "Filters": {
+    "self": "Фільтры",
+    "id": "Ідэнтыфікатар",
+    "statuses": "Статусы",
+    "types": "Тыпы",
+    "direction_family": "Сямейства напрамкаў",
+    "direction_type": "Тып напрамку",
+    "payment_model": "Мадэль аплаты",
+    "payment_period": "Перыяд аплаты",
+    "Deleted": {
+      "self": "Выдаленыя",
+      "only_existing": "Толькі існуючыя",
+      "only_deleted": "Толькі выдаленыя",
+      "all": "Усе"
+    },
+    "created_at": "Дата стварэння",
+    "apply": "Ужыць",
+    "clear": "Ачысціць"
+  },
+  "Search": {
+    "self": "Пошук",
+    "found": "Знойдзена",
+    "title": "Выберыце палі для пошуку",
+    "impossible": "немагчымы",
+    "check_all": "Выбраць усе"
+  },
+  "Statistics": {
+    "time_spent": "Вытрачаны час",
+    "incomes": "Даходы",
+    "costs_auto": "Расходы (аўтаматычны разлік)",
+    "costs": "Расходы (фактычна)",
+    "penalty": "Штраф"
+  },
+  "Info": {
+    "accesses": "Доступы",
+    "repositories": "Рэпазіторыі",
+    "technology_stack": "Тэхналагічны стэк",
+    "expirations": "Заканчэнне тэрмінаў",
+    "other_links": "Іншыя спасылкі",
+    "endpoints": "Эндпоінты",
+    "coming_soon": "Хутка"
+  },
+  "PermissionSystem": {
+    "permission_system": "Сістэма дазволаў",
+    "allow": "Дазволіць",
+    "disallow": "Забараніць"
+  },
+  "Actions": {
+    "create": "Стварыць",
+    "go": "Перайсці",
+    "edit": "Рэдагаваць",
+    "delete": "Выдаліць",
+    "restore": "Аднавіць"
+  },
+  "Modes": {
+    "creating": "Стварэнне",
+    "editing": "Рэдагаванне",
+    "simple": "Просты",
+    "advanced": "Пашыраны"
+  },
+  "Confirm": {
+    "title": "Патрабуецца пацвярджэнне",
+    "description": "Вы ўпэўнены, што хочаце выканаць гэтае дзеянне?",
+    "ok_text": "Так",
+    "cancel_text": "Адмена"
+  },
+  "Statuses": {
+    "Direction": {
+      "in_progress": "У працы",
+      "upcoming": "Майбутні",
+      "completed": "Завершаны"
+    },
+    "Project": {
+      "in_progress": "У працы",
+      "upcoming": "Майбутні",
+      "completed": "Завершаны"
+    },
+    "Task": {
+      "completed": "Выканана",
+      "in_progress": "Выконваецца",
+      "went_beyond_planned_time": "Выйшла за межы запланаванага часу",
+      "expired": "Пратермінована",
+      "planned": "Запланавана"
+    },
+    "Employee": {
+      "works": "Працуе",
+      "internship": "Стажыроўка",
+      "fired": "Звольнены"
+    },
+    "Customer": {
+      "collaborates": "Супрацоўнічае",
+      "potential": "Патэнцыйны",
+      "former": "Былы"
+    },
+    "FinancialTransaction": {
+      "scheduled": "Запланавана",
+      "made": "Выканана"
+    }
+  },
+  "DirectionFamilies": {
+    "development": "Распрацоўка",
+    "promotion": "Прасоўванне",
+    "maintenance": "Суправаджэнне"
+  },
+  "DirectionTypes": {
+    "website": "Вэб-сайт",
+    "mobile_app": "Мабільнае прыкладанне",
+    "business_process_automation": "Аўтаматызацыя бізнес-працэсаў",
+    "integration": "Інтэграцыя",
+    "devops": "DevOps",
+    "seo": "SEO",
+    "advertising": "Рэклама",
+    "smm": "SMM",
+    "maps": "Карты",
+    "tech_support": "Тэхпадтрымка",
+    "rework": "Дапрацоўка"
+  },
+  "PaymentModels": {
+    "piecework": "Здзельная",
+    "periodic": "Перыядычная"
+  },
+  "PaymentPeriods": {
+    "week": "Тыдзень",
+    "month": "Месяц",
+    "year": "Год",
+    "interval_days": "Інтэрвал (дні)"
+  },
+  "BillingDocumentStatuses": {
+    "not_started": "Не пачата",
+    "issued": "Выстаўлена",
+    "paid": "Аплачана",
+    "generated": "Сфарміравана",
+    "sent": "Адпраўлена"
+  },
+  "RecurrenceTypes": {
+    "monthly": "Штомесяц",
+    "weekly": "Штотыдзень",
+    "interval_days": "Інтэрвал у днях"
+  },
+  "Endpoints": {
+    "Environment": {
+      "production": "Production",
+      "staging": "Staging",
+      "test": "Test",
+      "redirect": "Redirect",
+      "other": "Іншае"
+    }
+  },
+  "Reasons": {
+    "Bonus": {
+      "salary": "Аклад",
+      "kpi_achievement": "Дасягненне KPI",
+      "special_merit": "Асаблівыя заслугі",
+      "other": "Іншае"
+    },
+    "Penalty": {
+      "lateness": "Спазненне",
+      "absence": "Прагул",
+      "error": "Памылка",
+      "resource_outage": "Збой рэсурсу",
+      "rudeness_to_customer": "Грубасць да кліента",
+      "customer_misinform": "Дэзінфармаванне кліента",
+      "other": "Іншае"
+    }
+  },
+  "Types": {
+    "FinancialTransaction": {
+      "income": "Даход",
+      "cost": "Расход"
+    },
+    "PaymentMethod": {
+      "invoicing": "Выстаўленне рахунку",
+      "credit_card": "Банкаўская карта"
+    }
+  }
+}

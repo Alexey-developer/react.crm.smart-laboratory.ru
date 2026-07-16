@@ -32,7 +32,7 @@
 В `.claude/commands/`:
 
 - `/new-react-entity Name --type=CRUD|R` — создать API + страницы сущности.
-- `/new-translation Key.Path "ru" "en"` — добавить ключ в оба словаря.
+- `/new-translation Key.Path …` — добавить ключ во все словари.
 - `/new-redux-slice Name` — создать Redux slice.
 - `/new-component Name` — создать переиспользуемый компонент.
 

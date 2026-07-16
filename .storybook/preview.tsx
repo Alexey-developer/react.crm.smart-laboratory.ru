@@ -4,6 +4,7 @@ import { withThemeByDataAttribute } from '@storybook/addon-themes'
 import '../src/storybook/globalStyles'
 
 import { AppDecorator } from '../src/storybook/AppDecorator'
+import { getLangLabel, LANG_OPTIONS } from '../src/redux/Language/languages'
 
 const preview: Preview = {
   parameters: {
@@ -37,10 +38,10 @@ const preview: Preview = {
       defaultValue: 'ru',
       toolbar: {
         icon: 'globe',
-        items: [
-          { value: 'ru', title: 'Русский' },
-          { value: 'en', title: 'English' },
-        ],
+        items: LANG_OPTIONS.map(option => ({
+          value: option.code,
+          title: getLangLabel(option),
+        })),
         dynamicTitle: true,
       },
     },
