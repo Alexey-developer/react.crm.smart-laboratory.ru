@@ -47,10 +47,7 @@ export const MainLayout: React.FC = () => {
   const validateMessages = GetValidateMessages()
 
   return (
-    <ConfigProvider
-      locale={getAntdLocale(lang)}
-      form={{ validateMessages }}
-    >
+    <ConfigProvider locale={getAntdLocale(lang)} form={{ validateMessages }}>
       <div className='wrapper'>
         <Sidebar />
       </div>
