@@ -9,15 +9,10 @@ import { setNotification } from '@redux/HeaderNotification/slice'
 import { setAuthToken } from '@redux/CurrentUser/slice'
 
 import type { GroupClass, GroupMethod } from './common/types/TGroups'
-
-// import { RequestResult } from '@api/common/responseModels/requestResult'
-
-// type useAPIQueryProps = {
-//   groupClass: GroupClass
-//   groupMethod: GroupMethod
-//   enabled?: boolean
-//   props: any
-// }
+import {
+  queryRetryDelay,
+  shouldRetryQuery,
+} from '@utils/queryRetry'
 
 export const useAPIQuery = (
   groupClass: GroupClass,
@@ -25,15 +20,9 @@ export const useAPIQuery = (
   params = {},
   enabled = true
 ) => {
-  //   console.log('requery')
-  //   console.log('rrr', params)
-
   const dispatch = useDispatch()
 
   const group = new groupClass(useSelector(selectAuthToken))
-  //   const group = new groupClass(
-  //     'Bearer 1|wcKsc30IAcEAC76Clqlnf9RiNx6lLEtS3oJbuQf2bd8e7f3d'
-  //   )
 
   if (!(groupMethod in group)) {
     throw new Error('groupMethod is undefined!')
@@ -76,54 +65,25 @@ export const useAPIQuery = (
 
   const {
     data,
-    // dataUpdatedAt,
     error,
-    // errorUpdatedAt,
-    // failureCount,
-    // failureReason,
-    // fetchStatus,
     isError,
-    // isFetched,
-    // isFetchedAfterMount,
     isFetching,
     isLoading,
-    // isLoadingError,
-    // isPaused,
     isPending,
-    // isPlaceholderData,
-    // isRefetchError,
     isRefetching,
-    // isStale,
     isSuccess,
     refetch,
-    // status,
   } = useQuery({
     queryKey: [queryKey],
-    // queryFn: () => group[groupMethod as keyof typeof group](params),
-    queryFn: () => group[groupMethod](params), // as keyof typeof group
-
+    queryFn: () => group[groupMethod](params),
     select: group['select'],
     enabled: enabled,
-    retry: 0,
-
-    // meta: params,
-
-    // initialData,
     staleTime: 5000,
-
-    // refetchOnWindowFocus: 'always',
-    // refetchOnMount: 'always',
+    retry: shouldRetryQuery,
+    retryDelay: queryRetryDelay,
+    refetchOnReconnect: true,
+    networkMode: 'online',
   })
-
-  useEffect(() => {
-    // if (isLoading) console.log('isLoading')
-  }, [isLoading])
-  useEffect(() => {
-    if (isSuccess) {
-      //   console.log('Data fetched successfully')
-      //   console.log(data)
-    }
-  }, [isSuccess, data])
 
   useEffect(() => {
     if (isError) {

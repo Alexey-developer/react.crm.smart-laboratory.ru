@@ -51,7 +51,18 @@ const rootElement = document.getElementById('root') as HTMLElement
 
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement)
-  const queryClient = new QueryClient()
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnReconnect: true,
+        networkMode: 'online',
+      },
+      mutations: {
+        // Mutations: no default retry — useAPIMutation keeps retry: 0.
+        networkMode: 'online',
+      },
+    },
+  })
 
   root.render(
     // <StrictMode>

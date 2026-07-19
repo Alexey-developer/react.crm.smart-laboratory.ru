@@ -1,9 +1,18 @@
-import axios, { AxiosInstance } from 'axios'
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 
 import { RequestResult } from '@api/common/responseModels/requestResult'
 import { TMetadata } from '@api/common/types/TMetadata'
 
-import { constants } from '@utils/constants/constants.json'
+const IDEMPOTENCY_KEY_HEADER = 'Idempotency-Key'
+const MUTATING_METHODS = new Set(['post', 'put', 'patch', 'delete'])
+
+const newIdempotencyKey = (): string => {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID()
+  }
+
+  return `${Date.now()}-${Math.random().toString(36).slice(2, 12)}`
+}
 
 export abstract class APIBase {
   protected _httpClient: AxiosInstance
@@ -15,9 +24,7 @@ export abstract class APIBase {
     this._token = token
 
     this._httpClient = axios.create({
-      //   baseURL: constants.BASE_URL,
       baseURL: `${import.meta.env.VITE_API_URL}/api/v1`,
-      //   timeout: GlobalConstants.RequestTimeout,
     })
     this._httpClient.defaults.headers.post['Content-Type'] =
       this._httpClient.defaults.headers.put['Content-Type'] = 'application/json'
@@ -44,12 +51,22 @@ export abstract class APIBase {
     data?: any,
     params?: any
   ): Promise<RequestResult<T>> {
-    const response = await this._httpClient.request<T & { meta?: TMetadata }>({
+    const config: AxiosRequestConfig = {
       method: method,
       url: url,
       data: data,
       params: params,
-    })
+    }
+
+    if (MUTATING_METHODS.has(method.toLowerCase())) {
+      config.headers = {
+        [IDEMPOTENCY_KEY_HEADER]: newIdempotencyKey(),
+      }
+    }
+
+    const response = await this._httpClient.request<T & { meta?: TMetadata }>(
+      config
+    )
     return response
   }
 
