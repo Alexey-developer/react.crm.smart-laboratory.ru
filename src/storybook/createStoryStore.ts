@@ -5,6 +5,7 @@ import CurrentUser from '@redux/CurrentUser/slice'
 import Filters from '@redux/Filters/slice'
 import HeaderNotification from '@redux/HeaderNotification/slice'
 import Language from '@redux/Language/slice'
+import LeftMenuOpenKeys from '@redux/LeftMenuOpenKeys/slice'
 import PageLoading from '@redux/PageLoading/slice'
 import PhonePrefix from '@redux/PhonePrefix/slice'
 import Spin from '@redux/Spin/slice'
@@ -18,6 +19,7 @@ const rootReducer = {
   Filters,
   HeaderNotification,
   Language,
+  LeftMenuOpenKeys,
   PageLoading,
   PhonePrefix,
   Spin,

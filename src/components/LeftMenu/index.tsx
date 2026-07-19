@@ -6,8 +6,10 @@ import { useTranslation } from 'react-i18next'
 
 import { Menu, Badge } from 'antd'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectAuthToken } from '@redux/CurrentUser/selectors'
+import { selectLeftMenuOpenKeys } from '@redux/LeftMenuOpenKeys/selectors'
+import { setOpenKeys } from '@redux/LeftMenuOpenKeys/slice'
 
 import { useAPIQuery } from '@api/useAPIQuery'
 import { CurrentUserGroup } from '@api/models/currentUser/queryGroup'
@@ -31,6 +33,8 @@ export const LeftMenu: React.FC = () => {
   const { pathname } = location
   const pathnames = pathname.split('/').filter(item => item)
 
+  const dispatch = useDispatch()
+  const openKeys = useSelector(selectLeftMenuOpenKeys)
   const authToken = useSelector(selectAuthToken)
   const { data: currentUserResponse } = useAPIQuery(
     CurrentUserGroup,
@@ -123,6 +127,8 @@ export const LeftMenu: React.FC = () => {
     <Menu
       theme='dark'
       selectedKeys={pathname !== '/' ? [pathnames[0]] : ['']}
+      openKeys={openKeys}
+      onOpenChange={keys => dispatch(setOpenKeys(keys))}
       mode='inline'
       items={items}
     />

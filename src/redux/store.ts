@@ -6,6 +6,7 @@ import CurrentUser from './CurrentUser/slice'
 import Filters from './Filters/slice'
 import HeaderNotification from './HeaderNotification/slice'
 import Language from './Language/slice'
+import LeftMenuOpenKeys from './LeftMenuOpenKeys/slice'
 import PageLoading from './PageLoading/slice'
 import PhonePrefix from './PhonePrefix/slice'
 import Spin from './Spin/slice'
@@ -19,6 +20,7 @@ export const store = configureStore({
     Filters,
     HeaderNotification,
     Language,
+    LeftMenuOpenKeys,
     PageLoading,
     PhonePrefix,
     Spin,
