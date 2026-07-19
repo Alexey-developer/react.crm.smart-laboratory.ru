@@ -10,3 +10,9 @@ export {
   TELEPHONY_QUEUE_EVENT,
 } from './useTelephonyQueueSocket'
 export type { TelephonyQueueUpdatedPayload } from './useTelephonyQueueSocket'
+
+export {
+  useUserPermissionsSocket,
+  userPermissionsChannel,
+  USER_PERMISSIONS_UPDATED_EVENT,
+} from './useUserPermissionsSocket'

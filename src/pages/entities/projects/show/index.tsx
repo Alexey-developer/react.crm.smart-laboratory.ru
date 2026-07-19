@@ -64,7 +64,7 @@ export const ProjectPage: React.FC = () => {
     projectId,
     [6, 4, 1, 2],
     () => mutateAsyncDelete(projectId).then(() => navigate(`/${PROJECTS}`)),
-    { directionsCount: project?.directions_count }
+    { directionsCount: project?.directions_count, abilities: project?.can }
   )
 
   React.useEffect(() => {

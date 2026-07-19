@@ -52,10 +52,14 @@ export const CompanyDialNumberPage: React.FC = () => {
     {}
   )
 
-  const cardActions = useFormActions(companyDialNumberId, [1, 2], () =>
-    mutateAsyncDelete(companyDialNumberId).then(() =>
-      navigate(`/${COMPANY_DIAL_NUMBERS}`)
-    )
+  const cardActions = useFormActions(
+    companyDialNumberId,
+    [1, 2],
+    () =>
+      mutateAsyncDelete(companyDialNumberId).then(() =>
+        navigate(`/${COMPANY_DIAL_NUMBERS}`)
+      ),
+    { abilities: companyDialNumber?.can }
   )
 
   React.useEffect(() => {

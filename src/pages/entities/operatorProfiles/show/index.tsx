@@ -51,10 +51,14 @@ export const OperatorProfilePage: React.FC = () => {
     {}
   )
 
-  const cardActions = useFormActions(operatorProfileId, [1, 2], () =>
-    mutateAsyncDelete(operatorProfileId).then(() =>
-      navigate(`/${OPERATOR_PROFILES}`)
-    )
+  const cardActions = useFormActions(
+    operatorProfileId,
+    [1, 2],
+    () =>
+      mutateAsyncDelete(operatorProfileId).then(() =>
+        navigate(`/${OPERATOR_PROFILES}`)
+      ),
+    { abilities: operatorProfile?.can }
   )
 
   React.useEffect(() => {

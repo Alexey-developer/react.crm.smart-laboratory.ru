@@ -6,7 +6,17 @@ import { useTranslation } from 'react-i18next'
 
 import { Menu, Badge } from 'antd'
 
-import { formLeftMenuItems } from '@utils/formLeftMenuItems'
+import { useSelector } from 'react-redux'
+import { selectAuthToken } from '@redux/CurrentUser/selectors'
+
+import { useAPIQuery } from '@api/useAPIQuery'
+import { CurrentUserGroup } from '@api/models/currentUser/queryGroup'
+import { getMethod } from '@utils/getMethod'
+
+import {
+  filterMenuItemsByPermissions,
+  formLeftMenuItems,
+} from '@utils/formLeftMenuItems'
 
 import type { MenuItem } from '@utils/formLeftMenuItems'
 import type { MenuProps } from 'antd'
@@ -16,15 +26,42 @@ type ItemType = NonNullable<MenuProps['items']>[number]
 type SubMenuType = ItemType & { children: ItemType[] }
 
 export const LeftMenu: React.FC = () => {
-  //2 перерисовки при смене языка
   const [translated_phrase] = useTranslation('global')
   const location = useLocation()
   const { pathname } = location
   const pathnames = pathname.split('/').filter(item => item)
 
+  const authToken = useSelector(selectAuthToken)
+  const { data: currentUserResponse } = useAPIQuery(
+    CurrentUserGroup,
+    getMethod('CURRENT_USER'),
+    {},
+    Boolean(authToken)
+  )
+  const commonPermissions = currentUserResponse?.data?.common_permissions ?? []
+  const catalog = currentUserResponse?.data?.common_permissions_catalog ?? {}
+
+  const openHorizon = async () => {
+    try {
+      const group = new CurrentUserGroup(authToken)
+      const response = await group.enterHorizon()
+      const url = response.data?.url
+      if (url) {
+        window.open(url, '_blank', 'noopener,noreferrer')
+      }
+    } catch {
+      // Policy/session still enforce; toast via global handlers if any.
+    }
+  }
+
   const items: MenuProps['items'] = []
-  const leftMenuItems = formLeftMenuItems()
-  // console.log(leftMenuItems)
+  const leftMenuItems = filterMenuItemsByPermissions(
+    formLeftMenuItems(),
+    permissionKey => {
+      const full = catalog[permissionKey] ?? permissionKey
+      return commonPermissions.includes(full)
+    }
+  )
 
   const convert = (leftMenuItem: MenuItem) => {
     const label = (
@@ -40,14 +77,28 @@ export const LeftMenu: React.FC = () => {
       </>
     )
 
+    let itemLabel: React.ReactNode
+    if (leftMenuItem.childrenMenuItems) {
+      itemLabel = label
+    } else if (leftMenuItem.openHorizon) {
+      itemLabel = (
+        <a
+          href='#horizon'
+          onClick={event => {
+            event.preventDefault()
+            void openHorizon()
+          }}
+        >
+          {label}
+        </a>
+      )
+    } else {
+      itemLabel = <Link to={leftMenuItem.path}>{label}</Link>
+    }
+
     const convertedMenuItem: ItemType = {
-      // Groups use explicit `key` — empty `path` must not be shared across submenus.
       key: leftMenuItem.key ?? leftMenuItem.path,
-      label: leftMenuItem.childrenMenuItems ? (
-        label
-      ) : (
-        <Link to={leftMenuItem.path}>{label}</Link>
-      ),
+      label: itemLabel,
       icon: (
         <span className='anticon'>
           <i className={leftMenuItem.icon}></i>
@@ -67,15 +118,6 @@ export const LeftMenu: React.FC = () => {
     )
     items.push(converted)
   })
-
-  // console.log(items)
-  // console.log(location.pathname)
-
-  //   const match = useMatch({
-  //     path: location.pathname,
-  //   })
-  //   console.log(match)
-  //   console.log(location.pathname)
 
   return (
     <Menu

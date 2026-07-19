@@ -196,6 +196,7 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
           taskEntityId: taskEntity?.id,
           taskEntityTitle: taskEntity?.label,
           directionsCount: entity.directions_count,
+          abilities: entity.can,
         }
     )
 

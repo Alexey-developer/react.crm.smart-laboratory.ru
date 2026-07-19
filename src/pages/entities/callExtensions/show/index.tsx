@@ -52,10 +52,14 @@ export const CallExtensionPage: React.FC = () => {
     {}
   )
 
-  const cardActions = useFormActions(callExtensionId, [1, 2], () =>
-    mutateAsyncDelete(callExtensionId).then(() =>
-      navigate(`/${CALL_EXTENSIONS}`)
-    )
+  const cardActions = useFormActions(
+    callExtensionId,
+    [1, 2],
+    () =>
+      mutateAsyncDelete(callExtensionId).then(() =>
+        navigate(`/${CALL_EXTENSIONS}`)
+      ),
+    { abilities: callExtension?.can }
   )
 
   React.useEffect(() => {

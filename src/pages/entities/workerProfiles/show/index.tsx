@@ -51,10 +51,14 @@ export const WorkerProfilePage: React.FC = () => {
     {}
   )
 
-  const cardActions = useFormActions(workerProfileId, [1, 2], () =>
-    mutateAsyncDelete(workerProfileId).then(() =>
-      navigate(`/${WORKER_PROFILES}`)
-    )
+  const cardActions = useFormActions(
+    workerProfileId,
+    [1, 2],
+    () =>
+      mutateAsyncDelete(workerProfileId).then(() =>
+        navigate(`/${WORKER_PROFILES}`)
+      ),
+    { abilities: workerProfile?.can }
   )
 
   React.useEffect(() => {

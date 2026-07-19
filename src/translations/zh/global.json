@@ -60,6 +60,11 @@
       "call_extensions": "分机号",
       "company_dial_numbers": "公司号码",
       "blocked_phone_numbers": "黑名单号码"
+    },
+    "CrmSettings": {
+      "self": "CRM 设置",
+      "general_permission_system": "通用权限系统",
+      "horizon_dashboard": "Horizon 控制台"
     }
   },
   "Tasks": {

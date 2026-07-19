@@ -51,10 +51,14 @@ export const CustomerCompanyPage: React.FC = () => {
     {}
   )
 
-  const cardActions = useFormActions(customerCompanyId, [1, 2], () =>
-    mutateAsyncDelete(customerCompanyId).then(() =>
-      navigate(`/${CUSTOMER_COMPANIES}`)
-    )
+  const cardActions = useFormActions(
+    customerCompanyId,
+    [1, 2],
+    () =>
+      mutateAsyncDelete(customerCompanyId).then(() =>
+        navigate(`/${CUSTOMER_COMPANIES}`)
+      ),
+    { abilities: customerCompany?.can }
   )
 
   React.useEffect(() => {

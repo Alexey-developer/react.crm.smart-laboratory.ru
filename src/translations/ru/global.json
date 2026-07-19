@@ -60,6 +60,11 @@
       "call_extensions": "Внутренние номера",
       "company_dial_numbers": "Номера компании",
       "blocked_phone_numbers": "Блокировка номеров"
+    },
+    "CrmSettings": {
+      "self": "Настройки CRM",
+      "general_permission_system": "Система общих разрешений",
+      "horizon_dashboard": "Horizon"
     }
   },
   "Tasks": {

@@ -60,6 +60,11 @@
       "call_extensions": "Call extensions",
       "company_dial_numbers": "Company dial numbers",
       "blocked_phone_numbers": "Blocked phone numbers"
+    },
+    "CrmSettings": {
+      "self": "CRM settings",
+      "general_permission_system": "General permission system",
+      "horizon_dashboard": "Horizon dashboard"
     }
   },
   "Tasks": {

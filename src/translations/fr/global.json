@@ -60,6 +60,11 @@
       "call_extensions": "Postes internes",
       "company_dial_numbers": "Numéros d'entreprise",
       "blocked_phone_numbers": "Numéros bloqués"
+    },
+    "CrmSettings": {
+      "self": "Paramètres CRM",
+      "general_permission_system": "Système de permissions générales",
+      "horizon_dashboard": "Tableau de bord Horizon"
     }
   },
   "Tasks": {

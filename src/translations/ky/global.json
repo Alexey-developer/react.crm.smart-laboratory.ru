@@ -60,6 +60,11 @@
       "call_extensions": "Ички номерлер",
       "company_dial_numbers": "Компания номерлери",
       "blocked_phone_numbers": "Блоктолгон номерлер"
+    },
+    "CrmSettings": {
+      "self": "CRM жөндөөлөрү",
+      "general_permission_system": "Жалпы уруксаттар системасы",
+      "horizon_dashboard": "Horizon панели"
     }
   },
   "Tasks": {

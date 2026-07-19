@@ -68,6 +68,7 @@ export const TaskPage: React.FC = () => {
       parentEntityTitle: parentProject?.label,
       directionEntityId: parentDirection?.id,
       directionEntityTitle: parentDirection?.label,
+      abilities: task?.can,
     }
   )
 

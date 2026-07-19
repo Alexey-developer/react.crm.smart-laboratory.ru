@@ -60,6 +60,11 @@
       "call_extensions": "Dahili numaralar",
       "company_dial_numbers": "Şirket numaraları",
       "blocked_phone_numbers": "Engellenen numaralar"
+    },
+    "CrmSettings": {
+      "self": "CRM ayarları",
+      "general_permission_system": "Genel izin sistemi",
+      "horizon_dashboard": "Horizon paneli"
     }
   },
   "Tasks": {

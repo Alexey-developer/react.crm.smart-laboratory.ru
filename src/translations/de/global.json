@@ -60,6 +60,11 @@
       "call_extensions": "Durchwahlen",
       "company_dial_numbers": "Firmennummern",
       "blocked_phone_numbers": "Gesperrte Nummern"
+    },
+    "CrmSettings": {
+      "self": "CRM-Einstellungen",
+      "general_permission_system": "Allgemeines Berechtigungssystem",
+      "horizon_dashboard": "Horizon-Dashboard"
     }
   },
   "Tasks": {

@@ -8,6 +8,7 @@ import { TelephonyAccountGroup } from '@api/models/telephonyAccount/queryGroup'
 import { useAPIQuery } from '@api/useAPIQuery'
 
 import { AlertCard } from '@components/AlertCard'
+import { Can } from '@components/Can'
 import { Skeleton } from '@components/Skeleton'
 
 import { getIcon } from '@utils/getIcon'
@@ -28,7 +29,7 @@ type TAccountOverview = {
   phone_numbers?: Array<Record<string, unknown>>
 }
 
-export const TelephonyAccountOverview: React.FC = () => {
+const TelephonyAccountOverviewInner: React.FC = () => {
   const [translated_phrase] = useTranslation('global')
 
   const { data, isLoading, error } = useAPIQuery(
@@ -143,3 +144,9 @@ export const TelephonyAccountOverview: React.FC = () => {
     </Popover>
   )
 }
+
+export const TelephonyAccountOverview: React.FC = () => (
+  <Can permission='telephony.view_vox_account'>
+    <TelephonyAccountOverviewInner />
+  </Can>
+)

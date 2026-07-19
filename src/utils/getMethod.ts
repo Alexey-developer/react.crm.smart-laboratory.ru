@@ -1,6 +1,7 @@
 enum MethodEnum {
   LOGIN = 'login',
   CURRENT_USER = 'currentUser',
+  ENTER_HORIZON = 'enterHorizon',
 
   INDEX = 'index',
   SHOW = 'show',

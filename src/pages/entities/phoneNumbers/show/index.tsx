@@ -52,8 +52,12 @@ export const PhoneNumberPage: React.FC = () => {
     {}
   )
 
-  const cardActions = useFormActions(phoneNumberId, [1, 2], () =>
-    mutateAsyncDelete(phoneNumberId).then(() => navigate(`/${PHONE_NUMBERS}`))
+  const cardActions = useFormActions(
+    phoneNumberId,
+    [1, 2],
+    () =>
+      mutateAsyncDelete(phoneNumberId).then(() => navigate(`/${PHONE_NUMBERS}`)),
+    { abilities: phoneNumber?.can }
   )
 
   React.useEffect(() => {

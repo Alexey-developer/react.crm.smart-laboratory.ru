@@ -60,6 +60,11 @@
       "call_extensions": "内線番号",
       "company_dial_numbers": "会社番号",
       "blocked_phone_numbers": "着信拒否番号"
+    },
+    "CrmSettings": {
+      "self": "CRM設定",
+      "general_permission_system": "共通権限システム",
+      "horizon_dashboard": "Horizonダッシュボード"
     }
   },
   "Tasks": {

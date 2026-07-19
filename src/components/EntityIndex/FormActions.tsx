@@ -27,6 +27,12 @@ export type FormActionsOptions = {
   taskEntityTitle?: string
   tasksFilterKey?: 'project_id' | 'direction_id'
   directionsCount?: number
+  /** Lazy instance ACL from entity.can — hide edit/delete/restore when false. */
+  abilities?: {
+    update?: boolean
+    delete?: boolean
+    restore?: boolean
+  }
 }
 
 export const useFormActions = (
@@ -44,6 +50,7 @@ export const useFormActions = (
     taskEntityTitle,
     tasksFilterKey = 'project_id',
     directionsCount,
+    abilities,
   } = options
   const [translated_phrase] = useTranslation('global')
   const location = useLocation()
@@ -144,5 +151,13 @@ export const useFormActions = (
     ) : null,
   ]
 
-  return actionIndexes.map(i => allActions[i]).filter(Boolean)
+  return actionIndexes
+    .filter(i => {
+      if (i === 1 && abilities?.update === false) return false
+      if (i === 2 && abilities?.delete === false) return false
+      if (i === 3 && abilities?.restore === false) return false
+      return true
+    })
+    .map(i => allActions[i])
+    .filter(Boolean)
 }

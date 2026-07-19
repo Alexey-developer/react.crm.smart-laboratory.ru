@@ -21,6 +21,13 @@ export type MenuItem = {
   icon: string
   badge?: Badge
   childrenMenuItems?: MenuItem[]
+  /**
+   * CommonPermissionActionsEnum value (short key), e.g. `permissions.manage`.
+   * Resolved via current-user `common_permissions_catalog` — not a hardcoded Spatie string.
+   */
+  permission?: string
+  /** POST horizon/enter then window.open — not a React Router path. */
+  openHorizon?: boolean
 }
 
 type LeftMenuItems = MenuItem[]
@@ -91,9 +98,26 @@ export const formLeftMenuItems = (): LeftMenuItems => {
       ],
     },
     {
-      name_key: 'MenuItems.general_permission_system',
-      path: URIs.GENERAL_PERMISSION_SYSTEM,
-      icon: 'fa-solid fa-lock',
+      name_key: 'MenuItems.CrmSettings.self',
+      path: '',
+      key: 'crm-settings',
+      icon: 'fa-solid fa-gears',
+      childrenMenuItems: [
+        {
+          name_key: 'MenuItems.CrmSettings.general_permission_system',
+          path: URIs.GENERAL_PERMISSION_SYSTEM,
+          icon: 'fa-solid fa-lock',
+          permission: 'permissions.manage',
+        },
+        {
+          name_key: 'MenuItems.CrmSettings.horizon_dashboard',
+          path: '',
+          key: 'horizon-dashboard',
+          icon: 'fa-solid fa-gauge-high',
+          permission: 'horizon.view_dashboard',
+          openHorizon: true,
+        },
+      ],
     },
     {
       name_key: 'MenuItems.Workflow.self',
@@ -240,6 +264,31 @@ export const formLeftMenuItems = (): LeftMenuItems => {
   ]
 
   return menuItemsArray
+}
+
+/** Drop items the user cannot see; drop empty groups after filtering children. */
+export const filterMenuItemsByPermissions = (
+  items: MenuItem[],
+  can: (permission: string) => boolean
+): MenuItem[] => {
+  return items
+    .map(item => {
+      if (item.permission && !can(item.permission)) {
+        return null
+      }
+
+      if (!item.childrenMenuItems) {
+        return item
+      }
+
+      const children = filterMenuItemsByPermissions(item.childrenMenuItems, can)
+      if (children.length === 0) {
+        return null
+      }
+
+      return { ...item, childrenMenuItems: children }
+    })
+    .filter((item): item is MenuItem => item !== null)
 }
 
 /** Depth-first lookup by route segment (leaf `path`). */

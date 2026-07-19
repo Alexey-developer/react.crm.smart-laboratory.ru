@@ -22,4 +22,16 @@ export class CurrentUserGroup extends APIBase {
   currentUser = (): Promise<RequestResult<TCurrentUserResponse>> => {
     return this.get<TCurrentUserResponse>(`${this._URI}current-user`)
   }
+
+  /**
+   * Exchange Bearer auth for a web session cookie, then open Horizon.
+   * Requires `withCredentials` so Set-Cookie is accepted (see CORS_ALLOWED_ORIGINS).
+   */
+  enterHorizon = (): Promise<RequestResult<{ url: string }>> => {
+    return this._httpClient.request<{ url: string }>({
+      method: 'POST',
+      url: `${this._URI}horizon/enter`,
+      withCredentials: true,
+    })
+  }
 }

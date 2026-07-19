@@ -74,6 +74,7 @@ export const DirectionPage: React.FC = () => {
       tasksFilterKey: 'direction_id',
       parentEntityId: parentProject?.id ?? direction?.project_id,
       parentEntityTitle: parentProject?.label,
+      abilities: direction?.can,
     }
   )
 

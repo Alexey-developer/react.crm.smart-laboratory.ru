@@ -55,7 +55,8 @@ export const CallPage: React.FC = () => {
   const cardActions = useFormActions(
     callId,
     isManualCall(call ?? {}) ? [1, 2] : [2],
-    () => mutateAsyncDelete(callId).then(() => navigate(`/${CALLS}`))
+    () => mutateAsyncDelete(callId).then(() => navigate(`/${CALLS}`)),
+    { abilities: call?.can }
   )
 
   React.useEffect(() => {

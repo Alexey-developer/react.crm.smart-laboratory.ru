@@ -32,6 +32,7 @@ import 'dayjs/locale/zh-cn'
 
 import { Sidebar } from '@components/Sidebar'
 import { RealtimeProvider } from '@components/RealtimeProvider'
+import { UserPermissionsRealtime } from '@components/UserPermissionsRealtime'
 
 import { getAntdLocale } from '@utils/getAntdLocale'
 import { GetValidateMessages } from '@utils/helpers'
@@ -52,6 +53,7 @@ export const MainLayout: React.FC = () => {
   return (
     <ConfigProvider locale={getAntdLocale(lang)} form={{ validateMessages }}>
       <RealtimeProvider token={authToken || null}>
+        <UserPermissionsRealtime />
         <div className='wrapper'>
           <Sidebar />
         </div>

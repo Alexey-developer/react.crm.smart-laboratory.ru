@@ -52,10 +52,14 @@ export const BlockedPhoneNumberPage: React.FC = () => {
     {}
   )
 
-  const cardActions = useFormActions(blockedPhoneNumberId, [1, 2], () =>
-    mutateAsyncDelete(blockedPhoneNumberId).then(() =>
-      navigate(`/${BLOCKED_PHONE_NUMBERS}`)
-    )
+  const cardActions = useFormActions(
+    blockedPhoneNumberId,
+    [1, 2],
+    () =>
+      mutateAsyncDelete(blockedPhoneNumberId).then(() =>
+        navigate(`/${BLOCKED_PHONE_NUMBERS}`)
+      ),
+    { abilities: blockedPhoneNumber?.can }
   )
 
   React.useEffect(() => {

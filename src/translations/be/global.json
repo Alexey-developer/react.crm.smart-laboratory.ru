@@ -60,6 +60,11 @@
       "call_extensions": "Унутраныя нумары",
       "company_dial_numbers": "Нумары кампаніі",
       "blocked_phone_numbers": "Блакіроўка нумароў"
+    },
+    "CrmSettings": {
+      "self": "Налады CRM",
+      "general_permission_system": "Сістэма агульных дазволаў",
+      "horizon_dashboard": "Панэль Horizon"
     }
   },
   "Tasks": {
