@@ -65,6 +65,10 @@
       "self": "Настройки CRM",
       "general_permission_system": "Система общих разрешений",
       "horizon_dashboard": "Horizon"
+    },
+    "Studio": {
+      "self": "Студия",
+      "our_companies": "Наши компании"
     }
   },
   "Tasks": {
@@ -196,7 +200,14 @@
       "salary_currency_id": "Валюта зарплаты",
       "utc_offset": "Смещение UTC",
       "customer_company_ids": "Компании-клиенты",
-      "project_ids": "Проекты"
+      "project_ids": "Проекты",
+      "commercial_name": "Коммерческое обозначение",
+      "documents_email": "Email для документов",
+      "OGRN": "ОГРН / ОГРНИП",
+      "KPP": "KPP",
+      "status": "Статус",
+      "our_company_id": "Наша компания",
+      "employment_form_id": "Форма занятости"
     }
   },
   "HeaderProfile": {
@@ -239,7 +250,8 @@
       "none": "Не принимают"
     },
     "apply": "Применить",
-    "clear": "Очистить"
+    "clear": "Очистить",
+    "employment_form": "Форма занятости"
   },
   "Search": {
     "self": "Поиск",
@@ -508,5 +520,18 @@
     "JSC": "АО",
     "PJSC": "ПАО",
     "other": "Другое"
+  },
+  "EmploymentForms": {
+    "employment": "Трудовой договор (ТК)",
+    "civil_contract": "ГПХ (гражданско-правового характера)",
+    "self_employed": "Самозанятый (НПД)",
+    "ie_contractor": "ИП-подрядчик",
+    "outstaff": "Аутстафф",
+    "apprenticeship": "Ученический / стажировка"
+  },
+  "OurCompanyStatuses": {
+    "active": "Действует",
+    "liquidated": "Ликвидирована",
+    "reorganized": "Реорганизована"
   }
 }

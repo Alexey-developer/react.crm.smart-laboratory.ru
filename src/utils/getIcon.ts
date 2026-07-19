@@ -20,6 +20,7 @@ enum IconEnum {
   CALL_EXTENSIONS = 'fa-solid fa-diagram-nested',
   COMPANY_DIAL_NUMBERS = 'fa-solid fa-building',
   CUSTOMER_COMPANIES = 'fa-solid fa-building',
+  OUR_COMPANIES = 'fa-solid fa-building-columns',
   WORKER_PROFILES = 'fa-solid fa-id-badge',
   CUSTOMER_PROFILES = 'fa-solid fa-users',
 

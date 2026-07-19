@@ -65,6 +65,10 @@
       "self": "CRM 设置",
       "general_permission_system": "通用权限系统",
       "horizon_dashboard": "Horizon 控制台"
+    },
+    "Studio": {
+      "self": "Studio",
+      "our_companies": "Our companies"
     }
   },
   "Tasks": {
@@ -196,7 +200,14 @@
       "salary_currency_id": "工资货币",
       "utc_offset": "UTC 偏移",
       "customer_company_ids": "客户公司",
-      "project_ids": "项目"
+      "project_ids": "项目",
+      "commercial_name": "Commercial name",
+      "documents_email": "Documents email",
+      "OGRN": "OGRN / OGRNIP",
+      "KPP": "KPP",
+      "status": "Status",
+      "our_company_id": "Our company",
+      "employment_form_id": "Employment form"
     }
   },
   "HeaderProfile": {
@@ -239,7 +250,8 @@
       "crm": "在 CRM 接听",
       "mobile": "在手机接听",
       "none": "不接听"
-    }
+    },
+    "employment_form": "Employment form"
   },
   "Search": {
     "self": "搜索",
@@ -508,5 +520,18 @@
     "JSC": "股份有限公司",
     "PJSC": "上市公司",
     "other": "其他"
+  },
+  "EmploymentForms": {
+    "employment": "Employment contract (Labor Code)",
+    "civil_contract": "Civil-law contract (GPH)",
+    "self_employed": "Self-employed (NPD)",
+    "ie_contractor": "IE contractor",
+    "outstaff": "Outstaff",
+    "apprenticeship": "Apprenticeship / internship"
+  },
+  "OurCompanyStatuses": {
+    "active": "Active",
+    "liquidated": "Liquidated",
+    "reorganized": "Reorganized"
   }
 }

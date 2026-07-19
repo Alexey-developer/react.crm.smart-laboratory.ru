@@ -65,6 +65,10 @@
       "self": "CRM ayarları",
       "general_permission_system": "Genel izin sistemi",
       "horizon_dashboard": "Horizon paneli"
+    },
+    "Studio": {
+      "self": "Studio",
+      "our_companies": "Our companies"
     }
   },
   "Tasks": {
@@ -196,7 +200,14 @@
       "salary_currency_id": "Maaş para birimi",
       "utc_offset": "UTC sapması",
       "customer_company_ids": "Müşteri şirketleri",
-      "project_ids": "Projeler"
+      "project_ids": "Projeler",
+      "commercial_name": "Commercial name",
+      "documents_email": "Documents email",
+      "OGRN": "OGRN / OGRNIP",
+      "KPP": "KPP",
+      "status": "Status",
+      "our_company_id": "Our company",
+      "employment_form_id": "Employment form"
     }
   },
   "HeaderProfile": {
@@ -239,7 +250,8 @@
       "crm": "CRM’de kabul ediyor",
       "mobile": "Telefonda kabul ediyor",
       "none": "Kabul etmiyor"
-    }
+    },
+    "employment_form": "Employment form"
   },
   "Search": {
     "self": "Arama",
@@ -508,5 +520,18 @@
     "JSC": "A.Ş.",
     "PJSC": "Halka açık A.Ş.",
     "other": "Diğer"
+  },
+  "EmploymentForms": {
+    "employment": "Employment contract (Labor Code)",
+    "civil_contract": "Civil-law contract (GPH)",
+    "self_employed": "Self-employed (NPD)",
+    "ie_contractor": "IE contractor",
+    "outstaff": "Outstaff",
+    "apprenticeship": "Apprenticeship / internship"
+  },
+  "OurCompanyStatuses": {
+    "active": "Active",
+    "liquidated": "Liquidated",
+    "reorganized": "Reorganized"
   }
 }

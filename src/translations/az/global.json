@@ -65,6 +65,10 @@
       "self": "CRM parametrləri",
       "general_permission_system": "Ümumi icazə sistemi",
       "horizon_dashboard": "Horizon paneli"
+    },
+    "Studio": {
+      "self": "Studio",
+      "our_companies": "Our companies"
     }
   },
   "Tasks": {
@@ -196,7 +200,14 @@
       "salary_currency_id": "Maaş valyutası",
       "utc_offset": "UTC ofseti",
       "customer_company_ids": "Müştəri şirkətləri",
-      "project_ids": "Layihələr"
+      "project_ids": "Layihələr",
+      "commercial_name": "Commercial name",
+      "documents_email": "Documents email",
+      "OGRN": "OGRN / OGRNIP",
+      "KPP": "KPP",
+      "status": "Status",
+      "our_company_id": "Our company",
+      "employment_form_id": "Employment form"
     }
   },
   "HeaderProfile": {
@@ -239,7 +250,8 @@
       "crm": "CRM-də qəbul edirlər",
       "mobile": "Telefonda qəbul edirlər",
       "none": "Qəbul etmirlər"
-    }
+    },
+    "employment_form": "Employment form"
   },
   "Search": {
     "self": "Axtarış",
@@ -508,5 +520,18 @@
     "JSC": "QSC",
     "PJSC": "PAO",
     "other": "Digər"
+  },
+  "EmploymentForms": {
+    "employment": "Employment contract (Labor Code)",
+    "civil_contract": "Civil-law contract (GPH)",
+    "self_employed": "Self-employed (NPD)",
+    "ie_contractor": "IE contractor",
+    "outstaff": "Outstaff",
+    "apprenticeship": "Apprenticeship / internship"
+  },
+  "OurCompanyStatuses": {
+    "active": "Active",
+    "liquidated": "Liquidated",
+    "reorganized": "Reorganized"
   }
 }

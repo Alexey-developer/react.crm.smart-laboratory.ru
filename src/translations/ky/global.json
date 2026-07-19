@@ -65,6 +65,10 @@
       "self": "CRM жөндөөлөрү",
       "general_permission_system": "Жалпы уруксаттар системасы",
       "horizon_dashboard": "Horizon панели"
+    },
+    "Studio": {
+      "self": "Studio",
+      "our_companies": "Our companies"
     }
   },
   "Tasks": {
@@ -196,7 +200,14 @@
       "salary_currency_id": "Эмгек акы валютасы",
       "utc_offset": "UTC жылышы",
       "customer_company_ids": "Кардар компаниялары",
-      "project_ids": "Долбоорлор"
+      "project_ids": "Долбоорлор",
+      "commercial_name": "Commercial name",
+      "documents_email": "Documents email",
+      "OGRN": "OGRN / OGRNIP",
+      "KPP": "KPP",
+      "status": "Status",
+      "our_company_id": "Our company",
+      "employment_form_id": "Employment form"
     }
   },
   "HeaderProfile": {
@@ -239,7 +250,8 @@
       "crm": "CRM-де кабыл алышат",
       "mobile": "Телефонго кабыл алышат",
       "none": "Кабыл алышпайт"
-    }
+    },
+    "employment_form": "Employment form"
   },
   "Search": {
     "self": "Издөө",
@@ -508,5 +520,18 @@
     "JSC": "АК",
     "PJSC": "КАК",
     "other": "Башка"
+  },
+  "EmploymentForms": {
+    "employment": "Employment contract (Labor Code)",
+    "civil_contract": "Civil-law contract (GPH)",
+    "self_employed": "Self-employed (NPD)",
+    "ie_contractor": "IE contractor",
+    "outstaff": "Outstaff",
+    "apprenticeship": "Apprenticeship / internship"
+  },
+  "OurCompanyStatuses": {
+    "active": "Active",
+    "liquidated": "Liquidated",
+    "reorganized": "Reorganized"
   }
 }

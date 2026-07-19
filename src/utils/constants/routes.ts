@@ -14,6 +14,7 @@ export const WORKER_PROFILES = 'worker-profiles'
 export const WORK_TIME_RANGES = 'work-time-ranges'
 export const DOCUMENTS = 'documents'
 export const CUSTOMER_COMPANIES = 'customer-companies'
+export const OUR_COMPANIES = 'our-companies'
 export const CUSTOMER_PROFILES = 'customer-profiles'
 /** @deprecated use CUSTOMER_COMPANIES — kept for existing links */
 export const CUSTOMERS = CUSTOMER_COMPANIES

@@ -2,6 +2,7 @@ import { InputNumber } from 'antd'
 
 import type { FormItem } from '@components/CustomForm'
 import { CustomSimpleSelect } from '@components/CustomSimpleSelect'
+import { CustomSelect } from '@components/CustomSelect'
 
 export const getFormItems = () => {
   const formItems: FormItem[] = [
@@ -20,6 +21,18 @@ export const getFormItems = () => {
       rules: [{ required: true }],
       component: (
         <CustomSimpleSelect type='CURRENCY' name='salary_currency_id' />
+      ),
+    },
+    {
+      name: 'our_company_id',
+      rules: [{ required: true }],
+      component: <CustomSelect type='OUR_COMPANY' name='our_company_id' />,
+    },
+    {
+      name: 'employment_form_id',
+      rules: [{ required: true }],
+      component: (
+        <CustomSimpleSelect type='EMPLOYMENT_FORM' name='employment_form_id' />
       ),
     },
     {

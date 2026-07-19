@@ -65,6 +65,10 @@
       "self": "CRM-Einstellungen",
       "general_permission_system": "Allgemeines Berechtigungssystem",
       "horizon_dashboard": "Horizon-Dashboard"
+    },
+    "Studio": {
+      "self": "Studio",
+      "our_companies": "Our companies"
     }
   },
   "Tasks": {
@@ -196,7 +200,14 @@
       "salary_currency_id": "Gehaltswährung",
       "utc_offset": "UTC-Versatz",
       "customer_company_ids": "Kundenunternehmen",
-      "project_ids": "Projekte"
+      "project_ids": "Projekte",
+      "commercial_name": "Commercial name",
+      "documents_email": "Documents email",
+      "OGRN": "OGRN / OGRNIP",
+      "KPP": "KPP",
+      "status": "Status",
+      "our_company_id": "Our company",
+      "employment_form_id": "Employment form"
     }
   },
   "HeaderProfile": {
@@ -239,7 +250,8 @@
       "crm": "Nehmen in CRM an",
       "mobile": "Nehmen am Telefon an",
       "none": "Nehmen nicht an"
-    }
+    },
+    "employment_form": "Employment form"
   },
   "Search": {
     "self": "Suche",
@@ -508,5 +520,18 @@
     "JSC": "AG",
     "PJSC": "börsennotierte AG",
     "other": "Sonstiges"
+  },
+  "EmploymentForms": {
+    "employment": "Employment contract (Labor Code)",
+    "civil_contract": "Civil-law contract (GPH)",
+    "self_employed": "Self-employed (NPD)",
+    "ie_contractor": "IE contractor",
+    "outstaff": "Outstaff",
+    "apprenticeship": "Apprenticeship / internship"
+  },
+  "OurCompanyStatuses": {
+    "active": "Active",
+    "liquidated": "Liquidated",
+    "reorganized": "Reorganized"
   }
 }

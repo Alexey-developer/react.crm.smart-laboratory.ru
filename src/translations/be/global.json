@@ -65,6 +65,10 @@
       "self": "Налады CRM",
       "general_permission_system": "Сістэма агульных дазволаў",
       "horizon_dashboard": "Панэль Horizon"
+    },
+    "Studio": {
+      "self": "Studio",
+      "our_companies": "Our companies"
     }
   },
   "Tasks": {
@@ -196,7 +200,14 @@
       "salary_currency_id": "Валюта зарплаты",
       "utc_offset": "Зрух UTC",
       "customer_company_ids": "Кампаніі-кліенты",
-      "project_ids": "Праекты"
+      "project_ids": "Праекты",
+      "commercial_name": "Commercial name",
+      "documents_email": "Documents email",
+      "OGRN": "OGRN / OGRNIP",
+      "KPP": "KPP",
+      "status": "Status",
+      "our_company_id": "Our company",
+      "employment_form_id": "Employment form"
     }
   },
   "HeaderProfile": {
@@ -239,7 +250,8 @@
       "crm": "Прымаюць у CRM",
       "mobile": "Прымаюць на тэлефон",
       "none": "Не прымаюць"
-    }
+    },
+    "employment_form": "Employment form"
   },
   "Search": {
     "self": "Пошук",
@@ -508,5 +520,18 @@
     "JSC": "АА",
     "PJSC": "ПАТ",
     "other": "Іншае"
+  },
+  "EmploymentForms": {
+    "employment": "Employment contract (Labor Code)",
+    "civil_contract": "Civil-law contract (GPH)",
+    "self_employed": "Self-employed (NPD)",
+    "ie_contractor": "IE contractor",
+    "outstaff": "Outstaff",
+    "apprenticeship": "Apprenticeship / internship"
+  },
+  "OurCompanyStatuses": {
+    "active": "Active",
+    "liquidated": "Liquidated",
+    "reorganized": "Reorganized"
   }
 }

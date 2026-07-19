@@ -19,6 +19,8 @@ import { EndpointEnvironmentGroup } from '@api/models/endpointEnvironment/queryG
 import { TaskGroup } from '@api/models/task/queryGroup'
 import { TaskStatusGroup } from '@api/models/taskStatus/queryGroup'
 import { CustomerCompanyGroup } from '@api/models/customerCompany/queryGroup'
+import { OurCompanyGroup } from '@api/models/ourCompany/queryGroup'
+import { EmploymentFormGroup } from '@api/models/employmentForm/queryGroup'
 import { CustomerProfileGroup } from '@api/models/customerProfile/queryGroup'
 import { CallGroup } from '@api/models/call/queryGroup'
 import { PhoneNumberGroup } from '@api/models/phoneNumber/queryGroup'
@@ -52,6 +54,8 @@ export type GroupClass =
   | typeof TaskGroup
   | typeof TaskStatusGroup
   | typeof CustomerCompanyGroup
+  | typeof OurCompanyGroup
+  | typeof EmploymentFormGroup
   | typeof CustomerProfileGroup
   | typeof CallGroup
   | typeof PhoneNumberGroup
@@ -84,6 +88,8 @@ export type GroupMethod =
   | typeof TaskGroup
   | typeof TaskStatusGroup
   | typeof CustomerCompanyGroup
+  | typeof OurCompanyGroup
+  | typeof EmploymentFormGroup
   | typeof CustomerProfileGroup
   | typeof CallGroup
   | typeof PhoneNumberGroup

@@ -7,6 +7,7 @@ import { PaymentPeriodGroup } from '@api/models/paymentPeriod/queryGroup'
 import { TaskStatusGroup } from '@api/models/taskStatus/queryGroup'
 import { CurrencyGroup } from '@api/models/currency/queryGroup'
 import { OrganizationalLegalFormGroup } from '@api/models/organizationalLegalForm/queryGroup'
+import { EmploymentFormGroup } from '@api/models/employmentForm/queryGroup'
 
 export type Groups =
   | typeof ProjectStatusGroup
@@ -18,6 +19,7 @@ export type Groups =
   | typeof TaskStatusGroup
   | typeof CurrencyGroup
   | typeof OrganizationalLegalFormGroup
+  | typeof EmploymentFormGroup
 
 export enum CheckboxFilterTypeEnum {
   PROJECT_STATUS = 'status',
@@ -29,6 +31,7 @@ export enum CheckboxFilterTypeEnum {
   TASK_STATUS = 'task_status',
   CURRENCY = 'currency',
   ORGANIZATIONAL_LEGAL_FORM = 'organizational_legal_form',
+  EMPLOYMENT_FORM = 'employment_form',
 }
 
 const getCheckBoxFilterLangCode = (
@@ -51,6 +54,8 @@ const getCheckBoxFilterLangCode = (
       return 'Filters.currency'
     case 'ORGANIZATIONAL_LEGAL_FORM':
       return 'Filters.organizational_legal_form'
+    case 'EMPLOYMENT_FORM':
+      return 'Filters.employment_form'
     default:
       return 'no_phrase'
   }
@@ -78,6 +83,8 @@ const getCheckboxFilterGroup = (
       return CurrencyGroup
     case 'ORGANIZATIONAL_LEGAL_FORM':
       return OrganizationalLegalFormGroup
+    case 'EMPLOYMENT_FORM':
+      return EmploymentFormGroup
   }
 }
 

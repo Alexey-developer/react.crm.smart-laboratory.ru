@@ -164,6 +164,12 @@ export const formLeftMenuItems = (): LeftMenuItems => {
       icon: 'fa-solid fa-users-between-lines',
       childrenMenuItems: [
         {
+          name_key: 'MenuItems.Studio.our_companies',
+          path: URIs.OUR_COMPANIES,
+          icon: getIcon('OUR_COMPANIES'),
+          permission: 'our_companies.view',
+        },
+        {
           name_key: 'MenuItems.Employees.profiles',
           path: URIs.WORKER_PROFILES,
           icon: 'fa-solid fa-id-badge',

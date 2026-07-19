@@ -225,6 +225,27 @@ const EditCustomerCompanyPage = lazy(() =>
   }))
 )
 
+const OurCompaniesPage = lazy(() =>
+  import('@pages/entities/ourCompanies/index').then(module => ({
+    default: module.OurCompaniesPage,
+  }))
+)
+const OurCompanyPage = lazy(() =>
+  import('@pages/entities/ourCompanies/show').then(module => ({
+    default: module.OurCompanyPage,
+  }))
+)
+const CreateOurCompanyPage = lazy(() =>
+  import('@pages/entities/ourCompanies/create').then(module => ({
+    default: module.CreateOurCompanyPage,
+  }))
+)
+const EditOurCompanyPage = lazy(() =>
+  import('@pages/entities/ourCompanies/edit').then(module => ({
+    default: module.EditOurCompanyPage,
+  }))
+)
+
 const WorkerProfilesPage = lazy(() =>
   import('@pages/entities/workerProfiles/index').then(module => ({
     default: module.WorkerProfilesPage,
@@ -384,6 +405,13 @@ const routes: IRoute[] = [
     showComponent: <CustomerCompanyPage />,
     editComponent: <EditCustomerCompanyPage />,
     createComponent: <CreateCustomerCompanyPage />,
+  },
+  {
+    uri: URIs.OUR_COMPANIES,
+    indexComponent: <OurCompaniesPage />,
+    showComponent: <OurCompanyPage />,
+    editComponent: <EditOurCompanyPage />,
+    createComponent: <CreateOurCompanyPage />,
   },
   {
     uri: URIs.WORKER_PROFILES,

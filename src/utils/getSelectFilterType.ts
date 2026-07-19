@@ -1,6 +1,7 @@
 import { ProjectGroup } from '@api/models/project/queryGroup'
 import { DirectionGroup } from '@api/models/direction/queryGroup'
 import { CustomerCompanyGroup } from '@api/models/customerCompany/queryGroup'
+import { OurCompanyGroup } from '@api/models/ourCompany/queryGroup'
 import { CustomerProfileGroup } from '@api/models/customerProfile/queryGroup'
 import { PhoneNumberGroup } from '@api/models/phoneNumber/queryGroup'
 import { TaskGroup } from '@api/models/task/queryGroup'
@@ -12,6 +13,7 @@ export type Groups =
   | typeof ProjectGroup
   | typeof DirectionGroup
   | typeof CustomerCompanyGroup
+  | typeof OurCompanyGroup
   | typeof CustomerProfileGroup
   | typeof PhoneNumberGroup
   | typeof TaskGroup
@@ -23,6 +25,7 @@ export enum SelectFilterTypeEnum {
   PROJECT = 'project',
   DIRECTION = 'direction',
   CUSTOMER_COMPANY = 'customerCompany',
+  OUR_COMPANY = 'ourCompany',
   CUSTOMER_PROFILE = 'customerProfile',
   PHONE_NUMBER = 'phoneNumber',
   TASK = 'task',
@@ -39,6 +42,8 @@ const getSelectFilterLangCode = (value: keyof typeof SelectFilterTypeEnum) => {
       return 'Form.EntitiesFields.direction_id'
     case 'CUSTOMER_COMPANY':
       return 'Form.EntitiesFields.customer_company_id'
+    case 'OUR_COMPANY':
+      return 'Form.EntitiesFields.our_company_id'
     case 'CUSTOMER_PROFILE':
       return 'Form.EntitiesFields.customer_profile_id'
     case 'PHONE_NUMBER':
@@ -66,6 +71,8 @@ const getSelectFilterGroup = (
       return DirectionGroup
     case 'CUSTOMER_COMPANY':
       return CustomerCompanyGroup
+    case 'OUR_COMPANY':
+      return OurCompanyGroup
     case 'CUSTOMER_PROFILE':
       return CustomerProfileGroup
     case 'PHONE_NUMBER':

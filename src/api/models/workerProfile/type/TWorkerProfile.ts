@@ -10,6 +10,8 @@ export type TWorkerProfile = TEntityBaseModel & {
   user_id: number
   base_rate: number | null
   salary_currency_id: number
+  our_company_id: number
+  employment_form_id: number
   utc_offset?: number
   user?: TWorkerProfileUser
   salary_currency?: TCurrency

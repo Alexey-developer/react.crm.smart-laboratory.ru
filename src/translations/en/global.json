@@ -65,6 +65,10 @@
       "self": "CRM settings",
       "general_permission_system": "General permission system",
       "horizon_dashboard": "Horizon dashboard"
+    },
+    "Studio": {
+      "self": "Studio",
+      "our_companies": "Our companies"
     }
   },
   "Tasks": {
@@ -196,7 +200,14 @@
       "salary_currency_id": "Salary currency",
       "utc_offset": "UTC offset",
       "customer_company_ids": "Customer companies",
-      "project_ids": "Projects"
+      "project_ids": "Projects",
+      "commercial_name": "Commercial name",
+      "documents_email": "Documents email",
+      "OGRN": "OGRN / OGRNIP",
+      "KPP": "KPP",
+      "status": "Status",
+      "our_company_id": "Our company",
+      "employment_form_id": "Employment form"
     }
   },
   "HeaderProfile": {
@@ -239,7 +250,8 @@
       "crm": "Accepting in CRM",
       "mobile": "Accepting on phone",
       "none": "Not accepting"
-    }
+    },
+    "employment_form": "Employment form"
   },
   "Search": {
     "self": "Search",
@@ -508,5 +520,18 @@
     "JSC": "JSC",
     "PJSC": "PJSC",
     "other": "Other"
+  },
+  "EmploymentForms": {
+    "employment": "Employment contract (Labor Code)",
+    "civil_contract": "Civil-law contract (GPH)",
+    "self_employed": "Self-employed (NPD)",
+    "ie_contractor": "IE contractor",
+    "outstaff": "Outstaff",
+    "apprenticeship": "Apprenticeship / internship"
+  },
+  "OurCompanyStatuses": {
+    "active": "Active",
+    "liquidated": "Liquidated",
+    "reorganized": "Reorganized"
   }
 }

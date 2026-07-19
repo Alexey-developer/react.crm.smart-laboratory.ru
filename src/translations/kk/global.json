@@ -65,6 +65,10 @@
       "self": "CRM параметрлері",
       "general_permission_system": "Жалпы рұқсаттар жүйесі",
       "horizon_dashboard": "Horizon панелі"
+    },
+    "Studio": {
+      "self": "Studio",
+      "our_companies": "Our companies"
     }
   },
   "Tasks": {
@@ -196,7 +200,14 @@
       "salary_currency_id": "Жалақы валютасы",
       "utc_offset": "UTC ығысуы",
       "customer_company_ids": "Клиент компаниялары",
-      "project_ids": "Жобалар"
+      "project_ids": "Жобалар",
+      "commercial_name": "Commercial name",
+      "documents_email": "Documents email",
+      "OGRN": "OGRN / OGRNIP",
+      "KPP": "KPP",
+      "status": "Status",
+      "our_company_id": "Our company",
+      "employment_form_id": "Employment form"
     }
   },
   "HeaderProfile": {
@@ -239,7 +250,8 @@
       "crm": "CRM-де қабылдайды",
       "mobile": "Телефонға қабылдайды",
       "none": "Қабылдамайды"
-    }
+    },
+    "employment_form": "Employment form"
   },
   "Search": {
     "self": "Іздеу",
@@ -508,5 +520,18 @@
     "JSC": "АҚ",
     "PJSC": "ҚАҚ",
     "other": "Басқа"
+  },
+  "EmploymentForms": {
+    "employment": "Employment contract (Labor Code)",
+    "civil_contract": "Civil-law contract (GPH)",
+    "self_employed": "Self-employed (NPD)",
+    "ie_contractor": "IE contractor",
+    "outstaff": "Outstaff",
+    "apprenticeship": "Apprenticeship / internship"
+  },
+  "OurCompanyStatuses": {
+    "active": "Active",
+    "liquidated": "Liquidated",
+    "reorganized": "Reorganized"
   }
 }

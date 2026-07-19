@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 
 import type { FormItem } from '@components/CustomForm'
 import { PhoneInput } from '@components/PhoneInput'
+import { CustomSelect } from '@components/CustomSelect'
 
 import { constants } from '@utils/constants/constants.json'
 
@@ -24,6 +25,11 @@ const InboundModeSelect: React.FC = () => {
 
 export const getFormItems = () => {
   const formItems: FormItem[] = [
+    {
+      name: 'our_company_id',
+      rules: [{ required: true }],
+      component: <CustomSelect type='OUR_COMPANY' name='our_company_id' />,
+    },
     {
       name: 'e164',
       rules: [

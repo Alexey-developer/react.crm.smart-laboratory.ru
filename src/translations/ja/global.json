@@ -65,6 +65,10 @@
       "self": "CRM設定",
       "general_permission_system": "共通権限システム",
       "horizon_dashboard": "Horizonダッシュボード"
+    },
+    "Studio": {
+      "self": "Studio",
+      "our_companies": "Our companies"
     }
   },
   "Tasks": {
@@ -196,7 +200,14 @@
       "salary_currency_id": "給与通貨",
       "utc_offset": "UTCオフセット",
       "customer_company_ids": "顧客企業",
-      "project_ids": "プロジェクト"
+      "project_ids": "プロジェクト",
+      "commercial_name": "Commercial name",
+      "documents_email": "Documents email",
+      "OGRN": "OGRN / OGRNIP",
+      "KPP": "KPP",
+      "status": "Status",
+      "our_company_id": "Our company",
+      "employment_form_id": "Employment form"
     }
   },
   "HeaderProfile": {
@@ -239,7 +250,8 @@
       "crm": "CRMで応答",
       "mobile": "携帯で応答",
       "none": "応答しない"
-    }
+    },
+    "employment_form": "Employment form"
   },
   "Search": {
     "self": "検索",
@@ -508,5 +520,18 @@
     "JSC": "株式会社",
     "PJSC": "上場株式会社",
     "other": "その他"
+  },
+  "EmploymentForms": {
+    "employment": "Employment contract (Labor Code)",
+    "civil_contract": "Civil-law contract (GPH)",
+    "self_employed": "Self-employed (NPD)",
+    "ie_contractor": "IE contractor",
+    "outstaff": "Outstaff",
+    "apprenticeship": "Apprenticeship / internship"
+  },
+  "OurCompanyStatuses": {
+    "active": "Active",
+    "liquidated": "Liquidated",
+    "reorganized": "Reorganized"
   }
 }
