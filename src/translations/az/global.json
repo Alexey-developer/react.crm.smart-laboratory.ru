@@ -19,7 +19,6 @@
   },
   "MenuItems": {
     "accounting": "Mühasibat uçotu",
-    "budget": "Büdcə",
     "call_history": "Zəng tarixçəsi",
     "general_permission_system": "Ümumi icazələr sistemi",
     "projects": "Layihələr",
@@ -29,14 +28,39 @@
     "tasks": "Tapşırıqlar",
     "work_time_ranges": "Vaxt aralıqları",
     "documents": "Sənədlər",
+    "system_users": "Sistem istifadəçiləri",
+    "Budget": {
+      "self": "Büdcə",
+      "accounting": "Mühasibat uçotu",
+      "financial_operations": "Maliyyə əməliyyatları"
+    },
+    "Workflow": {
+      "self": "İş prosesi"
+    },
+    "Employees": {
+      "self": "Əməkdaşlar",
+      "profiles": "Profillər"
+    },
+    "KnowledgeBase": {
+      "self": "Bilik bazası"
+    },
     "WorkingWithCustomers": {
       "self": "Müştərilərlə iş",
-      "customers": "Müştərilər",
+      "companies": "Şirkətlər",
+      "customer_profiles": "Müştəri profilləri",
       "appeals": "Müraciətlər",
       "support": "Dəstək",
       "applications_from_website": "Vebsaytdan müraciətlər"
     },
-    "employees": "Əməkdaşlar"
+    "Telephony": {
+      "self": "Telefoniya",
+      "calls": "Zənglər",
+      "phone_numbers": "Telefonlar",
+      "operator_profiles": "Operator profilləri",
+      "call_extensions": "Daxili nömrələr",
+      "company_dial_numbers": "Şirkət nömrələri",
+      "blocked_phone_numbers": "Bloklanmış nömrələr"
+    }
   },
   "Tasks": {
     "recurring": "Müntəzəm",
@@ -61,11 +85,9 @@
   "Form": {
     "phone": "Telefon nömrəsi",
     "password": "Şifrə",
-
     "Common": {
       "enter": "Daxil edin "
     },
-
     "BtnTexts": {
       "default": "Göndər"
     },
@@ -80,7 +102,6 @@
       "website_url": "Vebsayt linki",
       "comment": "Şərh",
       "customer_visible_comment": "Müştəriyə görünən şərh",
-
       "status_id": "Status",
       "type_id": "Tip",
       "customer_company_id": "Müştəri şirkəti",
@@ -93,10 +114,8 @@
       "contract_amount": "Müqavilə məbləği",
       "billing_anchor_date": "Billingin başlama tarixi",
       "monitoring_enabled": "Monitorinq aktivdir",
-
       "check_performance": "İşləmə qabiliyyətini yoxla",
       "check_expirations": "Müddət bitmələrini yoxla",
-
       "total_spent_time": "Ümumi sərf olunan vaxt",
       "total_time": "Sərf olunan vaxt",
       "money": "Məbləğ",
@@ -106,7 +125,6 @@
       "total_penalty_funds": "Cərimə tutulmaları",
       "common_task_progress": "Tapşırıqların ümumi irəliləyişi",
       "progress": "İrəliləyiş",
-
       "task_id": "Tapşırıq",
       "worker_profile_id": "Əməkdaş",
       "reason_type": "Səbəb tipi",
@@ -116,7 +134,61 @@
       "repeat_mode": "Təkrarlanma rejimi",
       "repeat_interval_days": "Təkrarlanma intervalı (günlər)",
       "repeat_next_at": "Növbəti təkrarlanma",
-      "repeat_source_task_id": "Mənbə tapşırıq"
+      "repeat_source_task_id": "Mənbə tapşırıq",
+      "work_time_range_id": "İş vaxtı aralığı",
+      "e164": "Telefon",
+      "label": "Etiket",
+      "is_active": "Aktiv",
+      "is_primary": "Əsas",
+      "phoneable_type": "Sahib tipi",
+      "phoneable_id": "Sahib",
+      "vox_username": "Voximplant login",
+      "softphone_enabled": "Softphone aktivdir",
+      "mobile_dialer_enabled": "Mobil dialer",
+      "operator_profile_id": "Operator profili",
+      "phone_number_id": "Telefon",
+      "target_type": "Təyinat tipi",
+      "display_name": "Göstərilən ad",
+      "code": "Kod",
+      "inbound_mode": "Daxilolan rejim",
+      "customer_phone_number_id": "Müştəri telefonu",
+      "operator_phone_number_id": "Operator telefonu",
+      "customer_profile_id": "Müştəri profili",
+      "direction": "Zəng istiqaməti",
+      "source": "Mənbə",
+      "call_record_transcription_text": "Yazı transkripsiyası",
+      "recording_upload": "Yazının yüklənməsi",
+      "call_record_private_path": "Yazı yolu",
+      "started_at": "Başlama",
+      "answered_at": "Cavab",
+      "ended_at": "Bitmə",
+      "session_id": "Sessiya ID",
+      "created_at": "Yaradılıb",
+      "updated_at": "Yenilənib",
+      "dialed_company_number": "Yığılan şirkət nömrəsi",
+      "is_answered": "Cavablandırılıb",
+      "is_missed": "Buraxılıb",
+      "call_duration_seconds": "Danışıq müddəti",
+      "call_total_duration_seconds": "Sessiya müddəti",
+      "INN": "TIN",
+      "bank": "Bank",
+      "checking_account": "Checking account",
+      "correspondent_account": "Correspondent account",
+      "BIK": "BIC",
+      "country": "Country",
+      "city": "City",
+      "street": "Street",
+      "house_number": "House number",
+      "office_number": "Office number",
+      "index": "Postal code",
+      "organizational_legal_form_id": "Legal form",
+      "currency_id": "Currency",
+      "user_id": "User",
+      "base_rate": "Base rate",
+      "salary_currency_id": "Salary currency",
+      "utc_offset": "UTC offset",
+      "customer_company_ids": "Customer companies",
+      "project_ids": "Projects"
     }
   },
   "HeaderProfile": {
@@ -146,9 +218,14 @@
       "all": "Hamısı"
     },
     "created_at": "Yaradılma tarixi",
-
     "apply": "Tətbiq et",
-    "clear": "Təmizlə"
+    "clear": "Təmizlə",
+    "WorkTimeRange": {
+      "self": "İş vaxtı aralığı",
+      "without": "Vaxt aralığı olmadan"
+    },
+    "currency": "Currency",
+    "organizational_legal_form": "Legal form"
   },
   "Search": {
     "self": "Axtarış",
@@ -188,7 +265,6 @@
   "Modes": {
     "creating": "Yaratma",
     "editing": "Redaktə",
-
     "simple": "Sadə",
     "advanced": "Genişləndirilmiş"
   },
@@ -305,6 +381,104 @@
     "PaymentMethod": {
       "invoicing": "Rekvizitlərlə (hesab təqdimi)",
       "credit_card": "Köçürmə (karta)"
+    },
+    "PhoneNumber": {
+      "customer_company": "Müştəri şirkəti",
+      "customer_profile": "Müştəri profili",
+      "worker_profile": "İşçi profili"
+    },
+    "CallExtension": {
+      "crm_user": "CRM operatoru",
+      "pstn": "Xarici nömrə (PSTN)"
+    },
+    "CompanyDialNumber": {
+      "full": "Tam",
+      "fast": "Sürətli"
+    },
+    "Call": {
+      "inbound": "Daxilolan",
+      "outbound": "Çıxan",
+      "telephony_inbound": "Telefoniya (daxilolan)",
+      "telephony_outbound": "Telefoniya (çıxan)",
+      "mobile_dialer": "Mobil dialer",
+      "website_online": "Saytdan onlayn",
+      "manual": "Əl ilə"
     }
+  },
+  "Softphone": {
+    "title": "Softphone",
+    "new_call": "New call",
+    "incoming_call": "Incoming call…",
+    "in_progress": "In progress",
+    "on_hold": "On hold",
+    "call_ended": "Call ended",
+    "duration": "Duration: {{time}}",
+    "from_operator_profile": "Login OperatorProfile-dan.",
+    "vox_user": "Voximplant istifadəçisi",
+    "vox_password": "Şifrə",
+    "connect": "Qoşul",
+    "phone_number": "Nömrə",
+    "call": "Zəng et",
+    "hangup": "Kəs",
+    "call_again": "Call again",
+    "close": "Close",
+    "erase": "Erase",
+    "dial_pad": "Dial pad",
+    "mute_mic": "Mik. söndür",
+    "unmute_mic": "Mik. yandır",
+    "mute_speaker": "Səsi söndür",
+    "unmute_speaker": "Səsi yandır",
+    "incoming": "Daxilolan",
+    "answer": "Cavab ver",
+    "decline": "Rədd et",
+    "status_disconnected": "Qoşulmayıb",
+    "status_connecting": "Qoşulur…",
+    "status_connected": "Qoşulub",
+    "status_already_connected": "Artıq qoşulub",
+    "status_credentials_required": "Login və şifrə lazımdır",
+    "status_connection_error": "Qoşulma xətası",
+    "status_ready_from_profile": "Hazırdır (OperatorProfile)",
+    "no_operator_profile": "OperatorProfile yoxdur",
+    "softphone_disabled": "Softphone profilde söndürülüb",
+    "password_not_provisioned": "Şifrə hələ verilməyib — OperatorProfile-ı yenidən yaradın və ya əl ilə daxil edin"
+  },
+  "Telephony": {
+    "account_overview": "Voximplant hesabı",
+    "balance": "Balans",
+    "account_name": "Hesab adı",
+    "phone_numbers": "Nömrələr",
+    "no_phone_numbers": "Nömrə yoxdur",
+    "low_balance_warning": "Aşağı balans (eşik: {{threshold}})"
+  },
+  "Calls": {
+    "recording_upload_later": "Yazının yüklənməsi sonra əlçatan olacaq",
+    "answered": "Cavablandırılıb",
+    "missed": "Buraxılıb",
+    "csat_scores": "CSAT balları",
+    "csat_quality": "Keyfiyyət",
+    "csat_recommend": "Tövsiyə",
+    "csat_resolved": "Həll olunub",
+    "csat_speed": "Sürət",
+    "links": "Keçidlər",
+    "call_record": "Zəng yazısı",
+    "log_file": "Jurnal faylı",
+    "no_links": "Keçid yoxdur"
+  },
+  "Currencies": {
+    "Currency": {
+      "rub": "Ruble",
+      "usd": "US Dollar",
+      "eur": "Euro",
+      "azn": "Azerbaijani Manat"
+    }
+  },
+  "OrganizationalLegalForms": {
+    "LLC": "LLC",
+    "IE": "IE",
+    "I": "Individual",
+    "PC": "PC",
+    "JSC": "JSC",
+    "PJSC": "PJSC",
+    "other": "Other"
   }
 }

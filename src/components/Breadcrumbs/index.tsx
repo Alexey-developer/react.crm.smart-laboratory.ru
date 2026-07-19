@@ -10,7 +10,10 @@ import type { BreadcrumbProps } from 'antd'
 // Public idiom: items — Required<BreadcrumbProps>['items'].
 type BreadcrumbItem = NonNullable<BreadcrumbProps['items']>[number]
 
-import { formLeftMenuItems } from '@utils/formLeftMenuItems'
+import {
+  findLeftMenuItemByPath,
+  formLeftMenuItems,
+} from '@utils/formLeftMenuItems'
 import { COMMON_CREATING, COMMON_EDITING } from '@utils/constants/routes'
 import { getIcon } from '@utils/getIcon'
 
@@ -37,9 +40,9 @@ export const Breadcrumbs: React.FC = () => {
     },
   ]
 
-  const leftMenuItems = formLeftMenuItems()
-  const leftMenuItem = leftMenuItems.find(
-    leftMenuItem => leftMenuItem.path === pathnames[0]
+  const leftMenuItem = findLeftMenuItemByPath(
+    formLeftMenuItems(),
+    pathnames[0]
   )
 
   if (leftMenuItem) {

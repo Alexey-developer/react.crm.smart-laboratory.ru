@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import type { ReactNode } from 'react'
 
 import { type TColorType } from '@api/common/types/TColorType'
 
@@ -9,6 +10,7 @@ import {
   getTaskRecurrenceRibbon,
   isTaskEntity,
 } from '@utils/entityFormActions/getTaskRecurrenceRibbon'
+import { getTelephonyCardChrome } from '@utils/entityFormActions/getTelephonyCardChrome'
 import { convert2string } from '@utils/helpers'
 
 type TProps = {
@@ -28,6 +30,7 @@ export const FormCard = (props: TProps) => {
 
   let badgeRibbonText = ''
   let badgeRibbonClassName = 'transparent' as TColorType
+  let telephonyExtra: ReactNode | undefined
 
   if (entity.direction_type) {
     badgeRibbonText = translated_phrase(entity.direction_type.lang_code)
@@ -44,6 +47,18 @@ export const FormCard = (props: TProps) => {
     badgeRibbonText = `#${entity.id}${itemName ? ` ${itemName}` : ''}`
   } else if (entity.project) {
     badgeRibbonText = `#${entity.project.id} ${entity.project.name}`
+  } else {
+    const telephony = getTelephonyCardChrome(entity, translated_phrase)
+    if (telephony) {
+      badgeRibbonText = telephony.ribbonText
+      badgeRibbonClassName = telephony.ribbonClassName
+      if (telephony.extraText && telephony.extraClassName) {
+        telephonyExtra = formCardExtra(
+          telephony.extraClassName,
+          telephony.extraText
+        )
+      }
+    }
   }
 
   const statusExtra =
@@ -74,7 +89,7 @@ export const FormCard = (props: TProps) => {
       badgeRibbonClassName={badgeRibbonClassName}
       content={FormContent(entity)}
       actions={cardActions}
-      extra={statusExtra || rateExtra || undefined}
+      extra={statusExtra || rateExtra || telephonyExtra || undefined}
       grid={grid}
     />
   )

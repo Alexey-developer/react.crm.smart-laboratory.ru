@@ -19,6 +19,13 @@ export type DefaultCardProps = {
   extra?: React.ReactNode
   isLoading?: boolean
   skeletonActionCount?: number
+  /** Avatar circles in list-card skeleton (WTR = 1, Project/Direction/Task ≈ 4, compact = 0). */
+  skeletonEmployeeCount?: number
+  /**
+   * Progress bar + metric strip in list skeleton.
+   * Default: on when `skeletonEmployeeCount >= 2`. Compact cards must pass `false`.
+   */
+  skeletonShowProgress?: boolean
   hoverable?: boolean
   type?: 'default' | 'success' | 'warning' | 'danger'
   grid?: Grid
@@ -33,6 +40,8 @@ export const DefaultCard: React.FC<DefaultCardProps> = ({
   extra,
   isLoading,
   skeletonActionCount = 4,
+  skeletonEmployeeCount = 4,
+  skeletonShowProgress,
   hoverable = true,
   type,
   grid = { xs: 24, lg: 12, xl: 8, xxl: 6 },
@@ -46,7 +55,6 @@ export const DefaultCard: React.FC<DefaultCardProps> = ({
       // loading={true}
       // type='inner'
       extra={extra}
-      tabBarExtraContent={<h1>123</h1>}
       actions={actions}
     >
       {content}
@@ -79,7 +87,11 @@ export const DefaultCard: React.FC<DefaultCardProps> = ({
           isLoading={isLoading}
           width={'100%'}
           height={'100%'}
-          skeleton={formSkeleton(skeletonActionCount)}
+          skeleton={formSkeleton({
+            actionCount: skeletonActionCount,
+            employeeCount: skeletonEmployeeCount,
+            showProgress: skeletonShowProgress,
+          })}
           content={child}
         />
       )

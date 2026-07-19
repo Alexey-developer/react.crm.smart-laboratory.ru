@@ -56,6 +56,14 @@ export const FormContent = (workTimeRange: TWorkTimeRange) => {
       >
         {workTimeRange.start_at} — {workTimeRange.end_at}
       </Tag>
+      <Tooltip title={translated_phrase('Filters.created_at')}>
+        <Tag
+          className='transparent'
+          icon={<i className={getIcon('CREATED_AT')}></i>}
+        >
+          {workTimeRange.created_at}
+        </Tag>
+      </Tooltip>
       {employee && <IncludedEmployees employees={[employee]} />}
     </>
   )

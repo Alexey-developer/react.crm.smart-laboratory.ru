@@ -19,7 +19,6 @@
   },
   "MenuItems": {
     "accounting": "会计",
-    "budget": "预算",
     "call_history": "通话记录",
     "general_permission_system": "通用权限系统",
     "projects": "项目",
@@ -29,14 +28,39 @@
     "tasks": "任务",
     "work_time_ranges": "工作时间段",
     "documents": "文档",
+    "system_users": "系统用户",
+    "Budget": {
+      "self": "预算",
+      "accounting": "会计",
+      "financial_operations": "财务操作"
+    },
+    "Workflow": {
+      "self": "工作流程"
+    },
+    "Employees": {
+      "self": "员工",
+      "profiles": "档案"
+    },
+    "KnowledgeBase": {
+      "self": "知识库"
+    },
     "WorkingWithCustomers": {
       "self": "客户工作",
-      "customers": "客户",
+      "companies": "公司",
+      "customer_profiles": "客户档案",
       "appeals": "申诉",
       "support": "支持",
       "applications_from_website": "网站申请"
     },
-    "employees": "员工"
+    "Telephony": {
+      "self": "电话",
+      "calls": "通话",
+      "phone_numbers": "电话号码",
+      "operator_profiles": "坐席配置",
+      "call_extensions": "分机号",
+      "company_dial_numbers": "公司号码",
+      "blocked_phone_numbers": "黑名单号码"
+    }
   },
   "Tasks": {
     "recurring": "定期",
@@ -110,7 +134,61 @@
       "repeat_mode": "重复模式",
       "repeat_interval_days": "重复间隔（天）",
       "repeat_next_at": "下次重复时间",
-      "repeat_source_task_id": "源任务"
+      "repeat_source_task_id": "源任务",
+      "work_time_range_id": "工作时间段",
+      "e164": "电话",
+      "label": "标签",
+      "is_active": "启用",
+      "is_primary": "主要",
+      "phoneable_type": "所有者类型",
+      "phoneable_id": "所有者",
+      "vox_username": "Voximplant 登录名",
+      "softphone_enabled": "已启用 Softphone",
+      "mobile_dialer_enabled": "移动拨号器",
+      "operator_profile_id": "坐席配置",
+      "phone_number_id": "电话",
+      "target_type": "目标类型",
+      "display_name": "显示名称",
+      "code": "代码",
+      "inbound_mode": "呼入模式",
+      "customer_phone_number_id": "客户电话",
+      "operator_phone_number_id": "坐席电话",
+      "customer_profile_id": "客户资料",
+      "direction": "通话方向",
+      "source": "来源",
+      "call_record_transcription_text": "录音转写",
+      "recording_upload": "录音上传",
+      "call_record_private_path": "录音路径",
+      "started_at": "开始时间",
+      "answered_at": "接听时间",
+      "ended_at": "结束时间",
+      "session_id": "会话 ID",
+      "created_at": "创建时间",
+      "updated_at": "更新时间",
+      "dialed_company_number": "拨打的公司号码",
+      "is_answered": "已接听",
+      "is_missed": "未接",
+      "call_duration_seconds": "通话时长",
+      "call_total_duration_seconds": "会话时长",
+      "INN": "TIN",
+      "bank": "Bank",
+      "checking_account": "Checking account",
+      "correspondent_account": "Correspondent account",
+      "BIK": "BIC",
+      "country": "Country",
+      "city": "City",
+      "street": "Street",
+      "house_number": "House number",
+      "office_number": "Office number",
+      "index": "Postal code",
+      "organizational_legal_form_id": "Legal form",
+      "currency_id": "Currency",
+      "user_id": "User",
+      "base_rate": "Base rate",
+      "salary_currency_id": "Salary currency",
+      "utc_offset": "UTC offset",
+      "customer_company_ids": "Customer companies",
+      "project_ids": "Projects"
     }
   },
   "HeaderProfile": {
@@ -141,7 +219,13 @@
     },
     "created_at": "创建日期",
     "apply": "应用",
-    "clear": "清除"
+    "clear": "清除",
+    "WorkTimeRange": {
+      "self": "工作时间段",
+      "without": "无工作时间段"
+    },
+    "currency": "Currency",
+    "organizational_legal_form": "Legal form"
   },
   "Search": {
     "self": "搜索",
@@ -297,6 +381,104 @@
     "PaymentMethod": {
       "invoicing": "开具发票",
       "credit_card": "信用卡"
+    },
+    "PhoneNumber": {
+      "customer_company": "客户公司",
+      "customer_profile": "客户资料",
+      "worker_profile": "员工资料"
+    },
+    "CallExtension": {
+      "crm_user": "CRM 坐席",
+      "pstn": "外部号码（PSTN）"
+    },
+    "CompanyDialNumber": {
+      "full": "完整",
+      "fast": "快速"
+    },
+    "Call": {
+      "inbound": "呼入",
+      "outbound": "呼出",
+      "telephony_inbound": "电话（呼入）",
+      "telephony_outbound": "电话（呼出）",
+      "mobile_dialer": "移动拨号器",
+      "website_online": "网站在线",
+      "manual": "手动"
     }
+  },
+  "Softphone": {
+    "title": "Softphone",
+    "new_call": "New call",
+    "incoming_call": "Incoming call…",
+    "in_progress": "In progress",
+    "on_hold": "On hold",
+    "call_ended": "Call ended",
+    "duration": "Duration: {{time}}",
+    "from_operator_profile": "从 OperatorProfile 登录。",
+    "vox_user": "Voximplant 用户",
+    "vox_password": "密码",
+    "connect": "连接",
+    "phone_number": "号码",
+    "call": "呼叫",
+    "hangup": "挂断",
+    "call_again": "Call again",
+    "close": "Close",
+    "erase": "Erase",
+    "dial_pad": "Dial pad",
+    "mute_mic": "静音麦克风",
+    "unmute_mic": "取消麦克风静音",
+    "mute_speaker": "静音扬声器",
+    "unmute_speaker": "取消扬声器静音",
+    "incoming": "来电",
+    "answer": "接听",
+    "decline": "拒接",
+    "status_disconnected": "未连接",
+    "status_connecting": "连接中…",
+    "status_connected": "已连接",
+    "status_already_connected": "已连接",
+    "status_credentials_required": "需要用户名和密码",
+    "status_connection_error": "连接错误",
+    "status_ready_from_profile": "就绪（来自 OperatorProfile）",
+    "no_operator_profile": "无 OperatorProfile",
+    "softphone_disabled": "配置中已禁用 Softphone",
+    "password_not_provisioned": "密码尚未下发 — 请重建 OperatorProfile 或手动输入"
+  },
+  "Telephony": {
+    "account_overview": "Voximplant 账户",
+    "balance": "余额",
+    "account_name": "账户名称",
+    "phone_numbers": "号码",
+    "no_phone_numbers": "暂无号码",
+    "low_balance_warning": "余额不足（阈值：{{threshold}}）"
+  },
+  "Calls": {
+    "recording_upload_later": "录音上传稍后可用",
+    "answered": "已接听",
+    "missed": "未接",
+    "csat_scores": "CSAT 评分",
+    "csat_quality": "质量",
+    "csat_recommend": "推荐",
+    "csat_resolved": "已解决",
+    "csat_speed": "速度",
+    "links": "链接",
+    "call_record": "通话录音",
+    "log_file": "日志文件",
+    "no_links": "暂无链接"
+  },
+  "Currencies": {
+    "Currency": {
+      "rub": "Ruble",
+      "usd": "US Dollar",
+      "eur": "Euro",
+      "azn": "Azerbaijani Manat"
+    }
+  },
+  "OrganizationalLegalForms": {
+    "LLC": "LLC",
+    "IE": "IE",
+    "I": "Individual",
+    "PC": "PC",
+    "JSC": "JSC",
+    "PJSC": "PJSC",
+    "other": "Other"
   }
 }

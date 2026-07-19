@@ -19,7 +19,6 @@
   },
   "MenuItems": {
     "accounting": "Buchhaltung",
-    "budget": "Budget",
     "call_history": "Anrufverlauf",
     "general_permission_system": "Allgemeines Berechtigungssystem",
     "projects": "Projekte",
@@ -29,14 +28,39 @@
     "tasks": "Aufgaben",
     "work_time_ranges": "Arbeitszeitspannen",
     "documents": "Dokumente",
+    "system_users": "Systembenutzer",
+    "Budget": {
+      "self": "Budget",
+      "accounting": "Buchhaltung",
+      "financial_operations": "Finanzoperationen"
+    },
+    "Workflow": {
+      "self": "Arbeitsablauf"
+    },
+    "Employees": {
+      "self": "Mitarbeiter",
+      "profiles": "Profile"
+    },
+    "KnowledgeBase": {
+      "self": "Wissensdatenbank"
+    },
     "WorkingWithCustomers": {
       "self": "Kundenbetreuung",
-      "customers": "Kunden",
+      "companies": "Unternehmen",
+      "customer_profiles": "Kundenprofile",
       "appeals": "Anfragen",
       "support": "Support",
       "applications_from_website": "Anträge von der Website"
     },
-    "employees": "Mitarbeiter"
+    "Telephony": {
+      "self": "Telefonie",
+      "calls": "Anrufe",
+      "phone_numbers": "Telefonnummern",
+      "operator_profiles": "Operatorprofile",
+      "call_extensions": "Durchwahlen",
+      "company_dial_numbers": "Firmennummern",
+      "blocked_phone_numbers": "Gesperrte Nummern"
+    }
   },
   "Tasks": {
     "recurring": "Wiederkehrend",
@@ -110,7 +134,61 @@
       "repeat_mode": "Wiederholungsmodus",
       "repeat_interval_days": "Wiederholungsintervall (Tage)",
       "repeat_next_at": "Nächste Wiederholung am",
-      "repeat_source_task_id": "Quellaufgabe"
+      "repeat_source_task_id": "Quellaufgabe",
+      "work_time_range_id": "Arbeitszeitspanne",
+      "e164": "Telefon",
+      "label": "Bezeichnung",
+      "is_active": "Aktiv",
+      "is_primary": "Primär",
+      "phoneable_type": "Besitzertyp",
+      "phoneable_id": "Besitzer",
+      "vox_username": "Voximplant-Login",
+      "softphone_enabled": "Softphone aktiviert",
+      "mobile_dialer_enabled": "Mobiler Dialer",
+      "operator_profile_id": "Operatorprofil",
+      "phone_number_id": "Telefon",
+      "target_type": "Zieltyp",
+      "display_name": "Anzeigename",
+      "code": "Code",
+      "inbound_mode": "Eingangsmodus",
+      "customer_phone_number_id": "Kundentelefon",
+      "operator_phone_number_id": "Operatortelefon",
+      "customer_profile_id": "Kundenprofil",
+      "direction": "Anrufrichtung",
+      "source": "Quelle",
+      "call_record_transcription_text": "Anruftranskription",
+      "recording_upload": "Aufnahme-Upload",
+      "call_record_private_path": "Aufnahmepfad",
+      "started_at": "Beginn",
+      "answered_at": "Angenommen",
+      "ended_at": "Ende",
+      "session_id": "Sitzungs-ID",
+      "created_at": "Erstellt",
+      "updated_at": "Aktualisiert",
+      "dialed_company_number": "Gewählte Firmennummer",
+      "is_answered": "Angenommen",
+      "is_missed": "Verpasst",
+      "call_duration_seconds": "Gesprächsdauer",
+      "call_total_duration_seconds": "Sitzungsdauer",
+      "INN": "TIN",
+      "bank": "Bank",
+      "checking_account": "Checking account",
+      "correspondent_account": "Correspondent account",
+      "BIK": "BIC",
+      "country": "Country",
+      "city": "City",
+      "street": "Street",
+      "house_number": "House number",
+      "office_number": "Office number",
+      "index": "Postal code",
+      "organizational_legal_form_id": "Legal form",
+      "currency_id": "Currency",
+      "user_id": "User",
+      "base_rate": "Base rate",
+      "salary_currency_id": "Salary currency",
+      "utc_offset": "UTC offset",
+      "customer_company_ids": "Customer companies",
+      "project_ids": "Projects"
     }
   },
   "HeaderProfile": {
@@ -141,7 +219,13 @@
     },
     "created_at": "Erstellungsdatum",
     "apply": "Anwenden",
-    "clear": "Löschen"
+    "clear": "Löschen",
+    "WorkTimeRange": {
+      "self": "Arbeitszeitspanne",
+      "without": "Ohne Arbeitszeitspanne"
+    },
+    "currency": "Currency",
+    "organizational_legal_form": "Legal form"
   },
   "Search": {
     "self": "Suche",
@@ -297,6 +381,104 @@
     "PaymentMethod": {
       "invoicing": "Rechnungstellung",
       "credit_card": "Kreditkarte"
+    },
+    "PhoneNumber": {
+      "customer_company": "Kundenunternehmen",
+      "customer_profile": "Kundenprofil",
+      "worker_profile": "Mitarbeiterprofil"
+    },
+    "CallExtension": {
+      "crm_user": "CRM-Operator",
+      "pstn": "Externe Nummer (PSTN)"
+    },
+    "CompanyDialNumber": {
+      "full": "Voll",
+      "fast": "Schnell"
+    },
+    "Call": {
+      "inbound": "Eingehend",
+      "outbound": "Ausgehend",
+      "telephony_inbound": "Telefonie (eingehend)",
+      "telephony_outbound": "Telefonie (ausgehend)",
+      "mobile_dialer": "Mobiler Dialer",
+      "website_online": "Website online",
+      "manual": "Manuell"
     }
+  },
+  "Softphone": {
+    "title": "Softphone",
+    "new_call": "New call",
+    "incoming_call": "Incoming call…",
+    "in_progress": "In progress",
+    "on_hold": "On hold",
+    "call_ended": "Call ended",
+    "duration": "Duration: {{time}}",
+    "from_operator_profile": "Login aus Ihrem OperatorProfile.",
+    "vox_user": "Voximplant-Benutzer",
+    "vox_password": "Passwort",
+    "connect": "Verbinden",
+    "phone_number": "Nummer",
+    "call": "Anrufen",
+    "hangup": "Auflegen",
+    "call_again": "Call again",
+    "close": "Close",
+    "erase": "Erase",
+    "dial_pad": "Dial pad",
+    "mute_mic": "Mikro stumm",
+    "unmute_mic": "Mikro an",
+    "mute_speaker": "Lautsprecher stumm",
+    "unmute_speaker": "Lautsprecher an",
+    "incoming": "Eingehend",
+    "answer": "Annehmen",
+    "decline": "Ablehnen",
+    "status_disconnected": "Nicht verbunden",
+    "status_connecting": "Verbinden…",
+    "status_connected": "Verbunden",
+    "status_already_connected": "Bereits verbunden",
+    "status_credentials_required": "Login und Passwort erforderlich",
+    "status_connection_error": "Verbindungsfehler",
+    "status_ready_from_profile": "Bereit (aus OperatorProfile)",
+    "no_operator_profile": "Kein OperatorProfile",
+    "softphone_disabled": "Softphone im Profil deaktiviert",
+    "password_not_provisioned": "Passwort noch nicht vergeben — OperatorProfile neu erstellen oder manuell eingeben"
+  },
+  "Telephony": {
+    "account_overview": "Voximplant-Konto",
+    "balance": "Guthaben",
+    "account_name": "Kontoname",
+    "phone_numbers": "Nummern",
+    "no_phone_numbers": "Keine Nummern",
+    "low_balance_warning": "Niedriges Guthaben (Schwelle: {{threshold}})"
+  },
+  "Calls": {
+    "recording_upload_later": "Aufnahme-Upload ist später verfügbar",
+    "answered": "Angenommen",
+    "missed": "Verpasst",
+    "csat_scores": "CSAT-Bewertungen",
+    "csat_quality": "Qualität",
+    "csat_recommend": "Empfehlung",
+    "csat_resolved": "Gelöst",
+    "csat_speed": "Geschwindigkeit",
+    "links": "Links",
+    "call_record": "Anrufaufnahme",
+    "log_file": "Protokolldatei",
+    "no_links": "Keine Links"
+  },
+  "Currencies": {
+    "Currency": {
+      "rub": "Ruble",
+      "usd": "US Dollar",
+      "eur": "Euro",
+      "azn": "Azerbaijani Manat"
+    }
+  },
+  "OrganizationalLegalForms": {
+    "LLC": "LLC",
+    "IE": "IE",
+    "I": "Individual",
+    "PC": "PC",
+    "JSC": "JSC",
+    "PJSC": "PJSC",
+    "other": "Other"
   }
 }

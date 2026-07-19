@@ -69,7 +69,18 @@ export const WithActions: Story = {
 export const Loading: Story = {
   args: {
     isLoading: true,
-    skeletonActionCount: 3,
+    skeletonActionCount: 5,
+    skeletonEmployeeCount: 4,
+    skeletonShowProgress: true,
+  },
+}
+
+export const LoadingCompact: Story = {
+  args: {
+    isLoading: true,
+    skeletonActionCount: 2,
+    skeletonEmployeeCount: 0,
+    skeletonShowProgress: false,
   },
 }
 

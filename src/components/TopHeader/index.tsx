@@ -13,6 +13,8 @@ import { HeaderSearch } from '@components/HeaderSearch'
 import { HeaderChats } from '@components/HeaderChats'
 import { HeaderNotifications } from '@components/HeaderNotifications'
 import { HeaderProfile } from '@components/HeaderProfile'
+import { Softphone } from '@components/Softphone'
+import { TelephonyAccountOverview } from '@components/TelephonyAccountOverview'
 
 import styles from './index.module.scss'
 
@@ -54,7 +56,9 @@ export const TopHeader: React.FC = () => {
         </Flex>
 
         {authToken && (
-          <Flex justify='flex-end'>
+          <Flex justify='flex-end' align='center'>
+            <TelephonyAccountOverview />
+            <Softphone />
             <HeaderChats />
             <HeaderNotifications />
             <HeaderProfile />

@@ -19,7 +19,6 @@
   },
   "MenuItems": {
     "accounting": "Accounting",
-    "budget": "Budget",
     "call_history": "Call history",
     "general_permission_system": "General permission system",
     "projects": "Projects",
@@ -29,14 +28,39 @@
     "tasks": "Tasks",
     "work_time_ranges": "Work time ranges",
     "documents": "Documents",
+    "system_users": "System users",
+    "Budget": {
+      "self": "Budget",
+      "accounting": "Accounting",
+      "financial_operations": "Financial operations"
+    },
+    "Workflow": {
+      "self": "Workflow"
+    },
+    "Employees": {
+      "self": "Employees",
+      "profiles": "Profiles"
+    },
+    "KnowledgeBase": {
+      "self": "Knowledge base"
+    },
     "WorkingWithCustomers": {
       "self": "Working with customers",
-      "customers": "Customers",
+      "companies": "Companies",
+      "customer_profiles": "Customer profiles",
       "appeals": "Appeals",
       "support": "Support",
       "applications_from_website": "Applications from website"
     },
-    "employees": "Employees"
+    "Telephony": {
+      "self": "Telephony",
+      "calls": "Calls",
+      "phone_numbers": "Phone numbers",
+      "operator_profiles": "Operator profiles",
+      "call_extensions": "Call extensions",
+      "company_dial_numbers": "Company dial numbers",
+      "blocked_phone_numbers": "Blocked phone numbers"
+    }
   },
   "Tasks": {
     "recurring": "Recurring",
@@ -61,11 +85,9 @@
   "Form": {
     "phone": "Phone number",
     "password": "Password",
-
     "Common": {
       "enter": "Enter "
     },
-
     "BtnTexts": {
       "default": "Submit"
     },
@@ -80,7 +102,6 @@
       "website_url": "Website url",
       "comment": "Comment",
       "customer_visible_comment": "Customer visible comment",
-
       "status_id": "Status",
       "type_id": "Type",
       "customer_company_id": "Customer company",
@@ -93,10 +114,8 @@
       "contract_amount": "Contract amount",
       "billing_anchor_date": "Billing anchor date",
       "monitoring_enabled": "Monitoring enabled",
-
       "check_performance": "Check performance",
       "check_expirations": "Check expirations",
-
       "total_spent_time": "Total spent time",
       "total_time": "Time spent",
       "money": "Amount",
@@ -106,7 +125,6 @@
       "total_penalty_funds": "Penalties",
       "common_task_progress": "Common tasks progress",
       "progress": "Progress",
-
       "task_id": "Task",
       "worker_profile_id": "Worker",
       "reason_type": "Reason type",
@@ -116,7 +134,61 @@
       "repeat_mode": "Repeat mode",
       "repeat_interval_days": "Repeat interval (days)",
       "repeat_next_at": "Next repeat at",
-      "repeat_source_task_id": "Source task"
+      "repeat_source_task_id": "Source task",
+      "work_time_range_id": "Work time range",
+      "e164": "Phone number",
+      "label": "Label",
+      "is_active": "Active",
+      "is_primary": "Primary",
+      "phoneable_type": "Owner type",
+      "phoneable_id": "Owner",
+      "vox_username": "Voximplant username",
+      "softphone_enabled": "Softphone enabled",
+      "mobile_dialer_enabled": "Mobile dialer enabled",
+      "operator_profile_id": "Operator profile",
+      "phone_number_id": "Phone number",
+      "target_type": "Target type",
+      "display_name": "Display name",
+      "code": "Code",
+      "inbound_mode": "Inbound mode",
+      "customer_phone_number_id": "Customer phone",
+      "operator_phone_number_id": "Operator phone",
+      "customer_profile_id": "Customer profile",
+      "direction": "Call direction",
+      "source": "Source",
+      "call_record_transcription_text": "Call transcription",
+      "recording_upload": "Recording upload",
+      "call_record_private_path": "Recording path",
+      "started_at": "Started at",
+      "answered_at": "Answered at",
+      "ended_at": "Ended at",
+      "session_id": "Session ID",
+      "created_at": "Created at",
+      "updated_at": "Updated at",
+      "dialed_company_number": "Dialed company number",
+      "is_answered": "Answered",
+      "is_missed": "Missed",
+      "call_duration_seconds": "Talk duration",
+      "call_total_duration_seconds": "Session duration",
+      "INN": "TIN",
+      "bank": "Bank",
+      "checking_account": "Checking account",
+      "correspondent_account": "Correspondent account",
+      "BIK": "BIC",
+      "country": "Country",
+      "city": "City",
+      "street": "Street",
+      "house_number": "House number",
+      "office_number": "Office number",
+      "index": "Postal code",
+      "organizational_legal_form_id": "Legal form",
+      "currency_id": "Currency",
+      "user_id": "User",
+      "base_rate": "Base rate",
+      "salary_currency_id": "Salary currency",
+      "utc_offset": "UTC offset",
+      "customer_company_ids": "Customer companies",
+      "project_ids": "Projects"
     }
   },
   "HeaderProfile": {
@@ -139,6 +211,8 @@
     "direction_type": "Direction type",
     "payment_model": "Payment model",
     "payment_period": "Payment period",
+    "currency": "Currency",
+    "organizational_legal_form": "Legal form",
     "Deleted": {
       "self": "Deleted",
       "only_existing": "Only existing",
@@ -146,9 +220,12 @@
       "all": "All"
     },
     "created_at": "Creation date",
-
     "apply": "Apply",
-    "clear": "Clear"
+    "clear": "Clear",
+    "WorkTimeRange": {
+      "self": "Work time range",
+      "without": "Without work time range"
+    }
   },
   "Search": {
     "self": "Search",
@@ -188,7 +265,6 @@
   "Modes": {
     "creating": "Creating",
     "editing": "Editing",
-
     "simple": "Simple",
     "advanced": "Advanced"
   },
@@ -305,6 +381,104 @@
     "PaymentMethod": {
       "invoicing": "Invoicing",
       "credit_card": "Credit card"
+    },
+    "PhoneNumber": {
+      "customer_company": "Customer company",
+      "customer_profile": "Customer profile",
+      "worker_profile": "Worker profile"
+    },
+    "CallExtension": {
+      "crm_user": "CRM operator",
+      "pstn": "External number (PSTN)"
+    },
+    "CompanyDialNumber": {
+      "full": "Full",
+      "fast": "Fast"
+    },
+    "Call": {
+      "inbound": "Inbound",
+      "outbound": "Outbound",
+      "telephony_inbound": "Telephony (inbound)",
+      "telephony_outbound": "Telephony (outbound)",
+      "mobile_dialer": "Mobile dialer",
+      "website_online": "Website online",
+      "manual": "Manual"
     }
+  },
+  "Softphone": {
+    "title": "Softphone",
+    "new_call": "New call",
+    "incoming_call": "Incoming call…",
+    "in_progress": "In progress",
+    "on_hold": "On hold",
+    "call_ended": "Call ended",
+    "duration": "Duration: {{time}}",
+    "from_operator_profile": "Login from your OperatorProfile.",
+    "vox_user": "Voximplant user",
+    "vox_password": "Password",
+    "connect": "Connect",
+    "phone_number": "Phone number",
+    "call": "Call",
+    "hangup": "Hang up",
+    "call_again": "Call again",
+    "close": "Close",
+    "erase": "Erase",
+    "dial_pad": "Dial pad",
+    "mute_mic": "Mute microphone",
+    "unmute_mic": "Unmute microphone",
+    "mute_speaker": "Mute speaker",
+    "unmute_speaker": "Unmute speaker",
+    "incoming": "Incoming",
+    "answer": "Answer",
+    "decline": "Decline",
+    "status_disconnected": "Disconnected",
+    "status_connecting": "Connecting…",
+    "status_connected": "Connected",
+    "status_already_connected": "Already connected",
+    "status_credentials_required": "Username and password required",
+    "status_connection_error": "Connection error",
+    "status_ready_from_profile": "Ready (from OperatorProfile)",
+    "no_operator_profile": "No OperatorProfile",
+    "softphone_disabled": "Softphone disabled in profile",
+    "password_not_provisioned": "Password not provisioned yet — recreate OperatorProfile or enter manually"
+  },
+  "Telephony": {
+    "account_overview": "Voximplant account",
+    "balance": "Balance",
+    "account_name": "Account name",
+    "phone_numbers": "Phone numbers",
+    "no_phone_numbers": "No phone numbers",
+    "low_balance_warning": "Low balance (threshold: {{threshold}})"
+  },
+  "Calls": {
+    "recording_upload_later": "Recording upload will be available later",
+    "answered": "Answered",
+    "missed": "Missed",
+    "csat_scores": "CSAT scores",
+    "csat_quality": "Quality",
+    "csat_recommend": "Recommendation",
+    "csat_resolved": "Resolved",
+    "csat_speed": "Speed",
+    "links": "Links",
+    "call_record": "Call recording",
+    "log_file": "Log file",
+    "no_links": "No links"
+  },
+  "Currencies": {
+    "Currency": {
+      "rub": "Ruble",
+      "usd": "US Dollar",
+      "eur": "Euro",
+      "azn": "Azerbaijani Manat"
+    }
+  },
+  "OrganizationalLegalForms": {
+    "LLC": "LLC",
+    "IE": "IE",
+    "I": "Individual",
+    "PC": "PC",
+    "JSC": "JSC",
+    "PJSC": "PJSC",
+    "other": "Other"
   }
 }

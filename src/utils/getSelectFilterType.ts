@@ -1,22 +1,34 @@
 import { ProjectGroup } from '@api/models/project/queryGroup'
 import { DirectionGroup } from '@api/models/direction/queryGroup'
 import { CustomerCompanyGroup } from '@api/models/customerCompany/queryGroup'
+import { CustomerProfileGroup } from '@api/models/customerProfile/queryGroup'
+import { PhoneNumberGroup } from '@api/models/phoneNumber/queryGroup'
 import { TaskGroup } from '@api/models/task/queryGroup'
 import { WorkerProfileGroup } from '@api/models/workerProfile/queryGroup'
+import { OperatorProfileGroup } from '@api/models/operatorProfile/queryGroup'
+import { WorkTimeRangeGroup } from '@api/models/workTimeRange/queryGroup'
 
 export type Groups =
   | typeof ProjectGroup
   | typeof DirectionGroup
   | typeof CustomerCompanyGroup
+  | typeof CustomerProfileGroup
+  | typeof PhoneNumberGroup
   | typeof TaskGroup
   | typeof WorkerProfileGroup
+  | typeof OperatorProfileGroup
+  | typeof WorkTimeRangeGroup
 
 export enum SelectFilterTypeEnum {
   PROJECT = 'project',
   DIRECTION = 'direction',
   CUSTOMER_COMPANY = 'customerCompany',
+  CUSTOMER_PROFILE = 'customerProfile',
+  PHONE_NUMBER = 'phoneNumber',
   TASK = 'task',
   WORKER_PROFILE = 'worker_profile',
+  OPERATOR_PROFILE = 'operatorProfile',
+  WORK_TIME_RANGE = 'workTimeRange',
 }
 
 const getSelectFilterLangCode = (value: keyof typeof SelectFilterTypeEnum) => {
@@ -27,10 +39,18 @@ const getSelectFilterLangCode = (value: keyof typeof SelectFilterTypeEnum) => {
       return 'Form.EntitiesFields.direction_id'
     case 'CUSTOMER_COMPANY':
       return 'Form.EntitiesFields.customer_company_id'
+    case 'CUSTOMER_PROFILE':
+      return 'Form.EntitiesFields.customer_profile_id'
+    case 'PHONE_NUMBER':
+      return 'Form.EntitiesFields.phone_number_id'
     case 'TASK':
       return 'Form.EntitiesFields.task_id'
     case 'WORKER_PROFILE':
       return 'Form.EntitiesFields.worker_profile_id'
+    case 'OPERATOR_PROFILE':
+      return 'Form.EntitiesFields.operator_profile_id'
+    case 'WORK_TIME_RANGE':
+      return 'Form.EntitiesFields.work_time_range_id'
     default:
       return 'no_phrase'
   }
@@ -46,10 +66,18 @@ const getSelectFilterGroup = (
       return DirectionGroup
     case 'CUSTOMER_COMPANY':
       return CustomerCompanyGroup
+    case 'CUSTOMER_PROFILE':
+      return CustomerProfileGroup
+    case 'PHONE_NUMBER':
+      return PhoneNumberGroup
     case 'TASK':
       return TaskGroup
     case 'WORKER_PROFILE':
       return WorkerProfileGroup
+    case 'OPERATOR_PROFILE':
+      return OperatorProfileGroup
+    case 'WORK_TIME_RANGE':
+      return WorkTimeRangeGroup
   }
 }
 

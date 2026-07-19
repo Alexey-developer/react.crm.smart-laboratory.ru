@@ -19,7 +19,6 @@
   },
   "MenuItems": {
     "accounting": "会計",
-    "budget": "予算",
     "call_history": "通話履歴",
     "general_permission_system": "共通権限システム",
     "projects": "プロジェクト",
@@ -29,14 +28,39 @@
     "tasks": "タスク",
     "work_time_ranges": "勤務時間帯",
     "documents": "書類",
+    "system_users": "システムユーザー",
+    "Budget": {
+      "self": "予算",
+      "accounting": "会計",
+      "financial_operations": "財務操作"
+    },
+    "Workflow": {
+      "self": "ワークフロー"
+    },
+    "Employees": {
+      "self": "従業員",
+      "profiles": "プロフィール"
+    },
+    "KnowledgeBase": {
+      "self": "ナレッジベース"
+    },
     "WorkingWithCustomers": {
       "self": "顧客対応",
-      "customers": "顧客",
+      "companies": "企業",
+      "customer_profiles": "顧客プロフィール",
       "appeals": "申立て",
       "support": "サポート",
       "applications_from_website": "ウェブサイトからの申請"
     },
-    "employees": "従業員"
+    "Telephony": {
+      "self": "テレフォニー",
+      "calls": "通話",
+      "phone_numbers": "電話番号",
+      "operator_profiles": "オペレータープロファイル",
+      "call_extensions": "内線番号",
+      "company_dial_numbers": "会社番号",
+      "blocked_phone_numbers": "着信拒否番号"
+    }
   },
   "Tasks": {
     "recurring": "定期",
@@ -110,7 +134,61 @@
       "repeat_mode": "繰り返しモード",
       "repeat_interval_days": "繰り返し間隔（日）",
       "repeat_next_at": "次回繰り返し日時",
-      "repeat_source_task_id": "元タスク"
+      "repeat_source_task_id": "元タスク",
+      "work_time_range_id": "勤務時間帯",
+      "e164": "電話番号",
+      "label": "ラベル",
+      "is_active": "有効",
+      "is_primary": "主番号",
+      "phoneable_type": "所有者タイプ",
+      "phoneable_id": "所有者",
+      "vox_username": "Voximplant ログイン",
+      "softphone_enabled": "Softphone 有効",
+      "mobile_dialer_enabled": "モバイルダイヤラー",
+      "operator_profile_id": "オペレータープロファイル",
+      "phone_number_id": "電話番号",
+      "target_type": "ターゲット種別",
+      "display_name": "表示名",
+      "code": "コード",
+      "inbound_mode": "着信モード",
+      "customer_phone_number_id": "顧客電話",
+      "operator_phone_number_id": "オペレーター電話",
+      "customer_profile_id": "顧客プロファイル",
+      "direction": "通話方向",
+      "source": "ソース",
+      "call_record_transcription_text": "録音文字起こし",
+      "recording_upload": "録音アップロード",
+      "call_record_private_path": "録音パス",
+      "started_at": "開始",
+      "answered_at": "応答",
+      "ended_at": "終了",
+      "session_id": "セッション ID",
+      "created_at": "作成日時",
+      "updated_at": "更新日時",
+      "dialed_company_number": "発信先会社番号",
+      "is_answered": "応答済み",
+      "is_missed": "不在",
+      "call_duration_seconds": "通話時間",
+      "call_total_duration_seconds": "セッション時間",
+      "INN": "TIN",
+      "bank": "Bank",
+      "checking_account": "Checking account",
+      "correspondent_account": "Correspondent account",
+      "BIK": "BIC",
+      "country": "Country",
+      "city": "City",
+      "street": "Street",
+      "house_number": "House number",
+      "office_number": "Office number",
+      "index": "Postal code",
+      "organizational_legal_form_id": "Legal form",
+      "currency_id": "Currency",
+      "user_id": "User",
+      "base_rate": "Base rate",
+      "salary_currency_id": "Salary currency",
+      "utc_offset": "UTC offset",
+      "customer_company_ids": "Customer companies",
+      "project_ids": "Projects"
     }
   },
   "HeaderProfile": {
@@ -141,7 +219,13 @@
     },
     "created_at": "作成日",
     "apply": "適用",
-    "clear": "クリア"
+    "clear": "クリア",
+    "WorkTimeRange": {
+      "self": "勤務時間帯",
+      "without": "勤務時間帯なし"
+    },
+    "currency": "Currency",
+    "organizational_legal_form": "Legal form"
   },
   "Search": {
     "self": "検索",
@@ -297,6 +381,104 @@
     "PaymentMethod": {
       "invoicing": "請求書発行",
       "credit_card": "クレジットカード"
+    },
+    "PhoneNumber": {
+      "customer_company": "顧客会社",
+      "customer_profile": "顧客プロファイル",
+      "worker_profile": "従業員プロファイル"
+    },
+    "CallExtension": {
+      "crm_user": "CRM オペレーター",
+      "pstn": "外部番号（PSTN）"
+    },
+    "CompanyDialNumber": {
+      "full": "フル",
+      "fast": "ファスト"
+    },
+    "Call": {
+      "inbound": "着信",
+      "outbound": "発信",
+      "telephony_inbound": "テレフォニー（着信）",
+      "telephony_outbound": "テレフォニー（発信）",
+      "mobile_dialer": "モバイルダイヤラー",
+      "website_online": "サイトからオンライン",
+      "manual": "手動"
     }
+  },
+  "Softphone": {
+    "title": "Softphone",
+    "new_call": "New call",
+    "incoming_call": "Incoming call…",
+    "in_progress": "In progress",
+    "on_hold": "On hold",
+    "call_ended": "Call ended",
+    "duration": "Duration: {{time}}",
+    "from_operator_profile": "OperatorProfile からログイン。",
+    "vox_user": "Voximplant ユーザー",
+    "vox_password": "パスワード",
+    "connect": "接続",
+    "phone_number": "番号",
+    "call": "発信",
+    "hangup": "切断",
+    "call_again": "Call again",
+    "close": "Close",
+    "erase": "Erase",
+    "dial_pad": "Dial pad",
+    "mute_mic": "マイクオフ",
+    "unmute_mic": "マイクオン",
+    "mute_speaker": "スピーカーオフ",
+    "unmute_speaker": "スピーカーオン",
+    "incoming": "着信",
+    "answer": "応答",
+    "decline": "拒否",
+    "status_disconnected": "未接続",
+    "status_connecting": "接続中…",
+    "status_connected": "接続済み",
+    "status_already_connected": "既に接続済み",
+    "status_credentials_required": "ログインとパスワードが必要です",
+    "status_connection_error": "接続エラー",
+    "status_ready_from_profile": "準備完了（OperatorProfile）",
+    "no_operator_profile": "OperatorProfile がありません",
+    "softphone_disabled": "プロファイルで Softphone が無効です",
+    "password_not_provisioned": "パスワード未発行 — OperatorProfile を再作成するか手動入力してください"
+  },
+  "Telephony": {
+    "account_overview": "Voximplant アカウント",
+    "balance": "残高",
+    "account_name": "アカウント名",
+    "phone_numbers": "番号",
+    "no_phone_numbers": "番号がありません",
+    "low_balance_warning": "残高不足（しきい値: {{threshold}}）"
+  },
+  "Calls": {
+    "recording_upload_later": "録音アップロードは後で利用可能になります",
+    "answered": "応答済み",
+    "missed": "不在",
+    "csat_scores": "CSAT スコア",
+    "csat_quality": "品質",
+    "csat_recommend": "推奨",
+    "csat_resolved": "解決済み",
+    "csat_speed": "速度",
+    "links": "リンク",
+    "call_record": "通話録音",
+    "log_file": "ログファイル",
+    "no_links": "リンクなし"
+  },
+  "Currencies": {
+    "Currency": {
+      "rub": "Ruble",
+      "usd": "US Dollar",
+      "eur": "Euro",
+      "azn": "Azerbaijani Manat"
+    }
+  },
+  "OrganizationalLegalForms": {
+    "LLC": "LLC",
+    "IE": "IE",
+    "I": "Individual",
+    "PC": "PC",
+    "JSC": "JSC",
+    "PJSC": "PJSC",
+    "other": "Other"
   }
 }

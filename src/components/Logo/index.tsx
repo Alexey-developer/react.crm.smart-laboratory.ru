@@ -27,7 +27,7 @@ export const Logo: React.FC = () => {
             translated_phrase('Common.companyName') +
               ' ' +
               translated_phrase('Common.system_type') +
-              ' '}
+              'v2.0 '}
           <i
             className={getIcon('FLASK') + ' fa-fade'}
             style={{ animationDuration: '4s' }}

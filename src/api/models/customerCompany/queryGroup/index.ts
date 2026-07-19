@@ -1,9 +1,10 @@
 import { APIBase } from '@api/common/abstract/APIBase'
-import { ICRUDModel } from '@api/common/interfaces/ICRUDModel'
+import { ICRUDModel, type ID } from '@api/common/interfaces/ICRUDModel'
 import { RequestResult } from '@api/common/responseModels/requestResult'
 
-import { TCustomerCompanyResponse } from '../responseModels/TCustomerCompanyResponse'
-import { TCustomerCompanyParams } from '../params/TCustomerCompanyParams'
+import type { TCustomerCompanyResponse } from '../responseModels/TCustomerCompanyResponse'
+import type { TCustomerCompanyParams } from '../params/TCustomerCompanyParams'
+import type { TCustomerCompany } from '../type/TCustomerCompany'
 
 export class CustomerCompanyGroup extends APIBase implements ICRUDModel {
   readonly _URI: string
@@ -12,7 +13,7 @@ export class CustomerCompanyGroup extends APIBase implements ICRUDModel {
     super(token)
     this._URI = '/customer-companies'
   }
-  //   select = data => data.data
+
   index = async (
     params?: TCustomerCompanyParams
   ): Promise<RequestResult<TCustomerCompanyResponse[]>> => {
@@ -23,29 +24,38 @@ export class CustomerCompanyGroup extends APIBase implements ICRUDModel {
     return result
   }
 
-  show = async (
-    id: number
-  ): Promise<RequestResult<TCustomerCompanyResponse>> => {
+  show = async ({
+    id,
+  }: ID): Promise<RequestResult<TCustomerCompanyResponse>> => {
     const result = await this.get<TCustomerCompanyResponse>(
       `${this._URI}/${id}`
     )
 
     return result
   }
-  store = async (): Promise<RequestResult<TCustomerCompanyResponse>> => {
-    const result = await this.post<TCustomerCompanyResponse>(`${this._URI}`)
 
-    return result
-  }
-  update = async (
-    id: number
+  store = async (
+    entity: TCustomerCompany
   ): Promise<RequestResult<TCustomerCompanyResponse>> => {
-    const result = await this.put<TCustomerCompanyResponse>(
-      `${this._URI}/${id}`
+    const result = await this.post<TCustomerCompanyResponse>(
+      this._URI,
+      entity
     )
 
     return result
   }
+
+  update = async (
+    entity: TCustomerCompany
+  ): Promise<RequestResult<TCustomerCompanyResponse>> => {
+    const result = await this.put<TCustomerCompanyResponse>(
+      `${this._URI}/${entity.id}`,
+      entity
+    )
+
+    return result
+  }
+
   destroy = async (
     id: number
   ): Promise<RequestResult<TCustomerCompanyResponse>> => {
@@ -55,11 +65,12 @@ export class CustomerCompanyGroup extends APIBase implements ICRUDModel {
 
     return result
   }
+
   restore = async (
     id: number
   ): Promise<RequestResult<TCustomerCompanyResponse>> => {
-    const result = await this.post<TCustomerCompanyResponse>(
-      `${this._URI}/${id}/${this._restoreUri}`
+    const result = await this.Restore<TCustomerCompanyResponse>(
+      `${this._URI}/${id}`
     )
 
     return result

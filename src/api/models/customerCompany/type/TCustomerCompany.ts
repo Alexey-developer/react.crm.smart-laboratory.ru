@@ -1,21 +1,23 @@
-export type TCustomerCompany = {
-  id: number
+import { TEntityBaseModel } from '@api/common/types/TEntityBaseModel'
+import { TCurrency } from '@api/models/currency/type/TCurrency'
+import { TOrganizationalLegalForm } from '@api/models/organizationalLegalForm/type/TOrganizationalLegalForm'
+
+export type TCustomerCompany = TEntityBaseModel & {
   name: string
-  //   description: string
-  //   website_url?: string
-  //   comment: string
-  //   customer_visible_comment: string
-  //   total_spent_time: number
-  //   total_costs_auto: number
-  //   total_costs: number
-  //   total_costs_from_sales_percentage_auto: number
-  //   total_costs_from_sales_percentage: number
-  //   total_incomes: number
-  //   total_penalty_funds: number
-  //   common_task_progress: number
-  //   check_performance: boolean
-  //   check_expirations: boolean
-  //   created_at: string
-  //   updated_at: string
-  //   deleted_at: string
+  description: string | null
+  INN: string
+  bank: string | null
+  checking_account: string | null
+  correspondent_account: string | null
+  BIK: string | null
+  country: string
+  city: string | null
+  street: string | null
+  house_number: string | null
+  office_number: string | null
+  index: string | null
+  organizational_legal_form_id: number
+  currency_id: number
+  currency?: TCurrency
+  organizational_legal_form?: TOrganizationalLegalForm
 }

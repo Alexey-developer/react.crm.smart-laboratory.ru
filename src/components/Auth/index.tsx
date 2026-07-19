@@ -58,7 +58,7 @@ export const Auth: React.FC = () => {
     {
       name: 'phone',
       rules: [{ required: true }],
-      component: <PhoneInput nextInputRef={passwordInputRef} />,
+      component: <PhoneInput nextInputRef={passwordInputRef} autoFocus />,
     },
     {
       name: 'password',

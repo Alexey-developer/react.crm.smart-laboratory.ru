@@ -21,7 +21,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Маскированный ввод телефона: префикс (+7 / +994) из Redux `PhonePrefix`, маска antd-mask-input.',
+          'Маскированный ввод телефона: префикс (+7 / +994) из Redux `PhonePrefix`, маска antd-mask-input. `mode=\"e164\"` — Form control для CRUD (value = E.164).',
       },
     },
     reduxState: {
@@ -50,4 +50,19 @@ export const AzerbaijanPrefix: Story = {
       phonePrefix: { prefix: 994 },
     },
   },
+}
+
+export const E164EntityField: Story = {
+  args: {
+    mode: 'e164',
+    value: '+79001234567',
+  },
+  decorators: [
+    withStoryReduxState,
+    Story => (
+      <StoryForm initialValues={{ e164: '+79001234567' }}>
+        <Story />
+      </StoryForm>
+    ),
+  ],
 }

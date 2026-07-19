@@ -19,7 +19,6 @@
   },
   "MenuItems": {
     "accounting": "Бухгалтерлік есеп",
-    "budget": "Бюджет",
     "call_history": "Қоңыраулар тарихы",
     "general_permission_system": "Жалпы рұқсаттар жүйесі",
     "projects": "Жобалар",
@@ -29,14 +28,39 @@
     "tasks": "Тапсырмалар",
     "work_time_ranges": "Жұмыс уақыты аралықтары",
     "documents": "Құжаттар",
+    "system_users": "Жүйе пайдаланушылары",
+    "Budget": {
+      "self": "Бюджет",
+      "accounting": "Бухгалтерлік есеп",
+      "financial_operations": "Қаржылық операциялар"
+    },
+    "Workflow": {
+      "self": "Жұмыс процесі"
+    },
+    "Employees": {
+      "self": "Қызметкерлер",
+      "profiles": "Профильдер"
+    },
+    "KnowledgeBase": {
+      "self": "Білім базасы"
+    },
     "WorkingWithCustomers": {
       "self": "Клиенттермен жұмыс",
-      "customers": "Клиенттер",
+      "companies": "Компаниялар",
+      "customer_profiles": "Клиенттік профильдер",
       "appeals": "Өтініштер",
       "support": "Қолдау",
       "applications_from_website": "Веб-сайттан өтінімдер"
     },
-    "employees": "Қызметкерлер"
+    "Telephony": {
+      "self": "Телефония",
+      "calls": "Қоңыраулар",
+      "phone_numbers": "Телефондар",
+      "operator_profiles": "Оператор профильдері",
+      "call_extensions": "Ішкі нөмірлер",
+      "company_dial_numbers": "Компания нөмірлері",
+      "blocked_phone_numbers": "Бұғатталған нөмірлер"
+    }
   },
   "Tasks": {
     "recurring": "Қайталанатын",
@@ -110,7 +134,61 @@
       "repeat_mode": "Қайталау режимі",
       "repeat_interval_days": "Қайталау аралығы (күндер)",
       "repeat_next_at": "Келесі қайталау",
-      "repeat_source_task_id": "Бастапқы тапсырма"
+      "repeat_source_task_id": "Бастапқы тапсырма",
+      "work_time_range_id": "Жұмыс уақыты аралығы",
+      "e164": "Телефон",
+      "label": "Белгі",
+      "is_active": "Белсенді",
+      "is_primary": "Негізгі",
+      "phoneable_type": "Ие түрі",
+      "phoneable_id": "Иесі",
+      "vox_username": "Voximplant логині",
+      "softphone_enabled": "Softphone қосулы",
+      "mobile_dialer_enabled": "Мобильді dialer",
+      "operator_profile_id": "Оператор профилі",
+      "phone_number_id": "Телефон",
+      "target_type": "Тағайындау түрі",
+      "display_name": "Көрсетілетін атау",
+      "code": "Код",
+      "inbound_mode": "Кіріс режимі",
+      "customer_phone_number_id": "Клиент телефоны",
+      "operator_phone_number_id": "Оператор телефоны",
+      "customer_profile_id": "Клиент профилі",
+      "direction": "Қоңырау бағыты",
+      "source": "Көз",
+      "call_record_transcription_text": "Жазба транскрипциясы",
+      "recording_upload": "Жазбаны жүктеу",
+      "call_record_private_path": "Жазба жолы",
+      "started_at": "Басталуы",
+      "answered_at": "Жауап",
+      "ended_at": "Аяқталуы",
+      "session_id": "Сеанс ID",
+      "created_at": "Жасалды",
+      "updated_at": "Жаңартылды",
+      "dialed_company_number": "Терілген компания нөмірі",
+      "is_answered": "Жауап берілді",
+      "is_missed": "Өткізіп алынды",
+      "call_duration_seconds": "Сөйлесу ұзақтығы",
+      "call_total_duration_seconds": "Сеанс ұзақтығы",
+      "INN": "TIN",
+      "bank": "Bank",
+      "checking_account": "Checking account",
+      "correspondent_account": "Correspondent account",
+      "BIK": "BIC",
+      "country": "Country",
+      "city": "City",
+      "street": "Street",
+      "house_number": "House number",
+      "office_number": "Office number",
+      "index": "Postal code",
+      "organizational_legal_form_id": "Legal form",
+      "currency_id": "Currency",
+      "user_id": "User",
+      "base_rate": "Base rate",
+      "salary_currency_id": "Salary currency",
+      "utc_offset": "UTC offset",
+      "customer_company_ids": "Customer companies",
+      "project_ids": "Projects"
     }
   },
   "HeaderProfile": {
@@ -141,7 +219,13 @@
     },
     "created_at": "Жасалған күні",
     "apply": "Қолдану",
-    "clear": "Тазалау"
+    "clear": "Тазалау",
+    "WorkTimeRange": {
+      "self": "Жұмыс уақыты аралығы",
+      "without": "Уақыт аралығысыз"
+    },
+    "currency": "Currency",
+    "organizational_legal_form": "Legal form"
   },
   "Search": {
     "self": "Іздеу",
@@ -297,6 +381,104 @@
     "PaymentMethod": {
       "invoicing": "Шот ұсыну",
       "credit_card": "Несие картасы"
+    },
+    "PhoneNumber": {
+      "customer_company": "Клиент компаниясы",
+      "customer_profile": "Клиент профилі",
+      "worker_profile": "Қызметкер профилі"
+    },
+    "CallExtension": {
+      "crm_user": "CRM операторы",
+      "pstn": "Сыртқы нөмір (PSTN)"
+    },
+    "CompanyDialNumber": {
+      "full": "Толық",
+      "fast": "Жылдам"
+    },
+    "Call": {
+      "inbound": "Кіріс",
+      "outbound": "Шығыс",
+      "telephony_inbound": "Телефония (кіріс)",
+      "telephony_outbound": "Телефония (шығыс)",
+      "mobile_dialer": "Мобильді dialer",
+      "website_online": "Сайттан онлайн",
+      "manual": "Қолмен"
     }
+  },
+  "Softphone": {
+    "title": "Softphone",
+    "new_call": "New call",
+    "incoming_call": "Incoming call…",
+    "in_progress": "In progress",
+    "on_hold": "On hold",
+    "call_ended": "Call ended",
+    "duration": "Duration: {{time}}",
+    "from_operator_profile": "Логин OperatorProfile-дан.",
+    "vox_user": "Voximplant пайдаланушысы",
+    "vox_password": "Құпия сөз",
+    "connect": "Қосылу",
+    "phone_number": "Нөмір",
+    "call": "Қоңырау шалу",
+    "hangup": "Үзу",
+    "call_again": "Call again",
+    "close": "Close",
+    "erase": "Erase",
+    "dial_pad": "Dial pad",
+    "mute_mic": "Мик. өшіру",
+    "unmute_mic": "Мик. қосу",
+    "mute_speaker": "Дыбысты өшіру",
+    "unmute_speaker": "Дыбысты қосу",
+    "incoming": "Кіріс",
+    "answer": "Жауап беру",
+    "decline": "Қабылдамау",
+    "status_disconnected": "Қосылмаған",
+    "status_connecting": "Қосылуда…",
+    "status_connected": "Қосылған",
+    "status_already_connected": "Қазірдің өзінде қосылған",
+    "status_credentials_required": "Логин мен құпия сөз қажет",
+    "status_connection_error": "Қосылу қатесі",
+    "status_ready_from_profile": "Дайын (OperatorProfile)",
+    "no_operator_profile": "OperatorProfile жоқ",
+    "softphone_disabled": "Softphone профильде өшірулі",
+    "password_not_provisioned": "Құпия сөз әлі берілмеген — OperatorProfile-ды қайта жасаңыз немесе қолмен енгізіңіз"
+  },
+  "Telephony": {
+    "account_overview": "Voximplant тіркелгісі",
+    "balance": "Баланс",
+    "account_name": "Тіркелгі атауы",
+    "phone_numbers": "Нөмірлер",
+    "no_phone_numbers": "Нөмір жоқ",
+    "low_balance_warning": "Төмен баланс (шегі: {{threshold}})"
+  },
+  "Calls": {
+    "recording_upload_later": "Жазбаны жүктеу кейінірек қолжетімді болады",
+    "answered": "Жауап берілді",
+    "missed": "Өткізіп алынды",
+    "csat_scores": "CSAT бағалары",
+    "csat_quality": "Сапа",
+    "csat_recommend": "Ұсыныс",
+    "csat_resolved": "Шешілді",
+    "csat_speed": "Жылдамдық",
+    "links": "Сілтемелер",
+    "call_record": "Қоңырау жазбасы",
+    "log_file": "Журнал файлы",
+    "no_links": "Сілтеме жоқ"
+  },
+  "Currencies": {
+    "Currency": {
+      "rub": "Ruble",
+      "usd": "US Dollar",
+      "eur": "Euro",
+      "azn": "Azerbaijani Manat"
+    }
+  },
+  "OrganizationalLegalForms": {
+    "LLC": "LLC",
+    "IE": "IE",
+    "I": "Individual",
+    "PC": "PC",
+    "JSC": "JSC",
+    "PJSC": "PJSC",
+    "other": "Other"
   }
 }

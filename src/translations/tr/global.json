@@ -19,7 +19,6 @@
   },
   "MenuItems": {
     "accounting": "Muhasebe",
-    "budget": "Bütçe",
     "call_history": "Arama geçmişi",
     "general_permission_system": "Genel izin sistemi",
     "projects": "Projeler",
@@ -29,14 +28,39 @@
     "tasks": "Görevler",
     "work_time_ranges": "Çalışma zaman aralıkları",
     "documents": "Belgeler",
+    "system_users": "Sistem kullanıcıları",
+    "Budget": {
+      "self": "Bütçe",
+      "accounting": "Muhasebe",
+      "financial_operations": "Finansal işlemler"
+    },
+    "Workflow": {
+      "self": "İş akışı"
+    },
+    "Employees": {
+      "self": "Çalışanlar",
+      "profiles": "Profiller"
+    },
+    "KnowledgeBase": {
+      "self": "Bilgi tabanı"
+    },
     "WorkingWithCustomers": {
       "self": "Müşterilerle çalışma",
-      "customers": "Müşteriler",
+      "companies": "Şirketler",
+      "customer_profiles": "Müşteri profilleri",
       "appeals": "Başvurular",
       "support": "Destek",
       "applications_from_website": "Web sitesinden başvurular"
     },
-    "employees": "Çalışanlar"
+    "Telephony": {
+      "self": "Telefoni",
+      "calls": "Aramalar",
+      "phone_numbers": "Telefonlar",
+      "operator_profiles": "Operatör profilleri",
+      "call_extensions": "Dahili numaralar",
+      "company_dial_numbers": "Şirket numaraları",
+      "blocked_phone_numbers": "Engellenen numaralar"
+    }
   },
   "Tasks": {
     "recurring": "Tekrarlayan",
@@ -110,7 +134,61 @@
       "repeat_mode": "Tekrarlama modu",
       "repeat_interval_days": "Tekrarlama aralığı (gün)",
       "repeat_next_at": "Sonraki tekrar",
-      "repeat_source_task_id": "Kaynak görev"
+      "repeat_source_task_id": "Kaynak görev",
+      "work_time_range_id": "Çalışma zaman aralığı",
+      "e164": "Telefon",
+      "label": "Etiket",
+      "is_active": "Aktif",
+      "is_primary": "Birincil",
+      "phoneable_type": "Sahip türü",
+      "phoneable_id": "Sahip",
+      "vox_username": "Voximplant girişi",
+      "softphone_enabled": "Softphone açık",
+      "mobile_dialer_enabled": "Mobil arayıcı",
+      "operator_profile_id": "Operatör profili",
+      "phone_number_id": "Telefon",
+      "target_type": "Hedef türü",
+      "display_name": "Görünen ad",
+      "code": "Kod",
+      "inbound_mode": "Gelen modu",
+      "customer_phone_number_id": "Müşteri telefonu",
+      "operator_phone_number_id": "Operatör telefonu",
+      "customer_profile_id": "Müşteri profili",
+      "direction": "Arama yönü",
+      "source": "Kaynak",
+      "call_record_transcription_text": "Kayıt dökümü",
+      "recording_upload": "Kayıt yükleme",
+      "call_record_private_path": "Kayıt yolu",
+      "started_at": "Başlangıç",
+      "answered_at": "Yanıt",
+      "ended_at": "Bitiş",
+      "session_id": "Oturum ID",
+      "created_at": "Oluşturuldu",
+      "updated_at": "Güncellendi",
+      "dialed_company_number": "Çevrilen şirket numarası",
+      "is_answered": "Yanıtlandı",
+      "is_missed": "Cevapsız",
+      "call_duration_seconds": "Konuşma süresi",
+      "call_total_duration_seconds": "Oturum süresi",
+      "INN": "TIN",
+      "bank": "Bank",
+      "checking_account": "Checking account",
+      "correspondent_account": "Correspondent account",
+      "BIK": "BIC",
+      "country": "Country",
+      "city": "City",
+      "street": "Street",
+      "house_number": "House number",
+      "office_number": "Office number",
+      "index": "Postal code",
+      "organizational_legal_form_id": "Legal form",
+      "currency_id": "Currency",
+      "user_id": "User",
+      "base_rate": "Base rate",
+      "salary_currency_id": "Salary currency",
+      "utc_offset": "UTC offset",
+      "customer_company_ids": "Customer companies",
+      "project_ids": "Projects"
     }
   },
   "HeaderProfile": {
@@ -141,7 +219,13 @@
     },
     "created_at": "Oluşturma tarihi",
     "apply": "Uygula",
-    "clear": "Temizle"
+    "clear": "Temizle",
+    "WorkTimeRange": {
+      "self": "Çalışma zaman aralığı",
+      "without": "Zaman aralığı olmadan"
+    },
+    "currency": "Currency",
+    "organizational_legal_form": "Legal form"
   },
   "Search": {
     "self": "Arama",
@@ -297,6 +381,104 @@
     "PaymentMethod": {
       "invoicing": "Fatura kesme",
       "credit_card": "Kredi kartı"
+    },
+    "PhoneNumber": {
+      "customer_company": "Müşteri şirketi",
+      "customer_profile": "Müşteri profili",
+      "worker_profile": "Çalışan profili"
+    },
+    "CallExtension": {
+      "crm_user": "CRM operatörü",
+      "pstn": "Harici numara (PSTN)"
+    },
+    "CompanyDialNumber": {
+      "full": "Tam",
+      "fast": "Hızlı"
+    },
+    "Call": {
+      "inbound": "Gelen",
+      "outbound": "Giden",
+      "telephony_inbound": "Telefoni (gelen)",
+      "telephony_outbound": "Telefoni (giden)",
+      "mobile_dialer": "Mobil arayıcı",
+      "website_online": "Siteden çevrimiçi",
+      "manual": "Manuel"
     }
+  },
+  "Softphone": {
+    "title": "Softphone",
+    "new_call": "New call",
+    "incoming_call": "Incoming call…",
+    "in_progress": "In progress",
+    "on_hold": "On hold",
+    "call_ended": "Call ended",
+    "duration": "Duration: {{time}}",
+    "from_operator_profile": "OperatorProfile'dan giriş.",
+    "vox_user": "Voximplant kullanıcısı",
+    "vox_password": "Şifre",
+    "connect": "Bağlan",
+    "phone_number": "Numara",
+    "call": "Ara",
+    "hangup": "Kapat",
+    "call_again": "Call again",
+    "close": "Close",
+    "erase": "Erase",
+    "dial_pad": "Dial pad",
+    "mute_mic": "Mik. kapat",
+    "unmute_mic": "Mik. aç",
+    "mute_speaker": "Sesi kapat",
+    "unmute_speaker": "Sesi aç",
+    "incoming": "Gelen",
+    "answer": "Yanıtla",
+    "decline": "Reddet",
+    "status_disconnected": "Bağlı değil",
+    "status_connecting": "Bağlanıyor…",
+    "status_connected": "Bağlı",
+    "status_already_connected": "Zaten bağlı",
+    "status_credentials_required": "Kullanıcı adı ve şifre gerekli",
+    "status_connection_error": "Bağlantı hatası",
+    "status_ready_from_profile": "Hazır (OperatorProfile)",
+    "no_operator_profile": "OperatorProfile yok",
+    "softphone_disabled": "Softphone profilde kapalı",
+    "password_not_provisioned": "Şifre henüz verilmedi — OperatorProfile'ı yeniden oluşturun veya elle girin"
+  },
+  "Telephony": {
+    "account_overview": "Voximplant hesabı",
+    "balance": "Bakiye",
+    "account_name": "Hesap adı",
+    "phone_numbers": "Numaralar",
+    "no_phone_numbers": "Numara yok",
+    "low_balance_warning": "Düşük bakiye (eşik: {{threshold}})"
+  },
+  "Calls": {
+    "recording_upload_later": "Kayıt yükleme daha sonra kullanılabilir olacak",
+    "answered": "Yanıtlandı",
+    "missed": "Cevapsız",
+    "csat_scores": "CSAT puanları",
+    "csat_quality": "Kalite",
+    "csat_recommend": "Tavsiye",
+    "csat_resolved": "Çözüldü",
+    "csat_speed": "Hız",
+    "links": "Bağlantılar",
+    "call_record": "Arama kaydı",
+    "log_file": "Günlük dosyası",
+    "no_links": "Bağlantı yok"
+  },
+  "Currencies": {
+    "Currency": {
+      "rub": "Ruble",
+      "usd": "US Dollar",
+      "eur": "Euro",
+      "azn": "Azerbaijani Manat"
+    }
+  },
+  "OrganizationalLegalForms": {
+    "LLC": "LLC",
+    "IE": "IE",
+    "I": "Individual",
+    "PC": "PC",
+    "JSC": "JSC",
+    "PJSC": "PJSC",
+    "other": "Other"
   }
 }

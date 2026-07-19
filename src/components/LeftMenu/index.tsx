@@ -41,7 +41,8 @@ export const LeftMenu: React.FC = () => {
     )
 
     const convertedMenuItem: ItemType = {
-      key: leftMenuItem.path,
+      // Groups use explicit `key` — empty `path` must not be shared across submenus.
+      key: leftMenuItem.key ?? leftMenuItem.path,
       label: leftMenuItem.childrenMenuItems ? (
         label
       ) : (

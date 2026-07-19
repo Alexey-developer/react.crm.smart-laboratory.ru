@@ -66,7 +66,16 @@ type EntityIndexProps = {
   entityFilters: Filters
   FormContent: (entity: any) => React.ReactNode
   actionIndexes: number[]
+  /** Per-entity override (e.g. hide edit for non-manual calls). */
+  resolveActionIndexes?: (entity: any) => number[]
   formActions?: EntityFormActionsConfig
+  /** Avatar circles in list loading skeleton (default 4; WTR = 1; compact cards = 0). */
+  skeletonEmployeeCount?: number
+  /**
+   * Progress + metric strip in list skeleton.
+   * Default follows `skeletonEmployeeCount >= 2`. Pass `false` for OperatorProfile / telephony / companies / profiles.
+   */
+  skeletonShowProgress?: boolean
   extraTopComponents?: React.ReactNode[]
   viewType?: ViewType
   state?: TState
@@ -82,7 +91,10 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
   entityFilters,
   FormContent,
   actionIndexes,
+  resolveActionIndexes,
   formActions,
+  skeletonEmployeeCount = 4,
+  skeletonShowProgress,
   extraTopComponents,
   viewType,
   state,
@@ -167,7 +179,9 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
 
     const cardActions = useFormActions(
         entity.id,
-        entity.deleted_at ? [3] : actionIndexes,
+        entity.deleted_at
+          ? [3]
+          : (resolveActionIndexes?.(entity) ?? actionIndexes),
         () => {
           entity.deleted_at
             ? mutateAsyncRestore(entity.id).then(() => refetch())
@@ -339,7 +353,7 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
       label: 'total',
       children: (
         <Space direction='vertical'>
-          {data?.meta.total_calculations.map(
+          {(data?.meta.total_calculations ?? []).map(
             (attribute: Attribute, index: number) => (
               <Calculation key={index} attribute={attribute} />
             )
@@ -353,7 +367,7 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
       label: 'average',
       children: (
         <Space direction='vertical'>
-          {data?.meta.average_calculations.map(
+          {(data?.meta.average_calculations ?? []).map(
             (attribute: Attribute, index: number) => (
               <Calculation key={index} attribute={attribute} />
             )
@@ -443,6 +457,8 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
               <DefaultCard
                 isLoading={isLoading || isFetching}
                 skeletonActionCount={actionIndexes.length}
+                skeletonEmployeeCount={skeletonEmployeeCount}
+                skeletonShowProgress={skeletonShowProgress}
                 key={i}
                 title=''
                 content={<></>}

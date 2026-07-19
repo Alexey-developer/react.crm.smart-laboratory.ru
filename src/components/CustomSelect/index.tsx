@@ -13,11 +13,18 @@ import {
 } from '@utils/getSelectFilterType'
 import { getMethod } from '@utils/getMethod'
 import { constants } from '@utils/constants/constants.json'
+import { formatE164Display } from '@utils/phoneE164'
 
 type SelectOptionSource = {
   id: number
   name?: string
+  e164?: string
+  label?: string | null
+  vox_username?: string
+  start_at?: string
+  end_at?: string
   user?: { name?: string }
+  worker_profile?: { user?: { name?: string } }
 }
 
 const getSelectOptionLabel = (
@@ -27,6 +34,32 @@ const getSelectOptionLabel = (
   if (type === 'WORKER_PROFILE') {
     const workerName = select.user?.name ?? ''
     return `${select.id} ${workerName}`.trim()
+  }
+
+  if (type === 'OPERATOR_PROFILE') {
+    const operatorName = select.worker_profile?.user?.name ?? ''
+    const vox = select.vox_username ? ` (${select.vox_username})` : ''
+    return `${select.id} ${operatorName}${vox}`.trim()
+  }
+
+  if (type === 'PHONE_NUMBER') {
+    const phoneLabel = select.label ? ` (${select.label})` : ''
+    const e164 = select.e164 ? formatE164Display(select.e164) : ''
+    return `${select.id} ${e164}${phoneLabel}`.trim()
+  }
+
+  if (type === 'CUSTOMER_PROFILE') {
+    const profileName = select.user?.name ?? ''
+    return `${select.id} ${profileName}`.trim()
+  }
+
+  if (type === 'WORK_TIME_RANGE') {
+    const workerName = select.worker_profile?.user?.name ?? ''
+    const range =
+      select.start_at && select.end_at
+        ? `${select.start_at} — ${select.end_at}`
+        : ''
+    return `${select.id} ${workerName} ${range}`.trim()
   }
 
   return `${select.id} ${select.name ?? ''}`.trim()

@@ -19,7 +19,6 @@
   },
   "MenuItems": {
     "accounting": "Бухгалтерский учёт",
-    "budget": "Бюджет",
     "call_history": "История звонков",
     "general_permission_system": "Система общих разрешений",
     "projects": "Проекты",
@@ -29,14 +28,39 @@
     "tasks": "Задачи",
     "work_time_ranges": "Временные диапазоны",
     "documents": "Документы",
+    "system_users": "Пользователи системы",
+    "Budget": {
+      "self": "Бюджет",
+      "accounting": "Бухгалтерский учёт",
+      "financial_operations": "Финансовые операции"
+    },
+    "Workflow": {
+      "self": "Рабочий процесс"
+    },
+    "Employees": {
+      "self": "Сотрудники",
+      "profiles": "Профили"
+    },
+    "KnowledgeBase": {
+      "self": "База знаний"
+    },
     "WorkingWithCustomers": {
       "self": "Работа с клиентами",
-      "customers": "Клиенты",
+      "companies": "Компании",
+      "customer_profiles": "Клиентские профили",
       "appeals": "Обращения",
       "support": "Поддержка",
       "applications_from_website": "Заявки с вебсайта"
     },
-    "employees": "Сотрудники"
+    "Telephony": {
+      "self": "Телефония",
+      "calls": "Звонки",
+      "phone_numbers": "Телефоны",
+      "operator_profiles": "Профили операторов",
+      "call_extensions": "Внутренние номера",
+      "company_dial_numbers": "Номера компании",
+      "blocked_phone_numbers": "Блокировка номеров"
+    }
   },
   "Tasks": {
     "recurring": "Регулярная",
@@ -61,11 +85,9 @@
   "Form": {
     "phone": "Номер телефона",
     "password": "Пароль",
-
     "Common": {
       "enter": "Введите "
     },
-
     "BtnTexts": {
       "default": "Отправить"
     },
@@ -80,7 +102,6 @@
       "website_url": "Ссылка на веб-сайт",
       "comment": "Комментарий",
       "customer_visible_comment": "Комментарий, видимый клиенту",
-
       "status_id": "Статус",
       "type_id": "Тип",
       "customer_company_id": "Компания-клиент",
@@ -93,10 +114,8 @@
       "contract_amount": "Сумма договора",
       "billing_anchor_date": "Дата начала биллинга",
       "monitoring_enabled": "Мониторинг включён",
-
       "check_performance": "Проверять работоспособность",
       "check_expirations": "Проверять экспирации",
-
       "total_spent_time": "Общее затраченное время",
       "total_time": "Затраченное время",
       "money": "Сумма",
@@ -106,7 +125,6 @@
       "total_penalty_funds": "Штрафные взыскания",
       "common_task_progress": "Общий прогресс выполнения задач",
       "progress": "Прогресс",
-
       "task_id": "Задача",
       "worker_profile_id": "Сотрудник",
       "reason_type": "Тип причины",
@@ -116,7 +134,61 @@
       "repeat_mode": "Режим повторения",
       "repeat_interval_days": "Интервал повторения (дни)",
       "repeat_next_at": "Следующее повторение",
-      "repeat_source_task_id": "Исходная задача"
+      "repeat_source_task_id": "Исходная задача",
+      "work_time_range_id": "Временной диапазон",
+      "e164": "Телефон",
+      "label": "Метка",
+      "is_active": "Активен",
+      "is_primary": "Основной",
+      "phoneable_type": "Тип владельца",
+      "phoneable_id": "Владелец",
+      "vox_username": "Voximplant логин",
+      "softphone_enabled": "Softphone включён",
+      "mobile_dialer_enabled": "Мобильный dialer",
+      "operator_profile_id": "Профиль оператора",
+      "phone_number_id": "Телефон",
+      "target_type": "Тип назначения",
+      "display_name": "Отображаемое имя",
+      "code": "Код",
+      "inbound_mode": "Режим входящих",
+      "customer_phone_number_id": "Телефон клиента",
+      "operator_phone_number_id": "Телефон оператора",
+      "customer_profile_id": "Профиль клиента",
+      "direction": "Направление звонка",
+      "source": "Источник",
+      "call_record_transcription_text": "Транскрипция записи",
+      "recording_upload": "Загрузка записи",
+      "call_record_private_path": "Путь к записи",
+      "started_at": "Начало",
+      "answered_at": "Ответ",
+      "ended_at": "Окончание",
+      "session_id": "ID сессии",
+      "created_at": "Создано",
+      "updated_at": "Обновлено",
+      "dialed_company_number": "Набранный номер компании",
+      "is_answered": "Отвечен",
+      "is_missed": "Пропущен",
+      "call_duration_seconds": "Длительность разговора",
+      "call_total_duration_seconds": "Длительность сессии",
+      "INN": "ИНН",
+      "bank": "Банк",
+      "checking_account": "Расчётный счёт",
+      "correspondent_account": "Корреспондентский счёт",
+      "BIK": "БИК",
+      "country": "Страна",
+      "city": "Город",
+      "street": "Улица",
+      "house_number": "Дом",
+      "office_number": "Офис",
+      "index": "Индекс",
+      "organizational_legal_form_id": "Организационно-правовая форма",
+      "currency_id": "Валюта",
+      "user_id": "Пользователь",
+      "base_rate": "Базовая ставка",
+      "salary_currency_id": "Валюта зарплаты",
+      "utc_offset": "Смещение UTC",
+      "customer_company_ids": "Компании-клиенты",
+      "project_ids": "Проекты"
     }
   },
   "HeaderProfile": {
@@ -139,6 +211,8 @@
     "direction_type": "Тип направления",
     "payment_model": "Модель оплаты",
     "payment_period": "Период оплаты",
+    "currency": "Валюта",
+    "organizational_legal_form": "Организационно-правовая форма",
     "Deleted": {
       "self": "Удалённые",
       "only_existing": "Только существующие",
@@ -146,7 +220,10 @@
       "all": "Все"
     },
     "created_at": "Дата создания",
-
+    "WorkTimeRange": {
+      "self": "Временной диапазон",
+      "without": "Без временного диапазона"
+    },
     "apply": "Применить",
     "clear": "Очистить"
   },
@@ -188,7 +265,6 @@
   "Modes": {
     "creating": "Создание",
     "editing": "Редактирование",
-
     "simple": "Простой",
     "advanced": "Расширенный"
   },
@@ -305,6 +381,104 @@
     "PaymentMethod": {
       "invoicing": "По реквизитам (выставление счёта)",
       "credit_card": "Перевод (на карту)"
+    },
+    "PhoneNumber": {
+      "customer_company": "Компания-клиент",
+      "customer_profile": "Профиль клиента",
+      "worker_profile": "Профиль сотрудника"
+    },
+    "CallExtension": {
+      "crm_user": "Оператор CRM",
+      "pstn": "Внешний номер (PSTN)"
+    },
+    "CompanyDialNumber": {
+      "full": "Полный",
+      "fast": "Быстрый"
+    },
+    "Call": {
+      "inbound": "Входящий",
+      "outbound": "Исходящий",
+      "telephony_inbound": "Телефония (входящий)",
+      "telephony_outbound": "Телефония (исходящий)",
+      "mobile_dialer": "Мобильный dialer",
+      "website_online": "Онлайн с сайта",
+      "manual": "Ручной"
     }
+  },
+  "Softphone": {
+    "title": "Softphone",
+    "new_call": "Новый звонок",
+    "incoming_call": "Входящий звонок…",
+    "in_progress": "Идёт разговор",
+    "on_hold": "На удержании",
+    "call_ended": "Звонок завершён",
+    "duration": "Длительность: {{time}}",
+    "from_operator_profile": "Логин из вашего OperatorProfile.",
+    "vox_user": "Пользователь Voximplant",
+    "vox_password": "Пароль",
+    "connect": "Подключить",
+    "phone_number": "Номер",
+    "call": "Позвонить",
+    "hangup": "Завершить",
+    "call_again": "Позвонить снова",
+    "close": "Закрыть",
+    "erase": "Стереть",
+    "dial_pad": "Клавиатура",
+    "mute_mic": "Выключить микрофон",
+    "unmute_mic": "Включить микрофон",
+    "mute_speaker": "Выключить звук",
+    "unmute_speaker": "Включить звук",
+    "incoming": "Входящий",
+    "answer": "Ответить",
+    "decline": "Отклонить",
+    "status_disconnected": "Не подключён",
+    "status_connecting": "Подключение…",
+    "status_connected": "Подключён",
+    "status_already_connected": "Уже подключён",
+    "status_credentials_required": "Нужны логин и пароль",
+    "status_connection_error": "Ошибка подключения",
+    "status_ready_from_profile": "Готов (из OperatorProfile)",
+    "no_operator_profile": "Нет OperatorProfile",
+    "softphone_disabled": "Softphone выключен в профиле",
+    "password_not_provisioned": "Пароль ещё не выдан — пересоздайте OperatorProfile или введите вручную"
+  },
+  "Telephony": {
+    "account_overview": "Аккаунт Voximplant",
+    "balance": "Баланс",
+    "account_name": "Имя аккаунта",
+    "phone_numbers": "Номера",
+    "no_phone_numbers": "Нет номеров",
+    "low_balance_warning": "Низкий баланс (порог: {{threshold}})"
+  },
+  "Calls": {
+    "recording_upload_later": "Загрузка записи будет доступна позже",
+    "answered": "Отвечен",
+    "missed": "Пропущен",
+    "csat_scores": "Оценки CSAT",
+    "csat_quality": "Качество",
+    "csat_recommend": "Рекомендация",
+    "csat_resolved": "Решено",
+    "csat_speed": "Скорость",
+    "links": "Ссылки",
+    "call_record": "Запись звонка",
+    "log_file": "Файл журнала",
+    "no_links": "Нет ссылок"
+  },
+  "Currencies": {
+    "Currency": {
+      "rub": "Рубль",
+      "usd": "Доллар США",
+      "eur": "Евро",
+      "azn": "Азербайджанский манат"
+    }
+  },
+  "OrganizationalLegalForms": {
+    "LLC": "ООО",
+    "IE": "ИП",
+    "I": "Физлицо",
+    "PC": "ОАО",
+    "JSC": "АО",
+    "PJSC": "ПАО",
+    "other": "Другое"
   }
 }

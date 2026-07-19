@@ -1,0 +1,366 @@
+@import '@components/TopHeader/index.module.scss';
+@import '@utils/scss/variables.scss';
+
+.shell {
+  width: 340px;
+  max-width: min(340px, calc(100vw - 32px));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 12px;
+  background: $LIGHT_ELEMENT_BG;
+  color: $LIGHT_HOVER_COLOR;
+  border: 1px solid rgba(47, 43, 61, 0.08);
+  box-shadow: $LIGHT_LARGE_SHADOW;
+}
+
+.title {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: $LIGHT_COLOR;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.title_accent {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: $DEFAULT_COLOR;
+}
+
+.status_line {
+  width: 100%;
+  font-size: 12px;
+  color: $LIGHT_COLOR;
+  text-align: center;
+}
+
+.status_active {
+  font-size: 13px;
+  font-weight: 600;
+  color: $SUCCESS_COLOR;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status_hold {
+  font-size: 13px;
+  font-weight: 600;
+  color: $WARNING_COLOR;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.phone_row {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 44px;
+  padding: 0 10px;
+  border-radius: $BORDER_RADIUS;
+  background: $LIGHT_BG;
+  border: 1px solid rgba(47, 43, 61, 0.08);
+}
+
+.phone_icon {
+  color: $LIGHT_COLOR;
+  font-size: 14px;
+}
+
+.prefix_wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.prefix_value {
+  color: $LIGHT_HOVER_COLOR;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.prefix_chevron {
+  font-size: 9px;
+  color: $LIGHT_COLOR;
+}
+
+.prefix_dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 10;
+  min-width: 84px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px;
+  border-radius: $BORDER_RADIUS;
+  background: $LIGHT_ELEMENT_BG;
+  border: 1px solid rgba(47, 43, 61, 0.08);
+  box-shadow: $LIGHT_LARGE_SHADOW;
+}
+
+.prefix_option {
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: $LIGHT_COLOR;
+  background: transparent;
+}
+
+.prefix_option_active {
+  color: #fff;
+  background: $DEFAULT_COLOR;
+}
+
+.phone_sep {
+  width: 1px;
+  align-self: stretch;
+  margin: 8px 0;
+  background: rgba(47, 43, 61, 0.08);
+}
+
+.phone_input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: $LIGHT_HOVER_COLOR;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.dial_pad {
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  gap: 12px;
+}
+
+.dial_key {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: $LIGHT_HOVER_COLOR;
+  background: $LIGHT_BG;
+  border: 1px solid rgba(47, 43, 61, 0.08);
+}
+
+.dial_letters {
+  font-size: 9px;
+  font-weight: 400;
+  color: $LIGHT_COLOR;
+  letter-spacing: 1px;
+}
+
+.actions_row {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  align-items: center;
+}
+
+.actions_row_wide {
+  display: flex;
+  gap: 32px;
+  margin-top: 8px;
+  align-items: center;
+}
+
+.actions_row_controls {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.click_wrap {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.click_wrap_disabled {
+  display: inline-flex;
+  cursor: not-allowed;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.round_btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $ACTIVE_ELEMENT_BOX_SHADOW;
+  background: $DEFAULT_COLOR;
+}
+
+.round_btn_success {
+  background: $SUCCESS_COLOR;
+  box-shadow: rgba(40, 199, 111, 0.48) 0 2px 6px;
+}
+
+.round_btn_danger {
+  background: $DANGER_COLOR;
+  box-shadow: $DANGER_ELEMENT_BOX_SHADOW;
+}
+
+.round_btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.peer_block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.peer_name {
+  font-size: 18px;
+  font-weight: 600;
+  color: $LIGHT_HOVER_COLOR;
+  text-align: center;
+}
+
+.peer_phone {
+  font-size: 14px;
+  color: $LIGHT_COLOR;
+  text-align: center;
+}
+
+.timer {
+  font-size: 32px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: $LIGHT_HOVER_COLOR;
+}
+
+.ended_card {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 16px;
+  border-radius: 14px;
+  background: $LIGHT_BG;
+  border: 1px solid rgba(47, 43, 61, 0.08);
+}
+
+.ended_status {
+  font-size: 13px;
+  font-weight: 600;
+  color: $SUCCESS_COLOR;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ended_duration {
+  font-size: 22px;
+  font-weight: 700;
+  color: $LIGHT_HOVER_COLOR;
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+.mute_hints {
+  font-size: 12px;
+  color: $LIGHT_COLOR;
+  text-align: center;
+}
+
+[data-theme='dark'] {
+  .shell {
+    background: $DARK_ELEMENT_BG;
+    color: $DARK_HOVER_COLOR;
+    border-color: rgba(208, 212, 241, 0.12);
+    box-shadow: $DARK_LARGE_SHADOW;
+  }
+
+  .title {
+    color: $DARK_COLOR;
+  }
+
+  .status_line {
+    color: $DARK_COLOR;
+  }
+
+  .phone_row {
+    background: $DARK_BG;
+    border-color: rgba(208, 212, 241, 0.12);
+  }
+
+  .phone_icon,
+  .prefix_chevron,
+  .dial_letters,
+  .peer_phone,
+  .mute_hints {
+    color: $DARK_COLOR;
+  }
+
+  .prefix_value,
+  .phone_input,
+  .dial_key,
+  .peer_name,
+  .timer,
+  .ended_duration {
+    color: $DARK_HOVER_COLOR;
+  }
+
+  .prefix_dropdown {
+    background: $DARK_BG;
+    border-color: rgba(208, 212, 241, 0.12);
+    box-shadow: $DARK_LARGE_SHADOW;
+  }
+
+  .prefix_option {
+    color: $DARK_COLOR;
+  }
+
+  .phone_sep {
+    background: rgba(208, 212, 241, 0.12);
+  }
+
+  .dial_key {
+    background: $DARK_BG;
+    border-color: rgba(208, 212, 241, 0.12);
+  }
+
+  .ended_card {
+    background: $DARK_BG;
+    border-color: rgba(208, 212, 241, 0.12);
+  }
+}

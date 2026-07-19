@@ -38,10 +38,13 @@ export const CustomSimpleSelect: React.FC<CustomSimpleSelectProps> = ({
   )
 
   data?.map((selectOption: { lang_code: string; id: number }) => {
+    const langKey = selectOption.lang_code.includes('.')
+      ? selectOption.lang_code
+      : `OrganizationalLegalForms.${selectOption.lang_code}`
+
     options.push({
-      label: translated_phrase(selectOption.lang_code),
+      label: translated_phrase(langKey),
       value: selectOption.id,
-      //   key: selectOption.lang_code,
     })
   })
 

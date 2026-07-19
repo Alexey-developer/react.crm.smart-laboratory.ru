@@ -19,7 +19,6 @@
   },
   "MenuItems": {
     "accounting": "Бухгалтарскі ўлік",
-    "budget": "Бюджэт",
     "call_history": "Гісторыя званкоў",
     "general_permission_system": "Агульная сістэма дазволаў",
     "projects": "Праекты",
@@ -29,14 +28,39 @@
     "tasks": "Задачы",
     "work_time_ranges": "Працоўныя часавыя дыяпазоны",
     "documents": "Дакументы",
+    "system_users": "Карыстальнікі сістэмы",
+    "Budget": {
+      "self": "Бюджэт",
+      "accounting": "Бухгалтарскі ўлік",
+      "financial_operations": "Фінансавыя аперацыі"
+    },
+    "Workflow": {
+      "self": "Працоўны працэс"
+    },
+    "Employees": {
+      "self": "Супрацоўнікі",
+      "profiles": "Профілі"
+    },
+    "KnowledgeBase": {
+      "self": "База ведаў"
+    },
     "WorkingWithCustomers": {
       "self": "Праца з кліентамі",
-      "customers": "Кліенты",
+      "companies": "Кампаніі",
+      "customer_profiles": "Кліенцкія профілі",
       "appeals": "Звароты",
       "support": "Падтрымка",
       "applications_from_website": "Заяўкі з вэб-сайта"
     },
-    "employees": "Супрацоўнікі"
+    "Telephony": {
+      "self": "Тэлефанія",
+      "calls": "Званкі",
+      "phone_numbers": "Тэлефоны",
+      "operator_profiles": "Профілі аператараў",
+      "call_extensions": "Унутраныя нумары",
+      "company_dial_numbers": "Нумары кампаніі",
+      "blocked_phone_numbers": "Блакіроўка нумароў"
+    }
   },
   "Tasks": {
     "recurring": "Рэгулярная",
@@ -110,7 +134,61 @@
       "repeat_mode": "Рэжым паўтарэння",
       "repeat_interval_days": "Інтэрвал паўтарэння (дні)",
       "repeat_next_at": "Наступнае паўтарэнне",
-      "repeat_source_task_id": "Зыходная задача"
+      "repeat_source_task_id": "Зыходная задача",
+      "work_time_range_id": "Працоўны часавы дыяпазон",
+      "e164": "Тэлефон",
+      "label": "Метка",
+      "is_active": "Актыўны",
+      "is_primary": "Асноўны",
+      "phoneable_type": "Тып уладальніка",
+      "phoneable_id": "Уладальнік",
+      "vox_username": "Voximplant логін",
+      "softphone_enabled": "Softphone уключаны",
+      "mobile_dialer_enabled": "Мабільны dialer",
+      "operator_profile_id": "Профіль аператара",
+      "phone_number_id": "Тэлефон",
+      "target_type": "Тып прызначэння",
+      "display_name": "Адлюстроўванае імя",
+      "code": "Код",
+      "inbound_mode": "Рэжым уваходных",
+      "customer_phone_number_id": "Тэлефон кліента",
+      "operator_phone_number_id": "Тэлефон аператара",
+      "customer_profile_id": "Профіль кліента",
+      "direction": "Кірунак званка",
+      "source": "Крыніца",
+      "call_record_transcription_text": "Транскрыпцыя запісу",
+      "recording_upload": "Загрузка запісу",
+      "call_record_private_path": "Шлях да запісу",
+      "started_at": "Пачатак",
+      "answered_at": "Адказ",
+      "ended_at": "Заканчэнне",
+      "session_id": "ID сесіі",
+      "created_at": "Створана",
+      "updated_at": "Абноўлена",
+      "dialed_company_number": "Набраны нумар кампаніі",
+      "is_answered": "Адказаны",
+      "is_missed": "Прапушчаны",
+      "call_duration_seconds": "Працягласць размовы",
+      "call_total_duration_seconds": "Працягласць сесіі",
+      "INN": "TIN",
+      "bank": "Bank",
+      "checking_account": "Checking account",
+      "correspondent_account": "Correspondent account",
+      "BIK": "BIC",
+      "country": "Country",
+      "city": "City",
+      "street": "Street",
+      "house_number": "House number",
+      "office_number": "Office number",
+      "index": "Postal code",
+      "organizational_legal_form_id": "Legal form",
+      "currency_id": "Currency",
+      "user_id": "User",
+      "base_rate": "Base rate",
+      "salary_currency_id": "Salary currency",
+      "utc_offset": "UTC offset",
+      "customer_company_ids": "Customer companies",
+      "project_ids": "Projects"
     }
   },
   "HeaderProfile": {
@@ -141,7 +219,13 @@
     },
     "created_at": "Дата стварэння",
     "apply": "Ужыць",
-    "clear": "Ачысціць"
+    "clear": "Ачысціць",
+    "WorkTimeRange": {
+      "self": "Працоўны часавы дыяпазон",
+      "without": "Без часавага дыяпазону"
+    },
+    "currency": "Currency",
+    "organizational_legal_form": "Legal form"
   },
   "Search": {
     "self": "Пошук",
@@ -297,6 +381,104 @@
     "PaymentMethod": {
       "invoicing": "Выстаўленне рахунку",
       "credit_card": "Банкаўская карта"
+    },
+    "PhoneNumber": {
+      "customer_company": "Кампанія-кліент",
+      "customer_profile": "Профіль кліента",
+      "worker_profile": "Профіль супрацоўніка"
+    },
+    "CallExtension": {
+      "crm_user": "Аператар CRM",
+      "pstn": "Знешні нумар (PSTN)"
+    },
+    "CompanyDialNumber": {
+      "full": "Поўны",
+      "fast": "Хуткі"
+    },
+    "Call": {
+      "inbound": "Уваходны",
+      "outbound": "Выходны",
+      "telephony_inbound": "Тэлефанія (уваходны)",
+      "telephony_outbound": "Тэлефанія (выходны)",
+      "mobile_dialer": "Мабільны dialer",
+      "website_online": "Анлайн з сайта",
+      "manual": "Уручную"
     }
+  },
+  "Softphone": {
+    "title": "Softphone",
+    "new_call": "New call",
+    "incoming_call": "Incoming call…",
+    "in_progress": "In progress",
+    "on_hold": "On hold",
+    "call_ended": "Call ended",
+    "duration": "Duration: {{time}}",
+    "from_operator_profile": "Лагін з вашага OperatorProfile.",
+    "vox_user": "Карыстальнік Voximplant",
+    "vox_password": "Пароль",
+    "connect": "Падключыць",
+    "phone_number": "Нумар",
+    "call": "Пазваніць",
+    "hangup": "Скінуць",
+    "call_again": "Call again",
+    "close": "Close",
+    "erase": "Erase",
+    "dial_pad": "Dial pad",
+    "mute_mic": "Выкл. мік.",
+    "unmute_mic": "Укл. мік.",
+    "mute_speaker": "Выкл. гук",
+    "unmute_speaker": "Укл. гук",
+    "incoming": "Уваходны",
+    "answer": "Адказаць",
+    "decline": "Адхіліць",
+    "status_disconnected": "Не падключаны",
+    "status_connecting": "Падключэнне…",
+    "status_connected": "Падключаны",
+    "status_already_connected": "Ужо падключаны",
+    "status_credentials_required": "Патрэбны лагін і пароль",
+    "status_connection_error": "Памылка падключэння",
+    "status_ready_from_profile": "Гатовы (з OperatorProfile)",
+    "no_operator_profile": "Няма OperatorProfile",
+    "softphone_disabled": "Softphone выключаны ў профілі",
+    "password_not_provisioned": "Пароль яшчэ не выдадзены — перастварыце OperatorProfile або ўвядзіце ўручную"
+  },
+  "Telephony": {
+    "account_overview": "Уліковы запіс Voximplant",
+    "balance": "Баланс",
+    "account_name": "Імя ўліковага запісу",
+    "phone_numbers": "Нумары",
+    "no_phone_numbers": "Няма нумароў",
+    "low_balance_warning": "Нізкі баланс (парог: {{threshold}})"
+  },
+  "Calls": {
+    "recording_upload_later": "Загрузка запісу будзе даступная пазней",
+    "answered": "Адказаны",
+    "missed": "Прапушчаны",
+    "csat_scores": "Ацэнкі CSAT",
+    "csat_quality": "Якасць",
+    "csat_recommend": "Рэкамендацыя",
+    "csat_resolved": "Вырашана",
+    "csat_speed": "Хуткасць",
+    "links": "Спасылкі",
+    "call_record": "Запіс званка",
+    "log_file": "Файл журнала",
+    "no_links": "Няма спасылак"
+  },
+  "Currencies": {
+    "Currency": {
+      "rub": "Ruble",
+      "usd": "US Dollar",
+      "eur": "Euro",
+      "azn": "Azerbaijani Manat"
+    }
+  },
+  "OrganizationalLegalForms": {
+    "LLC": "LLC",
+    "IE": "IE",
+    "I": "Individual",
+    "PC": "PC",
+    "JSC": "JSC",
+    "PJSC": "PJSC",
+    "other": "Other"
   }
 }

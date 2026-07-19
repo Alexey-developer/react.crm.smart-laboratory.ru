@@ -19,7 +19,7 @@ const meta = {
   args: {
     width: 320,
     height: 200,
-    skeleton: formSkeleton(3),
+    skeleton: formSkeleton({ actionCount: 5, employeeCount: 4, showProgress: true }),
     content: (
       <div>
         <strong>Loaded content</strong>
@@ -33,8 +33,19 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Loading: Story = {
+export const LoadingWorkflow: Story = {
   args: { isLoading: true },
+}
+
+export const LoadingCompact: Story = {
+  args: {
+    isLoading: true,
+    skeleton: formSkeleton({
+      actionCount: 2,
+      employeeCount: 0,
+      showProgress: false,
+    }),
+  },
 }
 
 export const Loaded: Story = {

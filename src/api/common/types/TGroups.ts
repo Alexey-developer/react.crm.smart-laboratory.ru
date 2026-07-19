@@ -4,6 +4,7 @@ import { DirectionGroup } from '@api/models/direction/queryGroup'
 import { ProjectEndpointGroup } from '@api/models/projectEndpoint/queryGroup'
 import { DirectionBillingPeriodGroup } from '@api/models/directionBillingPeriod/queryGroup'
 import { CurrencyGroup } from '@api/models/currency/queryGroup'
+import { OrganizationalLegalFormGroup } from '@api/models/organizationalLegalForm/queryGroup'
 import { WorkerProfileGroup } from '@api/models/workerProfile/queryGroup'
 import { WorkTimeRangeGroup } from '@api/models/workTimeRange/queryGroup'
 import { ProjectStatusGroup } from '@api/models/projectStatus/queryGroup'
@@ -18,6 +19,15 @@ import { EndpointEnvironmentGroup } from '@api/models/endpointEnvironment/queryG
 import { TaskGroup } from '@api/models/task/queryGroup'
 import { TaskStatusGroup } from '@api/models/taskStatus/queryGroup'
 import { CustomerCompanyGroup } from '@api/models/customerCompany/queryGroup'
+import { CustomerProfileGroup } from '@api/models/customerProfile/queryGroup'
+import { CallGroup } from '@api/models/call/queryGroup'
+import { PhoneNumberGroup } from '@api/models/phoneNumber/queryGroup'
+import { CallExtensionGroup } from '@api/models/callExtension/queryGroup'
+import { CompanyDialNumberGroup } from '@api/models/companyDialNumber/queryGroup'
+import { OperatorProfileGroup } from '@api/models/operatorProfile/queryGroup'
+import { BlockedPhoneNumberGroup } from '@api/models/blockedPhoneNumber/queryGroup'
+import { TelephonyAccountGroup } from '@api/models/telephonyAccount/queryGroup'
+import { TelephonySoftphoneGroup } from '@api/models/telephonySoftphone/queryGroup'
 
 export type GroupClass =
   | typeof CurrentUserGroup
@@ -26,6 +36,7 @@ export type GroupClass =
   | typeof ProjectEndpointGroup
   | typeof DirectionBillingPeriodGroup
   | typeof CurrencyGroup
+  | typeof OrganizationalLegalFormGroup
   | typeof WorkerProfileGroup
   | typeof WorkTimeRangeGroup
   | typeof ProjectStatusGroup
@@ -40,24 +51,43 @@ export type GroupClass =
   | typeof TaskGroup
   | typeof TaskStatusGroup
   | typeof CustomerCompanyGroup
+  | typeof CustomerProfileGroup
+  | typeof CallGroup
+  | typeof PhoneNumberGroup
+  | typeof CallExtensionGroup
+  | typeof CompanyDialNumberGroup
+  | typeof OperatorProfileGroup
+  | typeof BlockedPhoneNumberGroup
+  | typeof TelephonyAccountGroup
+  | typeof TelephonySoftphoneGroup
 export type GroupMethod =
-  | keyof CurrentUserGroup
-  | keyof ProjectGroup
-  | keyof DirectionGroup
-  | keyof ProjectEndpointGroup
-  | keyof DirectionBillingPeriodGroup
-  | keyof CurrencyGroup
-  | keyof WorkerProfileGroup
-  | keyof WorkTimeRangeGroup
-  | keyof ProjectStatusGroup
-  | keyof DirectionStatusGroup
-  | keyof DirectionFamilyGroup
-  | keyof DirectionTypeGroup
-  | keyof PaymentModelGroup
-  | keyof PaymentPeriodGroup
-  | keyof BillingDocumentStatusGroup
-  | keyof RecurrenceTypeGroup
-  | keyof EndpointEnvironmentGroup
-  | keyof TaskGroup
-  | keyof TaskStatusGroup
-  | keyof CustomerCompanyGroup
+  | typeof CurrentUserGroup
+  | typeof ProjectGroup
+  | typeof DirectionGroup
+  | typeof ProjectEndpointGroup
+  | typeof DirectionBillingPeriodGroup
+  | typeof CurrencyGroup
+  | typeof OrganizationalLegalFormGroup
+  | typeof WorkerProfileGroup
+  | typeof WorkTimeRangeGroup
+  | typeof ProjectStatusGroup
+  | typeof DirectionStatusGroup
+  | typeof DirectionFamilyGroup
+  | typeof DirectionTypeGroup
+  | typeof PaymentModelGroup
+  | typeof PaymentPeriodGroup
+  | typeof BillingDocumentStatusGroup
+  | typeof RecurrenceTypeGroup
+  | typeof EndpointEnvironmentGroup
+  | typeof TaskGroup
+  | typeof TaskStatusGroup
+  | typeof CustomerCompanyGroup
+  | typeof CustomerProfileGroup
+  | typeof CallGroup
+  | typeof PhoneNumberGroup
+  | typeof CallExtensionGroup
+  | typeof CompanyDialNumberGroup
+  | typeof OperatorProfileGroup
+  | typeof BlockedPhoneNumberGroup
+  | typeof TelephonyAccountGroup
+  | typeof TelephonySoftphoneGroup

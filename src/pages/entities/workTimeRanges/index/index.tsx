@@ -57,6 +57,8 @@ export const WorkTimeRangesPage: React.FC = () => {
       ]}
       FormContent={FormContent}
       actionIndexes={[5, 7, 8, 1, 2]}
+      skeletonEmployeeCount={1}
+      skeletonShowProgress={false}
       formActions={{
         parentEntity: workTimeRangeProjectEntity,
         directionEntity: workTimeRangeDirectionEntity,

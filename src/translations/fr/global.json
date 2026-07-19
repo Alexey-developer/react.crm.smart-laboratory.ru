@@ -19,7 +19,6 @@
   },
   "MenuItems": {
     "accounting": "Comptabilité",
-    "budget": "Budget",
     "call_history": "Historique des appels",
     "general_permission_system": "Système général d'autorisations",
     "projects": "Projets",
@@ -29,14 +28,39 @@
     "tasks": "Tâches",
     "work_time_ranges": "Plages de temps de travail",
     "documents": "Documents",
+    "system_users": "Utilisateurs du système",
+    "Budget": {
+      "self": "Budget",
+      "accounting": "Comptabilité",
+      "financial_operations": "Opérations financières"
+    },
+    "Workflow": {
+      "self": "Flux de travail"
+    },
+    "Employees": {
+      "self": "Employés",
+      "profiles": "Profils"
+    },
+    "KnowledgeBase": {
+      "self": "Base de connaissances"
+    },
     "WorkingWithCustomers": {
       "self": "Travail avec les clients",
-      "customers": "Clients",
+      "companies": "Entreprises",
+      "customer_profiles": "Profils clients",
       "appeals": "Demandes",
       "support": "Support",
       "applications_from_website": "Demandes depuis le site web"
     },
-    "employees": "Employés"
+    "Telephony": {
+      "self": "Téléphonie",
+      "calls": "Appels",
+      "phone_numbers": "Téléphones",
+      "operator_profiles": "Profils opérateurs",
+      "call_extensions": "Postes internes",
+      "company_dial_numbers": "Numéros d'entreprise",
+      "blocked_phone_numbers": "Numéros bloqués"
+    }
   },
   "Tasks": {
     "recurring": "Récurrente",
@@ -110,7 +134,61 @@
       "repeat_mode": "Mode de répétition",
       "repeat_interval_days": "Intervalle de répétition (jours)",
       "repeat_next_at": "Prochaine répétition le",
-      "repeat_source_task_id": "Tâche source"
+      "repeat_source_task_id": "Tâche source",
+      "work_time_range_id": "Plage de temps de travail",
+      "e164": "Téléphone",
+      "label": "Libellé",
+      "is_active": "Actif",
+      "is_primary": "Principal",
+      "phoneable_type": "Type de propriétaire",
+      "phoneable_id": "Propriétaire",
+      "vox_username": "Identifiant Voximplant",
+      "softphone_enabled": "Softphone activé",
+      "mobile_dialer_enabled": "Composeur mobile",
+      "operator_profile_id": "Profil opérateur",
+      "phone_number_id": "Téléphone",
+      "target_type": "Type de cible",
+      "display_name": "Nom affiché",
+      "code": "Code",
+      "inbound_mode": "Mode entrant",
+      "customer_phone_number_id": "Téléphone client",
+      "operator_phone_number_id": "Téléphone opérateur",
+      "customer_profile_id": "Profil client",
+      "direction": "Sens de l'appel",
+      "source": "Source",
+      "call_record_transcription_text": "Transcription de l'enregistrement",
+      "recording_upload": "Envoi de l'enregistrement",
+      "call_record_private_path": "Chemin de l'enregistrement",
+      "started_at": "Début",
+      "answered_at": "Réponse",
+      "ended_at": "Fin",
+      "session_id": "ID de session",
+      "created_at": "Créé le",
+      "updated_at": "Mis à jour le",
+      "dialed_company_number": "Numéro d'entreprise composé",
+      "is_answered": "Répondu",
+      "is_missed": "Manqué",
+      "call_duration_seconds": "Durée de conversation",
+      "call_total_duration_seconds": "Durée de session",
+      "INN": "TIN",
+      "bank": "Bank",
+      "checking_account": "Checking account",
+      "correspondent_account": "Correspondent account",
+      "BIK": "BIC",
+      "country": "Country",
+      "city": "City",
+      "street": "Street",
+      "house_number": "House number",
+      "office_number": "Office number",
+      "index": "Postal code",
+      "organizational_legal_form_id": "Legal form",
+      "currency_id": "Currency",
+      "user_id": "User",
+      "base_rate": "Base rate",
+      "salary_currency_id": "Salary currency",
+      "utc_offset": "UTC offset",
+      "customer_company_ids": "Customer companies",
+      "project_ids": "Projects"
     }
   },
   "HeaderProfile": {
@@ -141,7 +219,13 @@
     },
     "created_at": "Date de création",
     "apply": "Appliquer",
-    "clear": "Effacer"
+    "clear": "Effacer",
+    "WorkTimeRange": {
+      "self": "Plage de temps de travail",
+      "without": "Sans plage de temps"
+    },
+    "currency": "Currency",
+    "organizational_legal_form": "Legal form"
   },
   "Search": {
     "self": "Recherche",
@@ -297,6 +381,104 @@
     "PaymentMethod": {
       "invoicing": "Facturation",
       "credit_card": "Carte de crédit"
+    },
+    "PhoneNumber": {
+      "customer_company": "Entreprise cliente",
+      "customer_profile": "Profil client",
+      "worker_profile": "Profil employé"
+    },
+    "CallExtension": {
+      "crm_user": "Opérateur CRM",
+      "pstn": "Numéro externe (PSTN)"
+    },
+    "CompanyDialNumber": {
+      "full": "Complet",
+      "fast": "Rapide"
+    },
+    "Call": {
+      "inbound": "Entrant",
+      "outbound": "Sortant",
+      "telephony_inbound": "Téléphonie (entrant)",
+      "telephony_outbound": "Téléphonie (sortant)",
+      "mobile_dialer": "Composeur mobile",
+      "website_online": "En ligne depuis le site",
+      "manual": "Manuel"
     }
+  },
+  "Softphone": {
+    "title": "Softphone",
+    "new_call": "New call",
+    "incoming_call": "Incoming call…",
+    "in_progress": "In progress",
+    "on_hold": "On hold",
+    "call_ended": "Call ended",
+    "duration": "Duration: {{time}}",
+    "from_operator_profile": "Connexion depuis votre OperatorProfile.",
+    "vox_user": "Utilisateur Voximplant",
+    "vox_password": "Mot de passe",
+    "connect": "Connecter",
+    "phone_number": "Numéro",
+    "call": "Appeler",
+    "hangup": "Raccrocher",
+    "call_again": "Call again",
+    "close": "Close",
+    "erase": "Erase",
+    "dial_pad": "Dial pad",
+    "mute_mic": "Couper micro",
+    "unmute_mic": "Activer micro",
+    "mute_speaker": "Couper son",
+    "unmute_speaker": "Activer son",
+    "incoming": "Entrant",
+    "answer": "Répondre",
+    "decline": "Refuser",
+    "status_disconnected": "Non connecté",
+    "status_connecting": "Connexion…",
+    "status_connected": "Connecté",
+    "status_already_connected": "Déjà connecté",
+    "status_credentials_required": "Identifiant et mot de passe requis",
+    "status_connection_error": "Erreur de connexion",
+    "status_ready_from_profile": "Prêt (depuis OperatorProfile)",
+    "no_operator_profile": "Pas d'OperatorProfile",
+    "softphone_disabled": "Softphone désactivé dans le profil",
+    "password_not_provisioned": "Mot de passe pas encore fourni — recréez l'OperatorProfile ou saisissez-le manuellement"
+  },
+  "Telephony": {
+    "account_overview": "Compte Voximplant",
+    "balance": "Solde",
+    "account_name": "Nom du compte",
+    "phone_numbers": "Numéros",
+    "no_phone_numbers": "Aucun numéro",
+    "low_balance_warning": "Solde bas (seuil : {{threshold}})"
+  },
+  "Calls": {
+    "recording_upload_later": "L'envoi de l'enregistrement sera disponible plus tard",
+    "answered": "Répondu",
+    "missed": "Manqué",
+    "csat_scores": "Scores CSAT",
+    "csat_quality": "Qualité",
+    "csat_recommend": "Recommandation",
+    "csat_resolved": "Résolu",
+    "csat_speed": "Rapidité",
+    "links": "Liens",
+    "call_record": "Enregistrement d'appel",
+    "log_file": "Fichier journal",
+    "no_links": "Aucun lien"
+  },
+  "Currencies": {
+    "Currency": {
+      "rub": "Ruble",
+      "usd": "US Dollar",
+      "eur": "Euro",
+      "azn": "Azerbaijani Manat"
+    }
+  },
+  "OrganizationalLegalForms": {
+    "LLC": "LLC",
+    "IE": "IE",
+    "I": "Individual",
+    "PC": "PC",
+    "JSC": "JSC",
+    "PJSC": "PJSC",
+    "other": "Other"
   }
 }
