@@ -85,7 +85,10 @@
     "Warnings": {
       "switch_textarea_mode_is_not_available": "Textarea mode switch is not available, the area contains content"
     },
-    "Errors": {}
+    "Errors": {
+      "forbidden_title": "Access denied",
+      "forbidden_text": "You do not have permission for this action"
+    }
   },
   "Form": {
     "phone": "Phone number",

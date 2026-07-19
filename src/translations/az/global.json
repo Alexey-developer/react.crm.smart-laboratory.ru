@@ -85,7 +85,10 @@
     "Warnings": {
       "switch_textarea_mode_is_not_available": "Mətn sahəsinin rejimini dəyişmək mümkün deyil, sahədə məzmun var"
     },
-    "Errors": {}
+    "Errors": {
+      "forbidden_title": "Giriş qadağandır",
+      "forbidden_text": "Bu əməliyyat üçün icazəniz yoxdur"
+    }
   },
   "Form": {
     "phone": "Telefon nömrəsi",

@@ -85,7 +85,10 @@
     "Warnings": {
       "switch_textarea_mode_is_not_available": "Umschalten des Textarea-Modus ist nicht verfügbar, der Bereich enthält Inhalt"
     },
-    "Errors": {}
+    "Errors": {
+      "forbidden_title": "Zugriff verweigert",
+      "forbidden_text": "Sie haben keine Berechtigung für diese Aktion"
+    }
   },
   "Form": {
     "phone": "Telefonnummer",

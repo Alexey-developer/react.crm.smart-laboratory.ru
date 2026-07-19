@@ -85,7 +85,10 @@
     "Warnings": {
       "switch_textarea_mode_is_not_available": "Текст киргизүү аймагынын режимин которуу жеткиликтүү эмес, аймакта мазмун бар"
     },
-    "Errors": {}
+    "Errors": {
+      "forbidden_title": "Кирүүгө тыюу",
+      "forbidden_text": "Бул аракетке укугуңуз жок"
+    }
   },
   "Form": {
     "phone": "Телефон номери",

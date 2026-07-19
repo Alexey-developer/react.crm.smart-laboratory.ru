@@ -85,7 +85,10 @@
     "Warnings": {
       "switch_textarea_mode_is_not_available": "Пераключэнне рэжыму вобласці ўводу тэксту недаступнае, вобласць змяшчае кантэнт"
     },
-    "Errors": {}
+    "Errors": {
+      "forbidden_title": "Няма доступу",
+      "forbidden_text": "Недастаткова правоў для гэтага дзеяння"
+    }
   },
   "Form": {
     "phone": "Нумар тэлефона",

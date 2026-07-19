@@ -85,7 +85,10 @@
     "Warnings": {
       "switch_textarea_mode_is_not_available": "无法切换文本区域模式，该区域包含内容"
     },
-    "Errors": {}
+    "Errors": {
+      "forbidden_title": "拒绝访问",
+      "forbidden_text": "您没有权限执行此操作"
+    }
   },
   "Form": {
     "phone": "电话号码",

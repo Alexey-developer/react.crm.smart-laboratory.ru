@@ -85,7 +85,10 @@
     "Warnings": {
       "switch_textarea_mode_is_not_available": "Le changement de mode de zone de texte n'est pas disponible, la zone contient du contenu"
     },
-    "Errors": {}
+    "Errors": {
+      "forbidden_title": "Accès refusé",
+      "forbidden_text": "Vous n'avez pas la permission pour cette action"
+    }
   },
   "Form": {
     "phone": "Numéro de téléphone",

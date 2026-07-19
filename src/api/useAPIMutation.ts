@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectAuthToken } from '@redux/CurrentUser/selectors'
 import { setNotification } from '@redux/HeaderNotification/slice'
 
+import { isApiHttpErrorHandled } from '@api/handleApiHttpError'
 import { TCurrentUserParams } from './models/currentUser/params/TCurrentUserParams'
 import { TProjectParams } from './models/project/params/TProjectParams'
 
@@ -90,6 +91,10 @@ export const useAPIMutation = (
 
   useEffect(() => {
     if (isError) {
+      if (isApiHttpErrorHandled(error)) {
+        return
+      }
+
       dispatch(
         setNotification({
           title: error.response?.statusText,

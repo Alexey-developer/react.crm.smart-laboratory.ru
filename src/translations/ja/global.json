@@ -85,7 +85,10 @@
     "Warnings": {
       "switch_textarea_mode_is_not_available": "テキストエリアモードの切り替えはできません。エリアに内容があります"
     },
-    "Errors": {}
+    "Errors": {
+      "forbidden_title": "アクセス拒否",
+      "forbidden_text": "この操作を行う権限がありません"
+    }
   },
   "Form": {
     "phone": "電話番号",

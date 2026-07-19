@@ -85,7 +85,10 @@
     "Warnings": {
       "switch_textarea_mode_is_not_available": "Смена режима области ввода текста не доступна, область содержит контент"
     },
-    "Errors": {}
+    "Errors": {
+      "forbidden_title": "Нет доступа",
+      "forbidden_text": "Недостаточно прав для этого действия"
+    }
   },
   "Form": {
     "phone": "Номер телефона",

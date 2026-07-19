@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom/client'
 // import reportWebVitals from './reportWebVitals'
 // import { StrictMode } from 'react'
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClientProvider } from '@tanstack/react-query'
 
 import { BrowserRouter } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
 import { store } from '@redux/store'
+
+import { createQueryClient } from '@api/createQueryClient'
 
 import global_az from '@translations/az/global.json'
 import global_be from '@translations/be/global.json'
@@ -51,18 +53,7 @@ const rootElement = document.getElementById('root') as HTMLElement
 
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement)
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        refetchOnReconnect: true,
-        networkMode: 'online',
-      },
-      mutations: {
-        // Mutations: no default retry — useAPIMutation keeps retry: 0.
-        networkMode: 'online',
-      },
-    },
-  })
+  const queryClient = createQueryClient()
 
   root.render(
     // <StrictMode>

@@ -85,7 +85,10 @@
     "Warnings": {
       "switch_textarea_mode_is_not_available": "Metin alanı modu geçişi kullanılamaz, alan içerik içeriyor"
     },
-    "Errors": {}
+    "Errors": {
+      "forbidden_title": "Erişim reddedildi",
+      "forbidden_text": "Bu işlem için yetkiniz yok"
+    }
   },
   "Form": {
     "phone": "Telefon numarası",

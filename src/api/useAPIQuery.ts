@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectAuthToken } from '@redux/CurrentUser/selectors'
 import { selectPerPage } from '@redux/CurrentUser/selectors'
 import { setNotification } from '@redux/HeaderNotification/slice'
-import { setAuthToken } from '@redux/CurrentUser/slice'
 
 import type { GroupClass, GroupMethod } from './common/types/TGroups'
+import { isApiHttpErrorHandled } from '@api/handleApiHttpError'
 import {
   queryRetryDelay,
   shouldRetryQuery,
@@ -87,11 +87,12 @@ export const useAPIQuery = (
 
   useEffect(() => {
     if (isError) {
-      const axiosError = error as { response?: { status?: number; statusText?: string } }
-
-      if (axiosError.response?.status === 401) {
-        dispatch(setAuthToken(''))
+      if (isApiHttpErrorHandled(error)) {
         return
+      }
+
+      const axiosError = error as {
+        response?: { statusText?: string }
       }
 
       dispatch(
