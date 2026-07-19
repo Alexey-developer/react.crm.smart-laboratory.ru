@@ -28,6 +28,7 @@ import { OperatorProfileGroup } from '@api/models/operatorProfile/queryGroup'
 import { BlockedPhoneNumberGroup } from '@api/models/blockedPhoneNumber/queryGroup'
 import { TelephonyAccountGroup } from '@api/models/telephonyAccount/queryGroup'
 import { TelephonySoftphoneGroup } from '@api/models/telephonySoftphone/queryGroup'
+import { TelephonyQueuesGroup } from '@api/models/telephonyQueues/queryGroup'
 
 export type GroupClass =
   | typeof CurrentUserGroup
@@ -60,6 +61,7 @@ export type GroupClass =
   | typeof BlockedPhoneNumberGroup
   | typeof TelephonyAccountGroup
   | typeof TelephonySoftphoneGroup
+  | typeof TelephonyQueuesGroup
 export type GroupMethod =
   | typeof CurrentUserGroup
   | typeof ProjectGroup
@@ -91,3 +93,4 @@ export type GroupMethod =
   | typeof BlockedPhoneNumberGroup
   | typeof TelephonyAccountGroup
   | typeof TelephonySoftphoneGroup
+  | typeof TelephonyQueuesGroup

@@ -47,6 +47,13 @@ export const getFormItems = () => {
       ),
     },
     {
+      name: 'phone_number_id',
+      rules: [],
+      component: (
+        <CustomSelect type='PHONE_NUMBER' name='phone_number_id' />
+      ),
+    },
+    {
       name: 'is_active',
       rules: [],
       component: (

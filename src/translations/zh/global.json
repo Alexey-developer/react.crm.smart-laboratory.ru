@@ -170,25 +170,25 @@
       "is_missed": "未接",
       "call_duration_seconds": "通话时长",
       "call_total_duration_seconds": "会话时长",
-      "INN": "TIN",
-      "bank": "Bank",
-      "checking_account": "Checking account",
-      "correspondent_account": "Correspondent account",
-      "BIK": "BIC",
-      "country": "Country",
-      "city": "City",
-      "street": "Street",
-      "house_number": "House number",
-      "office_number": "Office number",
-      "index": "Postal code",
-      "organizational_legal_form_id": "Legal form",
-      "currency_id": "Currency",
-      "user_id": "User",
-      "base_rate": "Base rate",
-      "salary_currency_id": "Salary currency",
-      "utc_offset": "UTC offset",
-      "customer_company_ids": "Customer companies",
-      "project_ids": "Projects"
+      "INN": "税号",
+      "bank": "银行",
+      "checking_account": "结算账户",
+      "correspondent_account": "代理账户",
+      "BIK": "银行识别码",
+      "country": "国家",
+      "city": "城市",
+      "street": "街道",
+      "house_number": "门牌号",
+      "office_number": "办公室",
+      "index": "邮编",
+      "organizational_legal_form_id": "法律组织形式",
+      "currency_id": "货币",
+      "user_id": "用户",
+      "base_rate": "基本费率",
+      "salary_currency_id": "工资货币",
+      "utc_offset": "UTC 偏移",
+      "customer_company_ids": "客户公司",
+      "project_ids": "项目"
     }
   },
   "HeaderProfile": {
@@ -224,8 +224,14 @@
       "self": "工作时间段",
       "without": "无工作时间段"
     },
-    "currency": "Currency",
-    "organizational_legal_form": "Legal form"
+    "currency": "货币",
+    "organizational_legal_form": "法律组织形式",
+    "OnLine": {
+      "self": "在线",
+      "crm": "在 CRM 接听",
+      "mobile": "在手机接听",
+      "none": "不接听"
+    }
   },
   "Search": {
     "self": "搜索",
@@ -407,12 +413,12 @@
   },
   "Softphone": {
     "title": "Softphone",
-    "new_call": "New call",
-    "incoming_call": "Incoming call…",
-    "in_progress": "In progress",
-    "on_hold": "On hold",
-    "call_ended": "Call ended",
-    "duration": "Duration: {{time}}",
+    "new_call": "新通话",
+    "incoming_call": "来电…",
+    "in_progress": "通话中",
+    "on_hold": "保持中",
+    "call_ended": "通话已结束",
+    "duration": "时长：{{time}}",
     "from_operator_profile": "从 OperatorProfile 登录。",
     "vox_user": "Voximplant 用户",
     "vox_password": "密码",
@@ -420,10 +426,10 @@
     "phone_number": "号码",
     "call": "呼叫",
     "hangup": "挂断",
-    "call_again": "Call again",
-    "close": "Close",
-    "erase": "Erase",
-    "dial_pad": "Dial pad",
+    "call_again": "再次呼叫",
+    "close": "关闭",
+    "erase": "清除",
+    "dial_pad": "拨号键盘",
     "mute_mic": "静音麦克风",
     "unmute_mic": "取消麦克风静音",
     "mute_speaker": "静音扬声器",
@@ -440,7 +446,12 @@
     "status_ready_from_profile": "就绪（来自 OperatorProfile）",
     "no_operator_profile": "无 OperatorProfile",
     "softphone_disabled": "配置中已禁用 Softphone",
-    "password_not_provisioned": "密码尚未下发 — 请重建 OperatorProfile 或手动输入"
+    "password_not_provisioned": "密码尚未发放 — 请重建 OperatorProfile 或手动输入",
+    "operator_inactive": "座席资料未启用",
+    "settings_title": "接听设置",
+    "accept_crm": "在 CRM 接听",
+    "accept_mobile": "转到手机",
+    "operator_phone": "手机：{{phone}}"
   },
   "Telephony": {
     "account_overview": "Voximplant 账户",
@@ -448,7 +459,16 @@
     "account_name": "账户名称",
     "phone_numbers": "号码",
     "no_phone_numbers": "暂无号码",
-    "low_balance_warning": "余额不足（阈值：{{threshold}}）"
+    "low_balance_warning": "余额不足（阈值：{{threshold}}）",
+    "queue_title": "通话队列",
+    "queue_general": "总队列",
+    "queue_operator": "我的队列",
+    "queue_active": "进行中",
+    "queue_empty": "空",
+    "queue_claim": "接取",
+    "account_loading": "加载中…",
+    "account_not_configured": "未配置 Voximplant API（VOXIMPLANT_ACCOUNT_ID / API_KEY）或缺少 common.telephony.view_vox_account 权限",
+    "account_load_error": "无法加载账户数据"
   },
   "Calls": {
     "recording_upload_later": "录音上传稍后可用",
@@ -466,19 +486,19 @@
   },
   "Currencies": {
     "Currency": {
-      "rub": "Ruble",
-      "usd": "US Dollar",
-      "eur": "Euro",
-      "azn": "Azerbaijani Manat"
+      "rub": "卢布",
+      "usd": "美元",
+      "eur": "欧元",
+      "azn": "阿塞拜疆马纳特"
     }
   },
   "OrganizationalLegalForms": {
-    "LLC": "LLC",
-    "IE": "IE",
-    "I": "Individual",
-    "PC": "PC",
-    "JSC": "JSC",
-    "PJSC": "PJSC",
-    "other": "Other"
+    "LLC": "有限责任公司",
+    "IE": "个体经营者",
+    "I": "个人",
+    "PC": "股份公司",
+    "JSC": "股份有限公司",
+    "PJSC": "上市公司",
+    "other": "其他"
   }
 }

@@ -112,8 +112,6 @@ export const CustomForm: React.FC<CustomFormProps> = ({
   langSubCode = '',
 }) => {
   const [translated_phrase] = useTranslation('global')
-  console.log(`formItems = `)
-  console.log(formItems)
   //   console.log(formItems[0].component)
 
   const prefix = useSelector(selectPrefix)
@@ -131,17 +129,12 @@ export const CustomForm: React.FC<CustomFormProps> = ({
   }, [prefix])
 
   const onFinish: FormProps /*<FieldType>*/['onFinish'] = values => {
-    console.log('Success:', values)
 
     // state.submit = true
     mutate(undefined, { onSuccess: onSuccessMutation })
-    console.log(data)
-    console.log(variables)
   }
 
   const values = Form.useWatch([], form)
-  console.log(`values = ${values}`)
-  console.log(values)
 
   const { mutate, data, isPending, isSuccess, isError, variables } =
     useAPIMutation(
@@ -155,7 +148,6 @@ export const CustomForm: React.FC<CustomFormProps> = ({
 
   const onFinishFailed: FormProps /*<FieldType>*/['onFinishFailed'] =
     errorInfo => {
-      console.log('Failed:', errorInfo)
     }
 
   return (

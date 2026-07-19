@@ -1,0 +1,41 @@
+@import '@utils/scss/variables.scss';
+
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  width: 100%;
+}
+
+.text {
+  color: $LIGHT_COLOR;
+  font-size: 13px;
+}
+
+/* Same specificity pattern as PermissionSystem — beat Ant Design primary hover. */
+.switchWrap {
+  align-self: flex-start;
+
+  :global {
+    .ant-switch {
+      &,
+      &:hover:not(.ant-switch-disabled) {
+        background: $DANGER_COLOR !important;
+      }
+    }
+
+    .ant-switch-checked {
+      &,
+      &:hover:not(.ant-switch-disabled) {
+        background: $SUCCESS_COLOR !important;
+      }
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .text {
+    color: $DARK_COLOR;
+  }
+}

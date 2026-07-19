@@ -71,7 +71,6 @@ export const PermissionSystem: React.FC<PermissionSystemProps> = ({
                           // disabled={disabled}
                           onChange={
                             (/*checked, event*/) => {
-                              console.log(permission.action)
                               state.isLoading = true
                               setTimeout(() => {
                                 state.isLoading = false

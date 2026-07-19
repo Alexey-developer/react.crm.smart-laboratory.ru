@@ -13,6 +13,7 @@ enum IconEnum {
   PROJECTS = 'fa-solid fa-diagram-project',
   DIRECTIONS = 'fa-solid fa-route',
   CALLS = 'fa-solid fa-headset',
+  QUEUE = 'fa-solid fa-list-ol',
   PHONE_NUMBERS = 'fa-solid fa-phone',
   OPERATOR_PROFILES = 'fa-solid fa-headset',
   BLOCKED_PHONE_NUMBERS = 'fa-solid fa-ban',

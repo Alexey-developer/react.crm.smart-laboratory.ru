@@ -36,10 +36,7 @@ export const useAPIQuery = (
   //   )
 
   if (!(groupMethod in group)) {
-    const error = 'groupMethod is undefined!'
-
-    console.log(error)
-    throw error
+    throw new Error('groupMethod is undefined!')
   }
 
   const perPage = useSelector(selectPerPage)
@@ -76,7 +73,6 @@ export const useAPIQuery = (
   if (params.id) {
     queryKey += `/id=${params.id}`
   }
-  console.log(`queryKey = ${queryKey}`)
 
   const {
     data,
@@ -131,9 +127,6 @@ export const useAPIQuery = (
 
   useEffect(() => {
     if (isError) {
-      console.log('Error fetching data')
-      console.log('ERROR:', error)
-
       const axiosError = error as { response?: { status?: number; statusText?: string } }
 
       if (axiosError.response?.status === 401) {

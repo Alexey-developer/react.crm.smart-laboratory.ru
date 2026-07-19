@@ -48,8 +48,6 @@ export const CheckboxFilter = (type: CheckboxFilterType) => {
     label: title,
     value: key,
   }))
-  console.log(`options = `)
-  console.log(options)
 
   return {
     groupName: translated_phrase(getCheckboxFilterType(type).lang_code),

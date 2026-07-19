@@ -11,6 +11,7 @@ import '@assets/fontawesome/v6.5.1/css/sharp-light.css'
 
 import { useSelector } from 'react-redux'
 import { selectLang } from '@redux/Language/selectors'
+import { selectAuthToken } from '@redux/CurrentUser/selectors'
 import { getDayjsLocale } from '@redux/Language/languages'
 
 import { ConfigProvider } from 'antd'
@@ -30,12 +31,14 @@ import 'dayjs/locale/zh-cn'
 // import 'dayjs/locale/en'
 
 import { Sidebar } from '@components/Sidebar'
+import { RealtimeProvider } from '@components/RealtimeProvider'
 
 import { getAntdLocale } from '@utils/getAntdLocale'
 import { GetValidateMessages } from '@utils/helpers'
 
 export const MainLayout: React.FC = () => {
   const lang = useSelector(selectLang)
+  const authToken = useSelector(selectAuthToken)
   const dayjsLocale = getDayjsLocale(lang)
 
   dayjs.extend(updateLocale)
@@ -48,9 +51,11 @@ export const MainLayout: React.FC = () => {
 
   return (
     <ConfigProvider locale={getAntdLocale(lang)} form={{ validateMessages }}>
-      <div className='wrapper'>
-        <Sidebar />
-      </div>
+      <RealtimeProvider token={authToken || null}>
+        <div className='wrapper'>
+          <Sidebar />
+        </div>
+      </RealtimeProvider>
     </ConfigProvider>
   )
 }

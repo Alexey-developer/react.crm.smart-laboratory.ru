@@ -49,7 +49,7 @@
       "companies": "Entreprises",
       "customer_profiles": "Profils clients",
       "appeals": "Demandes",
-      "support": "Support",
+      "support": "Assistance",
       "applications_from_website": "Demandes depuis le site web"
     },
     "Telephony": {
@@ -170,25 +170,25 @@
       "is_missed": "Manqué",
       "call_duration_seconds": "Durée de conversation",
       "call_total_duration_seconds": "Durée de session",
-      "INN": "TIN",
-      "bank": "Bank",
-      "checking_account": "Checking account",
-      "correspondent_account": "Correspondent account",
+      "INN": "NIF",
+      "bank": "Banque",
+      "checking_account": "Compte courant",
+      "correspondent_account": "Compte correspondant",
       "BIK": "BIC",
-      "country": "Country",
-      "city": "City",
-      "street": "Street",
-      "house_number": "House number",
-      "office_number": "Office number",
-      "index": "Postal code",
-      "organizational_legal_form_id": "Legal form",
-      "currency_id": "Currency",
-      "user_id": "User",
-      "base_rate": "Base rate",
-      "salary_currency_id": "Salary currency",
-      "utc_offset": "UTC offset",
-      "customer_company_ids": "Customer companies",
-      "project_ids": "Projects"
+      "country": "Pays",
+      "city": "Ville",
+      "street": "Rue",
+      "house_number": "Numéro",
+      "office_number": "Bureau",
+      "index": "Code postal",
+      "organizational_legal_form_id": "Forme juridique",
+      "currency_id": "Devise",
+      "user_id": "Utilisateur",
+      "base_rate": "Taux de base",
+      "salary_currency_id": "Devise du salaire",
+      "utc_offset": "Décalage UTC",
+      "customer_company_ids": "Entreprises clientes",
+      "project_ids": "Projets"
     }
   },
   "HeaderProfile": {
@@ -224,8 +224,14 @@
       "self": "Plage de temps de travail",
       "without": "Sans plage de temps"
     },
-    "currency": "Currency",
-    "organizational_legal_form": "Legal form"
+    "currency": "Devise",
+    "organizational_legal_form": "Forme juridique",
+    "OnLine": {
+      "self": "En ligne",
+      "crm": "Acceptent dans le CRM",
+      "mobile": "Acceptent sur le téléphone",
+      "none": "N’acceptent pas"
+    }
   },
   "Search": {
     "self": "Recherche",
@@ -245,7 +251,7 @@
     "accesses": "Accès",
     "repositories": "Dépôts",
     "technology_stack": "Stack technologique",
-    "expirations": "Expirations",
+    "expirations": "Échéances",
     "other_links": "Autres liens",
     "endpoints": "Points de terminaison",
     "coming_soon": "Bientôt disponible"
@@ -265,7 +271,7 @@
   "Modes": {
     "creating": "Création",
     "editing": "Modification",
-    "simple": "Simple",
+    "simple": "Basique",
     "advanced": "Avancé"
   },
   "Confirm": {
@@ -310,7 +316,7 @@
   "DirectionFamilies": {
     "development": "Développement",
     "promotion": "Promotion",
-    "maintenance": "Maintenance"
+    "maintenance": "Maintenance / SAV"
   },
   "DirectionTypes": {
     "website": "Site web",
@@ -365,7 +371,7 @@
     },
     "Penalty": {
       "lateness": "Retard",
-      "absence": "Absence",
+      "absence": "Absence injustifiée",
       "error": "Erreur",
       "resource_outage": "Panne de ressource",
       "rudeness_to_customer": "Impertinence envers le client",
@@ -407,12 +413,12 @@
   },
   "Softphone": {
     "title": "Softphone",
-    "new_call": "New call",
-    "incoming_call": "Incoming call…",
-    "in_progress": "In progress",
-    "on_hold": "On hold",
-    "call_ended": "Call ended",
-    "duration": "Duration: {{time}}",
+    "new_call": "Nouvel appel",
+    "incoming_call": "Appel entrant…",
+    "in_progress": "Appel en cours",
+    "on_hold": "En attente",
+    "call_ended": "Appel terminé",
+    "duration": "Durée : {{time}}",
     "from_operator_profile": "Connexion depuis votre OperatorProfile.",
     "vox_user": "Utilisateur Voximplant",
     "vox_password": "Mot de passe",
@@ -420,10 +426,10 @@
     "phone_number": "Numéro",
     "call": "Appeler",
     "hangup": "Raccrocher",
-    "call_again": "Call again",
-    "close": "Close",
-    "erase": "Erase",
-    "dial_pad": "Dial pad",
+    "call_again": "Rappeler",
+    "close": "Fermer",
+    "erase": "Effacer",
+    "dial_pad": "Clavier",
     "mute_mic": "Couper micro",
     "unmute_mic": "Activer micro",
     "mute_speaker": "Couper son",
@@ -440,7 +446,12 @@
     "status_ready_from_profile": "Prêt (depuis OperatorProfile)",
     "no_operator_profile": "Pas d'OperatorProfile",
     "softphone_disabled": "Softphone désactivé dans le profil",
-    "password_not_provisioned": "Mot de passe pas encore fourni — recréez l'OperatorProfile ou saisissez-le manuellement"
+    "password_not_provisioned": "Mot de passe non provisionné — recréez OperatorProfile ou saisissez-le manuellement",
+    "operator_inactive": "Profil opérateur inactif",
+    "settings_title": "Réception des appels",
+    "accept_crm": "Appels dans le CRM",
+    "accept_mobile": "Appels sur mobile",
+    "operator_phone": "Mobile : {{phone}}"
   },
   "Telephony": {
     "account_overview": "Compte Voximplant",
@@ -448,7 +459,16 @@
     "account_name": "Nom du compte",
     "phone_numbers": "Numéros",
     "no_phone_numbers": "Aucun numéro",
-    "low_balance_warning": "Solde bas (seuil : {{threshold}})"
+    "low_balance_warning": "Solde bas (seuil : {{threshold}})",
+    "queue_title": "File d’appels",
+    "queue_general": "File générale",
+    "queue_operator": "Ma file",
+    "queue_active": "Actifs",
+    "queue_empty": "Vide",
+    "queue_claim": "Prendre",
+    "account_loading": "Chargement…",
+    "account_not_configured": "API Voximplant non configurée (VOXIMPLANT_ACCOUNT_ID / API_KEY) ou droit common.telephony.view_vox_account manquant",
+    "account_load_error": "Échec du chargement des données du compte"
   },
   "Calls": {
     "recording_upload_later": "L'envoi de l'enregistrement sera disponible plus tard",
@@ -466,19 +486,19 @@
   },
   "Currencies": {
     "Currency": {
-      "rub": "Ruble",
-      "usd": "US Dollar",
+      "rub": "Rouble",
+      "usd": "Dollar américain",
       "eur": "Euro",
-      "azn": "Azerbaijani Manat"
+      "azn": "Manat azerbaïdjanais"
     }
   },
   "OrganizationalLegalForms": {
-    "LLC": "LLC",
-    "IE": "IE",
-    "I": "Individual",
-    "PC": "PC",
-    "JSC": "JSC",
-    "PJSC": "PJSC",
-    "other": "Other"
+    "LLC": "SARL",
+    "IE": "EI",
+    "I": "Particulier",
+    "PC": "SA ouverte",
+    "JSC": "SA",
+    "PJSC": "SA cotée",
+    "other": "Autre"
   }
 }

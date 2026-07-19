@@ -49,7 +49,7 @@
       "companies": "Unternehmen",
       "customer_profiles": "Kundenprofile",
       "appeals": "Anfragen",
-      "support": "Support",
+      "support": "Unterstützung",
       "applications_from_website": "Anträge von der Website"
     },
     "Telephony": {
@@ -97,7 +97,7 @@
       "max": "'${label}' darf höchstens '${max}' Zeichen lang sein"
     },
     "EntitiesFields": {
-      "name": "Name",
+      "name": "Bezeichnung",
       "description": "Beschreibung",
       "website_url": "Website-URL",
       "comment": "Kommentar",
@@ -170,25 +170,25 @@
       "is_missed": "Verpasst",
       "call_duration_seconds": "Gesprächsdauer",
       "call_total_duration_seconds": "Sitzungsdauer",
-      "INN": "TIN",
+      "INN": "Steuernummer",
       "bank": "Bank",
-      "checking_account": "Checking account",
-      "correspondent_account": "Correspondent account",
+      "checking_account": "Girokonto",
+      "correspondent_account": "Korrespondenzkonto",
       "BIK": "BIC",
-      "country": "Country",
-      "city": "City",
-      "street": "Street",
-      "house_number": "House number",
-      "office_number": "Office number",
-      "index": "Postal code",
-      "organizational_legal_form_id": "Legal form",
-      "currency_id": "Currency",
-      "user_id": "User",
-      "base_rate": "Base rate",
-      "salary_currency_id": "Salary currency",
-      "utc_offset": "UTC offset",
-      "customer_company_ids": "Customer companies",
-      "project_ids": "Projects"
+      "country": "Land",
+      "city": "Stadt",
+      "street": "Straße",
+      "house_number": "Hausnummer",
+      "office_number": "Büro",
+      "index": "PLZ",
+      "organizational_legal_form_id": "Rechtsform",
+      "currency_id": "Währung",
+      "user_id": "Benutzer",
+      "base_rate": "Basissatz",
+      "salary_currency_id": "Gehaltswährung",
+      "utc_offset": "UTC-Versatz",
+      "customer_company_ids": "Kundenunternehmen",
+      "project_ids": "Projekte"
     }
   },
   "HeaderProfile": {
@@ -224,8 +224,14 @@
       "self": "Arbeitszeitspanne",
       "without": "Ohne Arbeitszeitspanne"
     },
-    "currency": "Currency",
-    "organizational_legal_form": "Legal form"
+    "currency": "Währung",
+    "organizational_legal_form": "Rechtsform",
+    "OnLine": {
+      "self": "In der Leitung",
+      "crm": "Nehmen in CRM an",
+      "mobile": "Nehmen am Telefon an",
+      "none": "Nehmen nicht an"
+    }
   },
   "Search": {
     "self": "Suche",
@@ -243,7 +249,7 @@
   },
   "Info": {
     "accesses": "Zugänge",
-    "repositories": "Repositories",
+    "repositories": "Repositorys",
     "technology_stack": "Technologie-Stack",
     "expirations": "Ablauffristen",
     "other_links": "Weitere Links",
@@ -309,11 +315,11 @@
   },
   "DirectionFamilies": {
     "development": "Entwicklung",
-    "promotion": "Promotion",
+    "promotion": "Werbung",
     "maintenance": "Wartung"
   },
   "DirectionTypes": {
-    "website": "Website",
+    "website": "Webseite",
     "mobile_app": "Mobile App",
     "business_process_automation": "Geschäftsprozessautomatisierung",
     "integration": "Integration",
@@ -401,18 +407,18 @@
       "telephony_inbound": "Telefonie (eingehend)",
       "telephony_outbound": "Telefonie (ausgehend)",
       "mobile_dialer": "Mobiler Dialer",
-      "website_online": "Website online",
+      "website_online": "Online von der Website",
       "manual": "Manuell"
     }
   },
   "Softphone": {
     "title": "Softphone",
-    "new_call": "New call",
-    "incoming_call": "Incoming call…",
-    "in_progress": "In progress",
-    "on_hold": "On hold",
-    "call_ended": "Call ended",
-    "duration": "Duration: {{time}}",
+    "new_call": "Neuer Anruf",
+    "incoming_call": "Eingehender Anruf…",
+    "in_progress": "Gespräch läuft",
+    "on_hold": "In Warteschleife",
+    "call_ended": "Anruf beendet",
+    "duration": "Dauer: {{time}}",
     "from_operator_profile": "Login aus Ihrem OperatorProfile.",
     "vox_user": "Voximplant-Benutzer",
     "vox_password": "Passwort",
@@ -420,10 +426,10 @@
     "phone_number": "Nummer",
     "call": "Anrufen",
     "hangup": "Auflegen",
-    "call_again": "Call again",
-    "close": "Close",
-    "erase": "Erase",
-    "dial_pad": "Dial pad",
+    "call_again": "Erneut anrufen",
+    "close": "Schließen",
+    "erase": "Löschen",
+    "dial_pad": "Tastatur",
     "mute_mic": "Mikro stumm",
     "unmute_mic": "Mikro an",
     "mute_speaker": "Lautsprecher stumm",
@@ -440,7 +446,12 @@
     "status_ready_from_profile": "Bereit (aus OperatorProfile)",
     "no_operator_profile": "Kein OperatorProfile",
     "softphone_disabled": "Softphone im Profil deaktiviert",
-    "password_not_provisioned": "Passwort noch nicht vergeben — OperatorProfile neu erstellen oder manuell eingeben"
+    "password_not_provisioned": "Passwort noch nicht vergeben — OperatorProfile neu erstellen oder manuell eingeben",
+    "operator_inactive": "Operatorprofil inaktiv",
+    "settings_title": "Anrufannahme",
+    "accept_crm": "Anrufe in CRM",
+    "accept_mobile": "Anrufe aufs Handy",
+    "operator_phone": "Handy: {{phone}}"
   },
   "Telephony": {
     "account_overview": "Voximplant-Konto",
@@ -448,7 +459,16 @@
     "account_name": "Kontoname",
     "phone_numbers": "Nummern",
     "no_phone_numbers": "Keine Nummern",
-    "low_balance_warning": "Niedriges Guthaben (Schwelle: {{threshold}})"
+    "low_balance_warning": "Niedriges Guthaben (Schwelle: {{threshold}})",
+    "queue_title": "Anrufwarteschlange",
+    "queue_general": "Allgemeine Warteschlange",
+    "queue_operator": "Meine Warteschlange",
+    "queue_active": "Aktiv",
+    "queue_empty": "Leer",
+    "queue_claim": "Übernehmen",
+    "account_loading": "Laden…",
+    "account_not_configured": "Voximplant-API nicht konfiguriert (VOXIMPLANT_ACCOUNT_ID / API_KEY) oder Recht common.telephony.view_vox_account fehlt",
+    "account_load_error": "Kontodaten konnten nicht geladen werden"
   },
   "Calls": {
     "recording_upload_later": "Aufnahme-Upload ist später verfügbar",
@@ -459,26 +479,26 @@
     "csat_recommend": "Empfehlung",
     "csat_resolved": "Gelöst",
     "csat_speed": "Geschwindigkeit",
-    "links": "Links",
+    "links": "Verknüpfungen",
     "call_record": "Anrufaufnahme",
     "log_file": "Protokolldatei",
     "no_links": "Keine Links"
   },
   "Currencies": {
     "Currency": {
-      "rub": "Ruble",
-      "usd": "US Dollar",
+      "rub": "Rubel",
+      "usd": "US-Dollar",
       "eur": "Euro",
-      "azn": "Azerbaijani Manat"
+      "azn": "Aserbaidschan-Manat"
     }
   },
   "OrganizationalLegalForms": {
-    "LLC": "LLC",
-    "IE": "IE",
-    "I": "Individual",
-    "PC": "PC",
-    "JSC": "JSC",
-    "PJSC": "PJSC",
-    "other": "Other"
+    "LLC": "GmbH",
+    "IE": "Einzelunternehmen",
+    "I": "Privatperson",
+    "PC": "AG (offen)",
+    "JSC": "AG",
+    "PJSC": "börsennotierte AG",
+    "other": "Sonstiges"
   }
 }

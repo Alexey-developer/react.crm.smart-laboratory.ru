@@ -180,8 +180,6 @@ export const TasksPage: React.FC = () => {
   //     console.log('Page: ', pageNumber)
   //   }
   const onChange: PaginationProps['onChange'] = (page, pageSize) => {
-    console.log('Page: ', page)
-    console.log('pageSize: ', pageSize)
   }
 
   //   const sortedTasks = []

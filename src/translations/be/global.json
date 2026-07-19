@@ -170,25 +170,25 @@
       "is_missed": "Прапушчаны",
       "call_duration_seconds": "Працягласць размовы",
       "call_total_duration_seconds": "Працягласць сесіі",
-      "INN": "TIN",
-      "bank": "Bank",
-      "checking_account": "Checking account",
-      "correspondent_account": "Correspondent account",
-      "BIK": "BIC",
-      "country": "Country",
-      "city": "City",
-      "street": "Street",
-      "house_number": "House number",
-      "office_number": "Office number",
-      "index": "Postal code",
-      "organizational_legal_form_id": "Legal form",
-      "currency_id": "Currency",
-      "user_id": "User",
-      "base_rate": "Base rate",
-      "salary_currency_id": "Salary currency",
-      "utc_offset": "UTC offset",
-      "customer_company_ids": "Customer companies",
-      "project_ids": "Projects"
+      "INN": "УНП",
+      "bank": "Банк",
+      "checking_account": "Разліковы рахунак",
+      "correspondent_account": "Караспонденцкі рахунак",
+      "BIK": "БІК",
+      "country": "Краіна",
+      "city": "Горад",
+      "street": "Вуліца",
+      "house_number": "Дом",
+      "office_number": "Офіс",
+      "index": "Індэкс",
+      "organizational_legal_form_id": "Арганізацыйна-прававая форма",
+      "currency_id": "Валюта",
+      "user_id": "Карыстальнік",
+      "base_rate": "Базавая стаўка",
+      "salary_currency_id": "Валюта зарплаты",
+      "utc_offset": "Зрух UTC",
+      "customer_company_ids": "Кампаніі-кліенты",
+      "project_ids": "Праекты"
     }
   },
   "HeaderProfile": {
@@ -224,8 +224,14 @@
       "self": "Працоўны часавы дыяпазон",
       "without": "Без часавага дыяпазону"
     },
-    "currency": "Currency",
-    "organizational_legal_form": "Legal form"
+    "currency": "Валюта",
+    "organizational_legal_form": "Арганізацыйна-прававая форма",
+    "OnLine": {
+      "self": "На лініі",
+      "crm": "Прымаюць у CRM",
+      "mobile": "Прымаюць на тэлефон",
+      "none": "Не прымаюць"
+    }
   },
   "Search": {
     "self": "Пошук",
@@ -407,12 +413,12 @@
   },
   "Softphone": {
     "title": "Softphone",
-    "new_call": "New call",
-    "incoming_call": "Incoming call…",
-    "in_progress": "In progress",
-    "on_hold": "On hold",
-    "call_ended": "Call ended",
-    "duration": "Duration: {{time}}",
+    "new_call": "Новы званок",
+    "incoming_call": "Уваходны званок…",
+    "in_progress": "Ідзе гутарка",
+    "on_hold": "На ўтрыманні",
+    "call_ended": "Званок завершаны",
+    "duration": "Працягласць: {{time}}",
     "from_operator_profile": "Лагін з вашага OperatorProfile.",
     "vox_user": "Карыстальнік Voximplant",
     "vox_password": "Пароль",
@@ -420,10 +426,10 @@
     "phone_number": "Нумар",
     "call": "Пазваніць",
     "hangup": "Скінуць",
-    "call_again": "Call again",
-    "close": "Close",
-    "erase": "Erase",
-    "dial_pad": "Dial pad",
+    "call_again": "Патэлефанаваць зноў",
+    "close": "Закрыць",
+    "erase": "Сцерці",
+    "dial_pad": "Клавіятура",
     "mute_mic": "Выкл. мік.",
     "unmute_mic": "Укл. мік.",
     "mute_speaker": "Выкл. гук",
@@ -440,7 +446,12 @@
     "status_ready_from_profile": "Гатовы (з OperatorProfile)",
     "no_operator_profile": "Няма OperatorProfile",
     "softphone_disabled": "Softphone выключаны ў профілі",
-    "password_not_provisioned": "Пароль яшчэ не выдадзены — перастварыце OperatorProfile або ўвядзіце ўручную"
+    "password_not_provisioned": "Пароль яшчэ не выдадзены — перастварыце OperatorProfile або ўвядзіце ўручную",
+    "operator_inactive": "Профіль аператара неактыўны",
+    "settings_title": "Прыём званкоў",
+    "accept_crm": "Званкі ў CRM",
+    "accept_mobile": "Званкі на мабільны",
+    "operator_phone": "Мабільны: {{phone}}"
   },
   "Telephony": {
     "account_overview": "Уліковы запіс Voximplant",
@@ -448,7 +459,16 @@
     "account_name": "Імя ўліковага запісу",
     "phone_numbers": "Нумары",
     "no_phone_numbers": "Няма нумароў",
-    "low_balance_warning": "Нізкі баланс (парог: {{threshold}})"
+    "low_balance_warning": "Нізкі баланс (парог: {{threshold}})",
+    "queue_title": "Чарга званкоў",
+    "queue_general": "Агульная чарга",
+    "queue_operator": "Мая чарга",
+    "queue_active": "Актыўныя",
+    "queue_empty": "Пуста",
+    "queue_claim": "Узяць",
+    "account_loading": "Загрузка…",
+    "account_not_configured": "Voximplant API не наладжаны (VOXIMPLANT_ACCOUNT_ID / API_KEY) або няма права common.telephony.view_vox_account",
+    "account_load_error": "Не ўдалося загрузіць даныя акаўнта"
   },
   "Calls": {
     "recording_upload_later": "Загрузка запісу будзе даступная пазней",
@@ -466,19 +486,19 @@
   },
   "Currencies": {
     "Currency": {
-      "rub": "Ruble",
-      "usd": "US Dollar",
-      "eur": "Euro",
-      "azn": "Azerbaijani Manat"
+      "rub": "Рубль",
+      "usd": "Долар ЗША",
+      "eur": "Еўра",
+      "azn": "Азербайджанскі манат"
     }
   },
   "OrganizationalLegalForms": {
-    "LLC": "LLC",
-    "IE": "IE",
-    "I": "Individual",
-    "PC": "PC",
-    "JSC": "JSC",
-    "PJSC": "PJSC",
-    "other": "Other"
+    "LLC": "ТАА",
+    "IE": "ІП",
+    "I": "Фіз. асоба",
+    "PC": "ААТ",
+    "JSC": "АА",
+    "PJSC": "ПАТ",
+    "other": "Іншае"
   }
 }

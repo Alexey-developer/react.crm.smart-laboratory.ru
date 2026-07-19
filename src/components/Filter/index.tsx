@@ -179,7 +179,6 @@ export const Filter: React.FC<FilterProps> = ({
     if (isOpened) return
     if (values && Object.entries(values).length) {
       const filters: TFilter[] = []
-      console.log('values: ', values)
 
       for (const [key, value] of Object.entries(values)) {
         if (key === getFilter('CREATED_AT') || value === undefined) {

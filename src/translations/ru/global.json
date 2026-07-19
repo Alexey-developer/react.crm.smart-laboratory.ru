@@ -224,6 +224,12 @@
       "self": "Временной диапазон",
       "without": "Без временного диапазона"
     },
+    "OnLine": {
+      "self": "На линии",
+      "crm": "Принимают в CRM",
+      "mobile": "Принимают на телефон",
+      "none": "Не принимают"
+    },
     "apply": "Применить",
     "clear": "Очистить"
   },
@@ -440,7 +446,12 @@
     "status_ready_from_profile": "Готов (из OperatorProfile)",
     "no_operator_profile": "Нет OperatorProfile",
     "softphone_disabled": "Softphone выключен в профиле",
-    "password_not_provisioned": "Пароль ещё не выдан — пересоздайте OperatorProfile или введите вручную"
+    "password_not_provisioned": "Пароль ещё не выдан — пересоздайте OperatorProfile или введите вручную",
+    "operator_inactive": "Профиль оператора неактивен",
+    "settings_title": "Приём звонков",
+    "accept_crm": "Звонки в CRM",
+    "accept_mobile": "Звонки на сотовый",
+    "operator_phone": "Сотовый: {{phone}}"
   },
   "Telephony": {
     "account_overview": "Аккаунт Voximplant",
@@ -448,7 +459,16 @@
     "account_name": "Имя аккаунта",
     "phone_numbers": "Номера",
     "no_phone_numbers": "Нет номеров",
-    "low_balance_warning": "Низкий баланс (порог: {{threshold}})"
+    "low_balance_warning": "Низкий баланс (порог: {{threshold}})",
+    "queue_title": "Очередь звонков",
+    "queue_general": "Общая очередь",
+    "queue_operator": "Моя очередь",
+    "queue_active": "Активные",
+    "queue_empty": "Пусто",
+    "queue_claim": "Взять",
+    "account_loading": "Загрузка…",
+    "account_not_configured": "Voximplant API не настроен (VOXIMPLANT_ACCOUNT_ID / API_KEY) или нет права common.telephony.view_vox_account",
+    "account_load_error": "Не удалось загрузить данные аккаунта"
   },
   "Calls": {
     "recording_upload_later": "Загрузка записи будет доступна позже",

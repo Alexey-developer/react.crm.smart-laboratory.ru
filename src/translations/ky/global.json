@@ -170,25 +170,25 @@
       "is_missed": "Өткөрүлүп жиберилди",
       "call_duration_seconds": "Сүйлөшүү узактыгы",
       "call_total_duration_seconds": "Сеанс узактыгы",
-      "INN": "TIN",
-      "bank": "Bank",
-      "checking_account": "Checking account",
-      "correspondent_account": "Correspondent account",
-      "BIK": "BIC",
-      "country": "Country",
-      "city": "City",
-      "street": "Street",
-      "house_number": "House number",
-      "office_number": "Office number",
-      "index": "Postal code",
-      "organizational_legal_form_id": "Legal form",
-      "currency_id": "Currency",
-      "user_id": "User",
-      "base_rate": "Base rate",
-      "salary_currency_id": "Salary currency",
-      "utc_offset": "UTC offset",
-      "customer_company_ids": "Customer companies",
-      "project_ids": "Projects"
+      "INN": "ИНН",
+      "bank": "Банк",
+      "checking_account": "Эсептешүү эсеби",
+      "correspondent_account": "Корреспонденттик эсеп",
+      "BIK": "БИК",
+      "country": "Өлкө",
+      "city": "Шаар",
+      "street": "Көчө",
+      "house_number": "Үй",
+      "office_number": "Офис",
+      "index": "Индекс",
+      "organizational_legal_form_id": "Уюштуруу-укуктук форма",
+      "currency_id": "Валюта",
+      "user_id": "Колдонуучу",
+      "base_rate": "Негизги ставка",
+      "salary_currency_id": "Эмгек акы валютасы",
+      "utc_offset": "UTC жылышы",
+      "customer_company_ids": "Кардар компаниялары",
+      "project_ids": "Долбоорлор"
     }
   },
   "HeaderProfile": {
@@ -224,8 +224,14 @@
       "self": "Иш убакыт аралыгы",
       "without": "Убакыт аралыгы жок"
     },
-    "currency": "Currency",
-    "organizational_legal_form": "Legal form"
+    "currency": "Валюта",
+    "organizational_legal_form": "Уюштуруу-укуктук форма",
+    "OnLine": {
+      "self": "Линияда",
+      "crm": "CRM-де кабыл алышат",
+      "mobile": "Телефонго кабыл алышат",
+      "none": "Кабыл алышпайт"
+    }
   },
   "Search": {
     "self": "Издөө",
@@ -407,12 +413,12 @@
   },
   "Softphone": {
     "title": "Softphone",
-    "new_call": "New call",
-    "incoming_call": "Incoming call…",
-    "in_progress": "In progress",
-    "on_hold": "On hold",
-    "call_ended": "Call ended",
-    "duration": "Duration: {{time}}",
+    "new_call": "Жаңы чалуу",
+    "incoming_call": "Кирүүчү чалуу…",
+    "in_progress": "Сүйлөшүү жүрүп жатат",
+    "on_hold": "Күтүүдө",
+    "call_ended": "Чалуу аяктады",
+    "duration": "Узактыгы: {{time}}",
     "from_operator_profile": "Логин OperatorProfile'дан.",
     "vox_user": "Voximplant колдонуучусу",
     "vox_password": "Сырсөз",
@@ -420,10 +426,10 @@
     "phone_number": "Номер",
     "call": "Чалуу",
     "hangup": "Үзүү",
-    "call_again": "Call again",
-    "close": "Close",
-    "erase": "Erase",
-    "dial_pad": "Dial pad",
+    "call_again": "Кайра чалуу",
+    "close": "Жабуу",
+    "erase": "Өчүрүү",
+    "dial_pad": "Баскычтоп",
     "mute_mic": "Мик. өчүрүү",
     "unmute_mic": "Мик. күйгүзүү",
     "mute_speaker": "Үндү өчүрүү",
@@ -440,7 +446,12 @@
     "status_ready_from_profile": "Даяр (OperatorProfile)",
     "no_operator_profile": "OperatorProfile жок",
     "softphone_disabled": "Softphone профилде өчүрүлгөн",
-    "password_not_provisioned": "Сырсөз дагы берилген эмес — OperatorProfile'ды кайра түзүңүз же кол менен киргизиңиз"
+    "password_not_provisioned": "Сырсөз бериле элек — OperatorProfile-ды кайра түзүңүз же кол менен киргизиңиз",
+    "operator_inactive": "Оператор профили активдүү эмес",
+    "settings_title": "Чалууларды кабыл алуу",
+    "accept_crm": "CRM-ге чалуулар",
+    "accept_mobile": "Мобилдикке чалуулар",
+    "operator_phone": "Мобилдик: {{phone}}"
   },
   "Telephony": {
     "account_overview": "Voximplant аккаунту",
@@ -448,7 +459,16 @@
     "account_name": "Аккаунт аты",
     "phone_numbers": "Номерлер",
     "no_phone_numbers": "Номер жок",
-    "low_balance_warning": "Төмөн баланс (чек: {{threshold}})"
+    "low_balance_warning": "Төмөн баланс (чек: {{threshold}})",
+    "queue_title": "Чалуу кезеги",
+    "queue_general": "Жалпы кезек",
+    "queue_operator": "Менин кезегим",
+    "queue_active": "Активдүү",
+    "queue_empty": "Бош",
+    "queue_claim": "Алуу",
+    "account_loading": "Жүктөлүүдө…",
+    "account_not_configured": "Voximplant API жөндөлгөн эмес (VOXIMPLANT_ACCOUNT_ID / API_KEY) же common.telephony.view_vox_account укугу жок",
+    "account_load_error": "Аккаунт маалыматтарын жүктөө мүмкүн болбоду"
   },
   "Calls": {
     "recording_upload_later": "Жазууну жүктөө кийинчерээк жеткиликтүү болот",
@@ -466,19 +486,19 @@
   },
   "Currencies": {
     "Currency": {
-      "rub": "Ruble",
-      "usd": "US Dollar",
-      "eur": "Euro",
-      "azn": "Azerbaijani Manat"
+      "rub": "Рубль",
+      "usd": "АКШ доллары",
+      "eur": "Евро",
+      "azn": "Азербайжан манаты"
     }
   },
   "OrganizationalLegalForms": {
-    "LLC": "LLC",
-    "IE": "IE",
-    "I": "Individual",
-    "PC": "PC",
-    "JSC": "JSC",
-    "PJSC": "PJSC",
-    "other": "Other"
+    "LLC": "ЖЧК",
+    "IE": "ЖИ",
+    "I": "Жеке адам",
+    "PC": "ААК",
+    "JSC": "АК",
+    "PJSC": "КАК",
+    "other": "Башка"
   }
 }

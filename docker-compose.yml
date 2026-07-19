@@ -17,6 +17,12 @@ services:
       # Фронту нужно знать, куда ходить за API
       # Для Vite — все переменные должны начинаться с VITE_
       VITE_API_URL: 'http://localhost:8000'
+      # Soketi (local WS) — same keys as Laravel PUSHER_* / docker soketi
+      VITE_PUSHER_APP_KEY: 'smart-lab-crm-key'
+      VITE_PUSHER_HOST: '127.0.0.1'
+      VITE_PUSHER_PORT: '6001'
+      VITE_PUSHER_SCHEME: 'http'
+      VITE_PUSHER_APP_CLUSTER: 'mt1'
       # HMR при bind-mount с хоста (Windows/macOS): inotify не всегда доходит до Vite в контейнере
       CHOKIDAR_USEPOLLING: 'true'
     command: >

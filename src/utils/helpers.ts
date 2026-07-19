@@ -17,10 +17,7 @@ export type Values = (string | string[])[]
 export const setStatesValuesDebounce = debounce(
   (states: States, values: Values) => {
     if (states.length !== values.length) {
-      const error = 'states.length !== values.length'
-
-      console.log(error)
-      throw error
+      throw new Error('states.length !== values.length')
     }
     for (let index = 0; index < states.length; index++) {
       states[index].value = values[index]

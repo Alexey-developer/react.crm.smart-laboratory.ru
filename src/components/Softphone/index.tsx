@@ -19,6 +19,7 @@ import { useAPIQuery } from '@api/useAPIQuery'
 
 import { ActionButton } from '@components/ActionButton'
 import { CustomAvatar, type Employee } from '@components/CustomAvatar'
+import { SoftphoneSettings } from './SoftphoneSettings'
 
 import { getIcon } from '@utils/getIcon'
 import {
@@ -48,6 +49,7 @@ type SoftphoneState = {
   loggedIn: boolean
   connecting: boolean
   authStatusKey: string
+  authStatusDetail: string
   voxUser: string
   voxPassword: string
   fromOperatorProfile: boolean
@@ -214,7 +216,7 @@ export const Softphone: React.FC = () => {
   const [translated_phrase] = useTranslation('global')
   const ringtoneRef = React.useRef<HTMLAudioElement | null>(null)
 
-  const { data: credentialsResult } = useAPIQuery(
+  const { data: credentialsResult, refetch: refetchCredentials } = useAPIQuery(
     TelephonySoftphoneGroup,
     'credentials',
     {},
@@ -226,6 +228,7 @@ export const Softphone: React.FC = () => {
     loggedIn: false,
     connecting: false,
     authStatusKey: 'Softphone.status_disconnected',
+    authStatusDetail: '',
     voxUser: '',
     voxPassword: '',
     fromOperatorProfile: false,
@@ -247,7 +250,14 @@ export const Softphone: React.FC = () => {
   })
 
   React.useEffect(() => {
-    const credentials = credentialsResult?.data
+    const credentials = credentialsResult as
+      | {
+          available?: boolean
+          reason?: string | null
+          vox_username?: string | null
+          vox_password?: string | null
+        }
+      | undefined
     if (!credentials || state.loggedIn || state.connecting) {
       return
     }
@@ -259,12 +269,14 @@ export const Softphone: React.FC = () => {
 
     if (credentials.available && credentials.vox_password) {
       state.voxPassword = credentials.vox_password
+      state.authStatusDetail = ''
       state.authStatusKey = 'Softphone.status_ready_from_profile'
       void connectSdk(credentials.vox_username, credentials.vox_password)
       return
     }
 
     if (credentials.reason) {
+      state.authStatusDetail = ''
       state.authStatusKey = credentials.reason
     }
   }, [credentialsResult])
@@ -422,9 +434,25 @@ export const Softphone: React.FC = () => {
           call.addEventListener(CallEvent.Failed, onEnd)
         })
       }
-    } catch {
+    } catch (error) {
       state.loggedIn = false
+      let detail = ''
+      if (error instanceof Error) {
+        detail = error.message
+      } else if (error && typeof error === 'object') {
+        const record = error as Record<string, unknown>
+        detail = String(record.message ?? record.code ?? record.name ?? '')
+      } else if (typeof error === 'string') {
+        detail = error
+      }
       state.authStatusKey = 'Softphone.status_connection_error'
+      state.authStatusDetail = detail
+
+      try {
+        await getVoximplantCore().client.disconnect()
+      } catch {
+        /* ignore */
+      }
     } finally {
       state.connecting = false
     }
@@ -834,8 +862,17 @@ export const Softphone: React.FC = () => {
       {view === 'dial' || view === 'ended' ? (
         <div className={styles.status_line}>
           {translated_phrase(state.authStatusKey)}
+          {state.authStatusDetail ? ` (${state.authStatusDetail})` : ''}
           {state.voxUser ? ` · ${state.voxUser}` : ''}
         </div>
+      ) : null}
+
+      {view === 'dial' || view === 'ended' ? (
+        <SoftphoneSettings
+          onPreferencesChanged={() => {
+            void refetchCredentials()
+          }}
+        />
       ) : null}
     </div>
   )

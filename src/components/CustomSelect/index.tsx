@@ -114,7 +114,6 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
           }
         }),
       ]
-      console.log('state.searchValue')
     } else {
       state.options = [
         ...state.options,
@@ -125,7 +124,6 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
           }
         }),
       ]
-      console.log('!state.searchValue')
     }
   }, [data])
 
@@ -136,7 +134,6 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
     state.requestPage = state.searchValue
       ? state.searchedOptionsPage /* + 1*/
       : state.optionsPage
-    console.log('state.requestPage: ', state.requestPage)
     if (
       ((event.currentTarget.scrollTop + event.currentTarget.clientHeight) /
         event.currentTarget.scrollHeight) *
@@ -145,7 +142,6 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
       state.requestPage <= data.meta.last_page
     ) {
       if (state.isRequesting || isLoading || isFetching) return
-      console.log(state.requestPage)
 
       //   state.currentPage++
       if (state.searchValue) state.searchedOptionsPage++

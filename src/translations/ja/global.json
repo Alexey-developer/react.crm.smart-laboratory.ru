@@ -170,25 +170,25 @@
       "is_missed": "不在",
       "call_duration_seconds": "通話時間",
       "call_total_duration_seconds": "セッション時間",
-      "INN": "TIN",
-      "bank": "Bank",
-      "checking_account": "Checking account",
-      "correspondent_account": "Correspondent account",
+      "INN": "納税者番号",
+      "bank": "銀行",
+      "checking_account": "決済口座",
+      "correspondent_account": "コルレス口座",
       "BIK": "BIC",
-      "country": "Country",
-      "city": "City",
-      "street": "Street",
-      "house_number": "House number",
-      "office_number": "Office number",
-      "index": "Postal code",
-      "organizational_legal_form_id": "Legal form",
-      "currency_id": "Currency",
-      "user_id": "User",
-      "base_rate": "Base rate",
-      "salary_currency_id": "Salary currency",
-      "utc_offset": "UTC offset",
-      "customer_company_ids": "Customer companies",
-      "project_ids": "Projects"
+      "country": "国",
+      "city": "市区町村",
+      "street": "通り",
+      "house_number": "番地",
+      "office_number": "オフィス",
+      "index": "郵便番号",
+      "organizational_legal_form_id": "法人形態",
+      "currency_id": "通貨",
+      "user_id": "ユーザー",
+      "base_rate": "基本レート",
+      "salary_currency_id": "給与通貨",
+      "utc_offset": "UTCオフセット",
+      "customer_company_ids": "顧客企業",
+      "project_ids": "プロジェクト"
     }
   },
   "HeaderProfile": {
@@ -224,8 +224,14 @@
       "self": "勤務時間帯",
       "without": "勤務時間帯なし"
     },
-    "currency": "Currency",
-    "organizational_legal_form": "Legal form"
+    "currency": "通貨",
+    "organizational_legal_form": "法人形態",
+    "OnLine": {
+      "self": "オンライン",
+      "crm": "CRMで応答",
+      "mobile": "携帯で応答",
+      "none": "応答しない"
+    }
   },
   "Search": {
     "self": "検索",
@@ -407,12 +413,12 @@
   },
   "Softphone": {
     "title": "Softphone",
-    "new_call": "New call",
-    "incoming_call": "Incoming call…",
-    "in_progress": "In progress",
-    "on_hold": "On hold",
-    "call_ended": "Call ended",
-    "duration": "Duration: {{time}}",
+    "new_call": "新規通話",
+    "incoming_call": "着信…",
+    "in_progress": "通話中",
+    "on_hold": "保留中",
+    "call_ended": "通話終了",
+    "duration": "時間: {{time}}",
     "from_operator_profile": "OperatorProfile からログイン。",
     "vox_user": "Voximplant ユーザー",
     "vox_password": "パスワード",
@@ -420,10 +426,10 @@
     "phone_number": "番号",
     "call": "発信",
     "hangup": "切断",
-    "call_again": "Call again",
-    "close": "Close",
-    "erase": "Erase",
-    "dial_pad": "Dial pad",
+    "call_again": "再発信",
+    "close": "閉じる",
+    "erase": "消去",
+    "dial_pad": "ダイヤルパッド",
     "mute_mic": "マイクオフ",
     "unmute_mic": "マイクオン",
     "mute_speaker": "スピーカーオフ",
@@ -440,7 +446,12 @@
     "status_ready_from_profile": "準備完了（OperatorProfile）",
     "no_operator_profile": "OperatorProfile がありません",
     "softphone_disabled": "プロファイルで Softphone が無効です",
-    "password_not_provisioned": "パスワード未発行 — OperatorProfile を再作成するか手動入力してください"
+    "password_not_provisioned": "パスワード未発行 — OperatorProfile を再作成するか手動入力してください",
+    "operator_inactive": "オペレータープロファイルが無効です",
+    "settings_title": "着信受付",
+    "accept_crm": "CRMで着信",
+    "accept_mobile": "携帯へ着信",
+    "operator_phone": "携帯: {{phone}}"
   },
   "Telephony": {
     "account_overview": "Voximplant アカウント",
@@ -448,7 +459,16 @@
     "account_name": "アカウント名",
     "phone_numbers": "番号",
     "no_phone_numbers": "番号がありません",
-    "low_balance_warning": "残高不足（しきい値: {{threshold}}）"
+    "low_balance_warning": "残高不足（しきい値: {{threshold}}）",
+    "queue_title": "通話キュー",
+    "queue_general": "共通キュー",
+    "queue_operator": "自分のキュー",
+    "queue_active": "アクティブ",
+    "queue_empty": "空",
+    "queue_claim": "取得",
+    "account_loading": "読み込み中…",
+    "account_not_configured": "Voximplant API 未設定（VOXIMPLANT_ACCOUNT_ID / API_KEY）または common.telephony.view_vox_account 権限なし",
+    "account_load_error": "アカウントデータの読み込みに失敗しました"
   },
   "Calls": {
     "recording_upload_later": "録音アップロードは後で利用可能になります",
@@ -466,19 +486,19 @@
   },
   "Currencies": {
     "Currency": {
-      "rub": "Ruble",
-      "usd": "US Dollar",
-      "eur": "Euro",
-      "azn": "Azerbaijani Manat"
+      "rub": "ルーブル",
+      "usd": "米ドル",
+      "eur": "ユーロ",
+      "azn": "アゼルバイジャン・マナト"
     }
   },
   "OrganizationalLegalForms": {
-    "LLC": "LLC",
-    "IE": "IE",
-    "I": "Individual",
-    "PC": "PC",
-    "JSC": "JSC",
-    "PJSC": "PJSC",
-    "other": "Other"
+    "LLC": "合同会社",
+    "IE": "個人事業主",
+    "I": "個人",
+    "PC": "公開株式会社",
+    "JSC": "株式会社",
+    "PJSC": "上場株式会社",
+    "other": "その他"
   }
 }

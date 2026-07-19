@@ -225,6 +225,12 @@
     "WorkTimeRange": {
       "self": "Work time range",
       "without": "Without work time range"
+    },
+    "OnLine": {
+      "self": "On the line",
+      "crm": "Accepting in CRM",
+      "mobile": "Accepting on phone",
+      "none": "Not accepting"
     }
   },
   "Search": {
@@ -440,7 +446,12 @@
     "status_ready_from_profile": "Ready (from OperatorProfile)",
     "no_operator_profile": "No OperatorProfile",
     "softphone_disabled": "Softphone disabled in profile",
-    "password_not_provisioned": "Password not provisioned yet — recreate OperatorProfile or enter manually"
+    "password_not_provisioned": "Password not provisioned",
+    "operator_inactive": "Operator profile inactive",
+    "settings_title": "Call acceptance",
+    "accept_crm": "Calls in CRM",
+    "accept_mobile": "Calls to mobile",
+    "operator_phone": "Mobile: {{phone}}"
   },
   "Telephony": {
     "account_overview": "Voximplant account",
@@ -448,7 +459,16 @@
     "account_name": "Account name",
     "phone_numbers": "Phone numbers",
     "no_phone_numbers": "No phone numbers",
-    "low_balance_warning": "Low balance (threshold: {{threshold}})"
+    "low_balance_warning": "Low balance (threshold: {{threshold}})",
+    "queue_title": "Call queue",
+    "queue_general": "General queue",
+    "queue_operator": "My queue",
+    "queue_active": "Active",
+    "queue_empty": "Empty",
+    "queue_claim": "Claim",
+    "account_loading": "Loading…",
+    "account_not_configured": "Voximplant API is not configured (VOXIMPLANT_ACCOUNT_ID / API_KEY) or missing common.telephony.view_vox_account",
+    "account_load_error": "Failed to load account data"
   },
   "Calls": {
     "recording_upload_later": "Recording upload will be available later",

@@ -170,25 +170,25 @@
       "is_missed": "Buraxılıb",
       "call_duration_seconds": "Danışıq müddəti",
       "call_total_duration_seconds": "Sessiya müddəti",
-      "INN": "TIN",
+      "INN": "VÖEN",
       "bank": "Bank",
-      "checking_account": "Checking account",
-      "correspondent_account": "Correspondent account",
-      "BIK": "BIC",
-      "country": "Country",
-      "city": "City",
-      "street": "Street",
-      "house_number": "House number",
-      "office_number": "Office number",
-      "index": "Postal code",
-      "organizational_legal_form_id": "Legal form",
-      "currency_id": "Currency",
-      "user_id": "User",
-      "base_rate": "Base rate",
-      "salary_currency_id": "Salary currency",
-      "utc_offset": "UTC offset",
-      "customer_company_ids": "Customer companies",
-      "project_ids": "Projects"
+      "checking_account": "Hesablaşma hesabı",
+      "correspondent_account": "Müxbir hesab",
+      "BIK": "BIK",
+      "country": "Ölkə",
+      "city": "Şəhər",
+      "street": "Küçə",
+      "house_number": "Ev",
+      "office_number": "Ofis",
+      "index": "Poçt indeksi",
+      "organizational_legal_form_id": "Təşkilati-hüquqi forma",
+      "currency_id": "Valyuta",
+      "user_id": "İstifadəçi",
+      "base_rate": "Baza dərəcə",
+      "salary_currency_id": "Maaş valyutası",
+      "utc_offset": "UTC ofseti",
+      "customer_company_ids": "Müştəri şirkətləri",
+      "project_ids": "Layihələr"
     }
   },
   "HeaderProfile": {
@@ -224,8 +224,14 @@
       "self": "İş vaxtı aralığı",
       "without": "Vaxt aralığı olmadan"
     },
-    "currency": "Currency",
-    "organizational_legal_form": "Legal form"
+    "currency": "Valyuta",
+    "organizational_legal_form": "Təşkilati-hüquqi forma",
+    "OnLine": {
+      "self": "Xəttdə",
+      "crm": "CRM-də qəbul edirlər",
+      "mobile": "Telefonda qəbul edirlər",
+      "none": "Qəbul etmirlər"
+    }
   },
   "Search": {
     "self": "Axtarış",
@@ -407,12 +413,12 @@
   },
   "Softphone": {
     "title": "Softphone",
-    "new_call": "New call",
-    "incoming_call": "Incoming call…",
-    "in_progress": "In progress",
-    "on_hold": "On hold",
-    "call_ended": "Call ended",
-    "duration": "Duration: {{time}}",
+    "new_call": "Yeni zəng",
+    "incoming_call": "Daxilolan zəng…",
+    "in_progress": "Söhbət gedir",
+    "on_hold": "Gözləmədə",
+    "call_ended": "Zəng bitdi",
+    "duration": "Müddət: {{time}}",
     "from_operator_profile": "Login OperatorProfile-dan.",
     "vox_user": "Voximplant istifadəçisi",
     "vox_password": "Şifrə",
@@ -420,10 +426,10 @@
     "phone_number": "Nömrə",
     "call": "Zəng et",
     "hangup": "Kəs",
-    "call_again": "Call again",
-    "close": "Close",
-    "erase": "Erase",
-    "dial_pad": "Dial pad",
+    "call_again": "Yenidən zəng et",
+    "close": "Bağla",
+    "erase": "Sil",
+    "dial_pad": "Klaviatura",
     "mute_mic": "Mik. söndür",
     "unmute_mic": "Mik. yandır",
     "mute_speaker": "Səsi söndür",
@@ -440,7 +446,12 @@
     "status_ready_from_profile": "Hazırdır (OperatorProfile)",
     "no_operator_profile": "OperatorProfile yoxdur",
     "softphone_disabled": "Softphone profilde söndürülüb",
-    "password_not_provisioned": "Şifrə hələ verilməyib — OperatorProfile-ı yenidən yaradın və ya əl ilə daxil edin"
+    "password_not_provisioned": "Şifrə hələ verilməyib — OperatorProfile-ı yenidən yaradın və ya əl ilə daxil edin",
+    "operator_inactive": "Operator profili aktiv deyil",
+    "settings_title": "Zənglərin qəbulu",
+    "accept_crm": "CRM-ə zənglər",
+    "accept_mobile": "Mobilə zənglər",
+    "operator_phone": "Mobil: {{phone}}"
   },
   "Telephony": {
     "account_overview": "Voximplant hesabı",
@@ -448,7 +459,16 @@
     "account_name": "Hesab adı",
     "phone_numbers": "Nömrələr",
     "no_phone_numbers": "Nömrə yoxdur",
-    "low_balance_warning": "Aşağı balans (eşik: {{threshold}})"
+    "low_balance_warning": "Aşağı balans (eşik: {{threshold}})",
+    "queue_title": "Zəng növbəsi",
+    "queue_general": "Ümumi növbə",
+    "queue_operator": "Mənim növbəm",
+    "queue_active": "Aktiv",
+    "queue_empty": "Boş",
+    "queue_claim": "Götür",
+    "account_loading": "Yüklənir…",
+    "account_not_configured": "Voximplant API konfiqurasiya olunmayıb (VOXIMPLANT_ACCOUNT_ID / API_KEY) və ya common.telephony.view_vox_account icazəsi yoxdur",
+    "account_load_error": "Hesab məlumatlarını yükləmək alınmadı"
   },
   "Calls": {
     "recording_upload_later": "Yazının yüklənməsi sonra əlçatan olacaq",
@@ -466,19 +486,19 @@
   },
   "Currencies": {
     "Currency": {
-      "rub": "Ruble",
-      "usd": "US Dollar",
-      "eur": "Euro",
-      "azn": "Azerbaijani Manat"
+      "rub": "Rubl",
+      "usd": "ABŞ dolları",
+      "eur": "Avro",
+      "azn": "Azərbaycan manatı"
     }
   },
   "OrganizationalLegalForms": {
-    "LLC": "LLC",
-    "IE": "IE",
-    "I": "Individual",
-    "PC": "PC",
-    "JSC": "JSC",
-    "PJSC": "PJSC",
-    "other": "Other"
+    "LLC": "MMC",
+    "IE": "Fərdi sahibkar",
+    "I": "Fiziki şəxs",
+    "PC": "ASC",
+    "JSC": "QSC",
+    "PJSC": "PAO",
+    "other": "Digər"
   }
 }

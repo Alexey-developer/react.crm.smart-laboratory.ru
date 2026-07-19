@@ -170,25 +170,25 @@
       "is_missed": "Өткізіп алынды",
       "call_duration_seconds": "Сөйлесу ұзақтығы",
       "call_total_duration_seconds": "Сеанс ұзақтығы",
-      "INN": "TIN",
-      "bank": "Bank",
-      "checking_account": "Checking account",
-      "correspondent_account": "Correspondent account",
-      "BIK": "BIC",
-      "country": "Country",
-      "city": "City",
-      "street": "Street",
-      "house_number": "House number",
-      "office_number": "Office number",
-      "index": "Postal code",
-      "organizational_legal_form_id": "Legal form",
-      "currency_id": "Currency",
-      "user_id": "User",
-      "base_rate": "Base rate",
-      "salary_currency_id": "Salary currency",
-      "utc_offset": "UTC offset",
-      "customer_company_ids": "Customer companies",
-      "project_ids": "Projects"
+      "INN": "ЖСН/БСН",
+      "bank": "Банк",
+      "checking_account": "Есеп айырысу шоты",
+      "correspondent_account": "Корреспонденттік шот",
+      "BIK": "БСК",
+      "country": "Ел",
+      "city": "Қала",
+      "street": "Көше",
+      "house_number": "Үй",
+      "office_number": "Кеңсе",
+      "index": "Индекс",
+      "organizational_legal_form_id": "Ұйымдық-құқықтық нысан",
+      "currency_id": "Валюта",
+      "user_id": "Пайдаланушы",
+      "base_rate": "Базалық мөлшерлеме",
+      "salary_currency_id": "Жалақы валютасы",
+      "utc_offset": "UTC ығысуы",
+      "customer_company_ids": "Клиент компаниялары",
+      "project_ids": "Жобалар"
     }
   },
   "HeaderProfile": {
@@ -224,8 +224,14 @@
       "self": "Жұмыс уақыты аралығы",
       "without": "Уақыт аралығысыз"
     },
-    "currency": "Currency",
-    "organizational_legal_form": "Legal form"
+    "currency": "Валюта",
+    "organizational_legal_form": "Ұйымдық-құқықтық нысан",
+    "OnLine": {
+      "self": "Желіде",
+      "crm": "CRM-де қабылдайды",
+      "mobile": "Телефонға қабылдайды",
+      "none": "Қабылдамайды"
+    }
   },
   "Search": {
     "self": "Іздеу",
@@ -407,12 +413,12 @@
   },
   "Softphone": {
     "title": "Softphone",
-    "new_call": "New call",
-    "incoming_call": "Incoming call…",
-    "in_progress": "In progress",
-    "on_hold": "On hold",
-    "call_ended": "Call ended",
-    "duration": "Duration: {{time}}",
+    "new_call": "Жаңа қоңырау",
+    "incoming_call": "Кіріс қоңырау…",
+    "in_progress": "Сөйлесу жүріп жатыр",
+    "on_hold": "Күтуде",
+    "call_ended": "Қоңырау аяқталды",
+    "duration": "Ұзақтығы: {{time}}",
     "from_operator_profile": "Логин OperatorProfile-дан.",
     "vox_user": "Voximplant пайдаланушысы",
     "vox_password": "Құпия сөз",
@@ -420,10 +426,10 @@
     "phone_number": "Нөмір",
     "call": "Қоңырау шалу",
     "hangup": "Үзу",
-    "call_again": "Call again",
-    "close": "Close",
-    "erase": "Erase",
-    "dial_pad": "Dial pad",
+    "call_again": "Қайта қоңырау шалу",
+    "close": "Жабу",
+    "erase": "Өшіру",
+    "dial_pad": "Пернетақта",
     "mute_mic": "Мик. өшіру",
     "unmute_mic": "Мик. қосу",
     "mute_speaker": "Дыбысты өшіру",
@@ -440,7 +446,12 @@
     "status_ready_from_profile": "Дайын (OperatorProfile)",
     "no_operator_profile": "OperatorProfile жоқ",
     "softphone_disabled": "Softphone профильде өшірулі",
-    "password_not_provisioned": "Құпия сөз әлі берілмеген — OperatorProfile-ды қайта жасаңыз немесе қолмен енгізіңіз"
+    "password_not_provisioned": "Құпия сөз әлі берілмеген — OperatorProfile-ды қайта жасаңыз немесе қолмен енгізіңіз",
+    "operator_inactive": "Оператор профилі белсенді емес",
+    "settings_title": "Қоңырауларды қабылдау",
+    "accept_crm": "CRM-ге қоңыраулар",
+    "accept_mobile": "Ұялыға қоңыраулар",
+    "operator_phone": "Ұялы: {{phone}}"
   },
   "Telephony": {
     "account_overview": "Voximplant тіркелгісі",
@@ -448,7 +459,16 @@
     "account_name": "Тіркелгі атауы",
     "phone_numbers": "Нөмірлер",
     "no_phone_numbers": "Нөмір жоқ",
-    "low_balance_warning": "Төмен баланс (шегі: {{threshold}})"
+    "low_balance_warning": "Төмен баланс (шегі: {{threshold}})",
+    "queue_title": "Қоңырау кезегі",
+    "queue_general": "Жалпы кезек",
+    "queue_operator": "Менің кезегім",
+    "queue_active": "Белсенді",
+    "queue_empty": "Бос",
+    "queue_claim": "Алу",
+    "account_loading": "Жүктелуде…",
+    "account_not_configured": "Voximplant API бапталмаған (VOXIMPLANT_ACCOUNT_ID / API_KEY) немесе common.telephony.view_vox_account құқығы жоқ",
+    "account_load_error": "Аккаунт деректерін жүктеу мүмкін болмады"
   },
   "Calls": {
     "recording_upload_later": "Жазбаны жүктеу кейінірек қолжетімді болады",
@@ -466,19 +486,19 @@
   },
   "Currencies": {
     "Currency": {
-      "rub": "Ruble",
-      "usd": "US Dollar",
-      "eur": "Euro",
-      "azn": "Azerbaijani Manat"
+      "rub": "Рубль",
+      "usd": "АҚШ доллары",
+      "eur": "Еуро",
+      "azn": "Әзірбайжан манаты"
     }
   },
   "OrganizationalLegalForms": {
-    "LLC": "LLC",
-    "IE": "IE",
-    "I": "Individual",
-    "PC": "PC",
-    "JSC": "JSC",
-    "PJSC": "PJSC",
-    "other": "Other"
+    "LLC": "ЖШС",
+    "IE": "ЖК",
+    "I": "Жеке тұлға",
+    "PC": "ААҚ",
+    "JSC": "АҚ",
+    "PJSC": "ҚАҚ",
+    "other": "Басқа"
   }
 }

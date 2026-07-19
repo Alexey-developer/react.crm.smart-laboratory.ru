@@ -1,0 +1,25 @@
+@import '@components/TopHeader/index.module.scss';
+@import '@utils/scss/variables.scss';
+
+.panel {
+  width: 360px;
+  max-width: min(360px, calc(100vw - 32px));
+  padding: 4px 0;
+}
+
+.section_title {
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.call_line {
+  font-size: 13px;
+  color: $LIGHT_HOVER_COLOR;
+}
+
+[data-theme='dark'] {
+  .call_line {
+    color: $DARK_HOVER_COLOR;
+  }
+}
