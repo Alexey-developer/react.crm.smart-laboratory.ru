@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import debounce from 'lodash.debounce'
@@ -73,32 +74,16 @@ export const getDateTimeFormat = (locale: string = 'ru-RU') => {
 }
 
 export const GetValidateMessages = () => {
-  const [translated_phrase] = useTranslation('global')
+  const { t, i18n } = useTranslation('global')
 
-  //   const validateMessages = {
-  //     // required: "'${name}' is Required!",
-  //     //   max: "'${name}' is Required!",
-  //     length: "'${name}' is Required!",
-  //     // max: "'${name}' is 55!",
-
-  //     string: {
-  //       len: "'${name}' is 55!",
-  //     },
-  //     // rwqrq: '123',
-  //     // ...
-  //   }
-
-  const validateMessages = {
-    //   required: "'${name}' is Required!",
-    //   max: "'${name}' is Required!",
-    // required: "'${name}' is Required!",
-    string: {
-      len: translated_phrase('Form.Errors.len'),
-      min: translated_phrase('Form.Errors.min'),
-      max: translated_phrase('Form.Errors.max'),
-      //   "range": "${label} must be between ${min}-${max} characters"
-    },
-    // max: "'${name}' is 123123213!",
-  }
-  return validateMessages
+  return useMemo(
+    () => ({
+      string: {
+        len: t('Form.Errors.len'),
+        min: t('Form.Errors.min'),
+        max: t('Form.Errors.max'),
+      },
+    }),
+    [t, i18n.language]
+  )
 }

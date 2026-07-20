@@ -10,6 +10,8 @@ import styles from './index.module.scss'
 
 export type Grid = { xs: number; lg: number; xl: number; xxl: number }
 
+const DEFAULT_GRID: Grid = { xs: 24, lg: 12, xl: 8, xxl: 6 }
+
 export type DefaultCardProps = {
   title: React.ReactNode
   badgeRibbonText?: string
@@ -44,7 +46,7 @@ export const DefaultCard: React.FC<DefaultCardProps> = ({
   skeletonShowProgress,
   hoverable = true,
   type,
-  grid = { xs: 24, lg: 12, xl: 8, xxl: 6 },
+  grid = DEFAULT_GRID,
 }) => {
   const defaultCard = (
     <Card

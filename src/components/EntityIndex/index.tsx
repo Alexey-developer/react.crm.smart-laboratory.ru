@@ -8,7 +8,6 @@ import {
   Space,
   Flex,
   Button,
-  Tag,
   Popover,
   Table,
   type TableColumnsType,
@@ -30,8 +29,12 @@ import type { GroupClass } from '@api/common/types/TGroups'
 import { useAPIQuery } from '@api/useAPIQuery'
 import { useAPIMutation } from '@api/useAPIMutation'
 
-import { FormCard } from './FormCard'
-import { useFormActions } from './FormActions'
+import { EntityCard } from './EntityCard'
+import {
+  MetaCalculation,
+  type MetaCalculationAttribute,
+} from './MetaCalculation'
+import type { EntityFormActionsConfig } from './types'
 import { DefaultCard } from '@components/DefaultCard'
 import { type Filters, Filter } from '@components/Filter'
 import { type RequestSortState, Sort } from '@components/Sort'
@@ -40,25 +43,16 @@ import { CustomPagination } from '@components/CustomPagination'
 import { AlertCard } from '@components/AlertCard'
 
 import { getMethod } from '@utils/getMethod'
-import { convert2string, seconds2Time, SetPageTitle } from '@utils/helpers'
+import { SetPageTitle } from '@utils/helpers'
 import { useGetStateCurrentPageFilters } from '@utils/useGetStateCurrentPageFilters'
 import { useSyncFiltersFromSearchParams } from '@utils/useSyncFiltersFromSearchParams'
 import { getIcon } from '@utils/getIcon'
 import { COMMON_CREATING } from '@utils/constants/routes'
 import { getCheckboxFilterType } from '@utils/getCheckboxFilterType'
 
-export type EntityFormActionsConfig = {
-  tasksFilterKey?: 'project_id' | 'direction_id'
-  parentEntity?: (entity: any) =>
-    | { id: number; label?: string }
-    | undefined
-  directionEntity?: (entity: any) =>
-    | { id: number; label?: string }
-    | undefined
-  taskEntity?: (entity: any) =>
-    | { id: number; label?: string }
-    | undefined
-}
+import styles from './index.module.scss'
+
+export type { EntityFormActionsConfig } from './types'
 
 type EntityIndexProps = {
   pageTitleCode: string
@@ -84,6 +78,7 @@ type EntityIndexProps = {
 const SCRUM_COLUMN_MIN_WIDTH = 380
 const SCRUM_TABLE_MIN_SCROLL_X = 1200
 const SCRUM_TABLE_SCROLL_Y = 1000
+const EMPTY_CARD_CONTENT = <></>
 
 export const EntityIndex: React.FC<EntityIndexProps> = ({
   pageTitleCode,
@@ -131,15 +126,12 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
   useSyncFiltersFromSearchParams()
 
   const filters = useGetStateCurrentPageFilters()
-  //   console.log('FILTERS: ', filters)
 
   const {
     data,
     isLoading,
     isFetching,
     refetch,
-    isRefetching,
-    isPending,
     error,
   } = useAPIQuery(groupClass, getMethod('INDEX'), {
     page: requestPageState.value,
@@ -150,171 +142,92 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
     sort_direction: requestSortState.sortDirection,
   })
 
-  //   console.log('isLoading: ', isLoading)
-  //   console.log('isFetching: ', isFetching)
-  //   console.log('isRefetching: ', isRefetching)
-  //   console.log('isPending: ', isPending)
-  //   console.log('------------------------------------')
-
-  const {
-    //
-    mutateAsync: mutateAsyncDelete,
-    isPending: isPendingMutationDelete,
-  } = useAPIMutation(groupClass, getMethod('DESTROY'), {})
-  const {
-    mutateAsync: mutateAsyncRestore,
-    isPending: isPendingMutationRestore,
-  } = useAPIMutation(groupClass, getMethod('RESTORE'), {})
-
-  //   console.log('data: ', data)
+  const { mutateAsync: mutateAsyncDelete } = useAPIMutation(
+    groupClass,
+    getMethod('DESTROY'),
+    {}
+  )
+  const { mutateAsync: mutateAsyncRestore } = useAPIMutation(
+    groupClass,
+    getMethod('RESTORE'),
+    {}
+  )
 
   React.useEffect(() => {
     dispatch(setPageIsLoaded(!isLoading && !isFetching))
-  }, [isLoading, isFetching])
+  }, [dispatch, isLoading, isFetching])
 
-  const Card: React.FC<{ entity: any }> = ({ entity }) => {
-    const parentEntity = formActions?.parentEntity?.(entity)
-    const directionEntity = formActions?.directionEntity?.(entity)
-    const taskEntity = formActions?.taskEntity?.(entity)
+  const handleDelete = React.useCallback(
+    (id: number) => mutateAsyncDelete(id).then(() => refetch()),
+    [mutateAsyncDelete, refetch]
+  )
+  const handleRestore = React.useCallback(
+    (id: number) => mutateAsyncRestore(id).then(() => refetch()),
+    [mutateAsyncRestore, refetch]
+  )
 
-    const cardActions = useFormActions(
-        entity.id,
-        entity.deleted_at
-          ? [3]
-          : (resolveActionIndexes?.(entity) ?? actionIndexes),
-        () => {
-          entity.deleted_at
-            ? mutateAsyncRestore(entity.id).then(() => refetch())
-            : mutateAsyncDelete(entity.id).then(() => refetch())
-        },
-        {
-          tasksFilterKey: formActions?.tasksFilterKey,
-          parentEntityId: parentEntity?.id,
-          parentEntityTitle: parentEntity?.label,
-          directionEntityId: directionEntity?.id,
-          directionEntityTitle: directionEntity?.label,
-          taskEntityId: taskEntity?.id,
-          taskEntityTitle: taskEntity?.label,
-          directionsCount: entity.directions_count,
-          abilities: entity.can,
-        }
-    )
+  const renderEntityCard = (entity: any) => (
+    <EntityCard
+      key={entity.id}
+      entity={entity}
+      isLoading={isLoading}
+      FormContent={FormContent}
+      actionIndexes={actionIndexes}
+      resolveActionIndexes={resolveActionIndexes}
+      formActions={formActions}
+      viewType={viewType}
+      onDelete={handleDelete}
+      onRestore={handleRestore}
+    />
+  )
 
-    return FormCard({
-      isLoading: isLoading,
-      entity: entity,
-      FormContent: FormContent,
-      cardActions: cardActions,
-      grid:
-        !viewType || viewType === 'list'
-          ? undefined
-          : { xs: 24, lg: 24, xl: 24, xxl: 24 },
-    })
-  }
-
-  type Attribute = {
-    field: string
-    value: number | null
-    type: 'time' | 'money' | 'common' | 'money_by_currency'
-    by_currency?: Array<{
-      currency_id: number
-      code: string
-      symbol: string
-      value: number
-    }>
-  }
-  const Calculation: React.FC<{
-    attribute: Attribute
-  }> = ({ attribute }) => {
-    let value: React.ReactNode
-    let icon
-    let className
-    switch (attribute.type) {
-      case 'time':
-        value = seconds2Time(attribute.value ?? 0, translated_phrase)
-        icon = getIcon('TIME')
-        className = 'success transparent'
-        break
-      case 'money':
-        // Prefer money_by_currency in meta; leftover single-currency totals (e.g. WTR.money) have no symbol in payload
-        value = convert2string(attribute.value ?? 0, '')
-        icon = getIcon('RUBLE')
-        className = 'warning transparent'
-        break
-      case 'money_by_currency':
-        value = (attribute.by_currency ?? [])
-          .map((row) => convert2string(row.value, row.symbol))
-          .join(' · ')
-        icon = getIcon('RUBLE')
-        className = 'warning transparent'
-        break
-      case 'common':
-        // value = (attribute.value / data?.meta.total).toFixed(2)
-        value = attribute.value
-        icon = getIcon('INFO')
-        className = 'success'
-        break
-    }
-
-    return (
-      <Tag className={className} icon={<i className={icon}></i>}>
-        {`${translated_phrase(
-          `Form.EntitiesFields.${attribute.field}`
-        )}: ${value}`}
-      </Tag>
-    )
-  }
-
-  //
   let tasksViewScrum = <></>
-  //   console.log(1111111, tasksViewScrum)
+  const isScrum = viewType === 'scrum'
   const taskStatuses = useAPIQuery(
     getCheckboxFilterType('TASK_STATUS').group,
-    getMethod('INDEX')
+    getMethod('INDEX'),
+    {},
+    isScrum
   )
-  if (viewType === 'scrum') {
+
+  if (isScrum) {
     interface DataType {
-      // key: React.Key
-      // name: string
       [name: string]: any
     }
     const rows: DataType[] = []
 
-    data?.data?.map((entity: any, i: number) => {
+    data?.data?.forEach((entity: any) => {
       let createNewRow = true
-      //   console.log(235235, entity.status)
 
       if (!rows.length) {
         rows.push({
           key: rows.length + 1,
           [entity.status.lang_code]: (
-            <Row justify='start'>{<Card key={i} entity={entity} />}</Row>
+            <Row justify='start'>{renderEntityCard(entity)}</Row>
           ),
         })
         return
       }
-      rows.map(row => {
+      rows.forEach(row => {
         if (typeof row[entity.status.lang_code] === 'undefined') {
           row[entity.status.lang_code] = (
-            <Row justify='start'>{<Card key={i} entity={entity} />}</Row>
+            <Row justify='start'>{renderEntityCard(entity)}</Row>
           )
           createNewRow = false
-          return
         }
       })
       if (createNewRow) {
         rows.push({
           key: rows.length + 1,
           [entity.status.lang_code]: (
-            <Row justify='start'>{<Card key={i} entity={entity} />}</Row>
+            <Row justify='start'>{renderEntityCard(entity)}</Row>
           ),
         })
       }
-      // return
     })
 
     const columns: TableColumnsType<DataType> = []
-    taskStatuses?.data?.map(taskStatus => {
+    taskStatuses?.data?.forEach(taskStatus => {
       columns.push({
         title: translated_phrase(taskStatus.lang_code),
         dataIndex: taskStatus.lang_code,
@@ -327,7 +240,8 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
       ...item,
       hidden: !state?.checkedList.includes(item.key as number),
     }))
-    const visibleColumnCount = newColumns.filter(column => !column.hidden).length
+    const visibleColumnCount = newColumns.filter(column => !column.hidden)
+      .length
     const scrollX = Math.max(
       visibleColumnCount * SCRUM_COLUMN_MIN_WIDTH,
       SCRUM_TABLE_MIN_SCROLL_X
@@ -335,11 +249,8 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
 
     tasksViewScrum = (
       <Table
-        //loading
-        //virtual
         bordered
-        className='tasks-scrum-table'
-        style={{ width: '100%' }}
+        className={`tasks-scrum-table ${styles.scrum_table}`}
         scroll={{ x: scrollX, y: SCRUM_TABLE_SCROLL_Y }}
         columns={newColumns}
         dataSource={rows}
@@ -355,8 +266,8 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
       children: (
         <Space direction='vertical'>
           {(data?.meta.total_calculations ?? []).map(
-            (attribute: Attribute, index: number) => (
-              <Calculation key={index} attribute={attribute} />
+            (attribute: MetaCalculationAttribute, index: number) => (
+              <MetaCalculation key={index} attribute={attribute} />
             )
           )}
         </Space>
@@ -369,8 +280,8 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
       children: (
         <Space direction='vertical'>
           {(data?.meta.average_calculations ?? []).map(
-            (attribute: Attribute, index: number) => (
-              <Calculation key={index} attribute={attribute} />
+            (attribute: MetaCalculationAttribute, index: number) => (
+              <MetaCalculation key={index} attribute={attribute} />
             )
           )}
         </Space>
@@ -386,7 +297,6 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
           <Filter
             filters={entityFilters}
             isLoading={isLoading || isFetching}
-            // total={data?.meta.total}
           />
           <Sort
             requestSortState={requestSortState}
@@ -395,23 +305,12 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
           />
           {extraTopComponents?.map(topComponent => topComponent)}
         </Space>
-        {/* <Flex justify='flex-center'>
-          <Tag
-            className={'success'}
-            // icon={<i className={getIcon('RUBLE')}></i>}
-          >
-            {data?.meta.total}
-          </Tag>
-        </Flex> */}
         <Flex justify='flex-end'>
           <Space>
             <Popover
-              //   title={translated_phrase('Search.title')}
               title='Общие числа'
               trigger='click'
-              //   open={open}
               placement='bottom'
-              // onOpenChange={onPopoverOpenChangeHandler}
               content={<Tabs defaultActiveKey='1' items={tabs} />}
             >
               <Button
@@ -443,29 +342,25 @@ export const EntityIndex: React.FC<EntityIndexProps> = ({
         total={data?.meta.total}
         lastPage={data?.meta.last_page}
       />
-      <Row style={{ marginTop: 20, width: '100%' }} justify='start'>
-        {!isLoading /*&& !isFetching */ &&
+      <Row className={styles.cards_row} justify='start'>
+        {!isLoading &&
           (!viewType || viewType === 'list') &&
-          data?.data?.map((entity: any, i: number) => (
-            <Card key={i} entity={entity} />
-          ))}
+          data?.data?.map((entity: any) => renderEntityCard(entity))}
         {!isLoading && viewType === 'scrum' && (
           <Col span={24}>{tasksViewScrum}</Col>
         )}
-        {
-          /*(*/ isLoading /* || isFetching)*/ &&
-            [...Array(perPage)]?.map((skeleton, i) => (
-              <DefaultCard
-                isLoading={isLoading || isFetching}
-                skeletonActionCount={actionIndexes.length}
-                skeletonEmployeeCount={skeletonEmployeeCount}
-                skeletonShowProgress={skeletonShowProgress}
-                key={i}
-                title=''
-                content={<></>}
-              />
-            ))
-        }
+        {isLoading &&
+          [...Array(perPage)]?.map((_, i) => (
+            <DefaultCard
+              isLoading={isLoading || isFetching}
+              skeletonActionCount={actionIndexes.length}
+              skeletonEmployeeCount={skeletonEmployeeCount}
+              skeletonShowProgress={skeletonShowProgress}
+              key={i}
+              title=''
+              content={EMPTY_CARD_CONTENT}
+            />
+          ))}
       </Row>
       {error && (
         <AlertCard

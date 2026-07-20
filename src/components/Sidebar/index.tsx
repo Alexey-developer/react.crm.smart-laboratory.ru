@@ -1,11 +1,10 @@
-import React, { Suspense, useEffect } from 'react'
+import React, { Suspense, useEffect, useLayoutEffect } from 'react'
 
 import { Outlet, useNavigate } from 'react-router-dom'
 
-import { /*useDispatch,*/ useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { selectIsCollapsed } from '@redux/CollapseSider/selectors'
 import { selectAuthToken } from '@redux/CurrentUser/selectors'
-// import { setIsSpinning } from '@redux/Spin/slice'
 
 import { Layout } from 'antd'
 
@@ -23,77 +22,63 @@ import { PageSuspenseFallback } from '@components/PageSuspenseFallback'
 
 const { Content, Footer, Sider } = Layout
 
-export const Sidebar: React.FC = () => {
-  //   const dispatch = useDispatch()
+/** Syncs sider width class without forcing Outlet / Softphone to re-render. */
+const SiderCollapseSync: React.FC = () => {
   const isCollapsed = useSelector(selectIsCollapsed)
-  const authToken = useSelector(selectAuthToken)
 
+  useLayoutEffect(() => {
+    document.documentElement.dataset.sider = isCollapsed ? 'collapsed' : 'opened'
+  }, [isCollapsed])
+
+  return null
+}
+
+const AppSider: React.FC = () => {
+  const isCollapsed = useSelector(selectIsCollapsed)
+
+  return (
+    <Sider
+      trigger={null}
+      collapsible
+      collapsed={isCollapsed}
+      className={styles.sider}
+    >
+      <Logo />
+      <LeftMenu />
+    </Sider>
+  )
+}
+
+const PageOutlet: React.FC = () => (
+  <>
+    <Breadcrumbs />
+    <Suspense fallback={<PageSuspenseFallback />}>
+      <Outlet />
+    </Suspense>
+  </>
+)
+
+export const Sidebar: React.FC = () => {
+  const authToken = useSelector(selectAuthToken)
   const navigate = useNavigate()
 
   useEffect(() => {
-    //if любой запрос 401 -> ставим '' или banned
     const { pathname } = location
     if (pathname === '/auth' && authToken) {
-      //   dispatch(setIsSpinning(true))
-      // setTimeout(() => {
       navigate('/')
-      // }, 2000)
     }
     if (!authToken) {
-      //   dispatch(setIsSpinning(true))
-      // setTimeout(() => {
       navigate('/auth')
-      // }, 2000)
     }
   }, [authToken, navigate])
 
-  //   useEffect(() => {
-  //     dispatch(setIsSpinning(true))
-  //   }, [authToken, dispatch])
-
-  const content = (
-    <>
-      <Breadcrumbs />
-      <Suspense fallback={<PageSuspenseFallback />}>
-        <Outlet />
-      </Suspense>
-
-      {/* <div
-        style={{
-          padding: 24,
-          textAlign: 'center',
-        }}
-      >
-        <p>long content</p>
-        {
-          // indicates very long content
-          Array.from({ length: 100 }, (_, index) => (
-            <React.Fragment key={index}>
-              {index % 20 === 0 && index ? 'more' : '...'}
-              <br />
-            </React.Fragment>
-          ))
-        }
-      </div> */}
-    </>
-  )
-
   return (
-    <Layout hasSider={authToken ? true : false}>
-      {authToken && (
-        <Sider
-          trigger={null}
-          collapsible
-          collapsed={isCollapsed}
-          className={styles.sider}
-        >
-          <Logo />
-          <LeftMenu />
-        </Sider>
-      )}
+    <Layout hasSider={Boolean(authToken)}>
+      <SiderCollapseSync />
+      {authToken && <AppSider />}
       <Layout
-        className={`site-layout ${styles.site_layout_common} ${
-          authToken && (isCollapsed ? styles.collapsed : styles.opened)
+        className={`${styles.site_layout_common} ${
+          authToken ? styles.with_sider : ''
         }`}
       >
         <CustomSpin />
@@ -102,10 +87,10 @@ export const Sidebar: React.FC = () => {
 
         <TopHeader />
 
-        <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
-          {authToken ? content : <Auth />}
+        <Content className={styles.content}>
+          {authToken ? <PageOutlet /> : <Auth />}
         </Content>
-        <Footer style={{ textAlign: 'center' }}>
+        <Footer className={styles.footer}>
           Ant Design ©2023 Created by Ant UED
         </Footer>
       </Layout>

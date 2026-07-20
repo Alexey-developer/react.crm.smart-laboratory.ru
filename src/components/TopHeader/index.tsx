@@ -22,10 +22,28 @@ import styles from './index.module.scss'
 import { Layout, Button, Flex } from 'antd'
 const { Header } = Layout
 
-export const TopHeader: React.FC = () => {
+/** Isolated so Softphone / telephony widgets do not re-render on sider toggle. */
+const SiderCollapseButton: React.FC = () => {
   const dispatch = useDispatch()
-
   const isCollapsed = useSelector(selectIsCollapsed)
+
+  return (
+    <Button
+      className={styles.header_btn}
+      type='text'
+      icon={
+        isCollapsed ? (
+          <i className='fa-solid fa-align-left'></i>
+        ) : (
+          <i className='fa-solid fa-align-right'></i>
+        )
+      }
+      onClick={() => dispatch(setIsCollapsed(!isCollapsed))}
+    />
+  )
+}
+
+export const TopHeader: React.FC = () => {
   const authToken = useSelector(selectAuthToken)
 
   return (
@@ -33,24 +51,12 @@ export const TopHeader: React.FC = () => {
       <Flex justify='space-between'>
         {authToken && (
           <Flex justify='flex-start'>
-            <Button
-              className={styles.header_btn}
-              type='text'
-              icon={
-                isCollapsed ? (
-                  <i className='fa-solid fa-align-left'></i>
-                ) : (
-                  <i className='fa-solid fa-align-right'></i>
-                )
-              }
-              onClick={() => dispatch(setIsCollapsed(!isCollapsed))}
-            />
+            <SiderCollapseButton />
             <HeaderSearch />
           </Flex>
         )}
 
-        {/* >800! + 550 */}
-        <Flex justify='center' style={{ margin: 'auto' }}>
+        <Flex justify='center' className={styles.header_center}>
           <ChangeTheme />
           <ChangeLanguage />
           <PageQRCode />

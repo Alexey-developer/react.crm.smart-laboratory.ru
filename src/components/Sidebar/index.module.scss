@@ -77,13 +77,27 @@ $collapsed_sider_width: 80px;
   @include transition($TRANSITION_TIME);
   min-height: 100vh;
   background: $LIGHT_BG;
-  &.collapsed {
+}
+
+:global(html[data-sider='collapsed']) {
+  .with_sider {
     margin-left: $collapsed_sider_width;
   }
+}
 
-  &.opened {
+:global(html[data-sider='opened']) {
+  .with_sider {
     margin-left: $opened_sider_width;
   }
+}
+
+.content {
+  margin: 24px 16px 0;
+  overflow: initial;
+}
+
+.footer {
+  text-align: center;
 }
 
 [data-theme='dark'] {
@@ -117,8 +131,8 @@ $collapsed_sider_width: 80px;
 }
 
 @media (max-width: 800px) {
-  .site_layout_common {
-    &.opened {
+  :global(html[data-sider='opened']) {
+    .with_sider {
       margin-left: 0;
     }
   }

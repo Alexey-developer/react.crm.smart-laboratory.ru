@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import './reset.css'
 import './common.scss'
@@ -28,7 +28,6 @@ import 'dayjs/locale/ky'
 import 'dayjs/locale/ru'
 import 'dayjs/locale/tr'
 import 'dayjs/locale/zh-cn'
-// import 'dayjs/locale/en'
 
 import { Sidebar } from '@components/Sidebar'
 import { RealtimeProvider } from '@components/RealtimeProvider'
@@ -37,18 +36,19 @@ import { UserPermissionsRealtime } from '@components/UserPermissionsRealtime'
 import { getAntdLocale } from '@utils/getAntdLocale'
 import { GetValidateMessages } from '@utils/helpers'
 
+dayjs.extend(updateLocale)
+
 export const MainLayout: React.FC = () => {
   const lang = useSelector(selectLang)
   const authToken = useSelector(selectAuthToken)
   const dayjsLocale = getDayjsLocale(lang)
-
-  dayjs.extend(updateLocale)
-
-  dayjs.updateLocale(dayjsLocale, {
-    weekStart: 1,
-  })
-
   const validateMessages = GetValidateMessages()
+
+  useEffect(() => {
+    dayjs.updateLocale(dayjsLocale, {
+      weekStart: 1,
+    })
+  }, [dayjsLocale])
 
   return (
     <ConfigProvider locale={getAntdLocale(lang)} form={{ validateMessages }}>
