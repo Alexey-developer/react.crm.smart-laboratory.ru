@@ -145,8 +145,13 @@ const TelephonyAccountOverviewInner: React.FC = () => {
   )
 }
 
-export const TelephonyAccountOverview: React.FC = () => (
+const TelephonyAccountOverviewComponent: React.FC = () => (
   <Can permission='telephony.view_vox_account'>
     <TelephonyAccountOverviewInner />
   </Can>
+)
+
+/** Memo: isolate from TopHeader sibling/parent re-renders. */
+export const TelephonyAccountOverview = React.memo(
+  TelephonyAccountOverviewComponent
 )

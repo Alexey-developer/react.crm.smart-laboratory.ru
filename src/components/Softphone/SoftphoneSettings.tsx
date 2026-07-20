@@ -21,7 +21,7 @@ type SoftphoneSettingsProps = {
   onPreferencesChanged?: () => void
 }
 
-export const SoftphoneSettings: React.FC<SoftphoneSettingsProps> = ({
+const SoftphoneSettingsComponent: React.FC<SoftphoneSettingsProps> = ({
   onPreferencesChanged,
 }) => {
   const [translated_phrase] = useTranslation('global')
@@ -105,3 +105,5 @@ export const SoftphoneSettings: React.FC<SoftphoneSettingsProps> = ({
     </div>
   )
 }
+
+export const SoftphoneSettings = React.memo(SoftphoneSettingsComponent)

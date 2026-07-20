@@ -17,7 +17,7 @@ import { formSkeleton } from './formSkeleton'
 import styles from './index.module.scss'
 import * as URIs from '@utils/constants/routes'
 
-export const HeaderProfile: React.FC = () => {
+const HeaderProfileComponent: React.FC = () => {
   const dispatch = useDispatch()
   const [translated_phrase] = useTranslation('global')
 
@@ -122,19 +122,6 @@ export const HeaderProfile: React.FC = () => {
     </Popover>
   )
 }
-{
-  /* <Card loading={true} style={{ minWidth: 300 }}>
-            <Card.Meta
-              avatar={
-                <Avatar src='https://api.dicebear.com/7.x/miniavs/svg?seed=1' />
-              }
-              title='Card title'
-              description={
-                <>
-                  <p>This is the description</p>
-                  <p>This is the description</p>
-                </>
-              }
-            />
-          </Card> */
-}
+
+/** Memo: isolate from TopHeader sibling/parent re-renders. */
+export const HeaderProfile = React.memo(HeaderProfileComponent)

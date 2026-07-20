@@ -1,6 +1,9 @@
 import { useEffect, useRef } from 'react'
 
-import { useRealtime } from '@components/RealtimeProvider'
+import {
+  useRealtime,
+  useRealtimeStatus,
+} from '@components/RealtimeProvider'
 
 export type UseBroadcastListenOptions<TPayload> = {
   /** Private channel name without `private-` prefix. */
@@ -22,6 +25,9 @@ export type UseBroadcastListenOptions<TPayload> = {
  * Shared private-channel listener with ref-counted acquire/release.
  * Stable handler via ref (safe to pass inline `onEvent`).
  * Prefer this over calling Echo from feature components directly.
+ *
+ * Subscribe effect depends on `echo`, not `status` — reconnect flicker must not
+ * tear down / re-acquire channels. Reconnect callback uses `useRealtimeStatus`.
  */
 export const useBroadcastListen = <TPayload = unknown>({
   channel,
@@ -31,8 +37,8 @@ export const useBroadcastListen = <TPayload = unknown>({
   onReconnect,
   debounceMs = 0,
 }: UseBroadcastListenOptions<TPayload>): void => {
-  const { echo, status, acquirePrivateChannel, releasePrivateChannel } =
-    useRealtime()
+  const { echo, acquirePrivateChannel, releasePrivateChannel } = useRealtime()
+  const status = useRealtimeStatus()
 
   const onEventRef = useRef(onEvent)
   const onReconnectRef = useRef(onReconnect)
@@ -43,7 +49,7 @@ export const useBroadcastListen = <TPayload = unknown>({
   onReconnectRef.current = onReconnect
 
   useEffect(() => {
-    if (!enabled || !echo || status === 'disabled') {
+    if (!enabled || !echo) {
       return undefined
     }
 
@@ -80,7 +86,6 @@ export const useBroadcastListen = <TPayload = unknown>({
   }, [
     enabled,
     echo,
-    status,
     channel,
     event,
     debounceMs,

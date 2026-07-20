@@ -19,6 +19,7 @@ import { useAPIQuery } from '@api/useAPIQuery'
 
 import { ActionButton } from '@components/ActionButton'
 import { CustomAvatar, type Employee } from '@components/CustomAvatar'
+import { SoftphoneCallTimer } from './SoftphoneCallTimer'
 import { SoftphoneSettings } from './SoftphoneSettings'
 
 import { getIcon } from '@utils/getIcon'
@@ -63,7 +64,6 @@ type SoftphoneState = {
   incomingVisible: boolean
   callActive: boolean
   endedVisible: boolean
-  callSeconds: number
   endedSeconds: number
   micMuted: boolean
   speakerMuted: boolean
@@ -212,9 +212,10 @@ const setRemotePlaybackMuted = (call: Call, muted: boolean) => {
   }
 }
 
-export const Softphone: React.FC = () => {
+const SoftphoneComponent: React.FC = () => {
   const [translated_phrase] = useTranslation('global')
   const ringtoneRef = React.useRef<HTMLAudioElement | null>(null)
+  const callSecondsRef = React.useRef(0)
 
   const { data: credentialsResult, refetch: refetchCredentials } = useAPIQuery(
     TelephonySoftphoneGroup,
@@ -222,6 +223,10 @@ export const Softphone: React.FC = () => {
     {},
     true
   )
+
+  const onPreferencesChanged = React.useCallback(() => {
+    void refetchCredentials()
+  }, [refetchCredentials])
 
   const state = useReactive<SoftphoneState>({
     open: false,
@@ -242,7 +247,6 @@ export const Softphone: React.FC = () => {
     incomingVisible: false,
     callActive: false,
     endedVisible: false,
-    callSeconds: 0,
     endedSeconds: 0,
     micMuted: false,
     speakerMuted: false,
@@ -281,18 +285,6 @@ export const Softphone: React.FC = () => {
     }
   }, [credentialsResult])
 
-  React.useEffect(() => {
-    if (!state.callActive) {
-      return
-    }
-
-    const timerId = window.setInterval(() => {
-      state.callSeconds += 1
-    }, 1000)
-
-    return () => window.clearInterval(timerId)
-  }, [state.callActive])
-
   const hideIncomingCard = () => {
     state.incomingVisible = false
     state.pendingIncomingCall = null
@@ -330,9 +322,9 @@ export const Softphone: React.FC = () => {
   }
 
   const enterEnded = () => {
-    state.endedSeconds = state.callSeconds
+    state.endedSeconds = callSecondsRef.current
     state.endedVisible = true
-    state.callSeconds = 0
+    callSecondsRef.current = 0
   }
 
   const clearEnded = () => {
@@ -482,7 +474,7 @@ export const Softphone: React.FC = () => {
 
       state.peerLabel = formatE164Display(e164) || e164 || raw
       state.activeCall = call
-      state.callSeconds = 0
+      callSecondsRef.current = 0
       setCallControlsEnabled(true)
       attachCallListeners(call)
     } catch {
@@ -559,7 +551,7 @@ export const Softphone: React.FC = () => {
       await call.answer()
 
       state.activeCall = call
-      state.callSeconds = 0
+      callSecondsRef.current = 0
       setCallControlsEnabled(true)
       attachCallListeners(call)
 
@@ -756,7 +748,10 @@ export const Softphone: React.FC = () => {
       </div>
       {renderPeerHeader()}
       {muteHints ? <div className={styles.mute_hints}>{muteHints}</div> : null}
-      <div className={styles.timer}>{formatCallTime(state.callSeconds)}</div>
+      <SoftphoneCallTimer
+        active={state.callActive}
+        secondsRef={callSecondsRef}
+      />
       <div className={styles.actions_row_controls}>
         <span className={styles.click_wrap} onClick={toggleMic}>
           <ActionButton
@@ -868,11 +863,7 @@ export const Softphone: React.FC = () => {
       ) : null}
 
       {view === 'dial' || view === 'ended' ? (
-        <SoftphoneSettings
-          onPreferencesChanged={() => {
-            void refetchCredentials()
-          }}
-        />
+        <SoftphoneSettings onPreferencesChanged={onPreferencesChanged} />
       ) : null}
     </div>
   )
@@ -911,3 +902,6 @@ export const Softphone: React.FC = () => {
     </Popover>
   )
 }
+
+/** Memo: TopHeader parent re-renders must not rebuild Vox SDK UI tree. */
+export const Softphone = React.memo(SoftphoneComponent)

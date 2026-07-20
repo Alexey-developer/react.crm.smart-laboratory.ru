@@ -33,7 +33,7 @@ const callLabel = (call: TTelephonyQueueCall): string => {
   return name || phone || `Call #${call.id}`
 }
 
-export const TelephonyQueueOverview: React.FC = () => {
+const TelephonyQueueOverviewComponent: React.FC = () => {
   const [translated_phrase] = useTranslation('global')
 
   useTelephonyQueueSocket(true)
@@ -165,3 +165,8 @@ export const TelephonyQueueOverview: React.FC = () => {
     </Popover>
   )
 }
+
+/** Memo: isolate from TopHeader sibling/parent re-renders. */
+export const TelephonyQueueOverview = React.memo(
+  TelephonyQueueOverviewComponent
+)

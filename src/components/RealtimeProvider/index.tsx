@@ -21,9 +21,8 @@ export type RealtimeStatus =
 
 type PrivateChannel = ReturnType<Echo<'pusher'>['private']>
 
-type RealtimeContextValue = {
+type RealtimeConnectionValue = {
   echo: Echo<'pusher'> | null
-  status: RealtimeStatus
   /**
    * Subscribe / bump ref-count for a private channel (name without `private-`).
    * Prefer `useBroadcastListen` — call this only for advanced cases.
@@ -33,11 +32,18 @@ type RealtimeContextValue = {
   releasePrivateChannel: (name: string) => void
 }
 
-const RealtimeContext = createContext<RealtimeContextValue>({
+type RealtimeStatusValue = {
+  status: RealtimeStatus
+}
+
+const RealtimeConnectionContext = createContext<RealtimeConnectionValue>({
   echo: null,
-  status: 'disabled',
   acquirePrivateChannel: () => null,
   releasePrivateChannel: () => undefined,
+})
+
+const RealtimeStatusContext = createContext<RealtimeStatusValue>({
+  status: 'disabled',
 })
 
 type RealtimeProviderProps = {
@@ -81,6 +87,9 @@ const readEchoEnv = (): EchoEnv | null => {
 /**
  * CRM realtime bus: one Echo → Soketi connection for the whole app.
  * Channel leave is ref-counted so multiple hooks can share a channel safely.
+ *
+ * Connection (echo / acquire / release) and status live in separate contexts so
+ * connecting↔connected churn does not re-render subscribers that only need Echo.
  */
 export const RealtimeProvider: React.FC<RealtimeProviderProps> = ({
   children,
@@ -209,19 +218,29 @@ export const RealtimeProvider: React.FC<RealtimeProviderProps> = ({
     [echo]
   )
 
-  const value = useMemo(
+  const connectionValue = useMemo(
     () => ({
       echo,
-      status,
       acquirePrivateChannel,
       releasePrivateChannel,
     }),
-    [echo, status, acquirePrivateChannel, releasePrivateChannel]
+    [echo, acquirePrivateChannel, releasePrivateChannel]
   )
 
+  const statusValue = useMemo(() => ({ status }), [status])
+
   return (
-    <RealtimeContext.Provider value={value}>{children}</RealtimeContext.Provider>
+    <RealtimeConnectionContext.Provider value={connectionValue}>
+      <RealtimeStatusContext.Provider value={statusValue}>
+        {children}
+      </RealtimeStatusContext.Provider>
+    </RealtimeConnectionContext.Provider>
   )
 }
 
-export const useRealtime = () => useContext(RealtimeContext)
+/** Echo + channel ref-count. Stable across status flicker. */
+export const useRealtime = () => useContext(RealtimeConnectionContext)
+
+/** Connection lifecycle status (reconnect UI / onReconnect). */
+export const useRealtimeStatus = (): RealtimeStatus =>
+  useContext(RealtimeStatusContext).status

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useMemo } from 'react'
 
 import { Link, useLocation } from 'react-router-dom'
 
@@ -28,7 +28,7 @@ type ItemType = NonNullable<MenuProps['items']>[number]
 type SubMenuType = ItemType & { children: ItemType[] }
 
 export const LeftMenu: React.FC = () => {
-  const [translated_phrase] = useTranslation('global')
+  const { t: translated_phrase, i18n } = useTranslation('global')
   const location = useLocation()
   const { pathname } = location
   const pathnames = pathname.split('/').filter(item => item)
@@ -42,10 +42,10 @@ export const LeftMenu: React.FC = () => {
     {},
     Boolean(authToken)
   )
-  const commonPermissions = currentUserResponse?.data?.common_permissions ?? []
-  const catalog = currentUserResponse?.data?.common_permissions_catalog ?? {}
+  const commonPermissions = currentUserResponse?.data?.common_permissions
+  const catalog = currentUserResponse?.data?.common_permissions_catalog
 
-  const openHorizon = async () => {
+  const openHorizon = useCallback(async () => {
     try {
       const group = new CurrentUserGroup(authToken)
       const response = await group.enterHorizon()
@@ -56,72 +56,86 @@ export const LeftMenu: React.FC = () => {
     } catch {
       // Policy/session still enforce; toast via global handlers if any.
     }
-  }
+  }, [authToken])
 
-  const items: MenuProps['items'] = []
-  const leftMenuItems = filterMenuItemsByPermissions(
-    formLeftMenuItems(),
-    permissionKey => {
-      const full = catalog[permissionKey] ?? permissionKey
-      return commonPermissions.includes(full)
-    }
-  )
+  const items = useMemo((): MenuProps['items'] => {
+    const permissionList = commonPermissions ?? []
+    const permissionCatalog = catalog ?? {}
+    const built: MenuProps['items'] = []
 
-  const convert = (leftMenuItem: MenuItem) => {
-    const label = (
-      <>
-        <span>{translated_phrase(leftMenuItem.name_key)}</span>
-        {leftMenuItem.badge && (
-          <Badge
-            className={leftMenuItem.badge.className}
-            offset={leftMenuItem.badge.offset}
-            count={leftMenuItem.badge.count}
-          ></Badge>
-        )}
-      </>
+    const leftMenuItems = filterMenuItemsByPermissions(
+      formLeftMenuItems(),
+      permissionKey => {
+        const full = permissionCatalog[permissionKey] ?? permissionKey
+        return permissionList.includes(full)
+      }
     )
 
-    let itemLabel: React.ReactNode
-    if (leftMenuItem.childrenMenuItems) {
-      itemLabel = label
-    } else if (leftMenuItem.openHorizon) {
-      itemLabel = (
-        <a
-          href='#horizon'
-          onClick={event => {
-            event.preventDefault()
-            void openHorizon()
-          }}
-        >
-          {label}
-        </a>
+    const convert = (leftMenuItem: MenuItem) => {
+      const label = (
+        <>
+          <span>{translated_phrase(leftMenuItem.name_key)}</span>
+          {leftMenuItem.badge && (
+            <Badge
+              className={leftMenuItem.badge.className}
+              offset={leftMenuItem.badge.offset}
+              count={leftMenuItem.badge.count}
+            ></Badge>
+          )}
+        </>
       )
-    } else {
-      itemLabel = <Link to={leftMenuItem.path}>{label}</Link>
+
+      let itemLabel: React.ReactNode
+      if (leftMenuItem.childrenMenuItems) {
+        itemLabel = label
+      } else if (leftMenuItem.openHorizon) {
+        itemLabel = (
+          <a
+            href='#horizon'
+            onClick={event => {
+              event.preventDefault()
+              void openHorizon()
+            }}
+          >
+            {label}
+          </a>
+        )
+      } else {
+        itemLabel = <Link to={leftMenuItem.path}>{label}</Link>
+      }
+
+      const convertedMenuItem: ItemType = {
+        key: leftMenuItem.key ?? leftMenuItem.path,
+        label: itemLabel,
+        icon: (
+          <span className='anticon'>
+            <i className={leftMenuItem.icon}></i>
+          </span>
+        ),
+      }
+      return convertedMenuItem
     }
 
-    const convertedMenuItem: ItemType = {
-      key: leftMenuItem.key ?? leftMenuItem.path,
-      label: itemLabel,
-      icon: (
-        <span className='anticon'>
-          <i className={leftMenuItem.icon}></i>
-        </span>
-      ),
-    }
-    return convertedMenuItem
-  }
+    leftMenuItems.map(leftMenuItem => {
+      const converted = convert(leftMenuItem)
 
-  leftMenuItems.map(leftMenuItem => {
-    const converted = convert(leftMenuItem)
+      if (leftMenuItem.childrenMenuItems)
+        (converted as SubMenuType).children = []
 
-    if (leftMenuItem.childrenMenuItems) (converted as SubMenuType).children = []
+      leftMenuItem.childrenMenuItems?.map(childLeftMenuItem =>
+        (converted as SubMenuType).children.push(convert(childLeftMenuItem))
+      )
+      built.push(converted)
+    })
 
-    leftMenuItem.childrenMenuItems?.map(childLeftMenuItem =>
-      (converted as SubMenuType).children.push(convert(childLeftMenuItem))
-    )
-    items.push(converted)
-  })
+    return built
+  }, [
+    i18n.language,
+    translated_phrase,
+    commonPermissions,
+    catalog,
+    openHorizon,
+  ])
 
   return (
     <Menu

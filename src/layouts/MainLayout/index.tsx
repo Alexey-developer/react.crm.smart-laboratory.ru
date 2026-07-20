@@ -3,11 +3,7 @@ import React, { useEffect } from 'react'
 import './reset.css'
 import './common.scss'
 
-import '@assets/fontawesome/v6.5.1/css/all.css'
-import '@assets/fontawesome/v6.5.1/css/sharp-thin.css'
-import '@assets/fontawesome/v6.5.1/css/sharp-solid.css'
-import '@assets/fontawesome/v6.5.1/css/sharp-regular.css'
-import '@assets/fontawesome/v6.5.1/css/sharp-light.css'
+import '@assets/fontawesome/load'
 
 import { useSelector } from 'react-redux'
 import { selectLang } from '@redux/Language/selectors'
