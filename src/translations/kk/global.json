@@ -1,4 +1,4 @@
-{
+﻿{
   "Common": {
     "companyName": "SmartLab",
     "system_type": "CRM"
@@ -219,7 +219,8 @@
     "sign_out": "Шығу"
   },
   "Extra": {
-    "home_page": "Басты бет"
+    "home_page": "Басты бет",
+    "page_loading": "Бет жүктелуде…"
   },
   "Filters": {
     "self": "Сүзгілер",

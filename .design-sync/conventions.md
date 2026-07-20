@@ -60,7 +60,7 @@ reference sites. (3) No third-party CSS/JS from demos. (4) Icons: `fa-solid` /
 - **Breadcrumbs** → Vuexy / Metronic app headers
 - **CustomSelect / CustomSimpleSelect / PhoneInput** → Vuexy forms; OneUI layout catalog
 - **CustomAvatar / IncludedEmployees** → Vuexy team lists
-- **Skeleton / CustomSpin** → Vuexy loading states
+- **Skeleton / CustomSpin / PageSuspenseFallback** → Vuexy loading states
 
 Browse inside each demo (nested pages) when hunting a specific pattern. Business
 rules and legacy CRM screens are **not** in this bundle — the human adds ontology
@@ -77,7 +77,7 @@ excerpts or screenshots via prompt or `templates/` docs.
 | Breadcrumbs | Vuexy `ui-pagination-breadcrumbs` |
 | CustomSelect / PhoneInput | Vuexy `forms-selects`, `forms-input-groups`; OneUI `be_forms_input_groups` |
 | CustomAvatar / IncludedEmployees | Vuexy `extended-ui-avatar`, `pages-profile-teams` |
-| Skeleton / CustomSpin | Vuexy `extended-ui-blockui`, `ui-spinners` |
+| Skeleton / CustomSpin / PageSuspenseFallback | Vuexy `extended-ui-blockui`, `ui-spinners` |
 | Entity index (templates) | Vuexy `app-user-list`; Metronic `apps/customers/list` |
 | Tasks kanban (templates) | Vuexy `app-kanban`; CORK `apps_scrumboard` |
 | Mailbox (templates) | Vuexy `app-email`; CORK `apps_mailbox` |

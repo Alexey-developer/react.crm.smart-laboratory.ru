@@ -19,6 +19,7 @@ import { CustomSpin } from '@components/CustomSpin'
 import { Notification } from '@components/Notification'
 import { TopLoadingBar } from '@components/TopLoadingBar'
 import { Auth } from '@components/Auth'
+import { PageSuspenseFallback } from '@components/PageSuspenseFallback'
 
 const { Content, Footer, Sider } = Layout
 
@@ -53,7 +54,7 @@ export const Sidebar: React.FC = () => {
   const content = (
     <>
       <Breadcrumbs />
-      <Suspense fallback={<div>Идёт загрузка страницы проекта...</div>}>
+      <Suspense fallback={<PageSuspenseFallback />}>
         <Outlet />
       </Suspense>
 

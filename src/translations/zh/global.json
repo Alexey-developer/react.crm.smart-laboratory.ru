@@ -1,4 +1,4 @@
-{
+﻿{
   "Common": {
     "companyName": "SmartLab",
     "system_type": "CRM"
@@ -219,7 +219,8 @@
     "sign_out": "退出登录"
   },
   "Extra": {
-    "home_page": "首页"
+    "home_page": "首页",
+    "page_loading": "页面加载中…"
   },
   "Filters": {
     "self": "筛选",

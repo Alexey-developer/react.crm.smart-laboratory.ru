@@ -1,4 +1,4 @@
-{
+﻿{
   "Common": {
     "companyName": "СмартЛаб",
     "system_type": "CRM"
@@ -219,7 +219,8 @@
     "sign_out": "Выход"
   },
   "Extra": {
-    "home_page": "Главная"
+    "home_page": "Главная",
+    "page_loading": "Загрузка страницы…"
   },
   "Filters": {
     "self": "Фильтры",

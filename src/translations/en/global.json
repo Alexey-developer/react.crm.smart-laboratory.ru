@@ -1,4 +1,4 @@
-{
+﻿{
   "Common": {
     "companyName": "SmartLab",
     "system_type": "CRM"
@@ -219,7 +219,8 @@
     "sign_out": "Sign out"
   },
   "Extra": {
-    "home_page": "Home"
+    "home_page": "Home",
+    "page_loading": "Loading page…"
   },
   "Filters": {
     "self": "Filters",
