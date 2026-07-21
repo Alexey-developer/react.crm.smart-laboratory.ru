@@ -1,0 +1,36 @@
+@import '@utils/scss/variables.scss';
+
+.demo {
+  max-height: 240px;
+  border: 1px solid $LIGHT_HOVER_BG;
+  border-radius: $BORDER_RADIUS;
+  padding: 0 8px;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  padding: 10px 4px;
+  border-bottom: 1px solid $LIGHT_HOVER_BG;
+  font-size: 13px;
+  color: $LIGHT_HOVER_COLOR;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+:global([data-theme='dark']) {
+  .demo {
+    border-color: $DARK_HOVER_BG;
+  }
+
+  .item {
+    border-bottom-color: $DARK_HOVER_BG;
+    color: $DARK_HOVER_COLOR;
+  }
+}

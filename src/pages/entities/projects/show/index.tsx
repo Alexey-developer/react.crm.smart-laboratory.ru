@@ -18,6 +18,7 @@ import { CollapseCard } from '@components/CollapseCard'
 import { AlertCard } from '@components/AlertCard'
 import { PermissionSystem } from '@components/PermissionSystem'
 import { DefaultCard } from '@components/DefaultCard'
+import { EntityFileAttachments } from '@components/EntityFileAttachments'
 
 import { ActionButton } from '@components/ActionButton'
 
@@ -25,6 +26,7 @@ import { getMethod } from '@utils/getMethod'
 import { SetPageTitle, seconds2Time } from '@utils/helpers'
 import { getIcon } from '@utils/getIcon'
 import { PROJECTS } from '@utils/constants/routes'
+import { FILEABLE_TYPES } from '@utils/constants/fileableTypes'
 import {
   formatBillingMoney,
   formatCostsAutoVsBilling,
@@ -239,6 +241,12 @@ export const ProjectPage: React.FC = () => {
                       { name: 'Видеть в списке', action: 'index' },
                       { name: 'Просматривать', action: 'index' },
                     ]}
+                  />
+                </Col>
+                <Col span={24} className='default-col'>
+                  <EntityFileAttachments
+                    fileableType={FILEABLE_TYPES.PROJECT}
+                    fileableId={project.id}
                   />
                 </Col>
                 <Col span={24} className='default-col'>

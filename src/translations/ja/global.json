@@ -1,4 +1,4 @@
-﻿{
+{
   "Common": {
     "companyName": "SmartLab",
     "system_type": "CRM"
@@ -27,7 +27,8 @@
     "direction": "方向",
     "tasks": "タスク",
     "work_time_ranges": "勤務時間帯",
-    "documents": "書類",
+    "internal_documents": "内部文書",
+    "files": "ファイル",
     "system_users": "システムユーザー",
     "Budget": {
       "self": "予算",
@@ -220,7 +221,9 @@
   },
   "Extra": {
     "home_page": "ホーム",
-    "page_loading": "ページを読み込み中…"
+    "page_loading": "ページを読み込み中…",
+    "loading_more": "Loading…",
+    "load_more": "Load more"
   },
   "Filters": {
     "self": "フィルター",
@@ -275,7 +278,27 @@
     "expirations": "有効期限",
     "other_links": "その他のリンク",
     "endpoints": "エンドポイント",
-    "coming_soon": "近日公開"
+    "coming_soon": "近日公開",
+    "attachments": "添付ファイル"
+  },
+  "FileUpload": {
+    "upload_files": "ファイルをアップロード",
+    "start_upload": "送信",
+    "drop_title": "ファイルをここにドロップ",
+    "drop_hint": "またはクリックして選択。送信は下のボタンから。",
+    "pending_title": "送信待ち: {{count}}",
+    "clear_queue": "クリア",
+    "remove": "削除",
+    "cancel": "キャンセル",
+    "download": "ダウンロード",
+    "empty_list": "添付ファイルはありません",
+    "context_required": "アップロードはエンティティのコンテキストでのみ可能です（プロジェクト、方向、タスク）",
+    "upload_failed_title": "アップロード失敗",
+    "upload_failed_text": "{{name}}: {{detail}}",
+    "play_video": "再生",
+    "close_preview": "プレビューを閉じる",
+    "loading_more": "読み込み中…",
+    "load_more": "Load more"
   },
   "PermissionSystem": {
     "permission_system": "権限システム",
@@ -534,5 +557,14 @@
     "active": "Active",
     "liquidated": "Liquidated",
     "reorganized": "Reorganized"
+  },
+  "VideoPlayer": {
+    "play": "再生",
+    "pause": "一時停止",
+    "mute": "ミュート",
+    "unmute": "ミュート解除",
+    "fullscreen": "全画面",
+    "exit_fullscreen": "全画面を終了",
+    "playback_rate": "再生速度"
   }
 }

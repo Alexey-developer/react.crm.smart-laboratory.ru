@@ -14,6 +14,7 @@ export default defineConfig({
       '@api': '/src/api',
       '@assets': '/src/assets',
       '@components': '/src/components',
+      '@hooks': '/src/hooks',
       '@layouts': '/src/layouts',
       '@redux': '/src/redux',
       '@pages': '/src/pages',

@@ -1,0 +1,219 @@
+@import '@utils/scss/variables.scss';
+@import '@utils/scss/mixins.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  :global {
+    .ant-upload-drag {
+      width: 100%;
+      margin: 0;
+      border-radius: $BORDER_RADIUS !important;
+      border: 1px dashed $DEFAULT_COLOR !important;
+      background: $DEFAULT_COLOR_WITH_OPACITY !important;
+      @include transition($TRANSITION_TIME);
+
+      &:hover,
+      &.ant-upload-drag-hover {
+        border-color: $DEFAULT_COLOR !important;
+        background: $DEFAULT_COLOR_WITH_OPACITY !important;
+      }
+
+      .ant-upload-drag-container {
+        padding: 20px 16px;
+      }
+    }
+
+    .ant-upload-disabled .ant-upload-drag {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.dropzone_inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: $LIGHT_COLOR;
+}
+
+.dropzone_icon {
+  font-size: 28px;
+  color: $DEFAULT_COLOR;
+  line-height: 1;
+}
+
+.dropzone_title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: $LIGHT_HOVER_COLOR;
+}
+
+.dropzone_hint {
+  margin: 0;
+  font-size: 12px;
+  color: $LIGHT_COLOR;
+}
+
+.context_hint {
+  margin: 0;
+  font-size: 12px;
+  color: $WARNING_COLOR;
+}
+
+.queue {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border-radius: $BORDER_RADIUS;
+  background: $LIGHT_ELEMENT_BG;
+  box-shadow: $LIGHT_SMALL_SHADOW;
+}
+
+.queue_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.queue_title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: $LIGHT_HOVER_COLOR;
+}
+
+.queue_list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.queue_item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: $BORDER_RADIUS;
+  background: $LIGHT_HOVER_BG;
+}
+
+.queue_item_icon {
+  flex-shrink: 0;
+  color: $DEFAULT_COLOR;
+  font-size: 16px;
+}
+
+.queue_item_meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.queue_item_name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 500;
+  color: $LIGHT_HOVER_COLOR;
+}
+
+.queue_item_size {
+  font-size: 12px;
+  color: $LIGHT_COLOR;
+}
+
+.queue_item_remove {
+  flex-shrink: 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.progress_list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.progress_item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.progress_meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  color: $LIGHT_COLOR;
+}
+
+.progress_name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+  color: $LIGHT_HOVER_COLOR;
+}
+
+:global([data-theme='dark']) {
+  .dropzone_inner {
+    color: $DARK_COLOR;
+  }
+
+  .dropzone_title {
+    color: $DARK_HOVER_COLOR;
+  }
+
+  .dropzone_hint {
+    color: $DARK_COLOR;
+  }
+
+  .queue {
+    background: $DARK_ELEMENT_BG;
+    box-shadow: $DARK_SMALL_SHADOW;
+  }
+
+  .queue_title {
+    color: $DARK_HOVER_COLOR;
+  }
+
+  .queue_item {
+    background: $DARK_HOVER_BG;
+  }
+
+  .queue_item_name {
+    color: $DARK_HOVER_COLOR;
+  }
+
+  .queue_item_size {
+    color: $DARK_COLOR;
+  }
+
+  .progress_meta {
+    color: $DARK_COLOR;
+  }
+
+  .progress_name {
+    color: $DARK_HOVER_COLOR;
+  }
+}

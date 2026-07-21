@@ -19,6 +19,7 @@
       "@api/*": ["api/*"],
       "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
+      "@hooks/*": ["hooks/*"],
       "@layouts/*": ["layouts/*"],
       "@redux/*": ["redux/*"],
       "@pages/*": ["pages/*"],

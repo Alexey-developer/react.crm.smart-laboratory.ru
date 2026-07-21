@@ -1,4 +1,4 @@
-﻿{
+{
   "Common": {
     "companyName": "SmartLab",
     "system_type": "CRM"
@@ -27,7 +27,8 @@
     "direction": "Багыт",
     "tasks": "Тапшырмалар",
     "work_time_ranges": "Иш убакыт аралыктары",
-    "documents": "Документтер",
+    "internal_documents": "Ички документтер",
+    "files": "Файлдар",
     "system_users": "Система колдонуучулары",
     "Budget": {
       "self": "Бюджет",
@@ -220,7 +221,9 @@
   },
   "Extra": {
     "home_page": "Башкы бет",
-    "page_loading": "Барак жүктөлүүдө…"
+    "page_loading": "Барак жүктөлүүдө…",
+    "loading_more": "Loading…",
+    "load_more": "Load more"
   },
   "Filters": {
     "self": "Чыпкалар",
@@ -275,7 +278,27 @@
     "expirations": "Мөөнөттөрдүн бүтүшү",
     "other_links": "Башка шилтемелер",
     "endpoints": "Эндпоинттер",
-    "coming_soon": "Жакында"
+    "coming_soon": "Жакында",
+    "attachments": "Тиркемелер"
+  },
+  "FileUpload": {
+    "upload_files": "Файлдарды жүктөө",
+    "start_upload": "Жөнөтүү",
+    "drop_title": "Файлдарды бул жерге таштаңыз",
+    "drop_hint": "же тандоо үчүн басыңыз. Жөнөтүү — төмөнкү баскыч менен.",
+    "pending_title": "Жөнөтүүгө: {{count}}",
+    "clear_queue": "Тазалоо",
+    "remove": "Алып салуу",
+    "cancel": "Жокко чыгаруу",
+    "download": "Жүктөп алуу",
+    "empty_list": "Тиркемелер жок",
+    "context_required": "Жүктөө объект контекстинде гана жеткиликтүү (долбоор, багыт, тапшырма)",
+    "upload_failed_title": "Жүктөө катасы",
+    "upload_failed_text": "{{name}}: {{detail}}",
+    "play_video": "Көрүү",
+    "close_preview": "Алдын ала көрүүнү жабуу",
+    "loading_more": "Жүктөлүүдө…",
+    "load_more": "Load more"
   },
   "PermissionSystem": {
     "permission_system": "Уруксаттар системасы",
@@ -534,5 +557,14 @@
     "active": "Active",
     "liquidated": "Liquidated",
     "reorganized": "Reorganized"
+  },
+  "VideoPlayer": {
+    "play": "Ойнотуу",
+    "pause": "Тындыруу",
+    "mute": "Үндү өчүрүү",
+    "unmute": "Үндү күйгүзүү",
+    "fullscreen": "Толук экран",
+    "exit_fullscreen": "Жыйноо",
+    "playback_rate": "Ойнотуу ылдамдыгы"
   }
 }

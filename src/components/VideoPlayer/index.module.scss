@@ -1,0 +1,115 @@
+@import '@utils/scss/variables.scss';
+
+.player {
+  width: 100%;
+  max-width: 640px;
+  margin: 0;
+}
+
+.shell {
+  position: relative;
+  border-radius: $BORDER_RADIUS;
+  overflow: hidden;
+  background: $LIGHT_HOVER_COLOR;
+  box-shadow: $LIGHT_SMALL_SHADOW;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  background: $LIGHT_HOVER_COLOR;
+  cursor: pointer;
+}
+
+.controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 8px 12px 10px;
+  background: linear-gradient(
+    transparent,
+    rgba(15, 20, 34, 0.72) 40%,
+    rgba(15, 20, 34, 0.88)
+  );
+}
+
+.progress {
+  margin: 0 0 4px !important;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.toolbar_left,
+.toolbar_right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.control_btn,
+.rate_btn {
+  color: #fff !important;
+}
+
+.volume {
+  width: 72px;
+  margin: 0 !important;
+}
+
+.time {
+  margin-left: 6px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.88);
+  white-space: nowrap;
+}
+
+.rate_btn {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.caption {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: $LIGHT_COLOR;
+}
+
+:global([data-theme='dark']) {
+  .shell {
+    background: $DARK_BG;
+    box-shadow: $DARK_SMALL_SHADOW;
+  }
+
+  .video {
+    background: $DARK_BG;
+  }
+
+  .caption {
+    color: $DARK_COLOR;
+  }
+}
+
+:global {
+  .progress,
+  .volume {
+    .ant-slider-rail {
+      background: rgba(255, 255, 255, 0.22) !important;
+    }
+
+    .ant-slider-track {
+      background: $DEFAULT_COLOR !important;
+    }
+
+    .ant-slider-handle::after {
+      box-shadow: 0 0 0 2px $DEFAULT_COLOR !important;
+    }
+  }
+}

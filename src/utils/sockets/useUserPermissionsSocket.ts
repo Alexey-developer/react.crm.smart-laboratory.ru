@@ -14,8 +14,12 @@ export const userPermissionsChannel = (userId: number) => `user.${userId}`
 export const USER_PERMISSIONS_UPDATED_EVENT = '.user.permissions.updated'
 
 /**
- * On permission change: refresh current-user (common_permissions) and entity
- * queries (lazy `can{}` hints). HTTP remains source of truth.
+ * On permission change: refresh current-user (`common_permissions`).
+ *
+ * Do NOT invalidate every `Group/...` query — each new File triggers
+ * SetPermissionsForNewEntityJob → burst of UserPermissionsUpdated events; a nuclear
+ * invalidate storms telephony/softphone/account/entity show + files in parallel.
+ * Entity list/show already refetch via their own actions (e.g. attachments reload).
  */
 export const useUserPermissionsSocket = (userId: number | null | undefined) => {
   const queryClient = useQueryClient()
@@ -23,13 +27,8 @@ export const useUserPermissionsSocket = (userId: number | null | undefined) => {
 
   const invalidate = useCallback(() => {
     void queryClient.invalidateQueries({
-      predicate: query => {
-        const key = String(query.queryKey[0] ?? '')
-        return (
-          key.startsWith('CurrentUserGroup/') ||
-          (key.includes('/') && !key.startsWith('CurrentUserGroup/'))
-        )
-      },
+      predicate: query =>
+        String(query.queryKey[0] ?? '').startsWith('CurrentUserGroup/'),
     })
   }, [queryClient])
 
@@ -37,7 +36,8 @@ export const useUserPermissionsSocket = (userId: number | null | undefined) => {
     channel: enabled ? userPermissionsChannel(userId) : 'user.0',
     event: USER_PERMISSIONS_UPDATED_EVENT,
     enabled,
-    debounceMs: 150,
+    // Coalesce permission jobs from multi-file finalize (many ChangeUserPermissionJob).
+    debounceMs: 500,
     onEvent: invalidate,
     onReconnect: invalidate,
   })

@@ -1,4 +1,4 @@
-﻿{
+{
   "Common": {
     "companyName": "SmartLab",
     "system_type": "CRM"
@@ -27,7 +27,8 @@
     "direction": "İstiqamət",
     "tasks": "Tapşırıqlar",
     "work_time_ranges": "Vaxt aralıqları",
-    "documents": "Sənədlər",
+    "internal_documents": "Daxili sənədlər",
+    "files": "Fayllar",
     "system_users": "Sistem istifadəçiləri",
     "Budget": {
       "self": "Büdcə",
@@ -220,7 +221,9 @@
   },
   "Extra": {
     "home_page": "Ana səhifə",
-    "page_loading": "Səhifə yüklənir…"
+    "page_loading": "Səhifə yüklənir…",
+    "loading_more": "Loading…",
+    "load_more": "Load more"
   },
   "Filters": {
     "self": "Filtrlər",
@@ -275,7 +278,27 @@
     "expirations": "Müddət bitmələri",
     "other_links": "Digər keçidlər",
     "endpoints": "Endpointlər",
-    "coming_soon": "Tezliklə"
+    "coming_soon": "Tezliklə",
+    "attachments": "Əlavələr"
+  },
+  "FileUpload": {
+    "upload_files": "Faylları yüklə",
+    "start_upload": "Göndər",
+    "drop_title": "Faylları bura atın",
+    "drop_hint": "və ya seçmək üçün klikləyin. Göndərmə — aşağıdakı düymə ilə.",
+    "pending_title": "Göndəriləcək: {{count}}",
+    "clear_queue": "Təmizlə",
+    "remove": "Sil",
+    "cancel": "Ləğv et",
+    "download": "Endir",
+    "empty_list": "Əlavə yoxdur",
+    "context_required": "Yükləmə yalnız mahiyyət kontekstində mümkündür (layihə, istiqamət, tapşırıq)",
+    "upload_failed_title": "Yükləmə xətası",
+    "upload_failed_text": "{{name}}: {{detail}}",
+    "play_video": "İzlə",
+    "close_preview": "Önizləməni bağla",
+    "loading_more": "Yüklənir…",
+    "load_more": "Load more"
   },
   "PermissionSystem": {
     "permission_system": "İcazələr sistemi",
@@ -534,5 +557,14 @@
     "active": "Active",
     "liquidated": "Liquidated",
     "reorganized": "Reorganized"
+  },
+  "VideoPlayer": {
+    "play": "Oynat",
+    "pause": "Fasilə",
+    "mute": "Səssiz",
+    "unmute": "Səsi aç",
+    "fullscreen": "Tam ekran",
+    "exit_fullscreen": "Tam ekrandan çıx",
+    "playback_rate": "Oynatma sürəti"
   }
 }

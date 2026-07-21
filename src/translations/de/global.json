@@ -1,4 +1,4 @@
-﻿{
+{
   "Common": {
     "companyName": "SmartLab",
     "system_type": "CRM"
@@ -27,7 +27,8 @@
     "direction": "Richtung",
     "tasks": "Aufgaben",
     "work_time_ranges": "Arbeitszeitspannen",
-    "documents": "Dokumente",
+    "internal_documents": "Interne Dokumente",
+    "files": "Dateien",
     "system_users": "Systembenutzer",
     "Budget": {
       "self": "Budget",
@@ -220,7 +221,9 @@
   },
   "Extra": {
     "home_page": "Startseite",
-    "page_loading": "Seite wird geladen…"
+    "page_loading": "Seite wird geladen…",
+    "loading_more": "Loading…",
+    "load_more": "Load more"
   },
   "Filters": {
     "self": "Filter",
@@ -275,7 +278,27 @@
     "expirations": "Ablauffristen",
     "other_links": "Weitere Links",
     "endpoints": "Endpunkte",
-    "coming_soon": "Demnächst"
+    "coming_soon": "Demnächst",
+    "attachments": "Anhänge"
+  },
+  "FileUpload": {
+    "upload_files": "Dateien hochladen",
+    "start_upload": "Senden",
+    "drop_title": "Dateien hierher ziehen",
+    "drop_hint": "oder klicken zum Auswählen. Senden — mit dem Button unten.",
+    "pending_title": "Bereit zum Senden: {{count}}",
+    "clear_queue": "Leeren",
+    "remove": "Entfernen",
+    "cancel": "Abbrechen",
+    "download": "Herunterladen",
+    "empty_list": "Keine Anhänge",
+    "context_required": "Upload nur im Kontext einer Entität (Projekt, Richtung, Aufgabe)",
+    "upload_failed_title": "Upload fehlgeschlagen",
+    "upload_failed_text": "{{name}}: {{detail}}",
+    "play_video": "Abspielen",
+    "close_preview": "Vorschau schließen",
+    "loading_more": "Laden…",
+    "load_more": "Load more"
   },
   "PermissionSystem": {
     "permission_system": "Berechtigungssystem",
@@ -534,5 +557,14 @@
     "active": "Active",
     "liquidated": "Liquidated",
     "reorganized": "Reorganized"
+  },
+  "VideoPlayer": {
+    "play": "Abspielen",
+    "pause": "Pause",
+    "mute": "Stumm",
+    "unmute": "Ton an",
+    "fullscreen": "Vollbild",
+    "exit_fullscreen": "Vollbild beenden",
+    "playback_rate": "Wiedergabegeschwindigkeit"
   }
 }

@@ -193,9 +193,19 @@ export const formLeftMenuItems = (): LeftMenuItems => {
       icon: 'fa-solid fa-book',
       childrenMenuItems: [
         {
-          name_key: 'MenuItems.documents',
+          name_key: 'MenuItems.internal_documents',
           path: URIs.DOCUMENTS,
           icon: 'fa-solid fa-file-lines',
+          badge: {
+            className: 'warning transparent',
+            offset: badge_offset,
+            count: 99,
+          },
+        },
+        {
+          name_key: 'MenuItems.files',
+          path: URIs.FILES,
+          icon: 'fa-solid fa-paperclip',
           badge: {
             className: 'warning transparent',
             offset: badge_offset,

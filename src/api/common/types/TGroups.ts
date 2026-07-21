@@ -31,6 +31,7 @@ import { BlockedPhoneNumberGroup } from '@api/models/blockedPhoneNumber/queryGro
 import { TelephonyAccountGroup } from '@api/models/telephonyAccount/queryGroup'
 import { TelephonySoftphoneGroup } from '@api/models/telephonySoftphone/queryGroup'
 import { TelephonyQueuesGroup } from '@api/models/telephonyQueues/queryGroup'
+import { FileGroup } from '@api/models/file/queryGroup'
 
 export type GroupClass =
   | typeof CurrentUserGroup
@@ -66,6 +67,7 @@ export type GroupClass =
   | typeof TelephonyAccountGroup
   | typeof TelephonySoftphoneGroup
   | typeof TelephonyQueuesGroup
+  | typeof FileGroup
 export type GroupMethod =
   | typeof CurrentUserGroup
   | typeof ProjectGroup
@@ -100,3 +102,4 @@ export type GroupMethod =
   | typeof TelephonyAccountGroup
   | typeof TelephonySoftphoneGroup
   | typeof TelephonyQueuesGroup
+  | typeof FileGroup

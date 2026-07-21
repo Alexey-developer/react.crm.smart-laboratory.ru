@@ -1,0 +1,119 @@
+@import '@utils/scss/variables.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.media {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scroll {
+  max-height: 360px;
+}
+
+.list {
+  margin: 0;
+}
+
+.list_item {
+  padding: 10px 0 !important;
+  border-bottom: 1px solid $LIGHT_HOVER_BG !important;
+
+  &:last-child {
+    border-bottom: none !important;
+  }
+}
+
+.file_row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+}
+
+.file_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: $BORDER_RADIUS;
+  background: $DEFAULT_COLOR_WITH_OPACITY;
+  color: $DEFAULT_COLOR;
+  font-size: 16px;
+}
+
+.file_meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.file_name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+  color: $LIGHT_HOVER_COLOR;
+}
+
+.file_details {
+  font-size: 12px;
+  color: $LIGHT_COLOR;
+}
+
+.file_actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.video_preview {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.video_preview_header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.empty {
+  margin: 0;
+  padding: 12px 0;
+  font-size: 13px;
+  color: $LIGHT_COLOR;
+  text-align: center;
+}
+
+:global([data-theme='dark']) {
+  .list_item {
+    border-bottom-color: $DARK_HOVER_BG !important;
+  }
+
+  .file_name {
+    color: $DARK_HOVER_COLOR;
+  }
+
+  .file_details {
+    color: $DARK_COLOR;
+  }
+
+  .empty {
+    color: $DARK_COLOR;
+  }
+}

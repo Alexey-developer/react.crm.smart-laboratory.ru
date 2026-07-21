@@ -1,4 +1,4 @@
-﻿{
+{
   "Common": {
     "companyName": "SmartLab",
     "system_type": "CRM"
@@ -27,7 +27,8 @@
     "direction": "Direction",
     "tasks": "Tasks",
     "work_time_ranges": "Work time ranges",
-    "documents": "Documents",
+    "internal_documents": "Internal documents",
+    "files": "Files",
     "system_users": "System users",
     "Budget": {
       "self": "Budget",
@@ -220,7 +221,9 @@
   },
   "Extra": {
     "home_page": "Home",
-    "page_loading": "Loading page…"
+    "page_loading": "Loading page…",
+    "loading_more": "Loading…",
+    "load_more": "Load more"
   },
   "Filters": {
     "self": "Filters",
@@ -275,7 +278,27 @@
     "expirations": "Expirations",
     "other_links": "Other links",
     "endpoints": "Endpoints",
-    "coming_soon": "Coming soon"
+    "coming_soon": "Coming soon",
+    "attachments": "Attachments"
+  },
+  "FileUpload": {
+    "upload_files": "Upload files",
+    "start_upload": "Upload",
+    "drop_title": "Drop files here",
+    "drop_hint": "or click to select. Send with the button below.",
+    "pending_title": "Queued: {{count}}",
+    "clear_queue": "Clear",
+    "remove": "Remove",
+    "cancel": "Cancel",
+    "download": "Download",
+    "empty_list": "No attachments",
+    "context_required": "Upload is available only in an entity context (project, direction, task)",
+    "upload_failed_title": "Upload failed",
+    "upload_failed_text": "{{name}}: {{detail}}",
+    "play_video": "Play",
+    "close_preview": "Close preview",
+    "loading_more": "Loading…",
+    "load_more": "Load more"
   },
   "PermissionSystem": {
     "permission_system": "Permission system",
@@ -534,5 +557,14 @@
     "active": "Active",
     "liquidated": "Liquidated",
     "reorganized": "Reorganized"
+  },
+  "VideoPlayer": {
+    "play": "Play",
+    "pause": "Pause",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "fullscreen": "Fullscreen",
+    "exit_fullscreen": "Exit fullscreen",
+    "playback_rate": "Playback speed"
   }
 }

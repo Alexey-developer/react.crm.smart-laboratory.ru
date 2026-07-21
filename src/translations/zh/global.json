@@ -1,4 +1,4 @@
-﻿{
+{
   "Common": {
     "companyName": "SmartLab",
     "system_type": "CRM"
@@ -27,7 +27,8 @@
     "direction": "方向",
     "tasks": "任务",
     "work_time_ranges": "工作时间段",
-    "documents": "文档",
+    "internal_documents": "内部文档",
+    "files": "文件",
     "system_users": "系统用户",
     "Budget": {
       "self": "预算",
@@ -220,7 +221,9 @@
   },
   "Extra": {
     "home_page": "首页",
-    "page_loading": "页面加载中…"
+    "page_loading": "页面加载中…",
+    "loading_more": "Loading…",
+    "load_more": "Load more"
   },
   "Filters": {
     "self": "筛选",
@@ -275,7 +278,27 @@
     "expirations": "到期项",
     "other_links": "其他链接",
     "endpoints": "端点",
-    "coming_soon": "即将推出"
+    "coming_soon": "即将推出",
+    "attachments": "附件"
+  },
+  "FileUpload": {
+    "upload_files": "上传文件",
+    "start_upload": "发送",
+    "drop_title": "将文件拖到此处",
+    "drop_hint": "或点击选择。发送请用下方按钮。",
+    "pending_title": "待发送：{{count}}",
+    "clear_queue": "清空",
+    "remove": "移除",
+    "cancel": "取消",
+    "download": "下载",
+    "empty_list": "暂无附件",
+    "context_required": "仅可在实体上下文中上传（项目、方向、任务）",
+    "upload_failed_title": "上传失败",
+    "upload_failed_text": "{{name}}: {{detail}}",
+    "play_video": "播放",
+    "close_preview": "关闭预览",
+    "loading_more": "加载中…",
+    "load_more": "Load more"
   },
   "PermissionSystem": {
     "permission_system": "权限系统",
@@ -534,5 +557,14 @@
     "active": "Active",
     "liquidated": "Liquidated",
     "reorganized": "Reorganized"
+  },
+  "VideoPlayer": {
+    "play": "播放",
+    "pause": "暂停",
+    "mute": "静音",
+    "unmute": "取消静音",
+    "fullscreen": "全屏",
+    "exit_fullscreen": "退出全屏",
+    "playback_rate": "播放速度"
   }
 }

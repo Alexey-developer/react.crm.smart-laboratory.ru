@@ -1,4 +1,4 @@
-﻿{
+{
   "Common": {
     "companyName": "SmartLab",
     "system_type": "CRM"
@@ -27,7 +27,8 @@
     "direction": "Напрамак",
     "tasks": "Задачы",
     "work_time_ranges": "Працоўныя часавыя дыяпазоны",
-    "documents": "Дакументы",
+    "internal_documents": "Унутраныя дакументы",
+    "files": "Файлы",
     "system_users": "Карыстальнікі сістэмы",
     "Budget": {
       "self": "Бюджэт",
@@ -220,7 +221,9 @@
   },
   "Extra": {
     "home_page": "Галоўная",
-    "page_loading": "Загрузка старонкі…"
+    "page_loading": "Загрузка старонкі…",
+    "loading_more": "Loading…",
+    "load_more": "Load more"
   },
   "Filters": {
     "self": "Фільтры",
@@ -275,7 +278,27 @@
     "expirations": "Заканчэнне тэрмінаў",
     "other_links": "Іншыя спасылкі",
     "endpoints": "Эндпоінты",
-    "coming_soon": "Хутка"
+    "coming_soon": "Хутка",
+    "attachments": "Далучэнні"
+  },
+  "FileUpload": {
+    "upload_files": "Загрузіць файлы",
+    "start_upload": "Адправіць",
+    "drop_title": "Перацягніце файлы сюды",
+    "drop_hint": "або націсніце, каб выбраць. Адпраўка — кнопкай ніжэй.",
+    "pending_title": "Да адпраўкі: {{count}}",
+    "clear_queue": "Ачысціць",
+    "remove": "Прыбраць",
+    "cancel": "Адмяніць",
+    "download": "Спампаваць",
+    "empty_list": "Няма далучэнняў",
+    "context_required": "Загрузка даступная толькі ў кантэксце сутнасці (праект, кірунак, задача)",
+    "upload_failed_title": "Памылка загрузкі",
+    "upload_failed_text": "{{name}}: {{detail}}",
+    "play_video": "Глядзець",
+    "close_preview": "Закрыць прагляд",
+    "loading_more": "Загрузка…",
+    "load_more": "Load more"
   },
   "PermissionSystem": {
     "permission_system": "Сістэма дазволаў",
@@ -534,5 +557,14 @@
     "active": "Active",
     "liquidated": "Liquidated",
     "reorganized": "Reorganized"
+  },
+  "VideoPlayer": {
+    "play": "Прайграць",
+    "pause": "Паўза",
+    "mute": "Выключыць гук",
+    "unmute": "Уключыць гук",
+    "fullscreen": "На ўвесь экран",
+    "exit_fullscreen": "Згарнуць",
+    "playback_rate": "Хуткасць прайгравання"
   }
 }

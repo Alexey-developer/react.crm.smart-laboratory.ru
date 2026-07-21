@@ -1,4 +1,4 @@
-﻿{
+{
   "Common": {
     "companyName": "SmartLab",
     "system_type": "CRM"
@@ -27,7 +27,8 @@
     "direction": "Бағыт",
     "tasks": "Тапсырмалар",
     "work_time_ranges": "Жұмыс уақыты аралықтары",
-    "documents": "Құжаттар",
+    "internal_documents": "Ішкі құжаттар",
+    "files": "Файлдар",
     "system_users": "Жүйе пайдаланушылары",
     "Budget": {
       "self": "Бюджет",
@@ -220,7 +221,9 @@
   },
   "Extra": {
     "home_page": "Басты бет",
-    "page_loading": "Бет жүктелуде…"
+    "page_loading": "Бет жүктелуде…",
+    "loading_more": "Loading…",
+    "load_more": "Load more"
   },
   "Filters": {
     "self": "Сүзгілер",
@@ -275,7 +278,27 @@
     "expirations": "Мерзімдердің аяқталуы",
     "other_links": "Басқа сілтемелер",
     "endpoints": "Эндпоинттер",
-    "coming_soon": "Жақында"
+    "coming_soon": "Жақында",
+    "attachments": "Тіркемелер"
+  },
+  "FileUpload": {
+    "upload_files": "Файлдарды жүктеу",
+    "start_upload": "Жіберу",
+    "drop_title": "Файлдарды осы жерге тастаңыз",
+    "drop_hint": "немесе таңдау үшін басыңыз. Жіберу — төмендегі түймемен.",
+    "pending_title": "Жіберуге: {{count}}",
+    "clear_queue": "Тазалау",
+    "remove": "Алып тастау",
+    "cancel": "Болдырмау",
+    "download": "Жүктеп алу",
+    "empty_list": "Тіркемелер жоқ",
+    "context_required": "Жүктеу тек мән контекстінде қолжетімді (жоба, бағыт, тапсырма)",
+    "upload_failed_title": "Жүктеу қатесі",
+    "upload_failed_text": "{{name}}: {{detail}}",
+    "play_video": "Қарау",
+    "close_preview": "Алдын ала қарауды жабу",
+    "loading_more": "Жүктелуде…",
+    "load_more": "Load more"
   },
   "PermissionSystem": {
     "permission_system": "Рұқсаттар жүйесі",
@@ -534,5 +557,14 @@
     "active": "Active",
     "liquidated": "Liquidated",
     "reorganized": "Reorganized"
+  },
+  "VideoPlayer": {
+    "play": "Ойнату",
+    "pause": "Кідірту",
+    "mute": "Дыбысты өшіру",
+    "unmute": "Дыбысты қосу",
+    "fullscreen": "Толық экран",
+    "exit_fullscreen": "Жию",
+    "playback_rate": "Ойнату жылдамдығы"
   }
 }

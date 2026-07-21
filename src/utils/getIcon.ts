@@ -45,6 +45,17 @@ enum IconEnum {
   EDIT = 'fa-solid fa-pen-to-square',
   DELETE = 'fa-solid fa-trash',
   RESTORE = 'fa-solid fa-trash-arrow-up',
+
+  DOCUMENTS = 'fa-solid fa-file-lines',
+  FILES = 'fa-solid fa-folder-open',
+  PAPERCLIP = 'fa-solid fa-paperclip',
+  UPLOAD = 'fa-solid fa-upload',
+  DOWNLOAD = 'fa-solid fa-download',
+  CLOUD_ARROW_UP = 'fa-solid fa-cloud-arrow-up',
+  PLAY = 'fa-solid fa-play',
+  EXPAND = 'fa-solid fa-expand',
+  COMPRESS = 'fa-solid fa-compress',
+  GAUGE = 'fa-solid fa-gauge-high',
 }
 
 function getValueByKeyForStringEnum(value: string) {

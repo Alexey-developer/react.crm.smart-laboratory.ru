@@ -16,12 +16,14 @@ import { IncludedEmployees } from '@components/IncludedEmployees'
 import { PermissionSystem } from '@components/PermissionSystem'
 import { DefaultCard } from '@components/DefaultCard'
 import { ActionButton } from '@components/ActionButton'
+import { EntityFileAttachments } from '@components/EntityFileAttachments'
 import { useFormActions } from '@components/EntityIndex/FormActions'
 
 import { getMethod } from '@utils/getMethod'
 import { SetPageTitle, seconds2Time } from '@utils/helpers'
 import { formCardExtra } from '@utils/formCardExtra'
 import { getIcon } from '@utils/getIcon'
+import { FILEABLE_TYPES } from '@utils/constants/fileableTypes'
 import { projectParentEntity } from '@utils/entityFormActions/projectParentEntity'
 import { taskDirectionEntity } from '@utils/entityFormActions/taskDirectionEntity'
 import {
@@ -245,6 +247,12 @@ export const TaskPage: React.FC = () => {
                   children: <div>text</div>,
                 },
               ]}
+            />
+          </Col>
+          <Col span={24} className='default-col'>
+            <EntityFileAttachments
+              fileableType={FILEABLE_TYPES.TASK}
+              fileableId={task.id}
             />
           </Col>
           <Col span={24} className='default-col'>

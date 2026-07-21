@@ -1,0 +1,23 @@
+@import '@utils/scss/variables.scss';
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.thumb {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: $BORDER_RADIUS;
+  box-shadow: $LIGHT_SMALL_SHADOW;
+  background: $LIGHT_HOVER_BG;
+}
+
+:global([data-theme='dark']) {
+  .thumb {
+    box-shadow: $DARK_SMALL_SHADOW;
+    background: $DARK_HOVER_BG;
+  }
+}

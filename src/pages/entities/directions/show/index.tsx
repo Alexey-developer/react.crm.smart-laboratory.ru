@@ -19,6 +19,7 @@ import { AlertCard } from '@components/AlertCard'
 import { IncludedEmployees } from '@components/IncludedEmployees'
 import { PermissionSystem } from '@components/PermissionSystem'
 import { DefaultCard } from '@components/DefaultCard'
+import { EntityFileAttachments } from '@components/EntityFileAttachments'
 
 import { ActionButton } from '@components/ActionButton'
 
@@ -27,6 +28,7 @@ import { SetPageTitle, seconds2Time } from '@utils/helpers'
 import { formCardExtra } from '@utils/formCardExtra'
 import { getIcon } from '@utils/getIcon'
 import { DIRECTIONS } from '@utils/constants/routes'
+import { FILEABLE_TYPES } from '@utils/constants/fileableTypes'
 import {
   formatBillingMoney,
   formatCostsAutoVsBilling,
@@ -251,6 +253,12 @@ export const DirectionPage: React.FC = () => {
                       { name: 'Видеть в списке', action: 'index' },
                       { name: 'Просматривать', action: 'index' },
                     ]}
+                  />
+                </Col>
+                <Col span={24} className='default-col'>
+                  <EntityFileAttachments
+                    fileableType={FILEABLE_TYPES.DIRECTION}
+                    fileableId={direction.id}
                   />
                 </Col>
                 <Col span={24} className='default-col'>

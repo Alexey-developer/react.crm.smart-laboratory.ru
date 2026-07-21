@@ -78,6 +78,12 @@ const WorkTimeRangesPage = lazy(() =>
   }))
 )
 
+const FilesPage = lazy(() =>
+  import('@pages/entities/files/index').then(module => ({
+    default: module.FilesPage,
+  }))
+)
+
 const CallsPage = lazy(() =>
   import('@pages/entities/calls/index').then(module => ({
     default: module.CallsPage,
@@ -412,6 +418,20 @@ const routes: IRoute[] = [
     showComponent: <OurCompanyPage />,
     editComponent: <EditOurCompanyPage />,
     createComponent: <CreateOurCompanyPage />,
+  },
+  {
+    uri: URIs.DOCUMENTS,
+    indexComponent: <FilesPage />,
+    showComponent: <FilesPage />,
+    editComponent: <FilesPage />,
+    createComponent: <FilesPage />,
+  },
+  {
+    uri: URIs.FILES,
+    indexComponent: <FilesPage />,
+    showComponent: <FilesPage />,
+    editComponent: <FilesPage />,
+    createComponent: <FilesPage />,
   },
   {
     uri: URIs.WORKER_PROFILES,

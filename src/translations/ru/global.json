@@ -1,4 +1,4 @@
-﻿{
+{
   "Common": {
     "companyName": "СмартЛаб",
     "system_type": "CRM"
@@ -27,7 +27,8 @@
     "direction": "Направление",
     "tasks": "Задачи",
     "work_time_ranges": "Временные диапазоны",
-    "documents": "Документы",
+    "internal_documents": "Внутренние документы",
+    "files": "Файлы",
     "system_users": "Пользователи системы",
     "Budget": {
       "self": "Бюджет",
@@ -220,7 +221,9 @@
   },
   "Extra": {
     "home_page": "Главная",
-    "page_loading": "Загрузка страницы…"
+    "page_loading": "Загрузка страницы…",
+    "loading_more": "Загрузка…",
+    "load_more": "Показать ещё"
   },
   "Filters": {
     "self": "Фильтры",
@@ -275,7 +278,27 @@
     "expirations": "Экспирации",
     "other_links": "Прочие ссылки",
     "endpoints": "Эндпоинты",
-    "coming_soon": "Скоро"
+    "coming_soon": "Скоро",
+    "attachments": "Вложения"
+  },
+  "FileUpload": {
+    "upload_files": "Загрузить файлы",
+    "start_upload": "Отправить",
+    "drop_title": "Перетащите файлы сюда",
+    "drop_hint": "или нажмите, чтобы выбрать. Отправка — кнопкой ниже.",
+    "pending_title": "К отправке: {{count}}",
+    "clear_queue": "Очистить",
+    "remove": "Убрать",
+    "cancel": "Отменить",
+    "download": "Скачать",
+    "empty_list": "Нет вложений",
+    "context_required": "Загрузка доступна только в контексте сущности (проект, направление, задача)",
+    "upload_failed_title": "Ошибка загрузки",
+    "upload_failed_text": "{{name}}: {{detail}}",
+    "play_video": "Смотреть",
+    "close_preview": "Закрыть превью",
+    "loading_more": "Загрузка…",
+    "load_more": "Показать ещё"
   },
   "PermissionSystem": {
     "permission_system": "Система разрешений",
@@ -534,5 +557,14 @@
     "active": "Действует",
     "liquidated": "Ликвидирована",
     "reorganized": "Реорганизована"
+  },
+  "VideoPlayer": {
+    "play": "Воспроизвести",
+    "pause": "Пауза",
+    "mute": "Выключить звук",
+    "unmute": "Включить звук",
+    "fullscreen": "На весь экран",
+    "exit_fullscreen": "Свернуть",
+    "playback_rate": "Скорость воспроизведения"
   }
 }

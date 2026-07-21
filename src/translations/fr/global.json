@@ -1,4 +1,4 @@
-﻿{
+{
   "Common": {
     "companyName": "SmartLab",
     "system_type": "CRM"
@@ -27,7 +27,8 @@
     "direction": "Direction",
     "tasks": "Tâches",
     "work_time_ranges": "Plages de temps de travail",
-    "documents": "Documents",
+    "internal_documents": "Documents internes",
+    "files": "Fichiers",
     "system_users": "Utilisateurs du système",
     "Budget": {
       "self": "Budget",
@@ -220,7 +221,9 @@
   },
   "Extra": {
     "home_page": "Accueil",
-    "page_loading": "Chargement de la page…"
+    "page_loading": "Chargement de la page…",
+    "loading_more": "Loading…",
+    "load_more": "Load more"
   },
   "Filters": {
     "self": "Filtres",
@@ -275,7 +278,27 @@
     "expirations": "Échéances",
     "other_links": "Autres liens",
     "endpoints": "Points de terminaison",
-    "coming_soon": "Bientôt disponible"
+    "coming_soon": "Bientôt disponible",
+    "attachments": "Pièces jointes"
+  },
+  "FileUpload": {
+    "upload_files": "Téléverser des fichiers",
+    "start_upload": "Envoyer",
+    "drop_title": "Déposez les fichiers ici",
+    "drop_hint": "ou cliquez pour sélectionner. Envoi — bouton ci-dessous.",
+    "pending_title": "En file: {{count}}",
+    "clear_queue": "Vider",
+    "remove": "Retirer",
+    "cancel": "Annuler",
+    "download": "Télécharger",
+    "empty_list": "Aucune pièce jointe",
+    "context_required": "Téléversement disponible uniquement dans le contexte d'une entité (projet, direction, tâche)",
+    "upload_failed_title": "Échec du téléversement",
+    "upload_failed_text": "{{name}}: {{detail}}",
+    "play_video": "Lire",
+    "close_preview": "Fermer l'aperçu",
+    "loading_more": "Chargement…",
+    "load_more": "Load more"
   },
   "PermissionSystem": {
     "permission_system": "Système d'autorisations",
@@ -534,5 +557,14 @@
     "active": "Active",
     "liquidated": "Liquidated",
     "reorganized": "Reorganized"
+  },
+  "VideoPlayer": {
+    "play": "Lecture",
+    "pause": "Pause",
+    "mute": "Muet",
+    "unmute": "Son",
+    "fullscreen": "Plein écran",
+    "exit_fullscreen": "Quitter le plein écran",
+    "playback_rate": "Vitesse de lecture"
   }
 }

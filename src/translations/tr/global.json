@@ -1,4 +1,4 @@
-﻿{
+{
   "Common": {
     "companyName": "SmartLab",
     "system_type": "CRM"
@@ -27,7 +27,8 @@
     "direction": "Yön",
     "tasks": "Görevler",
     "work_time_ranges": "Çalışma zaman aralıkları",
-    "documents": "Belgeler",
+    "internal_documents": "Dahili belgeler",
+    "files": "Dosyalar",
     "system_users": "Sistem kullanıcıları",
     "Budget": {
       "self": "Bütçe",
@@ -220,7 +221,9 @@
   },
   "Extra": {
     "home_page": "Ana sayfa",
-    "page_loading": "Sayfa yükleniyor…"
+    "page_loading": "Sayfa yükleniyor…",
+    "loading_more": "Loading…",
+    "load_more": "Load more"
   },
   "Filters": {
     "self": "Filtreler",
@@ -275,7 +278,27 @@
     "expirations": "Süre dolumları",
     "other_links": "Diğer bağlantılar",
     "endpoints": "Uç noktalar",
-    "coming_soon": "Yakında"
+    "coming_soon": "Yakında",
+    "attachments": "Ekler"
+  },
+  "FileUpload": {
+    "upload_files": "Dosya yükle",
+    "start_upload": "Gönder",
+    "drop_title": "Dosyaları buraya bırakın",
+    "drop_hint": "veya seçmek için tıklayın. Gönderim — aşağıdaki düğmeyle.",
+    "pending_title": "Gönderilecek: {{count}}",
+    "clear_queue": "Temizle",
+    "remove": "Kaldır",
+    "cancel": "İptal",
+    "download": "İndir",
+    "empty_list": "Ek yok",
+    "context_required": "Yükleme yalnızca varlık bağlamında kullanılabilir (proje, yön, görev)",
+    "upload_failed_title": "Yükleme hatası",
+    "upload_failed_text": "{{name}}: {{detail}}",
+    "play_video": "Oynat",
+    "close_preview": "Önizlemeyi kapat",
+    "loading_more": "Yükleniyor…",
+    "load_more": "Load more"
   },
   "PermissionSystem": {
     "permission_system": "İzin sistemi",
@@ -534,5 +557,14 @@
     "active": "Active",
     "liquidated": "Liquidated",
     "reorganized": "Reorganized"
+  },
+  "VideoPlayer": {
+    "play": "Oynat",
+    "pause": "Duraklat",
+    "mute": "Sesi kapat",
+    "unmute": "Sesi aç",
+    "fullscreen": "Tam ekran",
+    "exit_fullscreen": "Tam ekrandan çık",
+    "playback_rate": "Oynatma hızı"
   }
 }
