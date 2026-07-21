@@ -33,7 +33,12 @@ const AntdShell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
  * (design-sync compose применяет decorators внутри этого shell).
  */
 export const PreviewProviders: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  React.useEffect(() => {
+  // useLayoutEffect (not useEffect): must land before withStoryReduxState's
+  // per-story theme override (storyDecorators.tsx) — React flushes ALL
+  // layout effects across the tree before ANY passive useEffect runs, so
+  // this default-light write always precedes a story's own dark override
+  // regardless of parent/child effect-ordering within the same phase.
+  React.useLayoutEffect(() => {
     document.body.setAttribute('data-theme', 'light')
   }, [])
 

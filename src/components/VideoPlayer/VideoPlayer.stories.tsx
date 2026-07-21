@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { VideoPlayer } from '@components/VideoPlayer'
 import type { TFile } from '@api/models/file/type/TFile'
 import { StoryRow } from '../../storybook/AppDecorator'
+import { withStoryReduxState } from '../../storybook/storyDecorators'
 
 const sampleVideo: TFile = {
   id: 10,
@@ -23,6 +24,7 @@ const meta = {
   component: VideoPlayer,
   tags: ['autodocs'],
   decorators: [
+    withStoryReduxState,
     Story => (
       <StoryRow>
         <Story />
@@ -57,5 +59,10 @@ export const NotVideo: Story = {
 export const Dark: Story = {
   globals: {
     theme: 'dark',
+  },
+  parameters: {
+    reduxState: {
+      theme: { currentTheme: 'dark' },
+    },
   },
 }

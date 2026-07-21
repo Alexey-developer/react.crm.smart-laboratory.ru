@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { MediaGallery } from '@components/MediaGallery'
 import type { TFile } from '@api/models/file/type/TFile'
 import { StoryRow } from '../../storybook/AppDecorator'
+import { withStoryReduxState } from '../../storybook/storyDecorators'
 
 const sampleImages: TFile[] = [
   {
@@ -38,6 +39,7 @@ const meta = {
   component: MediaGallery,
   tags: ['autodocs'],
   decorators: [
+    withStoryReduxState,
     Story => (
       <StoryRow>
         <Story />
@@ -69,5 +71,10 @@ export const Empty: Story = {
 export const Dark: Story = {
   globals: {
     theme: 'dark',
+  },
+  parameters: {
+    reduxState: {
+      theme: { currentTheme: 'dark' },
+    },
   },
 }

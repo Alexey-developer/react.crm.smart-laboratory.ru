@@ -177,8 +177,103 @@ Vite — bundles it fresh (its react-shim plugin needs to see the raw import).
   HTML harness — not something `cfg.*` can influence, and the harness
   (`emit.mjs`/`bundle.mjs`) is app-contract surface, never fork.
 
+- **A "Dark" story's `globals: {theme: 'dark'}` alone renders LIGHT in every
+  design-sync preview** (EntityFileField/MediaGallery/VideoPlayer, added
+  2026-07-21) → **[GENERAL]** `PreviewProviders` (design-sync's `cfg.provider`)
+  never reads Storybook's `context.globals` at all — that mechanism only
+  exists inside real Storybook's `AppDecorator`. A story that sets ONLY
+  `globals: {theme: 'dark'}` (the pattern that already works for real
+  Storybook's toolbar) is therefore invisible to design-sync; it needs the
+  SAME per-story override real Storybook decorators use for everything else
+  (spin/prefix/etc — see `withStoryReduxState` below): add `decorators:
+  [withStoryReduxState]` to the story's `meta` (or merge into an existing
+  decorators array) AND set `parameters.reduxState.theme.currentTheme:
+  'dark'` on the `Dark` story itself (keep `globals` too — harmless, and
+  what the real Storybook toolbar/addon-themes still key off). **If a NEW
+  component's Dark/Light-toggle story renders in the wrong theme in
+  design-sync only, add this pairing first** — `PageSuspenseFallback`
+  already had it correctly from the start, which is why only the OTHER 3
+  needed the fix.
+- **Even after adding `withStoryReduxState` + `parameters.reduxState.theme`,
+  the Dark story STILL rendered light in design-sync** → **[GENERAL]**, a
+  second, deeper bug: `PreviewProviders.tsx` had its own
+  `useEffect(() => document.body.setAttribute('data-theme', 'light'), [])`.
+  React fires mount effects bottom-up (children before parents);
+  `withStoryReduxState`'s effect (a descendant, inside `PreviewProviders`)
+  fired FIRST and correctly set `dark`, but `PreviewProviders`'s OWN effect —
+  the ancestor — fired LAST and unconditionally overwrote it back to
+  `light`. Fix: changed `PreviewProviders`'s effect from `useEffect` to
+  `useLayoutEffect`. React flushes ALL layout effects across the whole
+  committed tree before ANY passive `useEffect` runs anywhere, so this
+  default-light write now always lands before any story-level
+  `withStoryReduxState` override, regardless of parent/child ordering within
+  the same effect type. **Any future default set in `PreviewProviders` that
+  a per-story decorator is meant to override must stay `useLayoutEffect`,
+  not `useEffect`** — reverting to `useEffect` silently reintroduces this
+  exact bug with no build warning.
+- **`InfiniteScroll`'s "Basic" story kept auto-loading pages in the preview
+  (20+ items, stuck on "Loading…") while storybook settled at 7 visible
+  items** → **[GENERAL, narrow]** the story's OWN wrapper CSS,
+  `InfiniteScroll.stories.module.scss`, is a **SCSS** CSS Module — the
+  per-story compile pass (raw esbuild, no Sass preprocessing; only
+  `entry-pkg`'s Vite build has a Sass loader) does not compile `.module.scss`
+  the way it compiles `.module.css` (confirmed empirically: the compiled
+  preview JS contained zero `max-height`/`border` CSS text for this file —
+  the import silently resolved to an empty module, so `styles.demo` was
+  `undefined` and the class never landed on the DOM node at all). Without
+  `.demo`'s `max-height: 240px`, the component's OWN `.root { max-height:
+  360px }` won by default, so 12 initial items never overflowed the (taller)
+  box, and `InfiniteScroll`'s "fill-until-overflow" `ResizeObserver` logic
+  kept calling `onLoadMore` for real. Fix: renamed the file to
+  `InfiniteScroll.stories.module.css` (plain CSS, SCSS `$variables` resolved
+  to their literal values from `variables.scss`, kept the `!important` on
+  `max-height` since real Storybook and design-sync's harness insert
+  story-CSS vs component-CSS in different orders and equal-specificity
+  cascade order isn't reliable either way) and updated the story's import.
+  **`InfiniteScroll` is the only component using a story-local `.module.scss`
+  file** (grepped) — if a future story adds one, expect the same silent
+  empty-import failure; either avoid SCSS-only features in story-local CSS
+  Modules (use `.module.css`) or extend `.ds-sync/lib/story-imports.mjs`
+  with a real Sass loader (not attempted — narrow, single-component impact
+  didn't justify forking the converter).
+- **`PageSuspenseFallback`'s "Dark" story: design-sync's preview correctly
+  goes dark, but real Storybook's OWN reference render stays light** (card +
+  page background never flip, confirmed at full resolution — not a capture
+  artifact) → graded `close`, NOT fixed; a genuine real-Storybook-side issue,
+  outside design-sync's reach. This is the only one of the 4 new "Dark"
+  stories where real Storybook's own render is unreliable — the other 3
+  (EntityFileField/MediaGallery/VideoPlayer) correctly go dark in BOTH
+  panels. Likely cause: this story is the only one combining `layout:
+  'fullscreen'` + `@storybook/addon-themes`'s `withThemeByDataAttribute`
+  (global, `.storybook/preview.tsx`) + its own `withStoryReduxState`
+  decorator, all three writing `document.body[data-theme]`; not chased
+  further into Storybook's own addon internals. **If this recurs on another
+  component, or a human confirms/denies it live in Storybook, update this
+  note** — don't re-diagnose from scratch.
+
 ## Re-sync risks (read this before trusting a fast/no-op re-sync)
 
+- `PreviewProviders.tsx`'s default-theme write MUST stay `useLayoutEffect`,
+  never `useEffect` — see the Fixes entry above. No build warning catches a
+  regression; only a Dark-story component silently rendering light in every
+  preview would.
+- Any NEW component with a Light/Dark toggle story needs BOTH `globals:
+  {theme: ...}` (real Storybook) AND `decorators: [withStoryReduxState]` +
+  `parameters.reduxState.theme.currentTheme` (design-sync) — `globals` alone
+  is invisible to design-sync's `PreviewProviders`. Check this first if a new
+  component's theme story renders correctly in real Storybook but wrong in
+  design-sync.
+- A story-local CSS Module MUST be `.module.css`, not `.module.scss` — the
+  per-story compile pass has no Sass preprocessing (only `entry-pkg`'s Vite
+  build does). An `.module.scss` import silently resolves empty (no build
+  error), so every class from it is `undefined` in the preview. Only
+  `InfiniteScroll` has a story-local CSS Module today; re-check this if
+  another story adds one.
+- `PageSuspenseFallback`'s Dark story is graded `close` because real
+  Storybook's OWN reference render doesn't apply the dark theme (not a
+  design-sync bug) — see the Fixes entry above. Don't re-open this as a
+  design-sync regression on a future re-sync; it's a pre-existing real-app/
+  real-Storybook inconsistency.
 - The FA icon subset (`fontawesome-classes.css`) is generated from
   `all.css` v6.5.1 by `regenerate-fontawesome-classes.mjs` (`@font-face`
   stripped, `--fa-*` tagged `/* @kind other */`). If Font Awesome is upgraded

@@ -1,0 +1,35 @@
+.demo {
+  /* must win over InfiniteScroll's own .root max-height (360px) regardless
+     of CSS injection order between the real Storybook build and design-sync's
+     preview harness — equal-specificity cascade order is not reliable here. */
+  max-height: 240px !important;
+  border: 1px solid rgba(47, 43, 61, 0.04);
+  border-radius: 8px;
+  padding: 0 8px;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  padding: 10px 4px;
+  border-bottom: 1px solid rgba(47, 43, 61, 0.04);
+  font-size: 13px;
+  color: #000;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+:global([data-theme='dark']) .demo {
+  border-color: rgba(208, 212, 241, 0.04);
+}
+
+:global([data-theme='dark']) .item {
+  border-bottom-color: rgba(208, 212, 241, 0.04);
+  color: #fff;
+}

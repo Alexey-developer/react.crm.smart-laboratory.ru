@@ -2,12 +2,14 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { EntityFileField } from '@components/EntityFileField'
 import { StoryRow } from '../../storybook/AppDecorator'
+import { withStoryReduxState } from '../../storybook/storyDecorators'
 
 const meta = {
   title: 'Primitives/EntityFileField',
   component: EntityFileField,
   tags: ['autodocs'],
   decorators: [
+    withStoryReduxState,
     Story => (
       <StoryRow>
         <Story />
@@ -51,5 +53,10 @@ export const WithoutContext: Story = {
 export const Dark: Story = {
   globals: {
     theme: 'dark',
+  },
+  parameters: {
+    reduxState: {
+      theme: { currentTheme: 'dark' },
+    },
   },
 }

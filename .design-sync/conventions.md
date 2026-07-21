@@ -61,6 +61,8 @@ reference sites. (3) No third-party CSS/JS from demos. (4) Icons: `fa-solid` /
 - **CustomSelect / CustomSimpleSelect / PhoneInput** → Vuexy forms; OneUI layout catalog
 - **CustomAvatar / IncludedEmployees** → Vuexy team lists
 - **Skeleton / CustomSpin / PageSuspenseFallback** → Vuexy loading states
+- **EntityFileField / MediaGallery / VideoPlayer** → Vuexy `app-file-manager`, `extended-ui-media-player`
+- **InfiniteScroll** → Vuexy list/table toolbars (same hub as Filter/Sort/CustomPagination)
 
 Browse inside each demo (nested pages) when hunting a specific pattern. Business
 rules and legacy CRM screens are **not** in this bundle — the human adds ontology
@@ -78,6 +80,8 @@ excerpts or screenshots via prompt or `templates/` docs.
 | CustomSelect / PhoneInput | Vuexy `forms-selects`, `forms-input-groups`; OneUI `be_forms_input_groups` |
 | CustomAvatar / IncludedEmployees | Vuexy `extended-ui-avatar`, `pages-profile-teams` |
 | Skeleton / CustomSpin / PageSuspenseFallback | Vuexy `extended-ui-blockui`, `ui-spinners` |
+| EntityFileField / MediaGallery / VideoPlayer | Vuexy `app-file-manager`, `extended-ui-media-player` |
+| InfiniteScroll | Vuexy `tables-datatables-basic` (scroll/load-more patterns) |
 | Entity index (templates) | Vuexy `app-user-list`; Metronic `apps/customers/list` |
 | Tasks kanban (templates) | Vuexy `app-kanban`; CORK `apps_scrumboard` |
 | Mailbox (templates) | Vuexy `app-email`; CORK `apps_mailbox` |

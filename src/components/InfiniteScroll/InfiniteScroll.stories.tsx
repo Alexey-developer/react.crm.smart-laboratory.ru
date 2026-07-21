@@ -7,7 +7,7 @@ import { InfiniteScroll } from '@components/InfiniteScroll'
 
 import { withStoryReduxState } from '../../storybook/storyDecorators'
 
-import styles from './InfiniteScroll.stories.module.scss'
+import styles from './InfiniteScroll.stories.module.css'
 
 const meta = {
   title: 'Primitives/InfiniteScroll',
